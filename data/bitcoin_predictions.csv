@@ -1,0 +1,2 @@
+timestamp_utc,initial_price,predicted_price_24h,predicted_min,predicted_max,actual_price_24h,absolute_error,percentage_error,predicted_direction,actual_direction,direction_correct,within_range,prediction_method
+2026-09-03T15:02:25Z,80470.00,80521.68,80162.85,80880.51,,,,up,,,,arima_fallback
