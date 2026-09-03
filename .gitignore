@@ -27,3 +27,7 @@ uv.lock
 development_setup.md
 debug.log
 *.log
+
+# Bitcoin evaluation — track experiment data
+!data/bitcoin_predictions.csv
+!reports/bitcoin_report.md

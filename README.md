@@ -224,3 +224,100 @@ outputs = list(
 print("Multivariate forecast shape:", outputs[0].forecast.shape)   # (3, 24)
 print("Multivariate quantiles shape:", outputs[0].quantiles.shape) # (3, 24, 9)
 ```
+
+--------------------------------------------------------------------------------
+
+## Bitcoin Prediction Experiment (BTC/USD)
+
+> ⚠️ **Disclaimer**: This is a technical experiment to evaluate TimesFM's
+> forecasting ability on cryptocurrency data. It is **not** financial advice.
+
+### What It Does
+
+A 14-day automated experiment that:
+
+1.  **Predicts** the BTC/USD price 24 hours ahead (daily at 12:00 UTC).
+2.  **Verifies** yesterday's prediction against the actual price.
+3.  **Records** all results in
+    [`data/bitcoin_predictions.csv`](data/bitcoin_predictions.csv).
+4.  **Generates** a Markdown report at
+    [`reports/bitcoin_report.md`](reports/bitcoin_report.md).
+
+**Prediction methods:**
+
+-   **TimesFM 3.0** — when run locally with `--use-timesfm` (requires
+    `torch` + GPU/MPS).
+-   **ARIMA fallback** — lightweight statistical model used in GitHub Actions
+    CI (clearly labeled in the CSV).
+
+### Configure the Experiment
+
+The experiment window is controlled by environment variables:
+
+```bash
+# In .github/workflows/bitcoin-evaluation.yml:
+EXPERIMENT_START_DATE: '2026-09-03'   # ISO date, UTC
+EXPERIMENT_DURATION_DAYS: '14'         # Total days
+```
+
+The workflow automatically stops after the duration expires.
+
+### Start Manually
+
+1.  Go to the **Actions** tab in your GitHub repository.
+2.  Select **"Bitcoin Prediction Evaluation"** from the left sidebar.
+3.  Click **"Run workflow"** → **"Run workflow"**.
+
+### Change the Schedule
+
+Edit the `cron` expression in
+[`.github/workflows/bitcoin-evaluation.yml`](.github/workflows/bitcoin-evaluation.yml):
+
+```yaml
+schedule:
+  - cron: '0 12 * * *'   # Current: daily at 12:00 UTC
+  # Examples:
+  # - cron: '0 8 * * *'  # Daily at 08:00 UTC
+  # - cron: '0 */12 * * *'  # Every 12 hours
+```
+
+### View the Report
+
+The report is automatically committed to
+[`reports/bitcoin_report.md`](reports/bitcoin_report.md) after each run.
+It includes:
+
+-   Summary statistics (MAE, RMSE, direction accuracy).
+-   Daily results table with all metrics.
+-   A cautious conclusion.
+
+### Stop the Experiment
+
+Three options:
+
+1.  **Wait** — it stops automatically after `EXPERIMENT_DURATION_DAYS`.
+2.  **Disable the workflow** — Go to Actions → Bitcoin Prediction Evaluation →
+    ⋯ → Disable workflow.
+3.  **Delete the workflow file** — Remove
+    `.github/workflows/bitcoin-evaluation.yml`.
+
+### Run Locally with TimesFM 3.0
+
+```bash
+# Install dependencies
+pip install timesfm[torch] requests pandas statsmodels
+
+# Run prediction with the real model
+python -m evaluation.run_predict --use-timesfm
+
+# Verify previous predictions (run 24h+ later)
+python -m evaluation.run_verify
+```
+
+### Run Tests
+
+```bash
+pip install pytest pandas statsmodels
+pytest tests/test_btc_metrics.py tests/test_btc_csv_manager.py tests/test_btc_simulation.py -v
+```
+
