@@ -60,7 +60,7 @@ def main() -> int:
     # 2. Fetch current price
     logger.info("Fetching current BTC/USD price from CoinGecko...")
     current_price = get_current_btc_price()
-    logger.info("Current BTC/USD price: $%,.2f", current_price)
+    logger.info("Current BTC/USD price: $%s", f"{current_price:,.2f}")
 
     # 3. Fetch price history
     logger.info("Fetching 90 days of BTC/USD hourly history...")
@@ -108,9 +108,9 @@ def main() -> int:
     save_prediction(row)
 
     logger.info(
-        "Prediction saved: $%,.2f → $%,.2f (%s, method=%s)",
-        current_price,
-        result.forecast,
+        "Prediction saved: $%s → $%s (%s, method=%s)",
+        f"{current_price:,.2f}",
+        f"{result.forecast:,.2f}",
         predicted_direction,
         result.method,
     )

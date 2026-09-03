@@ -129,10 +129,10 @@ def predict_with_fallback(history: np.ndarray) -> PredictionResult:
 
     # Forecast 1 step ahead with 80% confidence interval (q10–q90 equivalent)
     forecast_result = fitted.get_forecast(steps=1)
-    forecast_val = float(forecast_result.predicted_mean.iloc[0])
+    forecast_val = float(forecast_result.predicted_mean[0])
     conf_int = forecast_result.conf_int(alpha=0.20)  # 80% CI
-    min_val = float(conf_int.iloc[0, 0])
-    max_val = float(conf_int.iloc[0, 1])
+    min_val = float(conf_int[0, 0])
+    max_val = float(conf_int[0, 1])
 
     logger.info(
         "ARIMA fallback prediction: $%.2f [min=$%.2f, max=$%.2f]",
