@@ -1,6 +1,8 @@
 name: Bitcoin Prediction Evaluation
 
 on:
+  push:
+    branches: [ "master" ]
   schedule:
     # Run daily at 12:00 UTC
     - cron: '0 12 * * *'
