@@ -1,4 +1,5 @@
 timestamp_utc,initial_price,predicted_price_24h,predicted_min,predicted_max,actual_price_24h,absolute_error,percentage_error,predicted_direction,actual_direction,direction_correct,within_range,prediction_method
 2026-09-03T15:02:25Z,80470.00,80521.68,80162.85,80880.51,78918.77058040584,1602.91,2.0311,up,down,false,false,arima_fallback
-2026-09-04T16:03:24Z,79390.00,79430.98,79032.35,79829.60,,,,up,,,,arima_fallback
+2026-09-04T16:03:24Z,79390.00,79430.98,79032.35,79829.60,79803.39493926977,372.41,0.4667,up,up,true,true,arima_fallback
 2026-09-05T14:53:27Z,79735.00,79735.25,79337.36,80133.14,,,,up,,,,arima_fallback
+2026-09-05T16:12:37Z,79783.00,79789.30,79691.75,79911.03,,,,up,,,,timesfm
