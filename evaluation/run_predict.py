@@ -80,7 +80,13 @@ def main() -> int:
     # 4. Run prediction
     if args.use_timesfm:
         logger.info("Running TimesFM 3.0 prediction...")
-        result = predict_with_timesfm(history_prices)
+        try:
+            result = predict_with_timesfm(history_prices)
+        except Exception:
+            logger.exception(
+                "TimesFM 3.0 failed — falling back to ARIMA."
+            )
+            result = predict_with_fallback(history_prices)
     else:
         logger.info("Running ARIMA fallback prediction...")
         result = predict_with_fallback(history_prices)
