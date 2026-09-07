@@ -7,20 +7,20 @@
 - **Start date**: 2026-09-03
 - **Duration**: 14 days
 - **Prediction method(s)**: arima_fallback, timesfm
-- **Report generated**: 2026-09-06 15:15 UTC
+- **Report generated**: 2026-09-07 17:37 UTC
 - **Timezone**: UTC
 
 ## Summary Statistics
 
 | Metric | Value |
 |--------|-------|
-| Total predictions | 5 |
-| Verified predictions | 3 |
-| MAE (Mean Absolute Error) | $727.92 |
-| RMSE (Root Mean Square Error) | $957.68 |
-| Mean Percentage Error | 0.92% |
-| Direction Accuracy | 33.3% |
-| Within Range Accuracy | 66.7% |
+| Total predictions | 6 |
+| Verified predictions | 5 |
+| MAE (Mean Absolute Error) | $523.22 |
+| RMSE (Root Mean Square Error) | $759.11 |
+| Mean Percentage Error | 0.66% |
+| Direction Accuracy | 20.0% |
+| Within Range Accuracy | 60.0% |
 
 ## Daily Results
 
@@ -29,9 +29,12 @@
 | 2026-09-03 | 80,470.00 | 80,521.68 | 80,162.85 | 80,880.51 | 78,918.77 | 1,602.91 | 2.03% | 📈 up | 📉 down | ❌ | ❌ |
 | 2026-09-04 | 79,390.00 | 79,430.98 | 79,032.35 | 79,829.60 | 79,803.39 | 372.41 | 0.47% | 📈 up | 📈 up | ✅ | ✅ |
 | 2026-09-05 | 79,735.00 | 79,735.25 | 79,337.36 | 80,133.14 | 79,526.80 | 208.45 | 0.26% | 📈 up | 📉 down | ❌ | ✅ |
-| 2026-09-05 | 79,783.00 | 79,789.30 | 79,691.75 | 79,911.03 | — | — | — | 📈 up | — | — | — |
-| 2026-09-06 | 79,527.00 | 79,531.41 | 79,302.51 | 79,802.52 | — | — | — | 📈 up | — | — | — |
+| 2026-09-05 | 79,783.00 | 79,789.30 | 79,691.75 | 79,911.03 | 79,707.93 | 81.37 | 0.10% | 📈 up | 📉 down | ❌ | ✅ |
+| 2026-09-06 | 79,527.00 | 79,531.41 | 79,302.51 | 79,802.52 | 79,180.44 | 350.97 | 0.44% | 📈 up | 📉 down | ❌ | ❌ |
+| 2026-09-07 | 79,076.00 | 79,117.61 | 78,902.27 | 79,353.39 | — | — | — | 📈 up | — | — | — |
 
 ## Conclusion
 
-With only 3 verified prediction(s), it is too early to draw meaningful conclusions about the model's forecasting ability. The experiment will continue to collect data over the full 14-day window.
+After 5 verified predictions, the model achieved a Mean Absolute Error of $523.22 (0.66% average percentage error). Direction was predicted correctly 20.0% of the time, and 60.0% of actual prices fell within the predicted range.
+
+**Note**: These results are from a limited 14-day experiment. Cryptocurrency markets are highly volatile and unpredictable. This evaluation is for research purposes only and should not be used for trading decisions.
