@@ -7,20 +7,20 @@
 - **Start date**: 2026-09-03
 - **Duration**: 14 days
 - **Prediction method(s)**: arima_fallback, timesfm
-- **Report generated**: 2026-09-09 16:18 UTC
+- **Report generated**: 2026-09-10 16:11 UTC
 - **Timezone**: UTC
 
 ## Summary Statistics
 
 | Metric | Value |
 |--------|-------|
-| Total predictions | 8 |
-| Verified predictions | 6 |
-| MAE (Mean Absolute Error) | $537.10 |
-| RMSE (Root Mean Square Error) | $735.88 |
-| Mean Percentage Error | 0.68% |
-| Direction Accuracy | 16.7% |
-| Within Range Accuracy | 50.0% |
+| Total predictions | 9 |
+| Verified predictions | 7 |
+| MAE (Mean Absolute Error) | $467.54 |
+| RMSE (Root Mean Square Error) | $681.55 |
+| Mean Percentage Error | 0.59% |
+| Direction Accuracy | 28.6% |
+| Within Range Accuracy | 57.1% |
 
 ## Daily Results
 
@@ -32,11 +32,12 @@
 | 2026-09-05 | 79,783.00 | 79,789.30 | 79,691.75 | 79,911.03 | 79,707.93 | 81.37 | 0.10% | 📈 up | 📉 down | ❌ | ✅ |
 | 2026-09-06 | 79,527.00 | 79,531.41 | 79,302.51 | 79,802.52 | 79,180.44 | 350.97 | 0.44% | 📈 up | 📉 down | ❌ | ❌ |
 | 2026-09-07 | 79,076.00 | 79,117.61 | 78,902.27 | 79,353.39 | 78,511.13 | 606.48 | 0.77% | 📈 up | 📉 down | ❌ | ❌ |
-| 2026-09-08 | 78,643.00 | 78,637.05 | 78,360.05 | 78,901.78 | — | — | — | 📉 down | — | — | — |
+| 2026-09-08 | 78,643.00 | 78,637.05 | 78,360.05 | 78,901.78 | 78,586.85 | 50.20 | 0.06% | 📉 down | 📉 down | ✅ | ✅ |
 | 2026-09-09 | 78,524.00 | 78,516.34 | 78,193.12 | 78,861.67 | — | — | — | 📉 down | — | — | — |
+| 2026-09-10 | 77,022.00 | 77,033.53 | 76,706.77 | 77,373.84 | — | — | — | 📈 up | — | — | — |
 
 ## Conclusion
 
-After 6 verified predictions, the model achieved a Mean Absolute Error of $537.10 (0.68% average percentage error). Direction was predicted correctly 16.7% of the time, and 50.0% of actual prices fell within the predicted range.
+After 7 verified predictions, the model achieved a Mean Absolute Error of $467.54 (0.59% average percentage error). Direction was predicted correctly 28.6% of the time, and 57.1% of actual prices fell within the predicted range.
 
 **Note**: These results are from a limited 14-day experiment. Cryptocurrency markets are highly volatile and unpredictable. This evaluation is for research purposes only and should not be used for trading decisions.
