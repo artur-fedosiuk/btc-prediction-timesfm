@@ -7,20 +7,20 @@
 - **Start date**: 2026-09-03
 - **Duration**: 14 days
 - **Prediction method(s)**: arima_fallback, timesfm
-- **Report generated**: 2026-09-13 15:57 UTC
+- **Report generated**: 2026-09-14 17:58 UTC
 - **Timezone**: UTC
 
 ## Summary Statistics
 
 | Metric | Value |
 |--------|-------|
-| Total predictions | 12 |
-| Verified predictions | 11 |
-| MAE (Mean Absolute Error) | $529.63 |
-| RMSE (Root Mean Square Error) | $711.69 |
-| Mean Percentage Error | 0.68% |
-| Direction Accuracy | 54.5% |
-| Within Range Accuracy | 45.5% |
+| Total predictions | 13 |
+| Verified predictions | 12 |
+| MAE (Mean Absolute Error) | $604.93 |
+| RMSE (Root Mean Square Error) | $797.17 |
+| Mean Percentage Error | 0.77% |
+| Direction Accuracy | 58.3% |
+| Within Range Accuracy | 41.7% |
 
 ## Daily Results
 
@@ -37,10 +37,11 @@
 | 2026-09-10 | 77,022.00 | 77,033.53 | 76,706.77 | 77,373.84 | 77,694.27 | 660.74 | 0.85% | 📈 up | 📈 up | ✅ | ❌ |
 | 2026-09-11 | 77,876.00 | 77,705.84 | 77,275.70 | 78,236.39 | 77,366.92 | 338.92 | 0.44% | 📉 down | 📉 down | ✅ | ✅ |
 | 2026-09-12 | 77,436.00 | 77,433.75 | 77,285.97 | 77,574.56 | 77,187.00 | 246.75 | 0.32% | 📉 down | 📉 down | ✅ | ❌ |
-| 2026-09-13 | 77,122.00 | 77,128.54 | 76,923.19 | 77,337.22 | — | — | — | 📈 up | — | — | — |
+| 2026-09-13 | 77,122.00 | 77,128.54 | 76,923.19 | 77,337.22 | 78,561.79 | 1,433.25 | 1.82% | 📈 up | 📈 up | ✅ | ❌ |
+| 2026-09-14 | 78,964.00 | 78,942.93 | 78,649.31 | 79,185.94 | — | — | — | 📉 down | — | — | — |
 
 ## Conclusion
 
-After 11 verified predictions, the model achieved a Mean Absolute Error of $529.63 (0.68% average percentage error). Direction was predicted correctly 54.5% of the time, and 45.5% of actual prices fell within the predicted range.
+After 12 verified predictions, the model achieved a Mean Absolute Error of $604.93 (0.77% average percentage error). Direction was predicted correctly 58.3% of the time, and 41.7% of actual prices fell within the predicted range.
 
 **Note**: These results are from a limited 14-day experiment. Cryptocurrency markets are highly volatile and unpredictable. This evaluation is for research purposes only and should not be used for trading decisions.
