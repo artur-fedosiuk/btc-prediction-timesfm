@@ -7,14 +7,14 @@
 - **Start date**: 2026-09-03
 - **Duration**: 14 days
 - **Prediction method(s)**: arima_fallback, timesfm
-- **Report generated**: 2026-09-14 17:58 UTC
+- **Report generated**: 2026-09-15 16:40 UTC
 - **Timezone**: UTC
 
 ## Summary Statistics
 
 | Metric | Value |
 |--------|-------|
-| Total predictions | 13 |
+| Total predictions | 14 |
 | Verified predictions | 12 |
 | MAE (Mean Absolute Error) | $604.93 |
 | RMSE (Root Mean Square Error) | $797.17 |
@@ -39,6 +39,7 @@
 | 2026-09-12 | 77,436.00 | 77,433.75 | 77,285.97 | 77,574.56 | 77,187.00 | 246.75 | 0.32% | 📉 down | 📉 down | ✅ | ❌ |
 | 2026-09-13 | 77,122.00 | 77,128.54 | 76,923.19 | 77,337.22 | 78,561.79 | 1,433.25 | 1.82% | 📈 up | 📈 up | ✅ | ❌ |
 | 2026-09-14 | 78,964.00 | 78,942.93 | 78,649.31 | 79,185.94 | — | — | — | 📉 down | — | — | — |
+| 2026-09-15 | 76,385.00 | 76,431.12 | 76,165.22 | 76,760.05 | — | — | — | 📈 up | — | — | — |
 
 ## Conclusion
 
