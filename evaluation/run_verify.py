@@ -19,8 +19,8 @@ import logging
 import sys
 from datetime import datetime, timedelta, timezone
 
-from .coingecko import CoinGeckoError, get_btc_price_at
 from .csv_manager import load_predictions, update_verification
+from .price_verifier import get_verified_price
 from .metrics import (
     compute_absolute_error,
     compute_direction,
@@ -82,15 +82,16 @@ def main() -> int:
             )
             continue
 
-        # 3. Fetch actual price at prediction_time + 24h
+        # 3. Fetch actual price at prediction_time + 24h (multi-source)
         logger.info(
             "Verifying prediction from %s (target: %s)...",
             ts_str,
             verify_time.isoformat(),
         )
         try:
-            actual_price = get_btc_price_at(verify_time)
-        except CoinGeckoError as exc:
+            verified = get_verified_price(verify_time)
+            actual_price = verified.price
+        except Exception as exc:
             logger.error(
                 "Failed to fetch actual price for %s: %s", ts_str, exc
             )
@@ -110,7 +111,7 @@ def main() -> int:
         dir_correct = is_direction_correct(predicted_dir, actual_dir)
         in_range = is_within_range(actual_price, predicted_min, predicted_max)
 
-        # 5. Update CSV row
+        # 5. Update CSV row (with multi-source data)
         updated = update_verification(
             timestamp_utc=ts_str,
             actual_price=actual_price,
@@ -119,12 +120,15 @@ def main() -> int:
             actual_direction=actual_dir,
             direction_correct=dir_correct,
             within_range=in_range,
+            source_coingecko=verified.source_coingecko,
+            source_binance=verified.source_binance,
+            price_confidence=verified.confidence,
         )
         if updated:
             verified_count += 1
             logger.info(
                 "  Actual: $%,.2f | Error: $%,.2f (%.2f%%) | "
-                "Dir: %s→%s (%s) | Range: %s",
+                "Dir: %s→%s (%s) | Range: %s | Confidence: %s",
                 actual_price,
                 abs_error,
                 pct_error,
@@ -132,6 +136,7 @@ def main() -> int:
                 actual_dir,
                 "✓" if dir_correct else "✗",
                 "✓" if in_range else "✗",
+                verified.confidence,
             )
 
     # 6. Regenerate report with updated data

@@ -2,7 +2,8 @@
 Markdown report generator for the Bitcoin prediction experiment.
 
 Generates `reports/bitcoin_report.md` with summary statistics,
-a daily results table, and a cautious conclusion.
+a daily results table, per-method breakdowns, price verification
+details, and a cautious conclusion.
 """
 
 from __future__ import annotations
@@ -89,6 +90,14 @@ def generate_report(
     lines.append(f"- **Prediction method(s)**: {methods_str}")
     lines.append(f"- **Report generated**: {now}")
     lines.append(f"- **Timezone**: UTC")
+    lines.append(
+        "- **Price verification**: TWAP 24h "
+        "(CoinGecko + Binance cross-verified)"
+    )
+    lines.append(
+        "- **Actual price method**: TWAP — simple average of all hourly "
+        "prices in the 24h window following each prediction"
+    )
     lines.append("")
     lines.append("## Summary Statistics")
     lines.append("")
@@ -103,7 +112,43 @@ def generate_report(
     lines.append(f"| Within Range Accuracy | {range_pct:.1f}% |")
     lines.append("")
 
-    # Daily table
+    # --- Per-method breakdown ---
+    if num_verified > 0 and len(methods_used) > 1:
+        lines.append("## Performance by Method")
+        lines.append("")
+        lines.append(
+            "| Method | Predictions | MAE ($) | RMSE ($) | "
+            "Mean Error (%) | Direction Acc. | Range Acc. |"
+        )
+        lines.append(
+            "|--------|-------------|---------|----------|"
+            "----------------|---------------|------------|"
+        )
+        for method in sorted(methods_used):
+            method_df = verified[
+                verified["prediction_method"] == method
+            ]
+            n = len(method_df)
+            if n == 0:
+                continue
+            m_abs = method_df["absolute_error"].astype(float).tolist()
+            m_pct = method_df["percentage_error"].astype(float).tolist()
+            m_mae = compute_mae(m_abs)
+            m_rmse = compute_rmse(m_abs)
+            m_mean_pct = compute_mean_percentage_error(m_pct)
+            m_dir = (
+                (method_df["direction_correct"] == "true").sum() / n * 100
+            )
+            m_range = (
+                (method_df["within_range"] == "true").sum() / n * 100
+            )
+            lines.append(
+                f"| {method} | {n} | ${m_mae:,.2f} | ${m_rmse:,.2f} | "
+                f"{m_mean_pct:.2f}% | {m_dir:.1f}% | {m_range:.1f}% |"
+            )
+        lines.append("")
+
+    # --- Daily table ---
     lines.append("## Daily Results")
     lines.append("")
     if total_predictions == 0:
@@ -116,8 +161,8 @@ def generate_report(
         )
         lines.append(
             "|------------|-------------|---------------|"
-            "---------|---------|------------|-----------|-----------|"
-            "------------|-----------|--------|----------|"
+            "---------|---------|------------|-----------|-----------"
+            "|------------|-----------|--------|----------|"
         )
         for _, row in df.iterrows():
             ts = str(row.get("timestamp_utc", ""))[:10]
@@ -141,7 +186,50 @@ def generate_report(
             )
     lines.append("")
 
-    # Conclusion
+    # --- Price Verification Details ---
+    has_sources = (
+        "source_coingecko" in df.columns
+        and "source_binance" in df.columns
+    )
+    if has_sources and num_verified > 0:
+        source_rows = verified[
+            verified.get("source_coingecko", pd.Series(dtype=str)).notna()
+            & (verified.get("source_coingecko", pd.Series(dtype=str)) != "")
+        ]
+        if len(source_rows) > 0:
+            lines.append("## Price Source Verification (TWAP)")
+            lines.append("")
+            lines.append(
+                "> Each \"Actual\" price is a **TWAP** (Time-Weighted Average "
+                "Price): the simple average of all hourly BTC/USD prices "
+                "in the 24h window after each prediction. Both CoinGecko "
+                "and Binance TWAPs are computed independently; when they "
+                "agree (≤1% discrepancy), the average of the two TWAPs "
+                "is used."
+            )
+            lines.append("")
+            lines.append(
+                "| Date (UTC) | CoinGecko ($) | Binance ($) | "
+                "Used ($) | Confidence |"
+            )
+            lines.append(
+                "|------------|---------------|-------------|"
+                "---------|------------|"
+            )
+            for _, row in source_rows.iterrows():
+                ts = str(row.get("timestamp_utc", ""))[:10]
+                cg = _fmt_price(row.get("source_coingecko", ""))
+                bn = _fmt_price(row.get("source_binance", ""))
+                used = _fmt_price(row.get("actual_price_24h", ""))
+                conf = _fmt_confidence(
+                    row.get("price_confidence", "")
+                )
+                lines.append(
+                    f"| {ts} | {cg} | {bn} | {used} | {conf} |"
+                )
+            lines.append("")
+
+    # --- Conclusion ---
     lines.append("## Conclusion")
     lines.append("")
     if num_verified == 0:
@@ -229,3 +317,15 @@ def _fmt_bool(val: str) -> str:
     if not val or val == "nan":
         return "—"
     return "✅" if val == "true" else "❌"
+
+
+def _fmt_confidence(val: str) -> str:
+    """Format a confidence level with emoji."""
+    if not val or val == "nan":
+        return "—"
+    mapping = {
+        "high": "🟢 high",
+        "medium": "🟡 medium",
+        "low": "🔴 low",
+    }
+    return mapping.get(val, val)

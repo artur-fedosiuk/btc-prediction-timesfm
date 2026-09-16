@@ -12,8 +12,8 @@ on:
 env:
   # Configure the experiment start date (ISO format, UTC)
   # Change this to postpone or restart the experiment
-  EXPERIMENT_START_DATE: '2026-09-03'
-  EXPERIMENT_DURATION_DAYS: '14'
+  EXPERIMENT_START_DATE: '2026-09-16'
+  EXPERIMENT_DURATION_DAYS: '30'
 
 permissions:
   contents: write

@@ -20,10 +20,10 @@ REPORT_PATH = REPO_ROOT / "reports" / "bitcoin_report.md"
 # Experiment window
 # ---------------------------------------------------------------------------
 EXPERIMENT_START_DATE: str = os.environ.get(
-    "EXPERIMENT_START_DATE", "2026-09-03"
+    "EXPERIMENT_START_DATE", "2026-09-16"
 )
 EXPERIMENT_DURATION_DAYS: int = int(
-    os.environ.get("EXPERIMENT_DURATION_DAYS", "14")
+    os.environ.get("EXPERIMENT_DURATION_DAYS", "30")
 )
 
 # ---------------------------------------------------------------------------
@@ -55,6 +55,9 @@ CSV_COLUMNS: list[str] = [
     "direction_correct",
     "within_range",
     "prediction_method",
+    "source_coingecko",
+    "source_binance",
+    "price_confidence",
 ]
 
 

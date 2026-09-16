@@ -191,3 +191,55 @@ def get_btc_price_at(target: datetime) -> float:
         raise CoinGeckoError(
             f"Unexpected range response format: {data}"
         ) from exc
+
+
+def get_btc_hourly_prices(
+    start: datetime, hours: int = 24
+) -> list[tuple[datetime, float]]:
+    """Fetch BTC/USD hourly prices for a time window.
+
+    Uses the CoinGecko market_chart/range endpoint to retrieve
+    all hourly data points in the specified window.
+
+    Args:
+        start: Start of the window (UTC).
+        hours: Number of hours to fetch (default 24).
+
+    Returns:
+        List of (datetime_utc, price_usd) tuples sorted chronologically.
+
+    Raises:
+        CoinGeckoError: If the API call fails or no data is available.
+    """
+    from_ts = int(start.timestamp())
+    to_ts = from_ts + hours * 3600
+
+    url = f"{COINGECKO_BASE_URL}/coins/bitcoin/market_chart/range"
+    data = _request_with_retry(
+        url,
+        params={
+            "vs_currency": "usd",
+            "from": str(from_ts),
+            "to": str(to_ts),
+        },
+    )
+    try:
+        prices = data["prices"]
+        if not prices:
+            raise CoinGeckoError(
+                f"No hourly price data from {start.isoformat()} "
+                f"for {hours}h"
+            )
+
+        result = []
+        for timestamp_ms, price in prices:
+            dt = datetime.fromtimestamp(
+                timestamp_ms / 1000.0, tz=timezone.utc
+            )
+            result.append((dt, float(price)))
+        return sorted(result, key=lambda x: x[0])
+    except (KeyError, TypeError, ValueError) as exc:
+        raise CoinGeckoError(
+            f"Unexpected range response format: {data}"
+        ) from exc
+

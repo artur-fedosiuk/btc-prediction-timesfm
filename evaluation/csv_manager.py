@@ -78,6 +78,9 @@ def update_verification(
     actual_direction: str,
     direction_correct: bool,
     within_range: bool,
+    source_coingecko: float | None = None,
+    source_binance: float | None = None,
+    price_confidence: str = "",
     path: Path | None = None,
 ) -> bool:
     """Update a prediction row with verification data.
@@ -93,6 +96,9 @@ def update_verification(
         actual_direction: 'up', 'down', or 'flat'.
         direction_correct: Whether predicted direction matched.
         within_range: Whether actual price was in [min, max].
+        source_coingecko: CoinGecko price (for cross-verification).
+        source_binance: Binance price (for cross-verification).
+        price_confidence: 'high', 'medium', or 'low'.
         path: Optional override for the CSV path.
 
     Returns:
@@ -116,12 +122,23 @@ def update_verification(
     df.at[idx, "direction_correct"] = str(direction_correct).lower()
     df.at[idx, "within_range"] = str(within_range).lower()
 
+    # Multi-source verification fields
+    if source_coingecko is not None:
+        df.at[idx, "source_coingecko"] = str(round(source_coingecko, 2))
+    if source_binance is not None:
+        df.at[idx, "source_binance"] = str(round(source_binance, 2))
+    if price_confidence:
+        df.at[idx, "price_confidence"] = price_confidence
+
     # Write back — preserve all existing data
     df.to_csv(path, index=False)
     logger.info(
-        "Updated verification for %s: actual=$%.2f, error=%.2f%%",
+        "Updated verification for %s: actual=$%.2f, error=%.2f%%, "
+        "confidence=%s",
         timestamp_utc,
         actual_price,
         percentage_error,
+        price_confidence or "n/a",
     )
     return True
+
