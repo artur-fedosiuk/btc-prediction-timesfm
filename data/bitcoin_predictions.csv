@@ -1,3 +1,4 @@
 timestamp_utc,initial_price,predicted_price_24h,predicted_min,predicted_max,actual_price_24h,absolute_error,percentage_error,predicted_direction,actual_direction,direction_correct,within_range,prediction_method,source_coingecko,source_binance,price_confidence
-2026-09-16T15:31:57Z,75635.00,75663.41,75429.05,75930.81,,,,up,,,,timesfm,,,
-2026-09-16T16:33:17Z,75768.00,75775.91,75548.17,76018.97,,,,up,,,,timesfm,,,
+2026-09-16T15:31:57Z,75635.00,75663.41,75429.05,75930.81,76207.3635099679,543.95,0.7138,up,up,true,false,timesfm,76207.36,,medium
+2026-09-16T16:33:17Z,75768.00,75775.91,75548.17,76018.97,76247.31973887679,471.41,0.6183,up,up,true,false,timesfm,76247.32,,medium
+2026-09-17T16:38:46Z,76572.00,76597.41,76354.02,76847.76,,,,up,,,,timesfm,,,
