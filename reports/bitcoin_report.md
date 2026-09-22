@@ -7,7 +7,7 @@
 - **Start date**: 2026-09-16
 - **Duration**: 30 days
 - **Prediction method(s)**: timesfm
-- **Report generated**: 2026-09-21 18:07 UTC
+- **Report generated**: 2026-09-22 16:41 UTC
 - **Timezone**: UTC
 - **Price verification**: TWAP 24h (CoinGecko + Binance cross-verified)
 - **Actual price method**: TWAP — simple average of all hourly prices in the 24h window following each prediction
@@ -16,7 +16,7 @@
 
 | Metric | Value |
 |--------|-------|
-| Total predictions | 7 |
+| Total predictions | 8 |
 | Verified predictions | 6 |
 | MAE (Mean Absolute Error) | $793.94 |
 | RMSE (Root Mean Square Error) | $877.36 |
@@ -35,6 +35,7 @@
 | 2026-09-19 | 81,654.00 | 81,623.90 | 81,369.55 | 81,812.25 | 80,824.83 | 799.07 | 0.99% | 📉 down | 📉 down | ✅ | ❌ |
 | 2026-09-20 | 80,807.00 | 80,795.17 | 80,551.83 | 81,023.90 | 82,313.81 | 1,518.64 | 1.84% | 📉 down | 📈 up | ❌ | ❌ |
 | 2026-09-21 | 85,865.00 | 85,893.63 | 85,564.50 | 86,143.84 | — | — | — | 📈 up | — | — | — |
+| 2026-09-22 | 86,189.00 | 86,206.48 | 85,933.06 | 86,493.86 | — | — | — | 📈 up | — | — | — |
 
 ## Price Source Verification (TWAP)
 
