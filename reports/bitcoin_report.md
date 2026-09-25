@@ -7,7 +7,7 @@
 - **Start date**: 2026-09-16
 - **Duration**: 30 days
 - **Prediction method(s)**: timesfm
-- **Report generated**: 2026-09-25 09:45 UTC
+- **Report generated**: 2026-09-25 16:58 UTC
 - **Timezone**: UTC
 - **Price verification**: TWAP 24h (CoinGecko + Binance cross-verified)
 - **Actual price method**: TWAP — simple average of all hourly prices in the 24h window following each prediction
@@ -16,13 +16,13 @@
 
 | Metric | Value |
 |--------|-------|
-| Total predictions | 11 |
-| Verified predictions | 9 |
-| MAE (Mean Absolute Error) | $587.53 |
-| RMSE (Root Mean Square Error) | $723.55 |
-| Mean Percentage Error | 0.73% |
-| Direction Accuracy | 66.7% |
-| Within Range Accuracy | 33.3% |
+| Total predictions | 12 |
+| Verified predictions | 10 |
+| MAE (Mean Absolute Error) | $551.11 |
+| RMSE (Root Mean Square Error) | $690.04 |
+| Mean Percentage Error | 0.69% |
+| Direction Accuracy | 70.0% |
+| Within Range Accuracy | 40.0% |
 
 ## Daily Results
 
@@ -37,8 +37,9 @@
 | 2026-09-21 | 85,865.00 | 85,893.63 | 85,564.50 | 86,143.84 | 86,070.67 | 177.04 | 0.21% | 📈 up | 📈 up | ✅ | ✅ |
 | 2026-09-22 | 86,189.00 | 86,206.48 | 85,933.06 | 86,493.86 | 86,061.21 | 145.27 | 0.17% | 📈 up | 📉 down | ❌ | ✅ |
 | 2026-09-23 | 84,279.00 | 84,267.24 | 83,887.73 | 84,704.88 | 84,065.44 | 201.80 | 0.24% | 📉 down | 📉 down | ✅ | ✅ |
-| 2026-09-24 | 84,593.00 | 84,510.38 | 84,019.73 | 85,015.66 | — | — | — | 📉 down | — | — | — |
+| 2026-09-24 | 84,593.00 | 84,510.38 | 84,019.73 | 85,015.66 | 84,287.04 | 223.34 | 0.27% | 📉 down | 📉 down | ✅ | ✅ |
 | 2026-09-25 | 84,610.00 | 84,510.85 | 84,147.50 | 84,893.52 | — | — | — | 📉 down | — | — | — |
+| 2026-09-25 | 83,826.00 | 83,819.64 | 83,531.88 | 84,158.09 | — | — | — | 📉 down | — | — | — |
 
 ## Price Source Verification (TWAP)
 
@@ -55,9 +56,10 @@
 | 2026-09-21 | 86,070.67 | — | 86,070.67 | 🟡 medium |
 | 2026-09-22 | 86,061.21 | — | 86,061.21 | 🟡 medium |
 | 2026-09-23 | 84,065.44 | — | 84,065.44 | 🟡 medium |
+| 2026-09-24 | 84,287.04 | — | 84,287.04 | 🟡 medium |
 
 ## Conclusion
 
-After 9 verified predictions, the model achieved a Mean Absolute Error of $587.53 (0.73% average percentage error). Direction was predicted correctly 66.7% of the time, and 33.3% of actual prices fell within the predicted range.
+After 10 verified predictions, the model achieved a Mean Absolute Error of $551.11 (0.69% average percentage error). Direction was predicted correctly 70.0% of the time, and 40.0% of actual prices fell within the predicted range.
 
 **Note**: These results are from a limited 30-day experiment. Cryptocurrency markets are highly volatile and unpredictable. This evaluation is for research purposes only and should not be used for trading decisions.
