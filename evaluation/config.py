@@ -43,6 +43,8 @@ API_RETRY_DELAYS: list[int] = [10, 30, 60]  # seconds between retries
 # ---------------------------------------------------------------------------
 CSV_COLUMNS: list[str] = [
     "timestamp_utc",
+    "experiment_version",  # new in 1.5
+    "forecast_horizon",    # new in 1.5
     "initial_price",
     "predicted_price_24h",
     "predicted_min",
@@ -58,6 +60,14 @@ CSV_COLUMNS: list[str] = [
     "source_coingecko",
     "source_binance",
     "price_confidence",
+    
+    # Path metrics (added in 1.5)
+    "pred_t1", "pred_t4", "pred_t8", "pred_t12", "pred_t24",
+    "pred_return_t1_pct", "pred_return_t4_pct", "pred_return_t8_pct", "pred_return_t12_pct", "pred_return_t24_pct",
+    "pred_path_min", "pred_path_max",
+    "pred_min_return_pct", "pred_max_return_pct",
+    "pred_path_range_pct", "pred_path_slope", "pred_path_volatility",
+    "forecast_path", "forecast_lower", "forecast_upper",
 ]
 
 

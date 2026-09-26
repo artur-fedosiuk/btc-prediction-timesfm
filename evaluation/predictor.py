@@ -25,16 +25,23 @@ class PredictionResult:
     min_price: float  # Lower bound (q10 or confidence interval)
     max_price: float  # Upper bound (q90 or confidence interval)
     method: str  # "timesfm" or "arima_fallback"
+    
+    experiment_version: str = "timesfm_h24_v1"
+    forecast_horizon: int = 24
+    
+    # Path metrics (24h)
+    forecast_path: list[float] | None = None
+    min_path: list[float] | None = None
+    max_path: list[float] | None = None
 
 
 def predict_with_timesfm(history: np.ndarray) -> PredictionResult:
-    """Run TimesFM 3.0 for a 1-step-ahead forecast with quantiles.
+    """Run TimesFM 3.0 for a 24-step-ahead forecast with quantiles.
 
-    Requires torch and timesfm3 to be installed. Reuses the same pattern
-    as the chat_app/app.py Flask backend.
+    Requires torch and timesfm3 to be installed.
 
     Args:
-        history: 1-D array of recent BTC/USD prices (hourly, ≥30 points).
+        history: 1-D array of recent BTC/USD prices (hourly).
 
     Returns:
         PredictionResult with the median forecast and q10/q90 bounds.
@@ -71,18 +78,22 @@ def predict_with_timesfm(history: np.ndarray) -> PredictionResult:
     outputs = list(
         forecaster.predict_batch(
             [context],
-            horizon=1,  # 1 step = 24h if hourly data aggregated to daily
+            horizon=24,  # Predict 24 hours ahead
             return_quantiles=True,
             use_symmetric_averaging=True,
         )
     )
     result = outputs[0]
 
-    # result.forecast shape: (1,)  — median
-    # result.quantiles shape: (1, 9)  — q10 to q90
-    forecast_val = float(result.forecast[0])
-    q10_val = float(result.quantiles[0, 0])  # 0.1 quantile
-    q90_val = float(result.quantiles[0, 8])  # 0.9 quantile
+    # result.forecast shape: (24,)  — median
+    # result.quantiles shape: (24, 9)  — q10 to q90
+    forecast_path = result.forecast.tolist()
+    q10_path = result.quantiles[:, 0].tolist()  # 0.1 quantile
+    q90_path = result.quantiles[:, 8].tolist()  # 0.9 quantile
+
+    forecast_val = forecast_path[-1] # T+24
+    q10_val = q10_path[-1]
+    q90_val = q90_path[-1]
 
     logger.info(
         "TimesFM prediction: $%.2f [min=$%.2f, max=$%.2f]",
@@ -95,6 +106,11 @@ def predict_with_timesfm(history: np.ndarray) -> PredictionResult:
         min_price=q10_val,
         max_price=q90_val,
         method="timesfm",
+        experiment_version="timesfm_h24_v1",
+        forecast_horizon=24,
+        forecast_path=forecast_path,
+        min_path=q10_path,
+        max_path=q90_path,
     )
 
 
@@ -102,7 +118,7 @@ def predict_with_fallback(history: np.ndarray) -> PredictionResult:
     """Lightweight ARIMA fallback for GitHub Actions CI.
 
     Uses statsmodels ARIMA(5,1,0) on recent price data to produce
-    a 1-step-ahead forecast with 80% confidence interval.
+    a 24-step-ahead forecast with 80% confidence interval.
 
     Args:
         history: 1-D array of recent BTC/USD prices (≥30 points).
@@ -127,12 +143,16 @@ def predict_with_fallback(history: np.ndarray) -> PredictionResult:
     model = ARIMA(data, order=(5, 1, 0))
     fitted = model.fit()
 
-    # Forecast 1 step ahead with 80% confidence interval (q10–q90 equivalent)
-    forecast_result = fitted.get_forecast(steps=1)
-    forecast_val = float(forecast_result.predicted_mean[0])
+    # Forecast 24 steps ahead with 80% confidence interval (q10–q90 equivalent)
+    forecast_result = fitted.get_forecast(steps=24)
+    forecast_path = forecast_result.predicted_mean.tolist()
     conf_int = forecast_result.conf_int(alpha=0.20)  # 80% CI
-    min_val = float(conf_int[0, 0])
-    max_val = float(conf_int[0, 1])
+    min_path = conf_int[:, 0].tolist()
+    max_path = conf_int[:, 1].tolist()
+
+    forecast_val = forecast_path[-1]
+    min_val = min_path[-1]
+    max_val = max_path[-1]
 
     logger.info(
         "ARIMA fallback prediction: $%.2f [min=$%.2f, max=$%.2f]",
@@ -145,4 +165,9 @@ def predict_with_fallback(history: np.ndarray) -> PredictionResult:
         min_price=min_val,
         max_price=max_val,
         method="arima_fallback",
+        experiment_version="arima_h24_v1",
+        forecast_horizon=24,
+        forecast_path=forecast_path,
+        min_path=min_path,
+        max_path=max_path,
     )

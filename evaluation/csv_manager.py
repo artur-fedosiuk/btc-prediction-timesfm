@@ -47,6 +47,13 @@ def load_predictions(path: Path | None = None) -> pd.DataFrame:
     for col in CSV_COLUMNS:
         if col not in df.columns:
             df[col] = ""
+            
+    # Apply defaults for legacy rows (before 1.5)
+    if "experiment_version" in df.columns:
+        df.loc[df["experiment_version"] == "", "experiment_version"] = "legacy_h1"
+    if "forecast_horizon" in df.columns:
+        df.loc[df["forecast_horizon"] == "", "forecast_horizon"] = "1"
+        
     return df
 
 

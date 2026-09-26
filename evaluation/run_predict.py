@@ -91,13 +91,22 @@ def main() -> int:
         logger.info("Running ARIMA fallback prediction...")
         result = predict_with_fallback(history_prices)
 
-    # 5. Compute predicted direction
+    # 5. Compute path metrics
+    import json
+    from .path_metrics import ForecastPathMetrics
+    
+    path_metrics = None
+    if result.forecast_path is not None:
+        path_metrics = ForecastPathMetrics.calculate(current_price, result.forecast_path)
+
     predicted_direction = compute_direction(current_price, result.forecast)
 
     # 6. Save to CSV
     now_utc = datetime.now(timezone.utc)
     row = {
         "timestamp_utc": now_utc.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "experiment_version": result.experiment_version,
+        "forecast_horizon": str(result.forecast_horizon),
         "initial_price": f"{current_price:.2f}",
         "predicted_price_24h": f"{result.forecast:.2f}",
         "predicted_min": f"{result.min_price:.2f}",
@@ -111,6 +120,31 @@ def main() -> int:
         "within_range": "",
         "prediction_method": result.method,
     }
+    
+    if path_metrics:
+        row.update({
+            "pred_t1": f"{path_metrics.t1:.2f}",
+            "pred_t4": f"{path_metrics.t4:.2f}",
+            "pred_t8": f"{path_metrics.t8:.2f}",
+            "pred_t12": f"{path_metrics.t12:.2f}",
+            "pred_t24": f"{path_metrics.t24:.2f}",
+            "pred_return_t1_pct": f"{path_metrics.return_t1_pct:.4f}",
+            "pred_return_t4_pct": f"{path_metrics.return_t4_pct:.4f}",
+            "pred_return_t8_pct": f"{path_metrics.return_t8_pct:.4f}",
+            "pred_return_t12_pct": f"{path_metrics.return_t12_pct:.4f}",
+            "pred_return_t24_pct": f"{path_metrics.return_t24_pct:.4f}",
+            "pred_path_min": f"{path_metrics.path_min:.2f}",
+            "pred_path_max": f"{path_metrics.path_max:.2f}",
+            "pred_min_return_pct": f"{path_metrics.min_return_pct:.4f}",
+            "pred_max_return_pct": f"{path_metrics.max_return_pct:.4f}",
+            "pred_path_range_pct": f"{path_metrics.range_pct:.4f}",
+            "pred_path_slope": f"{path_metrics.slope:.4f}",
+            "pred_path_volatility": f"{path_metrics.volatility:.4f}",
+            "forecast_path": json.dumps([round(x, 2) for x in result.forecast_path]),
+            "forecast_lower": json.dumps([round(x, 2) for x in result.min_path]) if result.min_path else "",
+            "forecast_upper": json.dumps([round(x, 2) for x in result.max_path]) if result.max_path else "",
+        })
+
     save_prediction(row)
 
     logger.info(
