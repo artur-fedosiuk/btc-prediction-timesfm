@@ -1,0 +1,56 @@
+{
+  "checked_at": "2026-09-27T17:15:37.143912+00:00",
+  "github_run_id": "36336192499",
+  "github_sha": "61861121e2418118a02aaab93bfb136f0cdb5161",
+  "environment": "CI",
+  "providers": [
+    {
+      "provider": "coinbase",
+      "status": "AVAILABLE",
+      "count": 4,
+      "http_status": 200,
+      "validation_status": "PASS",
+      "freshness_seconds": 937.252977,
+      "latest": {
+        "provider": "coinbase",
+        "venue": "coinbase",
+        "symbol": "BTC/USD",
+        "quote_currency": "USD",
+        "open_time": "2026-09-27T16:00:00+00:00",
+        "close_time": "2026-09-27T17:00:00+00:00",
+        "available_at": "2026-09-27T17:15:37.252856+00:00",
+        "retrieved_at": "2026-09-27T17:15:37.252856+00:00",
+        "open": "84449.48",
+        "high": "84673.22",
+        "low": "84350",
+        "close": "84410.44",
+        "volume": "143.2699969",
+        "status": "CLOSED"
+      }
+    },
+    {
+      "provider": "kraken",
+      "status": "AVAILABLE",
+      "count": 4,
+      "http_status": 200,
+      "validation_status": "PASS",
+      "freshness_seconds": 937.499767,
+      "latest": {
+        "provider": "kraken",
+        "venue": "kraken",
+        "symbol": "BTC/USD",
+        "quote_currency": "USD",
+        "open_time": "2026-09-27T16:00:00+00:00",
+        "close_time": "2026-09-27T17:00:00+00:00",
+        "available_at": "2026-09-27T17:15:37.499651+00:00",
+        "retrieved_at": "2026-09-27T17:15:37.499651+00:00",
+        "open": "84450.2",
+        "high": "84650.4",
+        "low": "84361.7",
+        "close": "84409.8",
+        "volume": "46.99577682",
+        "status": "CLOSED"
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "code_hash": "d5bd35488d6ad2b9a98116b60421bf878f70ceb35c7cdcafdf891915898f1875",
+  "github_run_id": "36336192499",
+  "github_sha": "61861121e2418118a02aaab93bfb136f0cdb5161",
+  "tests": [
+    {
+      "file": "btc-tests.xml",
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "180",
+      "time": "1.482",
+      "timestamp": "2026-09-27T17:15:32.930585+00:00",
+      "hostname": "runnervmtr4k5"
+    },
+    {
+      "file": "model-tests.xml",
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "42",
+      "time": "1.869",
+      "timestamp": "2026-09-27T17:15:34.757366+00:00",
+      "hostname": "runnervmtr4k5"
+    }
+  ],
+  "environment": {
+    "python_version": "3.11.14",
+    "os": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "architecture": "x86_64",
+    "github": {
+      "GITHUB_RUN_ID": "36336192499",
+      "GITHUB_RUN_ATTEMPT": "1",
+      "GITHUB_SHA": "61861121e2418118a02aaab93bfb136f0cdb5161",
+      "GITHUB_REF": "refs/heads/codex/p0-p4-forward-validation"
+    },
+    "timesfm_version": "3.0.1",
+    "torch_version": "2.14.0+cpu",
+    "numpy_version": "2.4.6",
+    "pandas_version": "3.0.5",
+    "statsmodels_version": "0.14.6",
+    "device": "cpu",
+    "git_sha": "61861121e2418118a02aaab93bfb136f0cdb5161",
+    "working_tree_dirty": true
+  }
+}
