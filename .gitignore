@@ -31,3 +31,8 @@ debug.log
 # Bitcoin evaluation — track experiment data
 !data/bitcoin_predictions.csv
 !reports/bitcoin_report.md
+
+!reports/index.html
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm

@@ -1,100 +1,102 @@
 name: Bitcoin Prediction Evaluation
-
 on:
-  push:
-    branches: [ "master" ]
-  schedule:
-    # Run daily at 12:00 UTC
-    - cron: '0 12 * * *'
   workflow_dispatch:
-    # Allow manual trigger from the Actions tab
-
-env:
-  # Configure the experiment start date (ISO format, UTC)
-  # Change this to postpone or restart the experiment
-  EXPERIMENT_START_DATE: '2026-09-16'
-  EXPERIMENT_DURATION_DAYS: '30'
-
+    inputs:
+      mode:
+        description: Explicit branch operation; validate before generate/verify/recover
+        type: choice
+        options: [validate, provider_probe, generate, verify, recover]
+        default: validate
+# No push trigger: publishing a branch must not start billable work implicitly.
+# A schedule requires a separately approved default-branch dispatcher.
 permissions:
   contents: write
-
+concurrency:
+  group: btc-forward-ledger-${{ github.ref }}
+  cancel-in-progress: false
 jobs:
-  predict-and-verify:
+  forward:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONPATH: src:.
+      HF_HUB_DISABLE_TELEMETRY: '1'
+      MODE: ${{ inputs.mode }}
     steps:
-      - name: Checkout repository
+      - name: Checkout latest serialized branch state
         uses: actions/checkout@v4
         with:
-          # Fetch full history so we can push commits
+          ref: ${{ github.ref_name }}
           fetch-depth: 0
-
-      - name: Set up Python 3.11
+      - name: Set up Python with pip cache
+        id: python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-
-      - name: Cache pip packages
+          python-version: '3.11.14'
+          cache: pip
+          cache-dependency-path: requirements/btc-*.txt
+      - name: Verify legacy checksum
+        run: echo '6871717a47f9e26c203f6b3ecb0c25f674de36eeb3db781f04cd032cdcda1e50  data/bitcoin_predictions.csv' | sha256sum --check
+      - name: Install lightweight operation dependencies
+        run: pip install -r requirements/btc-verify.txt
+      - name: Require current-code quality attestation
+        if: inputs.mode != 'validate' && inputs.mode != 'provider_probe'
+        run: python -m evaluation.forward.remote require-gate
+      - name: Install pinned CPU inference/test dependencies
+        if: inputs.mode == 'validate' || inputs.mode == 'generate'
+        run: |
+          pip install torch==2.14.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install . -r requirements/btc-ci.txt
+          pip check
+      - name: Cache pinned Hugging Face checkpoint
+        if: inputs.mode == 'validate' || inputs.mode == 'generate'
+        id: model-cache
         uses: actions/cache@v4
         with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-timesfm-${{ hashFiles('pyproject.toml') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-timesfm-
-
-      - name: Install dependencies
+          path: ~/.cache/huggingface/hub/models--google--timesfm-3.0-pytorch
+          key: btc-timesfm3-${{ runner.os }}-${{ runner.arch }}-43046b85ec22d584a13f8098c2ed39c889e129c2
+      - name: QUALITY GATE — BTC regressions and mocked E2E
+        if: inputs.mode == 'validate'
         run: |
-          python -m pip install --upgrade pip
-          # Install TimesFM with PyTorch backend (CPU) + evaluation deps
-          pip install ".[torch]" requests pandas statsmodels
-
-      - name: Check experiment window
-        id: check_window
-        run: |
-          python -c "
-          import os, sys
-          from datetime import datetime, timedelta, timezone
-
-          start = datetime.strptime(
-              os.environ['EXPERIMENT_START_DATE'], '%Y-%m-%d'
-          ).replace(tzinfo=timezone.utc)
-          duration = int(os.environ['EXPERIMENT_DURATION_DAYS'])
-          end = start + timedelta(days=duration)
-          now = datetime.now(timezone.utc)
-
-          if now > end:
-              print('Experiment window has ended. Skipping.')
-              print('active=false', file=open(os.environ['GITHUB_OUTPUT'], 'a'))
-              sys.exit(0)
-          else:
-              days_left = (end - now).days
-              print(f'Experiment active. {days_left} days remaining.')
-              print('active=true', file=open(os.environ['GITHUB_OUTPUT'], 'a'))
-          "
-
-      - name: Run prediction
-        if: steps.check_window.outputs.active == 'true'
+          mkdir -p reports/remote
+          python -m pytest tests/forward tests/test_btc_metrics.py tests/test_btc_csv_manager.py tests/test_btc_simulation.py tests/test_binance.py tests/test_price_verifier.py tests/test_forecast_path.py tests/test_trading_engine.py -q --junitxml=reports/remote/btc-tests.xml
+      - name: QUALITY GATE — TimesFM source units
+        if: inputs.mode == 'validate'
+        run: python -m pytest src/timesfm3 -q --junitxml=reports/remote/model-tests.xml
+      - name: PROVIDER PROBE — actual runner BTC/USD access
+        if: inputs.mode == 'validate' || inputs.mode == 'provider_probe' || inputs.mode == 'generate'
+        run: python -m evaluation.forward.provider_probe --output reports/provider-checks-ci.json
+      - name: TIMESFM SMOKE — real pinned checkpoint
+        if: inputs.mode == 'validate'
+        run: python -m evaluation.forward.remote smoke
+      - name: Record successful quality gate
+        if: inputs.mode == 'validate'
+        run: python -m evaluation.forward.remote attest
+      - name: PREDICTION / VERIFICATION / RECOVERY and REPORT
+        if: inputs.mode == 'generate' || inputs.mode == 'verify' || inputs.mode == 'recover'
         env:
-          PYTHONPATH: ${{ github.workspace }}
+          MODEL_CACHE_HIT: ${{ steps.model-cache.outputs.cache-hit }}
+          PIP_CACHE_HIT: ${{ steps.python.outputs.cache-hit }}
+        run: python -m evaluation.forward.remote "$MODE"
+      - name: Persist only fully successful validated state
         run: |
-          python -m evaluation.run_predict --use-timesfm
-
-      - name: Verify previous predictions
-        if: steps.check_window.outputs.active == 'true'
-        env:
-          PYTHONPATH: ${{ github.workspace }}
-        run: |
-          python -m evaluation.run_verify
-
-      - name: Commit and push results
-        if: steps.check_window.outputs.active == 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/bitcoin_predictions.csv reports/bitcoin_report.md
-          # Only commit if there are changes
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-          else
-            git commit -m "🤖 BTC prediction update $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-            git push
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add data/forward.sqlite data/forward-export.json reports/data.json
+          if [ -f reports/provider-checks-ci.json ]; then git add reports/provider-checks-ci.json; fi
+          if [ -d reports/remote ]; then git add reports/remote; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "Persist BTC $MODE evidence [skip ci]"
+            git push origin "HEAD:$GITHUB_REF_NAME" || { echo 'PERSISTENCE_CONFLICT: remote state was not published'; exit 1; }
           fi
+      - name: Retain small failure diagnostics temporarily
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: btc-failure-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            reports/remote/*.xml
+            reports/remote/model-smoke.json
+            reports/provider-checks-ci.json
+          if-no-files-found: ignore
+          retention-days: 1

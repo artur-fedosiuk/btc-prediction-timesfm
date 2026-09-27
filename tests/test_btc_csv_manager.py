@@ -39,12 +39,40 @@ class TestLoadPredictions:
         # Create a CSV with one row
         with open(tmp_csv, "w", newline="") as f:
             writer = csv.writer(f)
-            writer.writerow(CSV_COLUMNS)
-            writer.writerow([
-                "2026-09-03T12:00:00Z", "50000.00", "51000.00",
-                "49000.00", "52000.00", "", "", "", "up", "", "", "",
-                "arima_fallback",
-            ])
+            writer.writerow(
+                [
+                    "timestamp_utc",
+                    "initial_price",
+                    "predicted_price_24h",
+                    "predicted_min",
+                    "predicted_max",
+                    "actual_price_24h",
+                    "absolute_error",
+                    "percentage_error",
+                    "predicted_direction",
+                    "actual_direction",
+                    "direction_correct",
+                    "within_range",
+                    "prediction_method",
+                ]
+            )
+            writer.writerow(
+                [
+                    "2026-09-03T12:00:00Z",
+                    "50000.00",
+                    "51000.00",
+                    "49000.00",
+                    "52000.00",
+                    "",
+                    "",
+                    "",
+                    "up",
+                    "",
+                    "",
+                    "",
+                    "arima_fallback",
+                ]
+            )
         df = load_predictions(tmp_csv)
         assert len(df) == 1
         assert df.iloc[0]["initial_price"] == "50000.00"
@@ -187,3 +215,17 @@ class TestUpdateVerification:
         assert df.iloc[2]["actual_price_24h"] == ""
         # Day 4 should be verified
         assert df.iloc[1]["actual_price_24h"] == "50600.0"
+
+
+def test_refuse_legacy_append(tmp_path):
+    source = Path("data/bitcoin_predictions.csv").read_bytes()
+    path = tmp_path / "legacy.csv"
+    path.write_bytes(source)
+    with pytest.raises(ValueError, match="schema mismatch"):
+        save_prediction({"timestamp_utc": "2026-09-27T12:00:00Z"}, path)
+    assert path.read_bytes() == source
+
+
+def test_archive_read_only():
+    with pytest.raises(ValueError, match="read-only"):
+        save_prediction({"timestamp_utc": "2026-09-27T12:00:00Z"})

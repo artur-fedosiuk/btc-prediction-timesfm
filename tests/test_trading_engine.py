@@ -48,12 +48,16 @@ from evaluation.trading.metrics import (
     compute_win_rate,
 )
 from evaluation.trading.equity import build_equity_curve, compute_position_size
-from evaluation.trading.backtest_engine import run_backtest, run_multi_threshold_backtest
+from evaluation.trading.backtest_engine import (
+    run_backtest,
+    run_multi_threshold_backtest,
+)
 
 
 # ---------------------------------------------------------------------------
 # Fixtures
 # ---------------------------------------------------------------------------
+
 
 def _make_pred(
     pid: str = "p1",
@@ -80,16 +84,23 @@ def _make_pred(
 
 SAMPLE_PREDICTIONS = [
     _make_pred("p1", "2026-09-16T15:00:00Z", 80000, 80300, 80200),  # up 0.375% → LONG
-    _make_pred("p2", "2026-09-17T15:00:00Z", 80200, 79900, 79800),  # down -0.374% → SHORT
-    _make_pred("p3", "2026-09-18T15:00:00Z", 79800, 79850, 80500),  # up 0.063% → NO_TRADE
+    _make_pred(
+        "p2", "2026-09-17T15:00:00Z", 80200, 79900, 79800
+    ),  # down -0.374% → SHORT
+    _make_pred(
+        "p3", "2026-09-18T15:00:00Z", 79800, 79850, 80500
+    ),  # up 0.063% → NO_TRADE
     _make_pred("p4", "2026-09-19T15:00:00Z", 80500, 81000, 81200),  # up 0.621% → LONG
-    _make_pred("p5", "2026-09-20T15:00:00Z", 81200, 80500, 80000),  # down -0.862% → SHORT
+    _make_pred(
+        "p5", "2026-09-20T15:00:00Z", 81200, 80500, 80000
+    ),  # down -0.862% → SHORT
 ]
 
 
 # ===========================================================================
 # PnL Calculations
 # ===========================================================================
+
 
 class TestGrossPnL:
     """Test gross PnL calculations for LONG and SHORT trades."""
@@ -149,6 +160,7 @@ class TestGrossReturnPct:
 # Fee Calculations
 # ===========================================================================
 
+
 class TestTradeCosts:
     def test_default_costs(self):
         """Test cost calculation with default TradingCosts."""
@@ -167,9 +179,7 @@ class TestTradeCosts:
         assert abs(slippage - 1.0) < 0.01
 
     def test_zero_costs(self):
-        fees, spread, slippage = compute_trade_costs(
-            1000, 0.0, 0.0, 0.0, 0.0
-        )
+        fees, spread, slippage = compute_trade_costs(1000, 0.0, 0.0, 0.0, 0.0)
         assert fees == 0.0
         assert spread == 0.0
         assert slippage == 0.0
@@ -190,6 +200,7 @@ class TestTradeCosts:
 # ===========================================================================
 # Signal Generation
 # ===========================================================================
+
 
 class TestSignalGeneration:
     def test_long_signal(self):
@@ -251,6 +262,7 @@ class TestSignalGeneration:
 # Position Sizing
 # ===========================================================================
 
+
 class TestPositionSizing:
     def test_default_10pct(self):
         config = RiskConfig(starting_capital=10000, max_position_pct=10.0)
@@ -272,6 +284,7 @@ class TestPositionSizing:
 # Equity Curve
 # ===========================================================================
 
+
 class TestEquityCurve:
     def test_empty_trades(self):
         equity, ts = build_equity_curve([], 10000)
@@ -283,25 +296,39 @@ class TestEquityCurve:
 
         trades = [
             Trade(
-                prediction_id="p1", direction="LONG",
+                prediction_id="p1",
+                direction="LONG",
                 entry_timestamp="2026-09-16T15:00:00Z",
                 exit_timestamp="2026-09-17T15:00:00Z",
-                entry_price=80000, exit_price=80800,
-                gross_return_pct=1.0, gross_pnl=10.0,
-                fees=2.0, spread_cost=0.5, slippage_cost=1.0,
-                net_pnl=6.5, net_return_pct=0.65,
-                holding_period_hours=24, signal_strength=0.5,
+                entry_price=80000,
+                exit_price=80800,
+                gross_return_pct=1.0,
+                gross_pnl=10.0,
+                fees=2.0,
+                spread_cost=0.5,
+                slippage_cost=1.0,
+                net_pnl=6.5,
+                net_return_pct=0.65,
+                holding_period_hours=24,
+                signal_strength=0.5,
                 position_size=1000,
             ),
             Trade(
-                prediction_id="p2", direction="SHORT",
+                prediction_id="p2",
+                direction="SHORT",
                 entry_timestamp="2026-09-17T15:00:00Z",
                 exit_timestamp="2026-09-18T15:00:00Z",
-                entry_price=80800, exit_price=80000,
-                gross_return_pct=0.99, gross_pnl=9.9,
-                fees=2.0, spread_cost=0.5, slippage_cost=1.0,
-                net_pnl=6.4, net_return_pct=0.64,
-                holding_period_hours=24, signal_strength=0.5,
+                entry_price=80800,
+                exit_price=80000,
+                gross_return_pct=0.99,
+                gross_pnl=9.9,
+                fees=2.0,
+                spread_cost=0.5,
+                slippage_cost=1.0,
+                net_pnl=6.4,
+                net_return_pct=0.64,
+                holding_period_hours=24,
+                signal_strength=0.5,
                 position_size=1000,
             ),
         ]
@@ -315,6 +342,7 @@ class TestEquityCurve:
 # ===========================================================================
 # Aggregate Metrics
 # ===========================================================================
+
 
 class TestAggregateMetrics:
     def test_net_pnl(self):
@@ -410,6 +438,7 @@ class TestAggregateMetrics:
 # Backtest Engine
 # ===========================================================================
 
+
 class TestBacktestEngine:
     def test_basic_backtest(self):
         """Full backtest with 5 predictions, threshold 0.30%."""
@@ -444,8 +473,7 @@ class TestBacktestEngine:
         """With zero costs, net = gross."""
         config = StrategyConfig(threshold_pct=0.0)
         costs = TradingCosts(
-            maker_fee_pct=0, taker_fee_pct=0,
-            spread_pct=0, slippage_pct=0
+            maker_fee_pct=0, taker_fee_pct=0, spread_pct=0, slippage_pct=0
         )
         result = run_backtest(SAMPLE_PREDICTIONS, config, costs)
         assert result.total_fees == 0.0
@@ -460,7 +488,11 @@ class TestBacktestEngine:
         )
         assert len(results) == 3
         # Higher threshold → fewer trades
-        assert results[0].total_trades >= results[1].total_trades >= results[2].total_trades
+        assert (
+            results[0].total_trades
+            >= results[1].total_trades
+            >= results[2].total_trades
+        )
 
     def test_empty_predictions(self):
         result = run_backtest([])
@@ -471,6 +503,7 @@ class TestBacktestEngine:
 # ===========================================================================
 # Look-Ahead Protection
 # ===========================================================================
+
 
 class TestLookAheadProtection:
     """Verify that no future data enters the signal generation."""
@@ -497,11 +530,10 @@ class TestLookAheadProtection:
         from datetime import datetime
 
         for pred in SAMPLE_PREDICTIONS:
-            pred_ts = datetime.fromisoformat(
-                pred.timestamp.replace("Z", "+00:00")
-            )
+            pred_ts = datetime.fromisoformat(pred.timestamp.replace("Z", "+00:00"))
             # Exit is 24h after prediction
             from datetime import timedelta
+
             exit_ts = pred_ts + timedelta(hours=24)
             assert exit_ts > pred_ts
 
@@ -523,6 +555,7 @@ class TestLookAheadProtection:
 # ===========================================================================
 # Timestamp Correctness
 # ===========================================================================
+
 
 class TestTimestampCorrectness:
     def test_no_future_data_in_features(self):
@@ -554,16 +587,19 @@ class TestTimestampCorrectness:
 # Stop Loss and Take Profit
 # ===========================================================================
 
+
 class TestStopLossTakeProfit:
     def test_tp_sl_exit_mode(self):
         """Test that TP/SL are applied when configured."""
         preds = [
             _make_pred(
-                "p1", "2026-09-16T15:00:00Z",
-                entry=80000, predicted=81000,  # LONG signal
+                "p1",
+                "2026-09-16T15:00:00Z",
+                entry=80000,
+                predicted=81000,  # LONG signal
                 exit_price=80500,
                 high=81200,  # TP would be hit
-                low=79500,   # SL would also be hit
+                low=79500,  # SL would also be hit
             ),
         ]
         # SL checked before TP → conservative
@@ -583,6 +619,7 @@ class TestStopLossTakeProfit:
 # ===========================================================================
 # Baseline Strategies
 # ===========================================================================
+
 
 class TestBaselines:
     def test_buy_and_hold(self):
@@ -631,16 +668,16 @@ class TestBaselines:
 # Missing / Duplicate Data
 # ===========================================================================
 
+
 class TestEdgeCases:
     def test_duplicate_prediction_ids(self):
-        """Duplicate IDs should still produce valid results."""
+        """Duplicate IDs must be rejected before lookup or simulation."""
         preds = [
             _make_pred("dup", "2026-09-16T15:00:00Z", 80000, 80300, 80200),
             _make_pred("dup", "2026-09-17T15:00:00Z", 80200, 80500, 80400),
         ]
-        result = run_backtest(preds, StrategyConfig(threshold_pct=0.0))
-        # Both should trade (same ID doesn't block execution)
-        assert result.total_trades == 2
+        with pytest.raises(ValueError, match="Duplicate"):
+            run_backtest(preds, StrategyConfig(threshold_pct=0.0))
 
     def test_single_prediction(self):
         preds = [_make_pred("solo", "2026-09-16T15:00:00Z", 80000, 80300, 80200)]

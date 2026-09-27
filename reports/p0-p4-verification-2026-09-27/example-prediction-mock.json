@@ -1,0 +1,297 @@
+{
+  "schema_version": 1,
+  "prediction_id": "b57dfe7aceb8a4e0bcd86c92017a15666bc654502c37f179d4d0ace43139693b",
+  "experiment_id": "timesfm_h24_v2",
+  "experiment_version": "timesfm_h24_v2",
+  "generated_at": "2026-09-27T12:01:00+00:00",
+  "data_cutoff": "2026-09-27T12:00:00+00:00",
+  "forecast_origin": "2026-09-27T12:00:00+00:00",
+  "provider": "coinbase",
+  "venue": "coinbase",
+  "symbol": "BTC/USD",
+  "quote_currency": "USD",
+  "requested_model": "TimesFM",
+  "actual_model_used": "TimesFM",
+  "fallback_used": false,
+  "fallback_reason": null,
+  "model_version": "MOCK",
+  "checkpoint": "google/timesfm-3.0-pytorch",
+  "checkpoint_revision": "43046b85ec22d584a13f8098c2ed39c889e129c2",
+  "input_snapshot_ref": "b6a084bb8fefe0bc34b94a31fd78ebe17570b579d585b30ad45ec533e8a249f8",
+  "input_hash": "b6a084bb8fefe0bc34b94a31fd78ebe17570b579d585b30ad45ec533e8a249f8",
+  "forecast_hash": "2bf4d85b445ed389b92cc19db5e658427d6b853ae69762e009251b49c5546d08",
+  "forecast_horizon": 24,
+  "forecast_frequency": "1h",
+  "forecast_points": [
+    {
+      "step": 1,
+      "target_timestamp": "2026-09-27T13:00:00+00:00",
+      "point_forecast": 110.0,
+      "q10": 90.0,
+      "q90": 120.0
+    },
+    {
+      "step": 2,
+      "target_timestamp": "2026-09-27T14:00:00+00:00",
+      "point_forecast": 110.0,
+      "q10": 90.0,
+      "q90": 120.0
+    },
+    {
+      "step": 3,
+      "target_timestamp": "2026-09-27T15:00:00+00:00",
+      "point_forecast": 110.0,
+      "q10": 90.0,
+      "q90": 120.0
+    },
+    {
+      "step": 4,
+      "target_timestamp": "2026-09-27T16:00:00+00:00",
+      "point_forecast": 110.0,
+      "q10": 90.0,
+      "q90": 120.0
+    },
+    {
+      "step": 5,
+      "target_timestamp": "2026-09-27T17:00:00+00:00",
+      "point_forecast": 110.0,
+      "q10": 90.0,
+      "q90": 120.0
+    },
+    {
+      "step": 6,
+      "target_timestamp": "2026-09-27T18:00:00+00:00",
+      "point_forecast": 110.0,
+      "q10": 90.0,
+      "q90": 120.0
+    },
+    {
+      "step": 7,
+      "target_timestamp": "2026-09-27T19:00:00+00:00",
+      "point_forecast": 110.0,
+      "q10": 90.0,
+      "q90": 120.0
+    },
+    {
+      "step": 8,
+      "target_timestamp": "2026-09-27T20:00:00+00:00",
+      "point_forecast": 110.0,
+      "q10": 90.0,
+      "q90": 120.0
+    },
+    {
+      "step": 9,
+      "target_timestamp": "2026-09-27T21:00:00+00:00",
+      "point_forecast": 110.0,
+      "q10": 90.0,
+      "q90": 120.0
+    },
+    {
+      "step": 10,
+      "target_timestamp": "2026-09-27T22:00:00+00:00",
+      "point_forecast": 110.0,
+      "q10": 90.0,
+      "q90": 120.0
+    },
+    {
+      "step": 11,
+      "target_timestamp": "2026-09-27T23:00:00+00:00",
+      "point_forecast": 110.0,
+      "q10": 90.0,
+      "q90": 120.0
+    },
+    {
+      "step": 12,
+      "target_timestamp": "2026-09-28T00:00:00+00:00",
+      "point_forecast": 110.0,
+      "q10": 90.0,
+      "q90": 120.0
+    },
+    {
+      "step": 13,
+      "target_timestamp": "2026-09-28T01:00:00+00:00",
+      "point_forecast": 110.0,
+      "q10": 90.0,
+      "q90": 120.0
+    },
+    {
+      "step": 14,
+      "target_timestamp": "2026-09-28T02:00:00+00:00",
+      "point_forecast": 110.0,
+      "q10": 90.0,
+      "q90": 120.0
+    },
+    {
+      "step": 15,
+      "target_timestamp": "2026-09-28T03:00:00+00:00",
+      "point_forecast": 110.0,
+      "q10": 90.0,
+      "q90": 120.0
+    },
+    {
+      "step": 16,
+      "target_timestamp": "2026-09-28T04:00:00+00:00",
+      "point_forecast": 110.0,
+      "q10": 90.0,
+      "q90": 120.0
+    },
+    {
+      "step": 17,
+      "target_timestamp": "2026-09-28T05:00:00+00:00",
+      "point_forecast": 110.0,
+      "q10": 90.0,
+      "q90": 120.0
+    },
+    {
+      "step": 18,
+      "target_timestamp": "2026-09-28T06:00:00+00:00",
+      "point_forecast": 110.0,
+      "q10": 90.0,
+      "q90": 120.0
+    },
+    {
+      "step": 19,
+      "target_timestamp": "2026-09-28T07:00:00+00:00",
+      "point_forecast": 110.0,
+      "q10": 90.0,
+      "q90": 120.0
+    },
+    {
+      "step": 20,
+      "target_timestamp": "2026-09-28T08:00:00+00:00",
+      "point_forecast": 110.0,
+      "q10": 90.0,
+      "q90": 120.0
+    },
+    {
+      "step": 21,
+      "target_timestamp": "2026-09-28T09:00:00+00:00",
+      "point_forecast": 110.0,
+      "q10": 90.0,
+      "q90": 120.0
+    },
+    {
+      "step": 22,
+      "target_timestamp": "2026-09-28T10:00:00+00:00",
+      "point_forecast": 110.0,
+      "q10": 90.0,
+      "q90": 120.0
+    },
+    {
+      "step": 23,
+      "target_timestamp": "2026-09-28T11:00:00+00:00",
+      "point_forecast": 110.0,
+      "q10": 90.0,
+      "q90": 120.0
+    },
+    {
+      "step": 24,
+      "target_timestamp": "2026-09-28T12:00:00+00:00",
+      "point_forecast": 110.0,
+      "q10": 90.0,
+      "q90": 120.0
+    }
+  ],
+  "forecast_path": [
+    110.0,
+    110.0,
+    110.0,
+    110.0,
+    110.0,
+    110.0,
+    110.0,
+    110.0,
+    110.0,
+    110.0,
+    110.0,
+    110.0,
+    110.0,
+    110.0,
+    110.0,
+    110.0,
+    110.0,
+    110.0,
+    110.0,
+    110.0,
+    110.0,
+    110.0,
+    110.0,
+    110.0
+  ],
+  "lower_path": [
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0,
+    90.0
+  ],
+  "upper_path": [
+    120.0,
+    120.0,
+    120.0,
+    120.0,
+    120.0,
+    120.0,
+    120.0,
+    120.0,
+    120.0,
+    120.0,
+    120.0,
+    120.0,
+    120.0,
+    120.0,
+    120.0,
+    120.0,
+    120.0,
+    120.0,
+    120.0,
+    120.0,
+    120.0,
+    120.0,
+    120.0,
+    120.0
+  ],
+  "status": "VALID",
+  "manifest": {
+    "git_sha": "MOCK_FIXTURE",
+    "timesfm_version": "MOCK",
+    "python_version": "fixture",
+    "torch_version": "NOT_USED",
+    "numpy_version": "NOT_USED",
+    "device": "MOCK",
+    "forecast_config": {
+      "horizon": 24,
+      "context_length": 4,
+      "symmetric_averaging": true,
+      "batch_size": 1,
+      "seed": 0,
+      "threads": 2,
+      "input_dtype": "float32",
+      "quantiles": "nominal 80% pointwise interval; uncalibrated on BTC"
+    },
+    "provider_config": {
+      "primary": "coinbase",
+      "symbol": "BTC/USD",
+      "frequency": "1h"
+    }
+  }
+}

@@ -1,0 +1,1007 @@
+{
+  "commit": "3f6782ce8aef432df0e79852dc289c506bf465e5",
+  "files": [
+    {
+      "path": ".DS_Store",
+      "tracked": true,
+      "size_bytes": 10244,
+      "sha256": "a27c4dd36ad11865d1f68fdcfdae4f491e5b052abd5a7b07e1432eb6dbe10bcf"
+    },
+    {
+      "path": ".gitattributes",
+      "tracked": true,
+      "size_bytes": 197,
+      "sha256": "abb363a52f26fa4b4fdb868c01aa170f540c1ed6508d26cdd211090c1086453d"
+    },
+    {
+      "path": ".github/workflows/bitcoin-evaluation.yml",
+      "tracked": true,
+      "size_bytes": 3179,
+      "sha256": "a57f97f318fbca52fd5ee0f9a9c8ae8557d6cae8a616c3ebd72057cd7e5dea8c"
+    },
+    {
+      "path": ".github/workflows/main.yml",
+      "tracked": true,
+      "size_bytes": 687,
+      "sha256": "e8d203a4c5844ef22356a1e45858df2d15b06ed7e7e5814620d5a39f272cfd31"
+    },
+    {
+      "path": ".github/workflows/manual_publish.yml",
+      "tracked": true,
+      "size_bytes": 794,
+      "sha256": "faa3b5dd0f936ca04221bf79bbfa02fd40dea18ebe78e2f1da35add12602743a"
+    },
+    {
+      "path": ".gitignore",
+      "tracked": true,
+      "size_bytes": 475,
+      "sha256": "978d978ab9558552707a1f00d843f664b110716051322a70e7f6ed943ba1c9bf"
+    },
+    {
+      "path": "AGENTS.md",
+      "tracked": true,
+      "size_bytes": 854,
+      "sha256": "27123daef7f9b42d7ee32d938038d16023e4ce0cec7d975792c0b4ceaff27760"
+    },
+    {
+      "path": "LICENSE",
+      "tracked": true,
+      "size_bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "README.md",
+      "tracked": true,
+      "size_bytes": 10794,
+      "sha256": "d041610c39b77fd6715ce727c28221373a18f1a191050138356b8cb636958a89"
+    },
+    {
+      "path": "chat_app/.DS_Store",
+      "tracked": true,
+      "size_bytes": 6148,
+      "sha256": "b5a438caac46a1a6cf13b6c44d125d701d488e8176753d55a9c085f383a92b7b"
+    },
+    {
+      "path": "chat_app/app.py",
+      "tracked": true,
+      "size_bytes": 11799,
+      "sha256": "40e288385335236252ba6faeb42cc0bf125b4138666f16d872f8112b4c0037f8"
+    },
+    {
+      "path": "data/.gitkeep",
+      "tracked": true,
+      "size_bytes": 45,
+      "sha256": "69cb8a350b2161098066e94b1da6d1d73aea0715bad30aa886ecf16086b10c29"
+    },
+    {
+      "path": "data/bitcoin_predictions.csv",
+      "tracked": true,
+      "size_bytes": 1740,
+      "sha256": "6871717a47f9e26c203f6b3ecb0c25f674de36eeb3db781f04cd032cdcda1e50"
+    },
+    {
+      "path": "evaluation/__init__.py",
+      "tracked": true,
+      "size_bytes": 62,
+      "sha256": "bb231ed3f0d6ba4b8da2056ae7b007d5eed0559fd425f67de26d5d450427335c"
+    },
+    {
+      "path": "evaluation/binance.py",
+      "tracked": true,
+      "size_bytes": 7137,
+      "sha256": "f520d12a5ad74e34e67d06f373f9547b2f5a87d283351ce3a2e27b1b9dabe08a"
+    },
+    {
+      "path": "evaluation/coingecko.py",
+      "tracked": true,
+      "size_bytes": 7494,
+      "sha256": "f23e2dc7e9d7028705e3cd98dc6981a472c38f52cb135bc8cab22a3d3ab37bc9"
+    },
+    {
+      "path": "evaluation/config.py",
+      "tracked": true,
+      "size_bytes": 3168,
+      "sha256": "9c9b13d2378541248b5cad25c7baef5005ead97e2596970e07655bbdaa940504"
+    },
+    {
+      "path": "evaluation/csv_manager.py",
+      "tracked": true,
+      "size_bytes": 4879,
+      "sha256": "afb92e4a393e1b38cdc1f1240eba0b50e36bac7ccfcb188a89e731f4ee78bbae"
+    },
+    {
+      "path": "evaluation/metrics.py",
+      "tracked": true,
+      "size_bytes": 2020,
+      "sha256": "809cb344c518b4f63a627ea65acae4c88d08a9ae9637579a67f9644fff212384"
+    },
+    {
+      "path": "evaluation/path_metrics.py",
+      "tracked": true,
+      "size_bytes": 2305,
+      "sha256": "54fd02dcfb82ed3b8a8bf2c40e1ce228d978fc9a9aae8bd58bb3647ce6be609c"
+    },
+    {
+      "path": "evaluation/predictor.py",
+      "tracked": true,
+      "size_bytes": 5167,
+      "sha256": "0b12e3f21e029ed0a2b206085d1c75e51d884a41bddbf5728cfdbff077792ada"
+    },
+    {
+      "path": "evaluation/price_verifier.py",
+      "tracked": true,
+      "size_bytes": 7351,
+      "sha256": "27b86a27741b7189118084b33e89b5e8f925f44bd8a56245fd9ac87eb853fe20"
+    },
+    {
+      "path": "evaluation/report.py",
+      "tracked": true,
+      "size_bytes": 11917,
+      "sha256": "1baddbcaf3e104513d58d174d61a15f2bf60136270b648a65e3f2133ad35e8e0"
+    },
+    {
+      "path": "evaluation/run_predict.py",
+      "tracked": true,
+      "size_bytes": 5644,
+      "sha256": "d5e10ab9eb57fb34424ff6e8b8c5236e1580086566ed2c06f076f73ae1aa9b28"
+    },
+    {
+      "path": "evaluation/run_verify.py",
+      "tracked": true,
+      "size_bytes": 4842,
+      "sha256": "ae2c1bf53d2655c2b0a41ffddb95d6217410289a74027a2281609210ebdb5634"
+    },
+    {
+      "path": "evaluation/trading/__init__.py",
+      "tracked": true,
+      "size_bytes": 506,
+      "sha256": "e4c12ef477186e01e895c5d3c53c40f8fe259dc69a1028cb637702a3340a23fc"
+    },
+    {
+      "path": "evaluation/trading/backtest_engine.py",
+      "tracked": true,
+      "size_bytes": 11865,
+      "sha256": "b061dfdd6fab0075a095fac07e4d5e59587503cbf17b55e87ebf0d1f254b94ca"
+    },
+    {
+      "path": "evaluation/trading/baselines.py",
+      "tracked": true,
+      "size_bytes": 12487,
+      "sha256": "84f6ea4a2a48ed081c1c363afeabb1077001a9d07306b76ea0daf414894583c9"
+    },
+    {
+      "path": "evaluation/trading/equity.py",
+      "tracked": true,
+      "size_bytes": 1338,
+      "sha256": "36bc385131e8599709d4cc7acdce5df32643e891563b648146d2c94d7a8bfd75"
+    },
+    {
+      "path": "evaluation/trading/metrics.py",
+      "tracked": true,
+      "size_bytes": 8900,
+      "sha256": "6507dd95f48c51de1fe8dd597e62b1961989b9bda91924b7e2d7bbe36395d10e"
+    },
+    {
+      "path": "evaluation/trading/signal.py",
+      "tracked": true,
+      "size_bytes": 4621,
+      "sha256": "b71c54d32a308d244d3538540e4c62bd79ac93eefbcb2e79e677b6e843612500"
+    },
+    {
+      "path": "evaluation/trading/types.py",
+      "tracked": true,
+      "size_bytes": 5696,
+      "sha256": "edd2cc50f67704d100ad113ba5edc8406e06926e39220c3cc5e11eb04eec082f"
+    },
+    {
+      "path": "pyproject.toml",
+      "tracked": true,
+      "size_bytes": 1052,
+      "sha256": "bdb1259b29f6e36a1aa3a86b1c0e9840907d40dd4e7d08402df38cb764fb3441"
+    },
+    {
+      "path": "reports/.gitkeep",
+      "tracked": true,
+      "size_bytes": 48,
+      "sha256": "895dea02c28f8f634cfee9b3c35c74d3fc90ca33dad82b0c84a73f64a3b1912a"
+    },
+    {
+      "path": "reports/bitcoin_report.md",
+      "tracked": true,
+      "size_bytes": 4177,
+      "sha256": "9f68bd25fc5b4b29dedcd8e78101b236183ffd9bce0d5df79a368e40362e2d0d"
+    },
+    {
+      "path": "requirements.txt",
+      "tracked": true,
+      "size_bytes": 1015,
+      "sha256": "ec64fd59fa06f0a681d9f725bf886a86b10b4c0d94f27866d5e37dc5b2c6e5c4"
+    },
+    {
+      "path": "src/timesfm/__init__.py",
+      "tracked": true,
+      "size_bytes": 1009,
+      "sha256": "cae5c5077130c560f6cca8788b2a5d1a5a01d2fe904e2d5c7ab7ec40290f7d55"
+    },
+    {
+      "path": "src/timesfm/configs.py",
+      "tracked": true,
+      "size_bytes": 3617,
+      "sha256": "0bb2d1fb8f4980bb2f731dd980fc1fd8d0be291b235d3d3e642618052155035e"
+    },
+    {
+      "path": "src/timesfm/flax/__init__.py",
+      "tracked": true,
+      "size_bytes": 574,
+      "sha256": "43d16544ed887d213dc846a2018cd690e30124f09a358aa1e2285ca74b74050b"
+    },
+    {
+      "path": "src/timesfm/flax/dense.py",
+      "tracked": true,
+      "size_bytes": 3522,
+      "sha256": "be4703b9e35f717811d472fad6f08e5b3c0708a1fd4eb7a2400349ccc2b6fcf8"
+    },
+    {
+      "path": "src/timesfm/flax/normalization.py",
+      "tracked": true,
+      "size_bytes": 2168,
+      "sha256": "2867823407ed6555ed13fe7fa5f05e7013632730cca7a24e0a5d96a0f741bc43"
+    },
+    {
+      "path": "src/timesfm/flax/transformer.py",
+      "tracked": true,
+      "size_bytes": 11506,
+      "sha256": "2bda8edf59796f051ff7397e9b297c1c396d0240be3b80a849683cba9eef226e"
+    },
+    {
+      "path": "src/timesfm/flax/util.py",
+      "tracked": true,
+      "size_bytes": 3027,
+      "sha256": "d9214b3bac474fce3086e36e9952306535d73da83e5caaca2b685b8fbe20ae63"
+    },
+    {
+      "path": "src/timesfm/timesfm_2p5/timesfm_2p5_base.py",
+      "tracked": true,
+      "size_bytes": 15237,
+      "sha256": "35a9f096cf676b2d4c84b0bc6f66a756bea4c91e7e7da27d0b165ba95875bf57"
+    },
+    {
+      "path": "src/timesfm/timesfm_2p5/timesfm_2p5_flax.py",
+      "tracked": true,
+      "size_bytes": 19700,
+      "sha256": "d3313809ece84522bf678077c34128cbde046af4b91a5d4127f46dd15913c642"
+    },
+    {
+      "path": "src/timesfm/timesfm_2p5/timesfm_2p5_torch.py",
+      "tracked": true,
+      "size_bytes": 18239,
+      "sha256": "3a84b663db6dc163fe30370181397c6752b952d071811643e1bc06c423ab7b7a"
+    },
+    {
+      "path": "src/timesfm/torch/__init__.py",
+      "tracked": true,
+      "size_bytes": 574,
+      "sha256": "43d16544ed887d213dc846a2018cd690e30124f09a358aa1e2285ca74b74050b"
+    },
+    {
+      "path": "src/timesfm/torch/dense.py",
+      "tracked": true,
+      "size_bytes": 3109,
+      "sha256": "28894985384eaa3dda7b1b882d5bb8426d8b274b2d9a01cb14c4651c0584ec1d"
+    },
+    {
+      "path": "src/timesfm/torch/normalization.py",
+      "tracked": true,
+      "size_bytes": 1204,
+      "sha256": "c37b56afd198aebf5ef71ee04ef244a63318da2e4a0497ec9b319088f6cc5154"
+    },
+    {
+      "path": "src/timesfm/torch/transformer.py",
+      "tracked": true,
+      "size_bytes": 11720,
+      "sha256": "744a0e1e41c1262150998fbc621bb7e4bb2fb9c79b0fe46e70dea744511962bb"
+    },
+    {
+      "path": "src/timesfm/torch/util.py",
+      "tracked": true,
+      "size_bytes": 2654,
+      "sha256": "c700a82459e115a1c6c9797058e6e3272aa79e8705a11d48d83489b67766e917"
+    },
+    {
+      "path": "src/timesfm/utils/xreg_lib.py",
+      "tracked": true,
+      "size_bytes": 20721,
+      "sha256": "4609b3c11aa1744db365c8a1f707f72a49b68948bc5d6b1e0ebd886772a3f4d2"
+    },
+    {
+      "path": "src/timesfm3/__init__.py",
+      "tracked": true,
+      "size_bytes": 1114,
+      "sha256": "9b772ebe797b1a2582087b340daed7ebbb2f30949422fb5b9688045874de17bc"
+    },
+    {
+      "path": "src/timesfm3/configs.py",
+      "tracked": true,
+      "size_bytes": 1943,
+      "sha256": "706b64982cd136bb2a1a654a6b166e1fcc07bcf42fa120d4a9fd8e9f225c1cf5"
+    },
+    {
+      "path": "src/timesfm3/cpm_revin_refine.py",
+      "tracked": true,
+      "size_bytes": 5418,
+      "sha256": "16d497ed185e0f5db41b069ddc5cc86769a8bb75ece30f2a32bbd3d92cc1f21a"
+    },
+    {
+      "path": "src/timesfm3/cpm_revin_refine_test.py",
+      "tracked": true,
+      "size_bytes": 3892,
+      "sha256": "ef06a32a1358666754e6e28a69a4d3fc51209b71f4bbb0aca47a21278757a0bc"
+    },
+    {
+      "path": "src/timesfm3/dense.py",
+      "tracked": true,
+      "size_bytes": 3975,
+      "sha256": "74d3229d7128f9db3f4c653639d79ac4202dcbc531424394d334d604574ed6bd"
+    },
+    {
+      "path": "src/timesfm3/evaluator.py",
+      "tracked": true,
+      "size_bytes": 9155,
+      "sha256": "4ad0ddc5e264206cf6db706b493c2b4f20bf6698e89b990a4c37c15089971af2"
+    },
+    {
+      "path": "src/timesfm3/model.py",
+      "tracked": true,
+      "size_bytes": 24710,
+      "sha256": "474b8035db514d852e6358c73ebd1ba90dcd25f17d1ecf4e5bb884ca788e7dbf"
+    },
+    {
+      "path": "src/timesfm3/model_test.py",
+      "tracked": true,
+      "size_bytes": 4639,
+      "sha256": "6c34507770de22e39b930c6c356464d9b7a60643db88c45efeb078a5a8ae0983"
+    },
+    {
+      "path": "src/timesfm3/normalization.py",
+      "tracked": true,
+      "size_bytes": 1530,
+      "sha256": "0b0ae0e34810f9b9d5e2d1bea2dc2a9b12ec908cf61b53c5055c595b9f4bc013"
+    },
+    {
+      "path": "src/timesfm3/primitives_test.py",
+      "tracked": true,
+      "size_bytes": 11776,
+      "sha256": "a223d3074eacb7c6bf370a75dc03eaaa899ef23f2d16c9d120af99458a7a286c"
+    },
+    {
+      "path": "src/timesfm3/timesfm3_forecaster.py",
+      "tracked": true,
+      "size_bytes": 24184,
+      "sha256": "db339d08f1454b25afe9ab1e64f18b068cd54a0d6ef9c92c9ca7656f716252ea"
+    },
+    {
+      "path": "src/timesfm3/timesfm3_forecaster_test.py",
+      "tracked": true,
+      "size_bytes": 6674,
+      "sha256": "afc28e9897becea60474d2d4df45f204867ef3cfa4a3bdb72a0b0a4e449971ec"
+    },
+    {
+      "path": "src/timesfm3/transformations.py",
+      "tracked": true,
+      "size_bytes": 2784,
+      "sha256": "88ca00342ac5239b9490a1caff50b104a2fa63c7050ba2531dded2e66c50fc4a"
+    },
+    {
+      "path": "src/timesfm3/transformer.py",
+      "tracked": true,
+      "size_bytes": 20254,
+      "sha256": "5bcba59e0f7067ae7de97e77a67207e3fb2da7f447b88836dd62fdccc694ef4e"
+    },
+    {
+      "path": "src/timesfm3/transformer_test.py",
+      "tracked": true,
+      "size_bytes": 4935,
+      "sha256": "62a26c8f2f8a362b1d9f6f0145dac953ef72b09dd0fabd0623cb384a51525f37"
+    },
+    {
+      "path": "src/timesfm3/util.py",
+      "tracked": true,
+      "size_bytes": 11457,
+      "sha256": "a415bafc8737596bd6ca2fe06648257691d7f8bc94695749ff16f5687261c67b"
+    },
+    {
+      "path": "tests/__init__.py",
+      "tracked": true,
+      "size_bytes": 21,
+      "sha256": "5a7a2dfaeedd4b99054997e6e72faf0e8f278c24e0e8f2548c40c177535aba2d"
+    },
+    {
+      "path": "tests/test_base_utils.py",
+      "tracked": true,
+      "size_bytes": 6692,
+      "sha256": "e95b29e9af4959e4485d495f64db025e395b26e98f6924e023a25d4ece806caf"
+    },
+    {
+      "path": "tests/test_binance.py",
+      "tracked": true,
+      "size_bytes": 2947,
+      "sha256": "ef2355f4147e5a249b57ffb8b5184bc7e03659cc6cc5bdb4d62136c6b7fcabcf"
+    },
+    {
+      "path": "tests/test_btc_csv_manager.py",
+      "tracked": true,
+      "size_bytes": 6494,
+      "sha256": "504886aad56607737816df86cda026bdc2826f6e51a1607781a7a7f50d1dfc95"
+    },
+    {
+      "path": "tests/test_btc_metrics.py",
+      "tracked": true,
+      "size_bytes": 5065,
+      "sha256": "cae6a82b29f2827a971d25affc2f101cf140735f3966567a0ccc068c610ea398"
+    },
+    {
+      "path": "tests/test_btc_simulation.py",
+      "tracked": true,
+      "size_bytes": 9693,
+      "sha256": "828088994a616359618d1f881beaf3919812917028102c206b8e8529d8123f67"
+    },
+    {
+      "path": "tests/test_configs.py",
+      "tracked": true,
+      "size_bytes": 6621,
+      "sha256": "5e6be88b62c0052553ce4af602557d7ad8be8f0c9cfb8cb93cb94a69e4afe9f6"
+    },
+    {
+      "path": "tests/test_force_flip_invariance.py",
+      "tracked": true,
+      "size_bytes": 2825,
+      "sha256": "52fe12001c470250a7cc275191ccf781d7b07beaaaadb04f771c5944fb7d5f0c"
+    },
+    {
+      "path": "tests/test_forecast_path.py",
+      "tracked": true,
+      "size_bytes": 1584,
+      "sha256": "994bfa6190cee9654c2c759dfdbbbd5ba536406e798459bd82842592ec628af6"
+    },
+    {
+      "path": "tests/test_model_loading.py",
+      "tracked": true,
+      "size_bytes": 3834,
+      "sha256": "ec9ad69461f3388e3b75ffea336259b4e4a78efebdad2e843ac8aa8c76525961"
+    },
+    {
+      "path": "tests/test_price_verifier.py",
+      "tracked": true,
+      "size_bytes": 8043,
+      "sha256": "d44022f3e7784794b3fc365217525f3d8590789f50232743a23121d48425408f"
+    },
+    {
+      "path": "tests/test_torch_layers.py",
+      "tracked": true,
+      "size_bytes": 8505,
+      "sha256": "4c4a11e38103368d5539ed8413e0d722a540301861bf68c7f3de9ee3e8054e20"
+    },
+    {
+      "path": "tests/test_torch_utils.py",
+      "tracked": true,
+      "size_bytes": 12201,
+      "sha256": "10c20298524f5c969b125ba104dc17b2d9e93c27ec3ab3a99e0fd5e418698f85"
+    },
+    {
+      "path": "tests/test_trading_engine.py",
+      "tracked": true,
+      "size_bytes": 24086,
+      "sha256": "f1633a56834e7c49754a977a231277e1ca68f7f25f16143c1551a25819ec3215"
+    },
+    {
+      "path": "timesfm-forecasting/SKILL.md",
+      "tracked": true,
+      "size_bytes": 18897,
+      "sha256": "cb83b741010d9f14448ca41866bcdf6f66bbaca28f5c3146b39663a1d86c6f18"
+    },
+    {
+      "path": "timesfm-forecasting/examples/anomaly-detection/detect_anomalies.py",
+      "tracked": true,
+      "size_bytes": 17032,
+      "sha256": "2320b725adfaf4e45c40a34bd253ce56020c911bb804ceeeb1b9704f5fb61ffb"
+    },
+    {
+      "path": "timesfm-forecasting/examples/anomaly-detection/output/anomaly_detection.json",
+      "tracked": true,
+      "size_bytes": 9019,
+      "sha256": "f657f299b1bc0205cd242822bddaac92dc2b08c6a71dc19215cf98294a2dbdbc"
+    },
+    {
+      "path": "timesfm-forecasting/examples/anomaly-detection/output/anomaly_detection.png",
+      "tracked": true,
+      "size_bytes": 217028,
+      "sha256": "c4b30e01bb01847c0eabf8367f28cd16368fd28e450c38c1cc089abb18672276"
+    },
+    {
+      "path": "timesfm-forecasting/examples/covariates-forecasting/demo_covariates.py",
+      "tracked": true,
+      "size_bytes": 19694,
+      "sha256": "b3f57e5b7e0af827e8e34674c2e16d4104e1b5467833a47e67a5ceafcc8ded2f"
+    },
+    {
+      "path": "timesfm-forecasting/examples/covariates-forecasting/output/covariates_data.png",
+      "tracked": true,
+      "size_bytes": 458505,
+      "sha256": "24682a190ecae753d5531bce9841040709a64abb044bfb372bab34a6c7c17070"
+    },
+    {
+      "path": "timesfm-forecasting/examples/covariates-forecasting/output/covariates_metadata.json",
+      "tracked": true,
+      "size_bytes": 1586,
+      "sha256": "0a0ece6fdf551000673ee1f763895b88e18dbee05471a44e71e9388593477006"
+    },
+    {
+      "path": "timesfm-forecasting/examples/covariates-forecasting/output/sales_with_covariates.csv",
+      "tracked": true,
+      "size_bytes": 7399,
+      "sha256": "765621c852fd31ce7803012fd100973f20a1be796d492092df2f0ecb884a9f1c"
+    },
+    {
+      "path": "timesfm-forecasting/examples/finetuning/README.md",
+      "tracked": true,
+      "size_bytes": 3430,
+      "sha256": "40323b9dcedbbc2b94c1dd1bfdbb543caa927c23029d0dd57557f73175b38de8"
+    },
+    {
+      "path": "timesfm-forecasting/examples/finetuning/finetune_lora.py",
+      "tracked": true,
+      "size_bytes": 15388,
+      "sha256": "99dc82bb7366e44bd576b743bb2c2a5cb7f5c2823b97dd8779a8ebfb0d40a6d4"
+    },
+    {
+      "path": "timesfm-forecasting/examples/global-temperature/README.md",
+      "tracked": true,
+      "size_bytes": 5728,
+      "sha256": "ad571f985f065b07927d80c73b00aa57fe0260fb5c80f48d017e66c19cec5536"
+    },
+    {
+      "path": "timesfm-forecasting/examples/global-temperature/generate_animation_data.py",
+      "tracked": true,
+      "size_bytes": 5008,
+      "sha256": "457850385191763131554bd035b13a23e2b5a78fea03ae2e9e39a274bed5eaf2"
+    },
+    {
+      "path": "timesfm-forecasting/examples/global-temperature/generate_gif.py",
+      "tracked": true,
+      "size_bytes": 6659,
+      "sha256": "5ec2d4323044468c3eb1ad42e5f4e5c5148273564c445b7b19807763f7d4c455"
+    },
+    {
+      "path": "timesfm-forecasting/examples/global-temperature/generate_html.py",
+      "tracked": true,
+      "size_bytes": 21161,
+      "sha256": "43ba538c8d7d1632c24f9b014daf3a488483d3fe5bdb2cfec2b44f8eda6ffcf0"
+    },
+    {
+      "path": "timesfm-forecasting/examples/global-temperature/output/animation_data.json",
+      "tracked": true,
+      "size_bytes": 133208,
+      "sha256": "d54662e5e1d8cba1be036e397a64df5a868db2d807b82560423302e096f1f060"
+    },
+    {
+      "path": "timesfm-forecasting/examples/global-temperature/output/forecast_animation.gif",
+      "tracked": true,
+      "size_bytes": 794231,
+      "sha256": "ca9bbbe3206a0c2c7da26e154a6a5661490f97a024ccb7a833f26fd96bd0e51b"
+    },
+    {
+      "path": "timesfm-forecasting/examples/global-temperature/output/forecast_output.csv",
+      "tracked": true,
+      "size_bytes": 1489,
+      "sha256": "a390e2bca50a51a050f08fbe90b8270f034a349b31d330c45e37384638b605e5"
+    },
+    {
+      "path": "timesfm-forecasting/examples/global-temperature/output/forecast_output.json",
+      "tracked": true,
+      "size_bytes": 4517,
+      "sha256": "be6dc7c066c634ff69700c7d64bf489e76536eb435bbb38d1b7202a30ba6361d"
+    },
+    {
+      "path": "timesfm-forecasting/examples/global-temperature/output/forecast_visualization.png",
+      "tracked": true,
+      "size_bytes": 150626,
+      "sha256": "787e1117bb231b681b4314fcf661f1519dd7ad19ec049be04ed0a33d48861954"
+    },
+    {
+      "path": "timesfm-forecasting/examples/global-temperature/output/interactive_forecast.html",
+      "tracked": true,
+      "size_bytes": 153063,
+      "sha256": "8ddfaf1ee3b089048e5b421160a601fb1ad355c7bfff9d8d94f6b3fb367f9658"
+    },
+    {
+      "path": "timesfm-forecasting/examples/global-temperature/run_example.sh",
+      "tracked": true,
+      "size_bytes": 1532,
+      "sha256": "d305541a6477d592ccc3c2320fd52524f5501838c281eacd0760621dbb7b5c32"
+    },
+    {
+      "path": "timesfm-forecasting/examples/global-temperature/run_forecast.py",
+      "tracked": true,
+      "size_bytes": 5290,
+      "sha256": "e928d4001aa504a4fb15d09efb890430e51cf24d0071dc8f164b2573f6d6f659"
+    },
+    {
+      "path": "timesfm-forecasting/examples/global-temperature/temperature_anomaly.csv",
+      "tracked": true,
+      "size_bytes": 591,
+      "sha256": "3a32b67453575fe786983efb9cad4c491b69ee69903cd9d36b58eb04204161a7"
+    },
+    {
+      "path": "timesfm-forecasting/examples/global-temperature/visualize_forecast.py",
+      "tracked": true,
+      "size_bytes": 3334,
+      "sha256": "c7a03828b8efae79e66d74aab0c7ef142691c7d696d7b73c2096ebc4f08da955"
+    },
+    {
+      "path": "timesfm-forecasting/references/api_reference.md",
+      "tracked": true,
+      "size_bytes": 9747,
+      "sha256": "5673892a93ab654239ffb3285e203a01922ba3c916aeb4ac9c8cdf356f3a6c04"
+    },
+    {
+      "path": "timesfm-forecasting/references/data_preparation.md",
+      "tracked": true,
+      "size_bytes": 7205,
+      "sha256": "d7f1209ff1134b71e8f65d3627461a9e81f7daabd3addd93b229fb2f8813526c"
+    },
+    {
+      "path": "timesfm-forecasting/references/system_requirements.md",
+      "tracked": true,
+      "size_bytes": 7071,
+      "sha256": "a3f48ad3c716758165916b1d71fbf3009ee29d261bade72f56fc0262069ec5ee"
+    },
+    {
+      "path": "timesfm-forecasting/scripts/check_system.py",
+      "tracked": true,
+      "size_bytes": 24162,
+      "sha256": "96388bc0c0a712ea7eb3a41ab3b13cf01335efbed9e7a44988ea184836349ad7"
+    },
+    {
+      "path": "timesfm-forecasting/scripts/forecast_csv.py",
+      "tracked": true,
+      "size_bytes": 8689,
+      "sha256": "b72119e1e43ed514e83e86064a73f11ffb9b39475f620f222b5fd2842ac273ad"
+    },
+    {
+      "path": "timesfm3-usage/benchmarks/README.md",
+      "tracked": true,
+      "size_bytes": 269,
+      "sha256": "755c7c64102b3c086c8e9353369d7dc5e4b1888d2451b1fdf3c639c5239d8481"
+    },
+    {
+      "path": "timesfm3-usage/benchmarks/fev_bench/README.md",
+      "tracked": true,
+      "size_bytes": 175,
+      "sha256": "246a3113dda54ba76e401781091f646918a4b3442bcd19d03133dc3a59f55300"
+    },
+    {
+      "path": "timesfm3-usage/benchmarks/fev_bench/fev_bench_results.csv",
+      "tracked": true,
+      "size_bytes": 69839,
+      "sha256": "0ff232e46df6a7bc504ea288053ddae09aebcfcba9b72d90768615a6ebebcc46"
+    },
+    {
+      "path": "timesfm3-usage/benchmarks/fev_bench/fev_bench_timesfm3.ipynb",
+      "tracked": true,
+      "size_bytes": 25550,
+      "sha256": "ec92b8345a8d734af2a6113584ebc133b38d3bebbd984768144c9719d2a84b75"
+    },
+    {
+      "path": "timesfm3-usage/benchmarks/fev_bench/run_fev_bench.py",
+      "tracked": true,
+      "size_bytes": 1518,
+      "sha256": "4a7c4ad0655f419ebcbd40af1bc7c545b7118e272a57ca6e4c05cc4d8cb146b2"
+    },
+    {
+      "path": "timesfm3-usage/benchmarks/gift_eval/README.md",
+      "tracked": true,
+      "size_bytes": 165,
+      "sha256": "e1dd115e33b5eaa1ff2c20c6019982cc0c3cf3c6fb917dec5815f1439333273a"
+    },
+    {
+      "path": "timesfm3-usage/benchmarks/gift_eval/all_results.csv",
+      "tracked": true,
+      "size_bytes": 24476,
+      "sha256": "7a722ff8e54f32b63947efc9475a3abe53fa756af16933dadbb72c45f95c0df0"
+    },
+    {
+      "path": "timesfm3-usage/benchmarks/gift_eval/evaluate_all_gift.py",
+      "tracked": true,
+      "size_bytes": 16157,
+      "sha256": "261f57746dafc479d348101eb838ea9a9a35d7b933a949f6d04403cc95eacc50"
+    },
+    {
+      "path": "timesfm3-usage/benchmarks/gift_eval/gift_eval_timesfm3.ipynb",
+      "tracked": true,
+      "size_bytes": 21295,
+      "sha256": "2edb7ddce3891b401fc969b4c14ffb6282571a14628827d0bba3cd2c1bc7259f"
+    },
+    {
+      "path": "timesfm3-usage/benchmarks/time_bench/README.md",
+      "tracked": true,
+      "size_bytes": 166,
+      "sha256": "22a0250d8b5a49c91a1529d75d875734a67b85a13a1e2c542bcf92fb45749dcb"
+    },
+    {
+      "path": "timesfm3-usage/benchmarks/time_bench/run_time_bench.py",
+      "tracked": true,
+      "size_bytes": 1610,
+      "sha256": "fcadedebc50d9dd3fa99dedc010ba11a017fb129e69bcb6a4290b001f6e9f82c"
+    },
+    {
+      "path": "timesfm3-usage/benchmarks/time_bench/time_bench_timesfm3.ipynb",
+      "tracked": true,
+      "size_bytes": 15481,
+      "sha256": "54f76b628050466984a3067fae78fd80f105e8142035c6f9a4b5ca580377ed44"
+    },
+    {
+      "path": "timesfm3-usage/notebooks/promotion_and_synthetic_parity_demo.ipynb",
+      "tracked": true,
+      "size_bytes": 9381,
+      "sha256": "3b016686b7d0d0c2d47b4f5c1c3f9c7db76bfd535c2b9f01d5ec63c0f173784e"
+    },
+    {
+      "path": "v1/LICENSE",
+      "tracked": true,
+      "size_bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "v1/README.md",
+      "tracked": true,
+      "size_bytes": 13885,
+      "sha256": "0aafbc5dc7ac890f8f6b165a6e45d31f877288619399cf7058dc2550ba9c0080"
+    },
+    {
+      "path": "v1/TROUBLESHOOTING.md",
+      "tracked": true,
+      "size_bytes": 4709,
+      "sha256": "283218136d81b26739691756f703a51d797900b85f30c56d124068fa508da04b"
+    },
+    {
+      "path": "v1/docs/contributing.md",
+      "tracked": true,
+      "size_bytes": 1067,
+      "sha256": "5be4be0ded4a8c52ffecaa0312bb6343827a500b1265095fc9fbfca4ab88534d"
+    },
+    {
+      "path": "v1/experiments/baselines/__init__.py",
+      "tracked": true,
+      "size_bytes": 573,
+      "sha256": "1b5dba2434d04d9042e27bb020246cb58a945e8cb5f7eb9d1589288901d6d1f9"
+    },
+    {
+      "path": "v1/experiments/baselines/timegpt_pipeline.py",
+      "tracked": true,
+      "size_bytes": 7880,
+      "sha256": "18dd534b6892c93998e406a2e65cbcc654748bba2ed361d0d293bcfa245c0dd6"
+    },
+    {
+      "path": "v1/experiments/extended_benchmarks/README.md",
+      "tracked": true,
+      "size_bytes": 2667,
+      "sha256": "7bc6f91d0eb76f9d265d46931544676c96ec6f67cd15e55551faf3d2ec7be2cb"
+    },
+    {
+      "path": "v1/experiments/extended_benchmarks/run_timegpt.py",
+      "tracked": true,
+      "size_bytes": 2907,
+      "sha256": "b21c6f7a27ac52a8e2973195d1825004d8dad04d57e89cb4868e6e5d4b1cd05d"
+    },
+    {
+      "path": "v1/experiments/extended_benchmarks/run_timesfm.py",
+      "tracked": true,
+      "size_bytes": 4249,
+      "sha256": "8981d8e0e034ab049e5f7c3fb37d98b0a2ee27d1c5bb01e7c97645e371989469"
+    },
+    {
+      "path": "v1/experiments/extended_benchmarks/tfm_extended_new.png",
+      "tracked": true,
+      "size_bytes": 308621,
+      "sha256": "9a40be725e01c5b9f86475a8a1f790ea64585876e4bda67ae12e3713d6b81d44"
+    },
+    {
+      "path": "v1/experiments/extended_benchmarks/tfm_results.png",
+      "tracked": true,
+      "size_bytes": 336480,
+      "sha256": "e8a5316c11f48fbcc6e3af7d17702ac00c2e14cd6dbb400d935ff88c32a2c283"
+    },
+    {
+      "path": "v1/experiments/extended_benchmarks/utils.py",
+      "tracked": true,
+      "size_bytes": 9710,
+      "sha256": "0c1194216e3cdd85b2f53995b0e085e6c471198f21cee82e17ff164d4c1059c2"
+    },
+    {
+      "path": "v1/experiments/long_horizon_benchmarks/README.md",
+      "tracked": true,
+      "size_bytes": 2372,
+      "sha256": "b7c769b01d18783d7e7dea64fd2cff6cd7ce120a93370c26fb73cf2cf0232c7c"
+    },
+    {
+      "path": "v1/experiments/long_horizon_benchmarks/run_eval.py",
+      "tracked": true,
+      "size_bytes": 7626,
+      "sha256": "72cef37427f0e9d05cd24d3e4ac98ed0a984299f7befebc50056522f6834ffd4"
+    },
+    {
+      "path": "v1/experiments/long_horizon_benchmarks/tfm_long_horizon.png",
+      "tracked": true,
+      "size_bytes": 197577,
+      "sha256": "20b20eb0d552fc90863ab9e03594e1fc2aafc1a2a3365ed282a38fb94c1680ff"
+    },
+    {
+      "path": "v1/notebooks/covariates.ipynb",
+      "tracked": true,
+      "size_bytes": 14988,
+      "sha256": "79b64c4c63fce44aaec77e27bac86823603ced1ec00549a7ec674ef922f42934"
+    },
+    {
+      "path": "v1/notebooks/finetuning.ipynb",
+      "tracked": true,
+      "size_bytes": 18560,
+      "sha256": "525038fdbec49a5b5bc51367d550808605b0bfe5295636739da18f856dd1e770"
+    },
+    {
+      "path": "v1/notebooks/finetuning_torch.ipynb",
+      "tracked": true,
+      "size_bytes": 18590,
+      "sha256": "5765881869d6cdf639c92ac53afdb39fa8eff6f537f82f914713098c523d9724"
+    },
+    {
+      "path": "v1/peft/README.md",
+      "tracked": true,
+      "size_bytes": 2202,
+      "sha256": "329fe5240dc5465e8705dadab0b3c92b46b5cb754d2a624cb56811b7466982be"
+    },
+    {
+      "path": "v1/peft/finetune.py",
+      "tracked": true,
+      "size_bytes": 13525,
+      "sha256": "d0e18e28ae011ae8f011445c8554ea7928c8cfae3cc3ce2a5a0e2c8d9dad893a"
+    },
+    {
+      "path": "v1/peft/finetune.sh",
+      "tracked": true,
+      "size_bytes": 957,
+      "sha256": "b8dd3ad73d8087a3849a072589249f8c1175fa6cd188a8d00f544404062300f9"
+    },
+    {
+      "path": "v1/peft/usage.ipynb",
+      "tracked": true,
+      "size_bytes": 5536,
+      "sha256": "7c594723beae0e9aface28741755414deb83648e07a5c0537991f67b5ddc7084"
+    },
+    {
+      "path": "v1/poetry.lock",
+      "tracked": true,
+      "size_bytes": 549243,
+      "sha256": "6a415ffd068e5cedcb449aea0e6f2e70810d4639a9d854a5b0b1d5b3fb38ff42"
+    },
+    {
+      "path": "v1/pyproject.toml",
+      "tracked": true,
+      "size_bytes": 2270,
+      "sha256": "8e93635aff19fa0f7e2641657815b6d8234722f13abac24da3810685d64ad90b"
+    },
+    {
+      "path": "v1/src/adapter/__init__.py",
+      "tracked": true,
+      "size_bytes": 777,
+      "sha256": "7c009c84ab81f79555e8b419c8e1dac6128f010f5e3316770d28f1ad3bba4877"
+    },
+    {
+      "path": "v1/src/adapter/dora_layers.py",
+      "tracked": true,
+      "size_bytes": 6256,
+      "sha256": "4ee8c50e3c8f10e599065150c5b7248de958aa3c7820907bbced93f34b1b1fd8"
+    },
+    {
+      "path": "v1/src/adapter/lora_layers.py",
+      "tracked": true,
+      "size_bytes": 5029,
+      "sha256": "14c8d3ce247cfa6b74fc7840526148c153fc9b332aafec2cf7c45fa6866bf4fd"
+    },
+    {
+      "path": "v1/src/adapter/utils.py",
+      "tracked": true,
+      "size_bytes": 17697,
+      "sha256": "5433286ac6157f9fd84f6a124551a18fce706aaf54758627c2e49d8880ff53b2"
+    },
+    {
+      "path": "v1/src/finetuning/__init__.py",
+      "tracked": true,
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "v1/src/finetuning/finetuning_example.py",
+      "tracked": true,
+      "size_bytes": 12001,
+      "sha256": "7a531bd1a01c4239a20470ee33068a17ab03293bc256ff825a846ad024e15ec6"
+    },
+    {
+      "path": "v1/src/finetuning/finetuning_torch.py",
+      "tracked": true,
+      "size_bytes": 12456,
+      "sha256": "9cb704e83f742af9d40c3691d8c71968600452609c256796b9f8f1b10f2e8877"
+    },
+    {
+      "path": "v1/src/timesfm/__init__.py",
+      "tracked": true,
+      "size_bytes": 1180,
+      "sha256": "a5d9234dd00365c33138a63cd4b60c88e05f8d6c614d497146de241b6f66e23c"
+    },
+    {
+      "path": "v1/src/timesfm/data_loader.py",
+      "tracked": true,
+      "size_bytes": 8582,
+      "sha256": "6469f6bbd3a13d94e186a3d54a5909e28306256bcd32133c232e56534fac8910"
+    },
+    {
+      "path": "v1/src/timesfm/patched_decoder.py",
+      "tracked": true,
+      "size_bytes": 19100,
+      "sha256": "b95c56da21f4dcc34211e11f8b342a705534b4410af8f20f369db079e6eecc62"
+    },
+    {
+      "path": "v1/src/timesfm/pytorch_patched_decoder.py",
+      "tracked": true,
+      "size_bytes": 26137,
+      "sha256": "b97b986f7307bc54992f6a1b4cc95301b5b6e3b23780ef8ef31bc0d34724e63f"
+    },
+    {
+      "path": "v1/src/timesfm/time_features.py",
+      "tracked": true,
+      "size_bytes": 6285,
+      "sha256": "d904fc57c6814a07d2638718fbfdaa7f436a20cccbe365055b4a2da31f888d9d"
+    },
+    {
+      "path": "v1/src/timesfm/timesfm_base.py",
+      "tracked": true,
+      "size_bytes": 27305,
+      "sha256": "ac8b8ce3435b8e1a592cbc38a395b5a32787c8b75be3690eb76493d6674ebf64"
+    },
+    {
+      "path": "v1/src/timesfm/timesfm_jax.py",
+      "tracked": true,
+      "size_bytes": 12707,
+      "sha256": "84a55608a0278f8d97b005989de487b2147ccbc6ce3148c6c2aec14705e3c4a2"
+    },
+    {
+      "path": "v1/src/timesfm/timesfm_torch.py",
+      "tracked": true,
+      "size_bytes": 6369,
+      "sha256": "aa822d90772c39631dddbc6b93080bdfe769d322e2234925c24771675a69b089"
+    },
+    {
+      "path": "v1/src/timesfm/xreg_lib.py",
+      "tracked": true,
+      "size_bytes": 20639,
+      "sha256": "db49478609de6da6161bc4bf4e5a8a05f1cc8a7c19cbbc732c9f7c1a5124b8fa"
+    },
+    {
+      "path": "v1/tests/test_data_loader.py",
+      "tracked": true,
+      "size_bytes": 1403,
+      "sha256": "a761bc6ec1c6d801067b9fb56460b4baf5d2566c28a04c0650c8a97066b57120"
+    },
+    {
+      "path": "v1/tests/test_timesfm.py",
+      "tracked": true,
+      "size_bytes": 3030,
+      "sha256": "a1aceead96ba957da1239b3da34e101b4fcd9d0ea465712847c2215296fe28b6"
+    },
+    {
+      "path": "reports/index.html",
+      "tracked": false,
+      "size_bytes": 23656,
+      "sha256": "689ddce1ba109b5a3c86bd66c3f77fabca25de349b9443345d7f3c7e85e0a97c"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "checked_at": "2026-09-27T08:31:02.893928+00:00",
+  "github_run_id": null,
+  "github_sha": null,
+  "environment": "LOCAL",
+  "providers": [
+    {
+      "provider": "coinbase",
+      "status": "AVAILABLE",
+      "count": 4,
+      "latest": {
+        "provider": "coinbase",
+        "venue": "coinbase",
+        "symbol": "BTC/USD",
+        "quote_currency": "USD",
+        "open_time": "2026-09-27T07:00:00+00:00",
+        "close_time": "2026-09-27T08:00:00+00:00",
+        "available_at": "2026-09-27T08:31:03.218899+00:00",
+        "retrieved_at": "2026-09-27T08:31:03.218899+00:00",
+        "open": "84495.37",
+        "high": "84791.21",
+        "low": "84456.88",
+        "close": "84773.26",
+        "volume": "94.83672624",
+        "status": "CLOSED"
+      }
+    },
+    {
+      "provider": "kraken",
+      "status": "AVAILABLE",
+      "count": 4,
+      "latest": {
+        "provider": "kraken",
+        "venue": "kraken",
+        "symbol": "BTC/USD",
+        "quote_currency": "USD",
+        "open_time": "2026-09-27T07:00:00+00:00",
+        "close_time": "2026-09-27T08:00:00+00:00",
+        "available_at": "2026-09-27T08:31:03.428246+00:00",
+        "retrieved_at": "2026-09-27T08:31:03.428246+00:00",
+        "open": "84497.2",
+        "high": "84768.9",
+        "low": "84467.7",
+        "close": "84767.9",
+        "volume": "32.90613655",
+        "status": "CLOSED"
+      }
+    }
+  ]
+}

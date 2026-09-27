@@ -1,0 +1,76 @@
+{
+  "evidence_level": "MOCK VERIFIED",
+  "manual": {
+    "entry_price": 100,
+    "forecast_price": 110,
+    "actual_price": 108,
+    "predicted_return_pct": 10,
+    "actual_return_pct": 8,
+    "entry_notional": 1000,
+    "units": 10,
+    "exit_notional": 1080,
+    "gross_pnl": 80,
+    "entry_fee": 1,
+    "exit_fee": 1.08,
+    "fees": 2.08,
+    "spread_cost": 0.52,
+    "slippage_cost": 1.04,
+    "net_pnl": 76.36
+  },
+  "backend_trade": {
+    "prediction_id": "reconciliation",
+    "direction": "LONG",
+    "entry_timestamp": "2026-09-27T12:02:00+00:00",
+    "exit_timestamp": "2026-09-28T12:00:00Z",
+    "entry_price": 100,
+    "exit_price": 108,
+    "gross_return_pct": 8.0,
+    "gross_pnl": 80.0,
+    "fees": 2.08,
+    "spread_cost": 0.52,
+    "slippage_cost": 1.04,
+    "net_pnl": 76.36,
+    "net_return_pct": 7.636,
+    "holding_period_hours": 23.966666666666665,
+    "signal_strength": 10.0,
+    "entry_fee": 1.0,
+    "exit_fee": 1.08,
+    "exit_notional": 1080.0,
+    "position_size": 1000.0
+  },
+  "report": {
+    "accounting_mode": "INDEPENDENT_HYPOTHETICAL_TRADES",
+    "assumptions": "Paper simulation; entry and exit supplied by caller; no broker fills, borrow or funding model.",
+    "trades": [
+      {
+        "prediction_id": "reconciliation",
+        "direction": "LONG",
+        "entry_timestamp": "2026-09-27T12:02:00+00:00",
+        "exit_timestamp": "2026-09-28T12:00:00Z",
+        "entry_price": 100,
+        "exit_price": 108,
+        "gross_return_pct": 8.0,
+        "gross_pnl": 80.0,
+        "fees": 2.08,
+        "spread_cost": 0.52,
+        "slippage_cost": 1.04,
+        "net_pnl": 76.36,
+        "net_return_pct": 7.636,
+        "holding_period_hours": 23.966666666666665,
+        "signal_strength": 10.0,
+        "entry_fee": 1.0,
+        "exit_fee": 1.08,
+        "exit_notional": 1080.0,
+        "position_size": 1000.0
+      }
+    ],
+    "net_pnl": 76.36,
+    "statistics": {
+      "sharpe_ratio": "INSUFFICIENT SAMPLE",
+      "sortino_ratio": "INSUFFICIENT SAMPLE",
+      "profit_factor": "INSUFFICIENT SAMPLE"
+    },
+    "statistical_status": "STATISTICALLY INCONCLUSIVE"
+  },
+  "arithmetic": "10*(108-100) - (1000+1080)*0.001 - (1000+1080)*0.00025 - (1000+1080)*0.0005 = 76.36"
+}
