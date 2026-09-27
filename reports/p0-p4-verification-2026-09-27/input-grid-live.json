@@ -1,0 +1,37 @@
+{
+  "status": "LOCAL LIVE VERIFIED",
+  "count": 512,
+  "origin": "2026-09-27T09:00:00+00:00",
+  "first": {
+    "provider": "coinbase",
+    "venue": "coinbase",
+    "symbol": "BTC/USD",
+    "quote_currency": "USD",
+    "open_time": "2026-09-06T01:00:00+00:00",
+    "close_time": "2026-09-06T02:00:00+00:00",
+    "available_at": "2026-09-27T09:53:03.114751+00:00",
+    "retrieved_at": "2026-09-27T09:53:03.114751+00:00",
+    "open": "79872.24",
+    "high": "80060.99",
+    "low": "79872.23",
+    "close": "79954.31",
+    "volume": "103.35369744",
+    "status": "CLOSED"
+  },
+  "last": {
+    "provider": "coinbase",
+    "venue": "coinbase",
+    "symbol": "BTC/USD",
+    "quote_currency": "USD",
+    "open_time": "2026-09-27T08:00:00+00:00",
+    "close_time": "2026-09-27T09:00:00+00:00",
+    "available_at": "2026-09-27T09:53:03.437980+00:00",
+    "retrieved_at": "2026-09-27T09:53:03.437980+00:00",
+    "open": "84773.26",
+    "high": "84893.17",
+    "low": "84682",
+    "close": "84775.68",
+    "volume": "206.84326679",
+    "status": "CLOSED"
+  }
+}

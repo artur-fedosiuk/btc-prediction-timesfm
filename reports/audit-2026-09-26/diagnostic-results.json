@@ -1,0 +1,127 @@
+{
+  "legacy_append": {
+    "error": "ParserError",
+    "message": "Error tokenizing data. C error: Expected 16 fields in line 14, saw 38"
+  },
+  "verification_overwrite": {
+    "old_actual": "76207.3635099679",
+    "new_actual": "1.0",
+    "columns_before": 16,
+    "columns_after": 38,
+    "legacy_fields_added": "legacy_h1"
+  },
+  "target_mismatch": {
+    "stored_actual": 111.5,
+    "true_endpoint": 123.0,
+    "confidence": "high"
+  },
+  "incomplete_verification": {
+    "points_per_source": 1,
+    "confidence": "high",
+    "price": 100.0
+  },
+  "invalid_spot_accepted": [
+    "0.0",
+    "-1.0",
+    "nan",
+    "inf"
+  ],
+  "invalid_history_accepted": [
+    [
+      "2026-09-16T12:00:00+00:00",
+      100.0
+    ],
+    [
+      "2026-09-16T12:00:00+00:00",
+      -1.0
+    ],
+    [
+      "2029-06-11T12:00:00+00:00",
+      200.0
+    ]
+  ],
+  "binance_window": {
+    "points": 25,
+    "last_label": "2026-09-17T12:00:00+00:00",
+    "last_close_time": "2026-09-17T12:59:59.999000+00:00",
+    "target": "2026-09-17T12:00:00+00:00"
+  },
+  "adapter_index_mapping": {
+    "path_length": 24,
+    "t1": 101.0,
+    "t24": 124.0,
+    "lower_t24": 114.0,
+    "upper_t24": 122.0,
+    "checkpoint": "google/timesfm-3.0-pytorch"
+  },
+  "cutoff_and_freshness": {
+    "future": {
+      "exit_code": 0,
+      "model_called": true,
+      "save_called": true,
+      "history_end": "2026-10-01T10:40:57.420928+00:00"
+    },
+    "stale": {
+      "exit_code": 0,
+      "model_called": true,
+      "save_called": true,
+      "history_end": "2026-09-16T12:00:00+00:00"
+    }
+  },
+  "nonfinite_path_accepted": "nan",
+  "flat_zero_threshold": "LONG",
+  "future_equity_position_size": [
+    {
+      "entry": "2026-09-16T12:00:00Z",
+      "exit": "2026-09-17T12:00:00Z",
+      "position": 1000.0,
+      "net_pnl": 200.0
+    },
+    {
+      "entry": "2026-09-16T13:00:00Z",
+      "exit": "2026-09-17T13:00:00Z",
+      "position": 1020.0,
+      "net_pnl": 204.0
+    }
+  ],
+  "duplicate_id_exit": [
+    90,
+    90
+  ],
+  "timezone_overlap": [
+    "LONG",
+    "LONG"
+  ],
+  "small_sample_ratios": {
+    "n": 2,
+    "sharpe": 40.52776825831888,
+    "sortino": "inf"
+  },
+  "verification_failure_exit_code": 0,
+  "crypto_calendar": [
+    "2026-09-28",
+    "2026-09-29"
+  ],
+  "chat_root_status": 404,
+  "real_row_reconciliation": {
+    "timestamp": "2026-09-19T15:43:25Z",
+    "entry": 81654.0,
+    "forecast": 81623.9,
+    "actual_stored_twap": 80824.83227010316,
+    "forecast_return_pct": -0.036862860362022465,
+    "actual_return_pct": -1.0154649250457326,
+    "python_position": 1000.0,
+    "python_gross": 10.154649250457327,
+    "python_fees": 2.0,
+    "python_spread": 0.5,
+    "python_slippage": 1.0,
+    "python_net": 6.654649250457327,
+    "dashboard_signal_log_net_using_rounded_demo_price": 66.54677051950894
+  },
+  "legacy_only_diagnostic_not_edge": {
+    "n": 10,
+    "timesfm_vs_wrong_twap_target_mae": 551.1095938048311,
+    "naive_vs_wrong_twap_target_mae": 564.2985938048325,
+    "mean_abs_predicted_return_pct": 0.04075905682444462
+  }
+}

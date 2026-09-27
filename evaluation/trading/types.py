@@ -8,13 +8,13 @@ and trading profitability measurement.
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Literal
-
 
 # ---------------------------------------------------------------------------
 # Configuration types
 # ---------------------------------------------------------------------------
+
 
 @dataclass(frozen=True)
 class TradingCosts:
@@ -50,6 +50,9 @@ class StrategyConfig:
         - 'tp_sl': Exit at take profit or stop loss.
     """
 
+    accounting_mode: Literal[
+        "INDEPENDENT_HYPOTHETICAL_TRADES", "INVESTABLE_PORTFOLIO"
+    ] = "INDEPENDENT_HYPOTHETICAL_TRADES"
     threshold_pct: float = 0.30
     position_mode: Literal["single", "independent"] = "independent"
     exit_mode: Literal["time", "tp_sl"] = "time"
@@ -73,6 +76,7 @@ class RiskConfig:
 # Signal type
 # ---------------------------------------------------------------------------
 
+
 @dataclass(frozen=True)
 class TradingSignal:
     """Output of the signal generator for a single prediction."""
@@ -89,6 +93,7 @@ class TradingSignal:
 # ---------------------------------------------------------------------------
 # Trade type
 # ---------------------------------------------------------------------------
+
 
 @dataclass(frozen=True)
 class Trade:
@@ -121,12 +126,16 @@ class Trade:
     # Metadata
     holding_period_hours: float
     signal_strength: float
+    entry_fee: float = 0.0
+    exit_fee: float = 0.0
+    exit_notional: float = 0.0
     position_size: float = 0.0  # Dollar amount of the position
 
 
 # ---------------------------------------------------------------------------
 # Backtest result
 # ---------------------------------------------------------------------------
+
 
 @dataclass(frozen=True)
 class BacktestResult:
@@ -175,6 +184,7 @@ class BacktestResult:
 # ---------------------------------------------------------------------------
 # Prediction data for backtesting
 # ---------------------------------------------------------------------------
+
 
 @dataclass(frozen=True)
 class PredictionRecord:

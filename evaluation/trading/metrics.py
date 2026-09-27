@@ -12,12 +12,12 @@ as opposed to prediction metrics which answer: "Was the prediction accurate?"
 from __future__ import annotations
 
 import math
-from typing import Sequence
-
+from collections.abc import Sequence
 
 # ---------------------------------------------------------------------------
 # Trade-level PnL
 # ---------------------------------------------------------------------------
+
 
 def compute_gross_pnl(
     direction: str,
@@ -75,20 +75,24 @@ def compute_trade_costs(
     taker_fee_pct: float,
     spread_pct: float,
     slippage_pct: float,
+    exit_notional: float | None = None,
 ) -> tuple[float, float, float]:
     """Compute cost breakdown for a single trade (entry + exit).
 
     Returns:
         Tuple of (total_fees, spread_cost, slippage_cost).
     """
+    exit_notional = position_size if exit_notional is None else exit_notional
     # Entry: taker fee + half spread + slippage
     entry_fee = position_size * taker_fee_pct / 100.0
     # Exit: taker fee + half spread + slippage
-    exit_fee = position_size * taker_fee_pct / 100.0
+    exit_fee = exit_notional * taker_fee_pct / 100.0
     total_fees = entry_fee + exit_fee
 
-    spread_cost = position_size * spread_pct / 100.0
-    slippage_cost = position_size * slippage_pct * 2 / 100.0  # entry + exit
+    spread_cost = (position_size + exit_notional) * spread_pct / 200.0
+    slippage_cost = (
+        (position_size + exit_notional) * slippage_pct / 100.0
+    )  # entry + exit
 
     return total_fees, spread_cost, slippage_cost
 
@@ -96,6 +100,7 @@ def compute_trade_costs(
 # ---------------------------------------------------------------------------
 # Aggregate metrics
 # ---------------------------------------------------------------------------
+
 
 def compute_net_pnl(trade_pnls: Sequence[float]) -> float:
     """Sum of all net PnLs."""
@@ -152,12 +157,10 @@ def compute_max_drawdown_pct(equity_curve: Sequence[float]) -> float:
     peak = equity_curve[0]
     max_dd = 0.0
     for value in equity_curve:
-        if value > peak:
-            peak = value
+        peak = max(peak, value)
         if peak > 0:
             dd = (peak - value) / peak * 100.0
-            if dd > max_dd:
-                max_dd = dd
+            max_dd = max(max_dd, dd)
     return max_dd
 
 
@@ -173,8 +176,7 @@ def compute_drawdown_series(equity_curve: Sequence[float]) -> list[float]:
     peak = equity_curve[0]
     drawdowns = []
     for value in equity_curve:
-        if value > peak:
-            peak = value
+        peak = max(peak, value)
         dd = (peak - value) / peak * 100.0 if peak > 0 else 0.0
         drawdowns.append(dd)
     return drawdowns
@@ -201,9 +203,9 @@ def compute_sharpe_ratio(
     mean_return = sum(trade_returns_pct) / len(trade_returns_pct)
     rf_per_trade = risk_free_rate_annual / trades_per_year
 
-    variance = sum(
-        (r - mean_return) ** 2 for r in trade_returns_pct
-    ) / (len(trade_returns_pct) - 1)
+    variance = sum((r - mean_return) ** 2 for r in trade_returns_pct) / (
+        len(trade_returns_pct) - 1
+    )
     std_dev = math.sqrt(variance)
 
     if std_dev == 0:
@@ -239,7 +241,7 @@ def compute_sortino_ratio(
     if not downside_returns:
         return float("inf") if mean_return > rf_per_trade else 0.0
 
-    downside_variance = sum(r ** 2 for r in downside_returns) / len(trade_returns_pct)
+    downside_variance = sum(r**2 for r in downside_returns) / len(trade_returns_pct)
     downside_dev = math.sqrt(downside_variance)
 
     if downside_dev == 0:

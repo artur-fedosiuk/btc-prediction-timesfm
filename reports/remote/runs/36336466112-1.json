@@ -1,0 +1,68 @@
+{
+  "command": "recover",
+  "timestamp": "2026-09-27T17:19:14.391624+00:00",
+  "environment": {
+    "python_version": "3.11.14",
+    "os": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "architecture": "x86_64",
+    "github": {
+      "GITHUB_RUN_ID": "36336466112",
+      "GITHUB_RUN_ATTEMPT": "1",
+      "GITHUB_SHA": "dbbc1a5854c3b8f2a86efd63cfae9f2f134ced22",
+      "GITHUB_REF": "refs/heads/codex/p0-p4-forward-validation"
+    },
+    "timesfm_version": "NOT_INSTALLED",
+    "torch_version": "NOT_INSTALLED",
+    "numpy_version": "NOT_INSTALLED",
+    "pandas_version": "NOT_INSTALLED",
+    "statsmodels_version": "NOT_INSTALLED",
+    "device": "NO_MODEL",
+    "git_sha": "dbbc1a5854c3b8f2a86efd63cfae9f2f134ced22",
+    "working_tree_dirty": true
+  },
+  "git_head": "dbbc1a5854c3b8f2a86efd63cfae9f2f134ced22",
+  "cache": {
+    "model": "",
+    "pip": "true"
+  },
+  "result": {
+    "status": "RECOVERED",
+    "predictions": [
+      {
+        "prediction_id": "7330369586d2160892a53c5610c556604f358d9f3a6e2a53d7d7ddaa0a6b2c9f",
+        "input_hash": "955f4677b469d253829f762fdcc2073e3724a0ac7891774273d338f073bb196a",
+        "forecast_hash": "849632b4165f86e7e1dd1ccd3d1c756e42a6ae2cf3c88c1cdfb5063791faeeaf",
+        "forecast_origin": "2026-09-27T17:00:00+00:00",
+        "generated_at": "2026-09-27T17:18:13.217495+00:00",
+        "targets": [
+          {
+            "horizon": 1,
+            "target_timestamp": "2026-09-27T18:00:00+00:00",
+            "status": "PENDING"
+          },
+          {
+            "horizon": 4,
+            "target_timestamp": "2026-09-27T21:00:00+00:00",
+            "status": "PENDING"
+          },
+          {
+            "horizon": 8,
+            "target_timestamp": "2026-09-28T01:00:00+00:00",
+            "status": "PENDING"
+          },
+          {
+            "horizon": 12,
+            "target_timestamp": "2026-09-28T05:00:00+00:00",
+            "status": "PENDING"
+          },
+          {
+            "horizon": 24,
+            "target_timestamp": "2026-09-28T17:00:00+00:00",
+            "status": "PENDING"
+          }
+        ]
+      }
+    ],
+    "verification_count": 0
+  }
+}

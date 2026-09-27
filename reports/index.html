@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BTC forward experiment</title>
+<style>body{font:16px system-ui,sans-serif;max-width:1100px;margin:3rem auto;padding:0 1rem;color:#19283c;background:#f4f7fa}section{background:white;padding:1.5rem;margin:1rem 0;border:1px solid #ccd6e0;border-radius:8px}table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:.6rem;border-bottom:1px solid #ddd}pre{white-space:pre-wrap;overflow-wrap:anywhere}h1{font-size:1.8rem}.table{overflow-x:auto}</style></head>
+<body><h1>BTC / TimesFM forward experiment</h1><p>No predictive edge or profitability claim is made.</p><section><h2>Scientific status</h2><p id="status" role="status">Loading validated backend data…</p></section><section><h2>System health</h2><pre id="health"></pre></section><section><h2>New predictions</h2><div class="table"><table><thead><tr><th>Generated (UTC)</th><th>Origin (UTC)</th><th>Model</th><th>Status</th></tr></thead><tbody id="predictions"></tbody></table></div></section><section><h2>Legacy archive</h2><pre id="legacy"></pre></section><section><h2>Paper trading</h2><pre id="trading"></pre></section>
+<script>
+'use strict';
+fetch('data.json', {cache:'no-store'}).then(response => {
+  if (!response.ok) throw new Error('Report unavailable');
+  return response.json();
+}).then(data => {
+  document.getElementById('status').textContent=data.scientific_status;
+  for (const field of ['health','legacy','trading']) document.getElementById(field).textContent=JSON.stringify(data[field],null,2);
+  for (const row of data.predictions) {
+    const tr=document.createElement('tr');
+    for (const value of [row.generated_at,row.forecast_origin,row.actual_model_used,row.verification_status]) {
+      const td=document.createElement('td');td.textContent=value;tr.appendChild(td);
+    }
+    document.getElementById('predictions').appendChild(tr);
+  }
+}).catch(error => {document.getElementById('status').textContent='NO VALID DATA — '+error.message;});
+</script></body></html>

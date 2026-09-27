@@ -1,5 +1,20 @@
 # TimesFM
 
+## BTC forward experiment status
+
+The BTC collector now has a separate immutable SQLite H24 implementation in
+`evaluation/forward`. The 12 historical CSV rows remain `legacy_h1` and are
+invalid for H24 evaluation. Candidate providers are Coinbase BTC/USD (primary)
+and Kraken BTC/USD (cross-check); adoption is gated on an actual Actions probe.
+
+Local tests and a real pinned TimesFM 3.0 smoke test are verified. CI execution
+and the first live forward prediction are **not yet verified**. Do not infer
+predictive edge, profitability, or production readiness.
+
+See [P0–P4 acceptance report](reports/p0-p4-verification-2026-09-27/VERIFICATION.md)
+and [temporal/model/operational contract](reports/p0-p4-verification-2026-09-27/pipeline.md).
+The upstream model documentation follows.
+
 TimesFM (Time Series Foundation Model) is a pretrained time-series foundation
 model developed by Google Research for time-series forecasting.
 

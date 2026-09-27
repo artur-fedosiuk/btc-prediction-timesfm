@@ -13,6 +13,10 @@ information available at prediction time.
 from __future__ import annotations
 
 import logging
+import math
+from datetime import timedelta
+
+from evaluation.forward.contracts import utc
 
 from .types import PredictionRecord, StrategyConfig, TradingSignal
 
@@ -38,7 +42,14 @@ def generate_signal(
     Raises:
         ValueError: If entry_price is zero or negative.
     """
-    if prediction.entry_price <= 0:
+    if (
+        not all(
+            math.isfinite(v) and v > 0
+            for v in (prediction.entry_price, prediction.predicted_price)
+        )
+        or not math.isfinite(config.threshold_pct)
+        or config.threshold_pct < 0
+    ):
         raise ValueError(
             f"Invalid entry_price={prediction.entry_price} "
             f"for prediction {prediction.prediction_id}"
@@ -52,7 +63,9 @@ def generate_signal(
     signal_strength = abs(predicted_return_pct)
     threshold = config.threshold_pct
 
-    if predicted_return_pct >= threshold:
+    if predicted_return_pct == 0:
+        direction = "NO_TRADE"
+    elif predicted_return_pct >= threshold:
         direction = "LONG"
     elif predicted_return_pct <= -threshold:
         direction = "SHORT"
@@ -88,15 +101,21 @@ def generate_signals(
     Returns:
         List of TradingSignals (including NO_TRADE signals).
     """
+    if len({p.prediction_id for p in predictions}) != len(predictions):
+        raise ValueError("Duplicate prediction IDs")
+    predictions = sorted(predictions, key=lambda p: utc(p.timestamp))
     signals: list[TradingSignal] = []
-    position_busy_until: str | None = None
+    position_busy_until = None
 
     for pred in predictions:
         signal = generate_signal(pred, config)
 
         if config.position_mode == "single" and signal.direction != "NO_TRADE":
             # In single mode, skip if we'd still be in a position
-            if position_busy_until is not None and pred.timestamp < position_busy_until:
+            if (
+                position_busy_until is not None
+                and utc(pred.timestamp) < position_busy_until
+            ):
                 logger.debug(
                     "Skipping signal at %s — position busy until %s",
                     pred.timestamp,
@@ -113,24 +132,15 @@ def generate_signals(
                     signal_strength=signal.signal_strength,
                 )
             elif signal.direction != "NO_TRADE":
-                # Mark position as busy for holding period
-                from datetime import datetime, timedelta
-
-                try:
-                    ts = datetime.fromisoformat(
-                        pred.timestamp.replace("Z", "+00:00")
-                    )
-                    exit_ts = ts + timedelta(hours=config.holding_period_hours)
-                    position_busy_until = exit_ts.isoformat()
-                except ValueError:
-                    pass
+                position_busy_until = utc(pred.timestamp) + timedelta(
+                    hours=config.holding_period_hours
+                )
 
         signals.append(signal)
 
     actionable = sum(1 for s in signals if s.direction != "NO_TRADE")
     logger.info(
-        "Generated %d signals: %d actionable, %d NO_TRADE "
-        "(threshold=%.2f%%)",
+        "Generated %d signals: %d actionable, %d NO_TRADE (threshold=%.2f%%)",
         len(signals),
         actionable,
         len(signals) - actionable,

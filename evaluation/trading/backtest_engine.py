@@ -5,16 +5,17 @@ Walks through predictions chronologically, generates signals,
 simulates trades with full cost model, and produces a complete
 BacktestResult with all metrics and equity curve.
 
-This engine has ZERO look-ahead bias by design:
-- Signals use only data available at prediction time
-- Exit prices are only observed after the holding period
-- No future data enters any computation
+Paper accounting only; historical entry/exit observations are assumed executable.
+Independent diagnostics are distinct from a capital-constrained portfolio.
 """
 
 from __future__ import annotations
 
 import logging
+import math
 from datetime import datetime, timedelta
+
+from evaluation.forward.contracts import utc
 
 from .equity import build_equity_curve, compute_position_size
 from .metrics import (
@@ -50,7 +51,7 @@ logger = logging.getLogger(__name__)
 
 def _parse_timestamp(ts: str) -> datetime:
     """Parse an ISO timestamp string, tolerating 'Z' suffix."""
-    return datetime.fromisoformat(ts.replace("Z", "+00:00"))
+    return utc(ts)
 
 
 def _compute_exit_timestamp(entry_ts: str, hours: float) -> str:
@@ -90,6 +91,24 @@ def run_backtest(
     trading_costs = trading_costs or TradingCosts()
     risk_config = risk_config or RiskConfig()
 
+    predictions = sorted(predictions, key=lambda p: utc(p.timestamp))
+    if not 0 < risk_config.max_position_pct <= 100 or risk_config.starting_capital <= 0:
+        raise ValueError("Invalid risk configuration")
+    if strategy_config.holding_period_hours <= 0:
+        raise ValueError("Invalid holding period")
+    for pred in predictions:
+        if not math.isfinite(pred.exit_price) or pred.exit_price <= 0:
+            raise ValueError("Invalid exit price")
+    for cost in (
+        trading_costs.taker_fee_pct,
+        trading_costs.spread_pct,
+        trading_costs.slippage_pct,
+    ):
+        if not math.isfinite(cost) or cost < 0:
+            raise ValueError("Invalid trading cost")
+    portfolio = strategy_config.accounting_mode == "INVESTABLE_PORTFOLIO"
+    if portfolio and strategy_config.exit_mode != "time":
+        raise ValueError("TP/SL timing is unknown; hypothetical mode only")
     # 1. Generate signals
     signals = generate_signals(predictions, strategy_config)
 
@@ -100,6 +119,12 @@ def run_backtest(
     trades: list[Trade] = []
     current_capital = risk_config.starting_capital
     skipped = 0
+    open_trades = []
+    entry_cost_rate = (
+        trading_costs.taker_fee_pct
+        + trading_costs.spread_pct / 2
+        + trading_costs.slippage_pct
+    ) / 100
 
     for signal in signals:
         if signal.direction == "NO_TRADE":
@@ -112,8 +137,25 @@ def run_backtest(
             skipped += 1
             continue
 
-        # Position sizing
-        position_size = compute_position_size(current_capital, risk_config)
+        # Realize only exits that occurred before this entry. Reserve open notional.
+        if portfolio:
+            matured = [
+                t for t in open_trades if utc(t.exit_timestamp) <= utc(signal.timestamp)
+            ]
+            current_capital += sum(
+                t.net_pnl + t.position_size * entry_cost_rate for t in matured
+            )
+            open_trades = [t for t in open_trades if t not in matured]
+        sizing_capital = current_capital if portfolio else risk_config.starting_capital
+        position_size = compute_position_size(sizing_capital, risk_config)
+        if portfolio:
+            reserve_rate = (
+                trading_costs.taker_fee_pct
+                + trading_costs.spread_pct / 2
+                + trading_costs.slippage_pct
+            ) / 100
+            available = current_capital - sum(t.position_size for t in open_trades)
+            position_size = min(position_size, max(0, available) / (1 + reserve_rate))
         if position_size <= 0:
             logger.warning("Position size is 0 — capital depleted")
             skipped += 1
@@ -149,6 +191,7 @@ def run_backtest(
             trading_costs.taker_fee_pct,
             trading_costs.spread_pct,
             trading_costs.slippage_pct,
+            exit_notional=position_size * exit_price / entry_price,
         )
         total_costs = fees + spread_cost + slippage_cost
 
@@ -176,14 +219,24 @@ def run_backtest(
             holding_period_hours=strategy_config.holding_period_hours,
             signal_strength=signal.signal_strength,
             position_size=position_size,
+            entry_fee=position_size * trading_costs.taker_fee_pct / 100,
+            exit_fee=position_size
+            * exit_price
+            / entry_price
+            * trading_costs.taker_fee_pct
+            / 100,
+            exit_notional=position_size * exit_price / entry_price,
         )
 
         trades.append(trade)
-        current_capital += net_pnl
+        open_trades.append(trade)
+        if portfolio:
+            current_capital -= position_size * entry_cost_rate
 
     # 4. Build equity curve
     equity_values, equity_timestamps = build_equity_curve(
-        trades, risk_config.starting_capital
+        sorted(trades, key=lambda t: utc(t.exit_timestamp)),
+        risk_config.starting_capital,
     )
 
     # 5. Compute aggregate metrics
@@ -346,8 +399,7 @@ def run_multi_threshold_backtest(
         result = run_backtest(predictions, config, trading_costs, risk_config)
         results.append(result)
         logger.info(
-            "Threshold %.2f%%: %d trades, PnL=$%.2f (%.2f%%), "
-            "WR=%.1f%%, PF=%.2f, DD=%.1f%%",
+            "Threshold %.2f%%: %d trades, PnL=$%.2f (%.2f%%), WR=%.1f%%, PF=%.2f, DD=%.1f%%",
             thresh,
             result.total_trades,
             result.net_pnl,

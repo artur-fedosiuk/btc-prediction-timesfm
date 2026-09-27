@@ -1,0 +1,19 @@
+{
+  "btc-tests.xml": {
+    "tests": "176",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.722"
+  },
+  "model-unit-tests.xml": {
+    "tests": "42",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "1.076"
+  },
+  "legacy_sha256": "6871717a47f9e26c203f6b3ecb0c25f674de36eeb3db781f04cd032cdcda1e50",
+  "python_syntax": "PASS",
+  "ci_status": "NOT_RUN_BUDGET_UNCONFIRMED"
+}

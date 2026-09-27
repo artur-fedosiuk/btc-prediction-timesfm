@@ -187,7 +187,7 @@ def _get_available_ram_gb() -> float:
                 ["vm_stat"], capture_output=True, text=True, check=True
             )
             free = 0
-            page_size = 4096
+            page_size = int(result.stdout.split("page size of ")[1].split(" bytes")[0])
             for line in result.stdout.split("\n"):
                 if "Pages free" in line or "Pages inactive" in line:
                     val = line.split(":")[1].strip().rstrip(".")

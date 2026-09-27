@@ -1,0 +1,11 @@
+# Installed together with the local TimesFM package and the CPU Torch index.
+timesfm==3.0.1
+torch==2.14.0
+numpy==2.4.6
+pandas==3.0.5
+statsmodels==0.14.6
+scipy==1.17.1
+huggingface_hub==1.29.0
+safetensors==0.7.0
+requests==2.32.5
+pytest==9.1.1

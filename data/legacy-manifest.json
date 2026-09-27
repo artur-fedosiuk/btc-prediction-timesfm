@@ -1,0 +1,10 @@
+{
+  "initial_commit": "3f6782ce8aef432df0e79852dc289c506bf465e5",
+  "audit_reference": "reports/audit-2026-09-26/AUDIT.md",
+  "legacy_path": "data/bitcoin_predictions.csv",
+  "sha256": "6871717a47f9e26c203f6b3ecb0c25f674de36eeb3db781f04cd032cdcda1e50",
+  "rows": 12,
+  "experiment_version": "legacy_h1",
+  "scientific_status": "INVALID_FOR_H24_EVALUATION",
+  "policy": "Preserve original bytes; no reconstruction or reinterpretation of historical forecasts."
+}
