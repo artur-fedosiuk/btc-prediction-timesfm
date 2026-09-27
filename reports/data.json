@@ -12,16 +12,377 @@
     "scientific_status": "INVALID_FOR_H24_EVALUATION",
     "policy": "Preserve original bytes; no reconstruction or reinterpretation of historical forecasts."
   },
-  "predictions": [],
+  "predictions": [
+    {
+      "actual_model_used": "TimesFM",
+      "checkpoint": "google/timesfm-3.0-pytorch",
+      "checkpoint_revision": "43046b85ec22d584a13f8098c2ed39c889e129c2",
+      "data_cutoff": "2026-09-27T17:18:09.081545+00:00",
+      "experiment_id": "timesfm_h24_v2",
+      "experiment_version": "timesfm_h24_v2",
+      "fallback_reason": null,
+      "fallback_used": false,
+      "forecast_frequency": "1h",
+      "forecast_hash": "849632b4165f86e7e1dd1ccd3d1c756e42a6ae2cf3c88c1cdfb5063791faeeaf",
+      "forecast_horizon": 24,
+      "forecast_origin": "2026-09-27T17:00:00+00:00",
+      "forecast_path": [
+        84410.46875,
+        84431.359375,
+        84433.7578125,
+        84449.046875,
+        84444.59375,
+        84454.6640625,
+        84437.640625,
+        84441.3359375,
+        84450.953125,
+        84472.78125,
+        84480.1953125,
+        84495.40625,
+        84513.125,
+        84526.515625,
+        84538.578125,
+        84549.75,
+        84549.40625,
+        84542.453125,
+        84555.109375,
+        84562.890625,
+        84552.34375,
+        84553.953125,
+        84560.890625,
+        84571.9296875
+      ],
+      "forecast_points": [
+        {
+          "point_forecast": 84410.46875,
+          "q10": 84204.6015625,
+          "q90": 84661.796875,
+          "step": 1,
+          "target_timestamp": "2026-09-27T18:00:00+00:00"
+        },
+        {
+          "point_forecast": 84431.359375,
+          "q10": 84141.421875,
+          "q90": 84768.859375,
+          "step": 2,
+          "target_timestamp": "2026-09-27T19:00:00+00:00"
+        },
+        {
+          "point_forecast": 84433.7578125,
+          "q10": 84067.7890625,
+          "q90": 84841.3984375,
+          "step": 3,
+          "target_timestamp": "2026-09-27T20:00:00+00:00"
+        },
+        {
+          "point_forecast": 84449.046875,
+          "q10": 84014.4375,
+          "q90": 84919.9453125,
+          "step": 4,
+          "target_timestamp": "2026-09-27T21:00:00+00:00"
+        },
+        {
+          "point_forecast": 84444.59375,
+          "q10": 83950.0078125,
+          "q90": 84984.6953125,
+          "step": 5,
+          "target_timestamp": "2026-09-27T22:00:00+00:00"
+        },
+        {
+          "point_forecast": 84454.6640625,
+          "q10": 83909.9921875,
+          "q90": 85053.8125,
+          "step": 6,
+          "target_timestamp": "2026-09-27T23:00:00+00:00"
+        },
+        {
+          "point_forecast": 84437.640625,
+          "q10": 83846.125,
+          "q90": 85090.875,
+          "step": 7,
+          "target_timestamp": "2026-09-28T00:00:00+00:00"
+        },
+        {
+          "point_forecast": 84441.3359375,
+          "q10": 83785.8125,
+          "q90": 85139.90625,
+          "step": 8,
+          "target_timestamp": "2026-09-28T01:00:00+00:00"
+        },
+        {
+          "point_forecast": 84450.953125,
+          "q10": 83758.2421875,
+          "q90": 85204.9375,
+          "step": 9,
+          "target_timestamp": "2026-09-28T02:00:00+00:00"
+        },
+        {
+          "point_forecast": 84472.78125,
+          "q10": 83732.234375,
+          "q90": 85275.9375,
+          "step": 10,
+          "target_timestamp": "2026-09-28T03:00:00+00:00"
+        },
+        {
+          "point_forecast": 84480.1953125,
+          "q10": 83701.96875,
+          "q90": 85332.125,
+          "step": 11,
+          "target_timestamp": "2026-09-28T04:00:00+00:00"
+        },
+        {
+          "point_forecast": 84495.40625,
+          "q10": 83682.359375,
+          "q90": 85388.0,
+          "step": 12,
+          "target_timestamp": "2026-09-28T05:00:00+00:00"
+        },
+        {
+          "point_forecast": 84513.125,
+          "q10": 83668.1796875,
+          "q90": 85450.5546875,
+          "step": 13,
+          "target_timestamp": "2026-09-28T06:00:00+00:00"
+        },
+        {
+          "point_forecast": 84526.515625,
+          "q10": 83636.46875,
+          "q90": 85508.4375,
+          "step": 14,
+          "target_timestamp": "2026-09-28T07:00:00+00:00"
+        },
+        {
+          "point_forecast": 84538.578125,
+          "q10": 83616.640625,
+          "q90": 85548.875,
+          "step": 15,
+          "target_timestamp": "2026-09-28T08:00:00+00:00"
+        },
+        {
+          "point_forecast": 84549.75,
+          "q10": 83585.171875,
+          "q90": 85601.7265625,
+          "step": 16,
+          "target_timestamp": "2026-09-28T09:00:00+00:00"
+        },
+        {
+          "point_forecast": 84549.40625,
+          "q10": 83541.296875,
+          "q90": 85646.671875,
+          "step": 17,
+          "target_timestamp": "2026-09-28T10:00:00+00:00"
+        },
+        {
+          "point_forecast": 84542.453125,
+          "q10": 83514.78125,
+          "q90": 85697.953125,
+          "step": 18,
+          "target_timestamp": "2026-09-28T11:00:00+00:00"
+        },
+        {
+          "point_forecast": 84555.109375,
+          "q10": 83493.6484375,
+          "q90": 85738.734375,
+          "step": 19,
+          "target_timestamp": "2026-09-28T12:00:00+00:00"
+        },
+        {
+          "point_forecast": 84562.890625,
+          "q10": 83461.359375,
+          "q90": 85786.4609375,
+          "step": 20,
+          "target_timestamp": "2026-09-28T13:00:00+00:00"
+        },
+        {
+          "point_forecast": 84552.34375,
+          "q10": 83412.5703125,
+          "q90": 85803.0703125,
+          "step": 21,
+          "target_timestamp": "2026-09-28T14:00:00+00:00"
+        },
+        {
+          "point_forecast": 84553.953125,
+          "q10": 83379.7265625,
+          "q90": 85852.9921875,
+          "step": 22,
+          "target_timestamp": "2026-09-28T15:00:00+00:00"
+        },
+        {
+          "point_forecast": 84560.890625,
+          "q10": 83365.0859375,
+          "q90": 85883.265625,
+          "step": 23,
+          "target_timestamp": "2026-09-28T16:00:00+00:00"
+        },
+        {
+          "point_forecast": 84571.9296875,
+          "q10": 83333.375,
+          "q90": 85927.75,
+          "step": 24,
+          "target_timestamp": "2026-09-28T17:00:00+00:00"
+        }
+      ],
+      "generated_at": "2026-09-27T17:18:13.217495+00:00",
+      "input_hash": "955f4677b469d253829f762fdcc2073e3724a0ac7891774273d338f073bb196a",
+      "input_snapshot_ref": "955f4677b469d253829f762fdcc2073e3724a0ac7891774273d338f073bb196a",
+      "lower_path": [
+        84204.6015625,
+        84141.421875,
+        84067.7890625,
+        84014.4375,
+        83950.0078125,
+        83909.9921875,
+        83846.125,
+        83785.8125,
+        83758.2421875,
+        83732.234375,
+        83701.96875,
+        83682.359375,
+        83668.1796875,
+        83636.46875,
+        83616.640625,
+        83585.171875,
+        83541.296875,
+        83514.78125,
+        83493.6484375,
+        83461.359375,
+        83412.5703125,
+        83379.7265625,
+        83365.0859375,
+        83333.375
+      ],
+      "manifest": {
+        "architecture": "x86_64",
+        "device": "cpu",
+        "forecast_config": {
+          "batch_size": 1,
+          "context_length": 512,
+          "horizon": 24,
+          "input_dtype": "float32",
+          "make_positive": true,
+          "padding_mode": "none",
+          "quantiles": "nominal 80% pointwise interval; uncalibrated on BTC",
+          "seed": 0,
+          "sort_quantiles": true,
+          "symmetric_averaging": true,
+          "threads": 2,
+          "univariate": false,
+          "use_znorm": false
+        },
+        "git_sha": "be58aa5723766eb7163c2ecbde5101450c350939",
+        "github": {
+          "GITHUB_REF": "refs/heads/codex/p0-p4-forward-validation",
+          "GITHUB_RUN_ATTEMPT": "1",
+          "GITHUB_RUN_ID": "36336331383",
+          "GITHUB_SHA": "be58aa5723766eb7163c2ecbde5101450c350939"
+        },
+        "model_config": {
+          "cache_dir": null,
+          "checkpoint_path": "google/timesfm-3.0-pytorch",
+          "device": "cpu",
+          "force_download": false,
+          "input_patch_length": 32,
+          "input_transform": "identity",
+          "linear_detrending_threshold": 0.5,
+          "local_files_only": false,
+          "median_quantile_index": 4,
+          "output_patch_length": 64,
+          "per_core_batch_size": 1,
+          "quantiles": [
+            0.1,
+            0.2,
+            0.3,
+            0.4,
+            0.5,
+            0.6,
+            0.7,
+            0.8,
+            0.9
+          ],
+          "residual_block_config": null,
+          "revision": "43046b85ec22d584a13f8098c2ed39c889e129c2",
+          "token": null,
+          "transformer_config": null,
+          "use_frozen_running_stats": false,
+          "use_iterative_cpm_revin": true,
+          "use_linear_detrending": true,
+          "use_sdpa": true,
+          "use_stitching": true,
+          "use_variate_attention": true,
+          "value_clip": 1e+20
+        },
+        "numpy_version": "2.4.6",
+        "os": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "pandas_version": "3.0.5",
+        "provider_config": {
+          "frequency": "1h",
+          "primary": "coinbase",
+          "symbol": "BTC/USD"
+        },
+        "python_version": "3.11.14",
+        "statsmodels_version": "0.14.6",
+        "timesfm_version": "3.0.1",
+        "torch_version": "2.14.0+cpu",
+        "working_tree_dirty": true
+      },
+      "model_version": "3.0.1",
+      "prediction_id": "7330369586d2160892a53c5610c556604f358d9f3a6e2a53d7d7ddaa0a6b2c9f",
+      "provider": "coinbase",
+      "quote_currency": "USD",
+      "requested_model": "TimesFM",
+      "schema_version": 1,
+      "status": "VALID",
+      "symbol": "BTC/USD",
+      "upper_path": [
+        84661.796875,
+        84768.859375,
+        84841.3984375,
+        84919.9453125,
+        84984.6953125,
+        85053.8125,
+        85090.875,
+        85139.90625,
+        85204.9375,
+        85275.9375,
+        85332.125,
+        85388.0,
+        85450.5546875,
+        85508.4375,
+        85548.875,
+        85601.7265625,
+        85646.671875,
+        85697.953125,
+        85738.734375,
+        85786.4609375,
+        85803.0703125,
+        85852.9921875,
+        85883.265625,
+        85927.75
+      ],
+      "venue": "coinbase",
+      "verifications": [],
+      "errors": [],
+      "window_statistics": null,
+      "verification_status": "PENDING VERIFICATION"
+    }
+  ],
   "health": {
-    "collector_status": "NOT_RUN",
-    "provider_status": [],
+    "collector_status": "SUCCESS",
+    "provider_status": [
+      {
+        "id": "e41f6369-52c8-400a-8f9e-ecbd4284800d",
+        "message": "{\"provider\": \"kraken\", \"venue\": \"kraken\", \"symbol\": \"BTC/USD\", \"quote_currency\": \"USD\", \"open_time\": \"2026-09-27T16:00:00+00:00\", \"close_time\": \"2026-09-27T17:00:00+00:00\", \"available_at\": \"2026-09-27T17:18:09.081495+00:00\", \"retrieved_at\": \"2026-09-27T17:18:09.081495+00:00\", \"open\": \"84450.2\", \"high\": \"84650.4\", \"low\": \"84361.7\", \"close\": \"84409.8\", \"volume\": \"46.99577682\", \"status\": \"CLOSED\"}",
+        "operation": "provider_check",
+        "status": "AVAILABLE",
+        "timestamp": "2026-09-27T17:18:09.084213+00:00"
+      }
+    ],
     "latest_valid_observation": null,
-    "latest_prediction": null,
+    "latest_prediction": "2026-09-27T17:18:13.217495+00:00",
     "latest_verification": null,
-    "pending_verifications": 0,
+    "pending_verifications": 24,
     "invalid_predictions": 0,
-    "timesfm_status": "NOT_RUN",
+    "timesfm_status": "GENERATED",
     "storage_status": "INTEGRITY_CHECK_PASSED",
     "tests_build_status": "SEE_ACCEPTANCE_REPORT"
   },

@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-09-27T17:15:37.143912+00:00",
-  "github_run_id": "36336192499",
-  "github_sha": "61861121e2418118a02aaab93bfb136f0cdb5161",
+  "checked_at": "2026-09-27T17:18:07.883892+00:00",
+  "github_run_id": "36336331383",
+  "github_sha": "be58aa5723766eb7163c2ecbde5101450c350939",
   "environment": "CI",
   "providers": [
     {
@@ -10,7 +10,7 @@
       "count": 4,
       "http_status": 200,
       "validation_status": "PASS",
-      "freshness_seconds": 937.252977,
+      "freshness_seconds": 1087.965539,
       "latest": {
         "provider": "coinbase",
         "venue": "coinbase",
@@ -18,8 +18,8 @@
         "quote_currency": "USD",
         "open_time": "2026-09-27T16:00:00+00:00",
         "close_time": "2026-09-27T17:00:00+00:00",
-        "available_at": "2026-09-27T17:15:37.252856+00:00",
-        "retrieved_at": "2026-09-27T17:15:37.252856+00:00",
+        "available_at": "2026-09-27T17:18:07.965400+00:00",
+        "retrieved_at": "2026-09-27T17:18:07.965400+00:00",
         "open": "84449.48",
         "high": "84673.22",
         "low": "84350",
@@ -34,7 +34,7 @@
       "count": 4,
       "http_status": 200,
       "validation_status": "PASS",
-      "freshness_seconds": 937.499767,
+      "freshness_seconds": 1088.213001,
       "latest": {
         "provider": "kraken",
         "venue": "kraken",
@@ -42,8 +42,8 @@
         "quote_currency": "USD",
         "open_time": "2026-09-27T16:00:00+00:00",
         "close_time": "2026-09-27T17:00:00+00:00",
-        "available_at": "2026-09-27T17:15:37.499651+00:00",
-        "retrieved_at": "2026-09-27T17:15:37.499651+00:00",
+        "available_at": "2026-09-27T17:18:08.212887+00:00",
+        "retrieved_at": "2026-09-27T17:18:08.212887+00:00",
         "open": "84450.2",
         "high": "84650.4",
         "low": "84361.7",
