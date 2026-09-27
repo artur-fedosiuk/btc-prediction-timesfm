@@ -59,9 +59,9 @@ Distribution `timesfm==3.0.1`; checkpoint `google/timesfm-3.0-pytorch`; revision
 
 `provider-checks.json`: LOCAL LIVE VERIFIED for Coinbase and Kraken BTC/USD, including exact OHLCV, timestamps and retrieval times. `input-grid-live.json`: 512 consecutive closed Coinbase hourly candles, covering both pagination requests, passed validation.
 
-CI LIVE VERIFIED: **not established**. The repository is private. Both legacy and current billing API routes rejected budget inspection with insufficient token scope/404. No token scope was expanded. A question about included Actions minutes and a hard block on extra spending remains unanswered. To honor zero budget, no runner was dispatched. Candidate provider adoption is guarded in the live generation command; local probe output cannot satisfy it.
+CI LIVE VERIFIED: run [`36336192499`](https://github.com/artur-fedosiuk/btc-prediction-timesfm/actions/runs/36336192499) passed on a standard GitHub-hosted Ubuntu runner. Coinbase and Kraken both returned HTTP 200, four closed validated BTC/USD candles, and preserved their independent exact values in `reports/provider-checks-ci.json`. The latest candles were 937 seconds old at collection, well within the one-hour freshness contract. No proxy, quote conversion, paid API, GPU, self-hosted runner or external storage was used.
 
-The prepared workflow still requires execution against GitHub's actual dependency resolver and runner. Static review is not a substitute for that run.
+At run time, account usage was 121 of 3000 included Linux minutes and $0 billed. The full CI gate took 96 seconds wall time; generation took 95 seconds; recovery took 32 seconds. The generation run recorded both pip and model cache hits. These are observed run durations, not a billing forecast.
 
 ## H. Reproducibility
 
@@ -87,25 +87,30 @@ See `reconciliation.json`; floating-point comparisons use a tight numerical tole
 
 ## J. Tests and manual checks
 
-- BTC and P0–P4 suite: **176 passed, 0 failed, 0 skipped** (`btc-tests.xml`, `test-results.txt`). Includes full mocked E2E and process-death rollback.
+- BTC and P0–P4 suite: **180 passed, 0 failed, 0 skipped** in CI (`reports/remote/btc-tests.xml`). Includes full mocked E2E, process-death rollback and remote-state tests.
 - TimesFM 3.0 source unit suite: **42 passed, 0 failed, 0 skipped** (`model-unit-tests.xml`).
 - Targeted Ruff checks: passed. Python syntax and Git whitespace checks: passed.
 - Real checkpoint smoke: passed locally, separate from mocked tests.
 - Browser: served local report, verified INSUFFICIENT VALID DATA, empty prediction table, invalid legacy status, storage integrity status, and NO VALID EXECUTION DATA.
-- CI tests/provider smoke: not run, budget condition unresolved.
+- CI TimesFM source units: **42 passed, 0 failed, 0 skipped** (`reports/remote/model-tests.xml`). The real pinned checkpoint smoke passed on the runner and is stored in `reports/remote/model-smoke.json`.
+- CI provider probe: passed; full dependency resolver, runner and published evidence are now verified.
 - Archived v1/v2/Flax and chat application suites are outside this changed BTC forward path. This is not a claim that every historical repository test passes.
 
 ## K. Live experiment status
 
-New forward predictions: **0**. Verified live horizons: **0**. Pending live predictions in the ledger: **0**. No historical data was imported into the new experiment.
+Acceptance level: **CI FORWARD EXPERIMENT RUNNING**. No historical data was imported into the new experiment.
 
-**T+24 LIVE VERIFICATION: PENDING — first live generation has not started.** There is no countdown to a fabricated target. After a CI provider probe and green quality gate, run one real generation; retain its ledger and verify each matured target separately. The workflow is prepared locally, not installed on the remote branch.
+New forward predictions: **1**. Prediction ID: `7330369586d2160892a53c5610c556604f358d9f3a6e2a53d7d7ddaa0a6b2c9f`. It was generated in [`36336331383`](https://github.com/artur-fedosiuk/btc-prediction-timesfm/actions/runs/36336331383), stored by commit `dbbc1a5`, and uses 512 closed Coinbase BTC/USD bars. Origin: `2026-09-27T17:00:00Z`; cutoff: `17:18:09Z`; generation: `17:18:13Z`. Input hash: `955f4677b469d253829f762fdcc2073e3724a0ac7891774273d338f073bb196a`; forecast hash: `849632b4165f86e7e1dd1ccd3d1c756e42a6ae2cf3c88c1cdfb5063791faeeaf`; checkpoint revision: `43046b85ec22d584a13f8098c2ed39c889e129c2`.
+
+A separate runner, [`36336466112`](https://github.com/artur-fedosiuk/btc-prediction-timesfm/actions/runs/36336466112), recovered this state from Git, reconfirmed both hashes and listed the pending T+1/T+4/T+8/T+12/T+24 targets. This proves persistence across runner filesystems. Verified live horizons: **0**.
+
+**T+24 LIVE VERIFICATION: PENDING** — the exact target is `2026-09-28T17:00:00Z`. T+1 becomes eligible at `2026-09-27T18:00:00Z`; no result is anticipated or simulated.
 
 ## L. Remaining risks and work
 
-1. Confirm zero-cost Actions availability, push the reviewed implementation branch, and run `provider_probe`. Record the actual CI URL and result before provider adoption.
-2. Run the quality gate and one real `generate` operation in Actions, inspect its stored manifest/input grid/hashes, then independently verify matured targets. If provider access fails, record PROVIDER_UNAVAILABLE and evaluate a same-quote free alternative; do not bypass restrictions.
-3. Verify remote persistence and scheduled operation. Branch-local files and tests do not prove the remote collector has been repaired. Existing remote workflow behavior remains unchanged until publication.
+1. GitHub schedules run only from the default branch. `master` remains unchanged by design, so autonomous scheduling cannot start until the user chooses either a minimal reviewed dispatcher on `master` or a temporary default-branch change. Manual branch runs work now.
+2. Run an independent verification after each target matures. If provider access fails, record PROVIDER_UNAVAILABLE and evaluate a same-quote free alternative; do not bypass restrictions.
+3. Confirm scheduled operation only after the default-branch decision. The remote ledger, export and backend report already persist on the experiment branch.
 4. Historical endpoints may revise candles; the stored retrieval snapshot is the evidence used. Kraken's rolling window can prevent recovery after prolonged outages. Divergent targets are retained as excluded records rather than silently replaced.
 5. The 30-observation suppression rule for ratios is an operational display floor, not sufficient statistical validation. P5–P8 model comparisons, ensemble work, calibration and strategy optimization remain deferred.
 6. Real execution evidence is intentionally absent. The paper engine is not a broker simulator; close-only realized equity is not a full mark-to-market risk curve. Unknown TP/SL execution timing is allowed only in explicitly hypothetical mode.
@@ -113,4 +118,4 @@ New forward predictions: **0**. Verified live horizons: **0**. Pending live pred
 
 ## M. Readiness for P5
 
-**NOT READY FOR P5** — local correctness and model-load evidence are available, but required CI provider availability, CI persistence and a first immutable live forward prediction remain unverified. Finish those acceptance steps without spending money; do not begin P5 automatically.
+**NOT READY FOR P5** — CI execution, provider availability, checkpoint loading, immutable remote persistence and one live forward prediction are verified. Automatic future-target verification and the full H1/H4/H8/H12/H24 forward record are still pending. Do not begin P5 automatically.
