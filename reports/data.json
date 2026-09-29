@@ -1291,6 +1291,251 @@
           "target_timestamp": "2026-09-28T12:00:00+00:00",
           "verification_id": "498621a6673ba2a9e202edfc00ca77388d1f7df4c1dd86f09cacac036d3b3046",
           "verified_at": "2026-09-28T12:50:43.077145+00:00"
+        },
+        {
+          "cross_source_mean": "83559.975",
+          "cross_source_median": "83559.975",
+          "exact_price": "83560.35",
+          "horizon": 20,
+          "prediction_id": "7330369586d2160892a53c5610c556604f358d9f3a6e2a53d7d7ddaa0a6b2c9f",
+          "provider": "coinbase",
+          "schema_version": 1,
+          "source_spread_pct": "0.0008975589090350972460199994076",
+          "source_timestamp": "2026-09-28T13:00:00+00:00",
+          "sources": [
+            {
+              "available_at": "2026-09-29T07:42:49.558540+00:00",
+              "close": "83560.35",
+              "close_time": "2026-09-28T13:00:00+00:00",
+              "high": "83615.98",
+              "low": "82979.16",
+              "open": "83058.92",
+              "open_time": "2026-09-28T12:00:00+00:00",
+              "provider": "coinbase",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-09-29T07:42:49.558540+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "coinbase",
+              "volume": "282.12101226"
+            },
+            {
+              "available_at": "2026-09-29T07:42:49.695592+00:00",
+              "close": "83559.6",
+              "close_time": "2026-09-28T13:00:00+00:00",
+              "high": "83609.7",
+              "low": "82990.0",
+              "open": "83062.2",
+              "open_time": "2026-09-28T12:00:00+00:00",
+              "provider": "kraken",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-09-29T07:42:49.695592+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "kraken",
+              "volume": "156.89294713"
+            }
+          ],
+          "status": "VERIFIED",
+          "target_timestamp": "2026-09-28T13:00:00+00:00",
+          "verification_id": "c35ceb77418230fe19fbd551f4c5075306758f4cc49dd71f67a612c08b194a41",
+          "verified_at": "2026-09-29T07:42:49.695689+00:00"
+        },
+        {
+          "cross_source_mean": "83626.75",
+          "cross_source_median": "83626.75",
+          "exact_price": "83629.9",
+          "horizon": 21,
+          "prediction_id": "7330369586d2160892a53c5610c556604f358d9f3a6e2a53d7d7ddaa0a6b2c9f",
+          "provider": "coinbase",
+          "schema_version": 1,
+          "source_spread_pct": "0.007533474635807322417767042244",
+          "source_timestamp": "2026-09-28T14:00:00+00:00",
+          "sources": [
+            {
+              "available_at": "2026-09-29T07:42:49.558540+00:00",
+              "close": "83629.9",
+              "close_time": "2026-09-28T14:00:00+00:00",
+              "high": "83804.76",
+              "low": "83279.29",
+              "open": "83560.35",
+              "open_time": "2026-09-28T13:00:00+00:00",
+              "provider": "coinbase",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-09-29T07:42:49.558540+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "coinbase",
+              "volume": "327.03041544"
+            },
+            {
+              "available_at": "2026-09-29T07:42:49.695592+00:00",
+              "close": "83623.6",
+              "close_time": "2026-09-28T14:00:00+00:00",
+              "high": "83795.5",
+              "low": "83281.6",
+              "open": "83559.9",
+              "open_time": "2026-09-28T13:00:00+00:00",
+              "provider": "kraken",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-09-29T07:42:49.695592+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "kraken",
+              "volume": "127.56865524"
+            }
+          ],
+          "status": "VERIFIED",
+          "target_timestamp": "2026-09-28T14:00:00+00:00",
+          "verification_id": "f718d8f311918cafc5733e392f9feed4aca7524129fd649d3d6ab028187d617a",
+          "verified_at": "2026-09-29T07:42:49.713290+00:00"
+        },
+        {
+          "cross_source_mean": "82999.19",
+          "cross_source_median": "82999.19",
+          "exact_price": "82999.78",
+          "horizon": 22,
+          "prediction_id": "7330369586d2160892a53c5610c556604f358d9f3a6e2a53d7d7ddaa0a6b2c9f",
+          "provider": "coinbase",
+          "schema_version": 1,
+          "source_spread_pct": "0.001421700621415702972522984863",
+          "source_timestamp": "2026-09-28T15:00:00+00:00",
+          "sources": [
+            {
+              "available_at": "2026-09-29T07:42:49.558540+00:00",
+              "close": "82999.78",
+              "close_time": "2026-09-28T15:00:00+00:00",
+              "high": "83629.9",
+              "low": "82510.37",
+              "open": "83629.9",
+              "open_time": "2026-09-28T14:00:00+00:00",
+              "provider": "coinbase",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-09-29T07:42:49.558540+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "coinbase",
+              "volume": "525.85522941"
+            },
+            {
+              "available_at": "2026-09-29T07:42:49.695592+00:00",
+              "close": "82998.6",
+              "close_time": "2026-09-28T15:00:00+00:00",
+              "high": "83625.3",
+              "low": "82568.9",
+              "open": "83623.6",
+              "open_time": "2026-09-28T14:00:00+00:00",
+              "provider": "kraken",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-09-29T07:42:49.695592+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "kraken",
+              "volume": "230.33793959"
+            }
+          ],
+          "status": "VERIFIED",
+          "target_timestamp": "2026-09-28T15:00:00+00:00",
+          "verification_id": "8a8bc7d60beb9ac32c1c71454a8631c8b6d54c6966ec880f6d41e8e2b9bb199a",
+          "verified_at": "2026-09-29T07:42:49.737262+00:00"
+        },
+        {
+          "cross_source_mean": "83341.935",
+          "cross_source_median": "83341.935",
+          "exact_price": "83343.57",
+          "horizon": 23,
+          "prediction_id": "7330369586d2160892a53c5610c556604f358d9f3a6e2a53d7d7ddaa0a6b2c9f",
+          "provider": "coinbase",
+          "schema_version": 1,
+          "source_spread_pct": "0.003923595006523426651900990780",
+          "source_timestamp": "2026-09-28T16:00:00+00:00",
+          "sources": [
+            {
+              "available_at": "2026-09-29T07:42:49.558540+00:00",
+              "close": "83343.57",
+              "close_time": "2026-09-28T16:00:00+00:00",
+              "high": "83375.83",
+              "low": "82771.71",
+              "open": "82999.79",
+              "open_time": "2026-09-28T15:00:00+00:00",
+              "provider": "coinbase",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-09-29T07:42:49.558540+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "coinbase",
+              "volume": "424.21532521"
+            },
+            {
+              "available_at": "2026-09-29T07:42:49.695592+00:00",
+              "close": "83340.3",
+              "close_time": "2026-09-28T16:00:00+00:00",
+              "high": "83379.1",
+              "low": "82776.2",
+              "open": "82998.6",
+              "open_time": "2026-09-28T15:00:00+00:00",
+              "provider": "kraken",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-09-29T07:42:49.695592+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "kraken",
+              "volume": "151.69019695"
+            }
+          ],
+          "status": "VERIFIED",
+          "target_timestamp": "2026-09-28T16:00:00+00:00",
+          "verification_id": "79e71932bb29842de6a6c62862ed8f7490f6d72c23a352d2f1a7e3ab1e23d59c",
+          "verified_at": "2026-09-29T07:42:49.761450+00:00"
+        },
+        {
+          "cross_source_mean": "83699.16",
+          "cross_source_median": "83699.16",
+          "exact_price": "83698.22",
+          "horizon": 24,
+          "prediction_id": "7330369586d2160892a53c5610c556604f358d9f3a6e2a53d7d7ddaa0a6b2c9f",
+          "provider": "coinbase",
+          "schema_version": 1,
+          "source_spread_pct": "0.002246139626729826201362116418",
+          "source_timestamp": "2026-09-28T17:00:00+00:00",
+          "sources": [
+            {
+              "available_at": "2026-09-29T07:42:49.558540+00:00",
+              "close": "83698.22",
+              "close_time": "2026-09-28T17:00:00+00:00",
+              "high": "84171.35",
+              "low": "83224.21",
+              "open": "83343.56",
+              "open_time": "2026-09-28T16:00:00+00:00",
+              "provider": "coinbase",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-09-29T07:42:49.558540+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "coinbase",
+              "volume": "504.20962566"
+            },
+            {
+              "available_at": "2026-09-29T07:42:49.695592+00:00",
+              "close": "83700.1",
+              "close_time": "2026-09-28T17:00:00+00:00",
+              "high": "84164.2",
+              "low": "83225.8",
+              "open": "83339.8",
+              "open_time": "2026-09-28T16:00:00+00:00",
+              "provider": "kraken",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-09-29T07:42:49.695592+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "kraken",
+              "volume": "188.63924792"
+            }
+          ],
+          "status": "VERIFIED",
+          "target_timestamp": "2026-09-28T17:00:00+00:00",
+          "verification_id": "3b391498bf223df9eb1f1363e9b44a428c38bd1878fd3b1d03eb5abe42651552",
+          "verified_at": "2026-09-29T07:42:49.763693+00:00"
         }
       ],
       "errors": [
@@ -1445,10 +1690,55 @@
           "actual": "83058.92",
           "absolute_error": "1496.189375",
           "absolute_percentage_error": "1.801359053308181710043906181"
+        },
+        {
+          "horizon": 20,
+          "target_timestamp": "2026-09-28T13:00:00+00:00",
+          "forecast": "84562.890625",
+          "actual": "83560.35",
+          "absolute_error": "1002.540625",
+          "absolute_percentage_error": "1.199780308483628898155644394"
+        },
+        {
+          "horizon": 21,
+          "target_timestamp": "2026-09-28T14:00:00+00:00",
+          "forecast": "84552.34375",
+          "actual": "83629.9",
+          "absolute_error": "922.44375",
+          "absolute_percentage_error": "1.103007118267509586882203614"
+        },
+        {
+          "horizon": 22,
+          "target_timestamp": "2026-09-28T15:00:00+00:00",
+          "forecast": "84553.953125",
+          "actual": "82999.78",
+          "absolute_error": "1554.173125",
+          "absolute_percentage_error": "1.872502704224035292623667195"
+        },
+        {
+          "horizon": 23,
+          "target_timestamp": "2026-09-28T16:00:00+00:00",
+          "forecast": "84560.890625",
+          "actual": "83343.57",
+          "absolute_error": "1217.320625",
+          "absolute_percentage_error": "1.460605329241355991829963607"
+        },
+        {
+          "horizon": 24,
+          "target_timestamp": "2026-09-28T17:00:00+00:00",
+          "forecast": "84571.9296875",
+          "actual": "83698.22",
+          "absolute_error": "873.7096875",
+          "absolute_percentage_error": "1.043880846569974845343186510"
         }
       ],
-      "window_statistics": null,
-      "verification_status": "PENDING VERIFICATION"
+      "window_statistics": {
+        "mean_hourly_close_1_24": "83662.17458333333333333333333",
+        "twap_definition": "Equal-weight mean of 24 hourly closes; not continuous-time TWAP.",
+        "high_24": "84992",
+        "low_24": "82510.37"
+      },
+      "verification_status": "VERIFIED"
     }
   ],
   "health": {
@@ -1462,10 +1752,10 @@
         "timestamp": "2026-09-27T17:18:09.084213+00:00"
       }
     ],
-    "latest_valid_observation": "2026-09-28T12:00:00+00:00",
+    "latest_valid_observation": "2026-09-28T17:00:00+00:00",
     "latest_prediction": "2026-09-27T17:18:13.217495+00:00",
-    "latest_verification": "2026-09-28T12:50:43.077145+00:00",
-    "pending_verifications": 5,
+    "latest_verification": "2026-09-29T07:42:49.763693+00:00",
+    "pending_verifications": 0,
     "invalid_predictions": 0,
     "timesfm_status": "GENERATED",
     "storage_status": "INTEGRITY_CHECK_PASSED",
