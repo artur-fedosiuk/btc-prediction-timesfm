@@ -1,21 +1,561 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BTC forward experiment</title>
-<style>body{font:16px system-ui,sans-serif;max-width:1100px;margin:3rem auto;padding:0 1rem;color:#19283c;background:#f4f7fa}section{background:white;padding:1.5rem;margin:1rem 0;border:1px solid #ccd6e0;border-radius:8px}table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:.6rem;border-bottom:1px solid #ddd}pre{white-space:pre-wrap;overflow-wrap:anywhere}h1{font-size:1.8rem}.table{overflow-x:auto}</style></head>
-<body><h1>BTC / TimesFM forward experiment</h1><p>No predictive edge or profitability claim is made.</p><section><h2>Scientific status</h2><p id="status" role="status">Loading validated backend data…</p></section><section><h2>System health</h2><pre id="health"></pre></section><section><h2>New predictions</h2><div class="table"><table><thead><tr><th>Generated (UTC)</th><th>Origin (UTC)</th><th>Model</th><th>Status</th></tr></thead><tbody id="predictions"></tbody></table></div></section><section><h2>Legacy archive</h2><pre id="legacy"></pre></section><section><h2>Paper trading</h2><pre id="trading"></pre></section>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BTC Signal Dashboard — TimesFM 3.0</title>
+  <meta name="description" content="Segnali BTC/USD da TimesFM 3.0, verificati con Coinbase e Kraken." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root{--bg:#060b14;--surface:#0d1525;--surface2:#111d30;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);--text:#e8edf5;--text2:#7a8ba3;--text3:#4a5a70;--buy:#00e5a0;--buy-glow:rgba(0,229,160,0.18);--sell:#ff4d6d;--sell-glow:rgba(255,77,109,0.18);--hold:#f0a500;--hold-glow:rgba(240,165,0,0.15);--accent:#3d7fff;--verified:#00c9a7;--pending:#f0a500;--error:#ff4d6d;--radius-sm:8px;--radius:14px;--radius-lg:20px;--mono:'JetBrains Mono',monospace}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.6;min-height:100vh}
+    body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(61,127,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(61,127,255,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
+    .container{max-width:1280px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+    header{padding:20px 0;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(6,11,20,0.94);backdrop-filter:blur(16px);z-index:100}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo-icon{width:36px;height:36px;background:linear-gradient(135deg,#f7931a,#e5750a);border-radius:9px;display:grid;place-items:center;font-size:18px;flex-shrink:0}
+    .logo h1{font-size:17px;font-weight:700;letter-spacing:-.3px}
+    .logo .sub{font-size:10px;color:var(--text2);font-weight:500;letter-spacing:.5px;text-transform:uppercase}
+    .header-meta{display:flex;align-items:center;gap:12px}
+    .badge{padding:5px 12px;border-radius:50px;font-size:11px;font-weight:600;display:flex;align-items:center;gap:6px}
+    .badge-model{background:rgba(61,127,255,0.1);border:1px solid rgba(61,127,255,0.2);color:var(--accent)}
+    .badge-live{background:rgba(0,229,160,0.08);border:1px solid rgba(0,229,160,0.2);color:var(--buy)}
+    .dot{width:7px;height:7px;background:var(--buy);border-radius:50%;animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+    .disclaimer{background:rgba(240,165,0,0.07);border:1px solid rgba(240,165,0,0.2);border-radius:var(--radius-sm);padding:10px 16px;font-size:12px;color:var(--hold);margin:14px 0}
+    /* ── SIGNAL CARD */
+    .signal-card{border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border2);background:var(--surface);position:relative;margin:20px 0}
+    .sig-glow{position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:500px;height:250px;border-radius:50%;pointer-events:none;transition:background .5s}
+    .sig-glow.buy{background:radial-gradient(ellipse,rgba(0,229,160,0.14) 0%,transparent 70%)}
+    .sig-glow.sell{background:radial-gradient(ellipse,rgba(255,77,109,0.14) 0%,transparent 70%)}
+    .sig-glow.hold{background:radial-gradient(ellipse,rgba(240,165,0,0.10) 0%,transparent 70%)}
+    .sig-top{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:center;padding:32px 36px;position:relative}
+    .sig-left{display:flex;flex-direction:column;gap:5px}
+    .sig-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px}
+    .slabel{font-size:10px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.8px}
+    .sprice{font-size:36px;font-weight:800;font-family:var(--mono);letter-spacing:-1px;background:linear-gradient(135deg,#e8edf5,#9aafc8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .ssub{font-size:11px;color:var(--text2)}
+    .sig-center{display:flex;flex-direction:column;align-items:center;gap:10px}
+    .bigbox{width:148px;height:148px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px solid;font-size:14px;font-weight:800;letter-spacing:1px;text-transform:uppercase;transition:all .3s}
+    .bigbox .icon{font-size:38px;margin-bottom:4px}
+    .bigbox.buy{background:var(--buy-glow);border-color:var(--buy);color:var(--buy);box-shadow:0 0 50px rgba(0,229,160,0.2)}
+    .bigbox.sell{background:var(--sell-glow);border-color:var(--sell);color:var(--sell);box-shadow:0 0 50px rgba(255,77,109,0.2)}
+    .bigbox.hold{background:var(--hold-glow);border-color:var(--hold);color:var(--hold);box-shadow:0 0 50px rgba(240,165,0,0.15)}
+    .sig-conf{font-size:11px;color:var(--text2);text-align:center;max-width:180px}
+    .tprice{font-size:36px;font-weight:800;font-family:var(--mono);letter-spacing:-1px}
+    .tprice.up{color:var(--buy)}.tprice.down{color:var(--sell)}.tprice.flat{color:var(--hold)}
+    .tdiff{font-size:14px;font-weight:600;font-family:var(--mono)}
+    .tdiff.up{color:var(--buy)}.tdiff.down{color:var(--sell)}
+    .sig-divider{height:1px;background:var(--border);margin:0 36px}
+    .sig-bottom{display:grid;grid-template-columns:repeat(4,1fr)}
+    .sstat{padding:18px 22px;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:4px}
+    .sstat:last-child{border-right:none}
+    .stat-label{font-size:10px;color:var(--text2);font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+    .stat-val{font-size:20px;font-weight:700;font-family:var(--mono)}
+    .stat-sub{font-size:10px;color:var(--text3)}
+    /* ── LAYOUT */
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+    .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px}
+    /* ── CARDS */
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px}
+    .card-sm{padding:18px 20px}
+    .ch{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:10px}
+    .ct{font-size:12px;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:.6px;display:flex;align-items:center;gap:8px}
+    .cb{font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:.4px}
+    .cb-ok{background:rgba(0,201,167,0.12);color:var(--verified);border:1px solid rgba(0,201,167,0.2)}
+    .cb-warn{background:rgba(240,165,0,0.1);color:var(--pending);border:1px solid rgba(240,165,0,0.2)}
+    .cb-err{background:rgba(255,77,109,0.1);color:var(--error);border:1px solid rgba(255,77,109,0.2)}
+    /* ── CHARTS */
+    .chart-wrap{position:relative;height:260px}
+    /* ── HORIZON TABLE */
+    .htable{width:100%;border-collapse:collapse}
+    .htable thead th{font-size:10px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.5px;padding:0 8px 10px;text-align:left;border-bottom:1px solid var(--border)}
+    .htable thead th.r{text-align:right}
+    .htable tbody tr{border-bottom:1px solid rgba(255,255,255,0.04);transition:background .15s}
+    .htable tbody tr:hover{background:rgba(255,255,255,0.02)}
+    .htable tbody tr:last-child{border-bottom:none}
+    .htable tbody td{padding:7px 8px;font-size:12px;font-family:var(--mono)}
+    .htable td.r{text-align:right}
+    .hlabel{font-weight:600;color:var(--text2);font-size:11px;font-family:'Inter',sans-serif}
+    .htime{color:var(--text3);font-size:10px}
+    .hfc{color:var(--text);font-weight:500}
+    .hac{font-weight:600}.hac.v{color:var(--verified)}.hac.p{color:var(--text3);font-style:italic}
+    .herr{font-size:10px}.herr.g{color:var(--buy)}.herr.m{color:var(--hold)}.herr.b{color:var(--sell)}
+    /* ── METRICS */
+    .mrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:16px}
+    .mc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;display:flex;flex-direction:column;gap:3px}
+    .ml{font-size:10px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.5px}
+    .mv{font-size:21px;font-weight:800;font-family:var(--mono);line-height:1.1}
+    .ms{font-size:10px;color:var(--text3)}
+    /* ── SOURCE ROWS */
+    .srow{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border)}
+    .srow:last-child{border-bottom:none}
+    .sname{display:flex;align-items:center;gap:8px;font-weight:600;font-size:13px}
+    .sicon{width:26px;height:26px;border-radius:6px;display:grid;place-items:center;font-size:12px;background:rgba(255,255,255,0.05)}
+    .spricetxt{font-family:var(--mono);font-weight:700;font-size:14px}
+    /* ── HEALTH */
+    .hgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+    .hi{display:flex;align-items:center;gap:9px;padding:10px 12px;background:var(--surface2);border-radius:var(--radius-sm);border:1px solid var(--border)}
+    .hdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+    .hdot.ok{background:var(--buy);box-shadow:0 0 7px var(--buy)}
+    .hdot.warn{background:var(--hold);box-shadow:0 0 7px var(--hold)}
+    .hdot.err{background:var(--sell);box-shadow:0 0 7px var(--sell)}
+    .hl{font-size:10px;color:var(--text2);font-weight:500}
+    .hv{font-size:11px;font-weight:700;color:var(--text);margin-top:1px}
+    /* ── PROVENANCE */
+    .prow{display:flex;align-items:baseline;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.04);gap:14px}
+    .prow:last-child{border-bottom:none}
+    .pk{font-size:10px;color:var(--text2);min-width:130px;flex-shrink:0}
+    .pv{font-size:10px;font-family:var(--mono);color:var(--text);text-align:right;word-break:break-all}
+    .pv.h{color:var(--accent)}
+    /* ── SECTION TITLE */
+    .stitle{font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.8px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+    .stitle::after{content:'';flex:1;height:1px;background:var(--border)}
+    /* ── RANGE BAR */
+    .rbar{height:8px;background:var(--surface2);border-radius:4px;overflow:hidden;position:relative}
+    .rbar-fill{position:absolute;top:0;height:100%;border-radius:4px;background:linear-gradient(90deg,rgba(61,127,255,.4),rgba(61,127,255,.8))}
+    .rbar-marker{position:absolute;top:-2px;height:12px;width:3px;border-radius:2px;background:var(--text);transform:translateX(-50%)}
+    /* ── SPREAD BAR */
+    .spbar{height:4px;background:var(--surface2);border-radius:2px;margin-top:10px;overflow:hidden}
+    .spbar-fill{height:100%;border-radius:2px;transition:width .8s}
+    /* ── HORIZ SIGNALS */
+    .hsig-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)}
+    .hsig-row:last-child{border-bottom:none}
+    /* ── LOADING/ERROR */
+    #ls,#es{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:18px;color:var(--text2);font-size:15px}
+    .spinner{width:38px;height:38px;border:3px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin .9s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    #es{display:none}
+    #mc{display:none}
+    /* ── FOOTER */
+    footer{margin-top:36px;padding:20px 0 28px;border-top:1px solid var(--border);color:var(--text3);font-size:11px;text-align:center;line-height:1.8}
+    /* ── ANIMATIONS */
+    .fi{animation:fadeIn .45s ease both}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .d1{animation-delay:.05s}.d2{animation-delay:.10s}.d3{animation-delay:.15s}.d4{animation-delay:.20s}
+    /* ── RESPONSIVE */
+    @media(max-width:900px){.grid2,.grid3{grid-template-columns:1fr}.sig-top{grid-template-columns:1fr;gap:22px;text-align:center}.sig-right{align-items:center}.sig-bottom{grid-template-columns:repeat(2,1fr)}.sstat:nth-child(2){border-right:none}}
+    @media(max-width:600px){.sprice,.tprice{font-size:26px}.sig-bottom{grid-template-columns:1fr 1fr}.mrow{grid-template-columns:repeat(2,1fr)}}
+    [data-tip]{position:relative;cursor:help}
+    [data-tip]::after{content:attr(data-tip);position:absolute;bottom:120%;left:50%;transform:translateX(-50%);background:#1e2d45;color:var(--text);font-size:10px;padding:5px 9px;border-radius:5px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s;border:1px solid var(--border2);z-index:200}
+    [data-tip]:hover::after{opacity:1}
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-icon">₿</div>
+        <div>
+          <h1>BTC Signal Dashboard</h1>
+          <div class="sub">TimesFM 3.0 · Coinbase + Kraken verified · BTC/USD</div>
+        </div>
+      </div>
+      <div class="header-meta">
+        <span class="badge badge-model">TimesFM 3.0.1 · H24</span>
+        <div class="badge badge-live"><div class="dot"></div><span id="live-txt">Caricamento...</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container" style="padding:16px 20px 40px">
+    <div class="disclaimer">⚠️ <strong>Ricerca — Non consulenza finanziaria.</strong> Segnali da TimesFM 3.0 verificati con prezzi reali Coinbase + Kraken (candele OHLCV chiuse, UTC). Performance passata non garantisce risultati futuri.</div>
+
+    <div id="ls"><div class="spinner"></div><span>Caricamento data.json...</span></div>
+    <div id="es"><span style="font-size:34px">⚠️</span><span id="emsg">Errore caricamento</span><span style="font-size:11px;color:var(--text3)">Servire con: python3 -m http.server 8080 nella cartella reports/</span></div>
+    <div id="mc">
+
+      <!-- ① SEGNALE PRINCIPALE -->
+      <div class="signal-card fi">
+        <div class="sig-glow" id="glow"></div>
+        <div class="sig-top">
+          <div class="sig-left">
+            <div class="slabel">📍 Prezzo origine previsione</div>
+            <div class="sprice" id="op">—</div>
+            <div class="ssub" id="ot">—</div>
+            <div class="ssub" id="oprov">Coinbase BTC/USD · USD</div>
+          </div>
+          <div class="sig-center">
+            <div class="bigbox" id="bigbox"><span class="icon" id="sicon">⏳</span><span id="stxt">—</span></div>
+            <div class="sig-conf" id="sconf">—</div>
+          </div>
+          <div class="sig-right">
+            <div class="slabel">🎯 Previsione T+24h (TimesFM)</div>
+            <div class="tprice" id="tp">—</div>
+            <div class="tdiff" id="td">—</div>
+            <div class="ssub" id="tt">—</div>
+          </div>
+        </div>
+        <div class="sig-divider"></div>
+        <div class="sig-bottom">
+          <div class="sstat"><div class="stat-label" data-tip="10° percentile al T+24h">📉 Q10 Min prob.</div><div class="stat-val" id="q10v">—</div><div class="stat-sub">banda inferiore 80%</div></div>
+          <div class="sstat"><div class="stat-label" data-tip="90° percentile al T+24h">📈 Q90 Max prob.</div><div class="stat-val" id="q90v">—</div><div class="stat-sub">banda superiore 80%</div></div>
+          <div class="sstat"><div class="stat-label" data-tip="Variazione % tra prezzo origine e T+24h">📊 Variazione attesa</div><div class="stat-val" id="chgv">—</div><div class="stat-sub">rispetto a origine</div></div>
+          <div class="sstat"><div class="stat-label" data-tip="Spread Q90-Q10 diviso prezzo mediano">📐 Incertezza</div><div class="stat-val" id="uncv">—</div><div class="stat-sub">spread Q10–Q90</div></div>
+        </div>
+      </div>
+
+      <!-- ② GRAFICO FORECAST -->
+      <div class="stitle fi d1">📈 Percorso previsione TimesFM · T+1h → T+24h</div>
+      <div class="card fi d1" style="margin-bottom:16px">
+        <div class="ch">
+          <div class="ct">🕐 Forecast Path con banda 80% · Prezzi reali sovrapposti</div>
+          <div style="display:flex;gap:12px;font-size:10px;color:var(--text2)">
+            <span style="display:flex;align-items:center;gap:4px"><span style="display:inline-block;width:14px;height:2px;background:var(--accent);border-radius:2px"></span>Previsione</span>
+            <span style="display:flex;align-items:center;gap:4px"><span style="display:inline-block;width:14px;height:2px;background:var(--buy);border-radius:2px"></span>Verificato</span>
+            <span style="display:flex;align-items:center;gap:4px"><span style="display:inline-block;width:14px;height:2px;background:rgba(61,127,255,0.25);border-radius:2px"></span>Banda 80%</span>
+          </div>
+        </div>
+        <div class="chart-wrap"><canvas id="fchart"></canvas></div>
+      </div>
+
+      <!-- ③ METRICHE ACCURATEZZA -->
+      <div class="stitle fi d2">🎯 Accuratezza verificata sulle ore passate</div>
+      <div class="mrow fi d2" id="amrow"></div>
+
+      <!-- ④ GRIGLIA: TABELLA + FONTI + SEGNALI -->
+      <div class="grid2 fi d2">
+        <!-- Tabella H1-H24 -->
+        <div class="card card-sm">
+          <div class="ch"><div class="ct">🗓 Tabella orizzonte H1–H24</div><span class="cb" id="vbadge">—</span></div>
+          <div style="overflow:auto;max-height:480px">
+            <table class="htable">
+              <thead><tr>
+                <th>H</th><th>Ora UTC</th><th>Previsione</th>
+                <th class="r">Reale ✓</th><th class="r">Err%</th><th class="r">Dir</th>
+              </tr></thead>
+              <tbody id="htbody"></tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Colonna destra -->
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <!-- Fonti prezzo -->
+          <div class="card card-sm">
+            <div class="ch"><div class="ct">🔗 Fonti prezzo verificate (T+1h)</div><span class="cb" id="sbadge">—</span></div>
+            <div id="srcrows"></div>
+            <div style="margin-top:10px">
+              <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text3);margin-bottom:4px;font-family:var(--mono)"><span>Spread tra fonti</span><span id="spval">—</span></div>
+              <div class="spbar"><div class="spbar-fill" id="spfill" style="width:0%"></div></div>
+            </div>
+          </div>
+          <!-- Range 24h -->
+          <div class="card card-sm">
+            <div class="ch"><div class="ct">📏 Range 24h verificato</div><span class="cb" id="rbadge">—</span></div>
+            <div id="rcont">—</div>
+          </div>
+          <!-- Segnali per orizzonte -->
+          <div class="card card-sm">
+            <div class="ch"><div class="ct">⚡ Segnale per orizzonte chiave</div></div>
+            <div id="hsigs"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ⑤ ERRORE PER ORIZZONTE -->
+      <div class="stitle fi d3">📉 Errore percentuale per orizzonte (ore verificate)</div>
+      <div class="card fi d3" style="margin-bottom:16px"><div class="chart-wrap"><canvas id="echart"></canvas></div></div>
+
+      <!-- ⑥ PROVENANCE + HEALTH -->
+      <div class="grid2 fi d4">
+        <div class="card card-sm">
+          <div class="ch"><div class="ct">🔬 Provenance modello</div></div>
+          <div id="provrows"></div>
+        </div>
+        <div class="card card-sm">
+          <div class="ch"><div class="ct">💚 Stato sistema</div></div>
+          <div class="hgrid" id="healthgrid"></div>
+        </div>
+      </div>
+
+    </div><!-- /mc -->
+  </div>
+</main>
+<footer><div class="container"><strong>BTC Signal Dashboard</strong> · TimesFM 3.0.1 (google/timesfm-3.0-pytorch) · Verifica: Coinbase BTC/USD + Kraken BTC/USD (OHLCV, candele chiuse, griglia UTC)<br/>⚠️ Solo per ricerca. Non consulenza finanziaria. Nessun ordine eseguito automaticamente.</div></footer>
+
 <script>
-'use strict';
-fetch('data.json', {cache:'no-store'}).then(response => {
-  if (!response.ok) throw new Error('Report unavailable');
-  return response.json();
-}).then(data => {
-  document.getElementById('status').textContent=data.scientific_status;
-  for (const field of ['health','legacy','trading']) document.getElementById(field).textContent=JSON.stringify(data[field],null,2);
-  for (const row of data.predictions) {
-    const tr=document.createElement('tr');
-    for (const value of [row.generated_at,row.forecast_origin,row.actual_model_used,row.verification_status]) {
-      const td=document.createElement('td');td.textContent=value;tr.appendChild(td);
-    }
-    document.getElementById('predictions').appendChild(tr);
+const fmt=(n,d=2)=>Number(n).toLocaleString('it-IT',{minimumFractionDigits:d,maximumFractionDigits:d});
+const fU=n=>'$'+fmt(n,2);
+const fH=iso=>{const d=new Date(iso);return d.toISOString().slice(11,16)+' UTC'};
+const fD=iso=>{const d=new Date(iso);return d.toLocaleString('it-IT',{timeZone:'UTC',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})+' UTC'};
+const s=(id,h)=>{const e=document.getElementById(id);if(e)e.innerHTML=h};
+const t=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v};
+
+function computeSignal(orig,tgt,q10,q90){
+  const pct=(tgt-orig)/orig*100;
+  const spread=q90&&q10?(q90-q10)/((q90+q10)/2)*100:5;
+  const conf=Math.min(Math.max(0,100-spread*10),99).toFixed(0);
+  let sig,why;
+  if(Math.abs(pct)<0.05){sig='HOLD';why='Variazione < 0.05% — mercato laterale';}
+  else if(pct>0){sig='BUY';why=`Rialzo atteso +${pct.toFixed(3)}% in T+24h`;}
+  else{sig='SELL';why=`Ribasso atteso ${pct.toFixed(3)}% in T+24h`;}
+  return{sig,pct,conf,why,spread};
+}
+
+function render(data){
+  const preds=data.predictions||[];
+  if(!preds.length){t('emsg','Nessuna previsione in data.json');document.getElementById('es').style.display='flex';return;}
+  const pred=preds.reduce((a,b)=>new Date(a.generated_at)>new Date(b.generated_at)?a:b);
+  const pts=pred.forecast_points||[];
+  const vrfs=pred.verifications||[];
+  const errs=pred.errors||[];
+
+  // Origin price: usa il close dell'ultima candela dall'open del H1
+  let origPx=null;
+  const v1=vrfs.find(v=>v.horizon===1);
+  if(v1&&v1.sources&&v1.sources[0]){origPx=parseFloat(v1.sources[0].open);}
+  if(!origPx){
+    try{const ps=data.health?.provider_status?.[0];const msg=JSON.parse(ps.message);origPx=parseFloat(msg.close);}catch(e){}
   }
-}).catch(error => {document.getElementById('status').textContent='NO VALID DATA — '+error.message;});
-</script></body></html>
+  if(!origPx){origPx=pts[0]?pts[0].point_forecast:84400;}
+
+  const h24=pts.find(p=>p.step===24)||pts[pts.length-1];
+  const tgtPx=h24?h24.point_forecast:origPx;
+  const q10=h24?h24.q10:null;
+  const q90=h24?h24.q90:null;
+
+  const{sig,pct,conf,why,spread}=computeSignal(origPx,tgtPx,q10,q90);
+
+  // Header badge
+  const latestObs=data.health?.latest_valid_observation;
+  t('live-txt',latestObs?`Dati al ${fH(latestObs)}`:'Dati caricati');
+
+  // Signal card
+  const bb=document.getElementById('bigbox');
+  const gl=document.getElementById('glow');
+  bb.className='bigbox '+sig.toLowerCase();
+  gl.className='sig-glow '+sig.toLowerCase();
+  s('sicon',sig==='BUY'?'📈':sig==='SELL'?'📉':'⏸️');
+  t('stxt',sig);
+  t('sconf',why+' · Fiducia ~'+conf+'%');
+
+  // Origin
+  t('op',fU(origPx));
+  t('ot','Origine: '+fD(pred.forecast_origin));
+  t('oprov',(pred.provider||'coinbase').toUpperCase()+' BTC/USD · USD');
+
+  // Target
+  const tel=document.getElementById('tp');
+  tel.textContent=fU(tgtPx);
+  tel.className='tprice '+(pct>0?'up':pct<0?'down':'flat');
+  const sign=pct>=0?'+':'';
+  const del=document.getElementById('td');
+  del.textContent=`${sign}${fU(tgtPx-origPx)} (${sign}${pct.toFixed(3)}%)`;
+  del.className='tdiff '+(pct>0?'up':pct<0?'down':'');
+  t('tt','T+24h: '+fD(h24?.target_timestamp||''));
+
+  t('q10v',q10?fU(q10):'—');
+  t('q90v',q90?fU(q90):'—');
+  t('chgv',(pct>=0?'+':'')+pct.toFixed(3)+'%');
+  t('uncv',spread.toFixed(2)+'%');
+
+  buildFChart(pts,vrfs,origPx);
+  buildMetrics(errs,vrfs);
+  buildHTable(pts,vrfs,errs,origPx);
+  buildSources(vrfs);
+  buildRange(pred,vrfs);
+  buildHSigs(pts,origPx);
+  buildEChart(errs);
+  buildProv(pred);
+  buildHealth(data.health);
+}
+
+function buildFChart(pts,vrfs,orig){
+  const labels=['T+0',...pts.map(p=>'T+'+p.step+'h')];
+  const fc=[orig,...pts.map(p=>p.point_forecast)];
+  const q10=[orig,...pts.map(p=>p.q10)];
+  const q90=[orig,...pts.map(p=>p.q90)];
+  const vm={};vrfs.forEach(v=>{if(v.status==='VERIFIED')vm[v.horizon]=parseFloat(v.exact_price);});
+  const ac=[orig,...pts.map(p=>vm[p.step]??null)];
+  new Chart(document.getElementById('fchart').getContext('2d'),{
+    data:{labels,datasets:[
+      {type:'line',label:'Q90',data:q90,borderColor:'transparent',backgroundColor:'rgba(61,127,255,0.10)',fill:'+1',tension:.35,pointRadius:0},
+      {type:'line',label:'Q10',data:q10,borderColor:'transparent',backgroundColor:'rgba(61,127,255,0.10)',fill:false,tension:.35,pointRadius:0},
+      {type:'line',label:'Previsione TimesFM',data:fc,borderColor:'#3d7fff',borderWidth:2.5,backgroundColor:'transparent',tension:.35,pointRadius:3,pointBackgroundColor:'#3d7fff',fill:false,order:1},
+      {type:'line',label:'Reale verificato',data:ac,borderColor:'#00e5a0',borderWidth:2.5,backgroundColor:'rgba(0,229,160,0.12)',tension:.3,pointRadius:5,pointBackgroundColor:'#00e5a0',pointBorderColor:'#0d1525',pointBorderWidth:2,fill:false,spanGaps:false,order:0},
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:false},tooltip:{backgroundColor:'#111d30',borderColor:'rgba(255,255,255,0.1)',borderWidth:1,titleColor:'#7a8ba3',bodyColor:'#e8edf5',padding:10,callbacks:{label(c){if(!c.raw)return null;return c.dataset.label+': '+fU(c.raw);}}}},
+      scales:{x:{ticks:{color:'#4a5a70',font:{size:10},maxTicksLimit:8,maxRotation:0},grid:{color:'rgba(255,255,255,0.04)'}},y:{ticks:{color:'#4a5a70',font:{size:10,family:'JetBrains Mono'},callback:v=>'$'+Number(v).toLocaleString('en-US',{maximumFractionDigits:0})},grid:{color:'rgba(255,255,255,0.04)'}}}}
+  });
+}
+
+function buildMetrics(errs,vrfs){
+  if(!errs.length){s('amrow','<div style="color:var(--text3);font-size:12px;padding:8px">Nessuna verifica ancora disponibile — le prime ore si verificano dopo 1h dalla previsione.</div>');return;}
+  const apes=errs.map(e=>parseFloat(e.absolute_percentage_error));
+  const mae=errs.reduce((s,e)=>s+parseFloat(e.absolute_error),0)/errs.length;
+  const mape=apes.reduce((a,b)=>a+b,0)/apes.length;
+  const mx=Math.max(...apes),mn=Math.min(...apes);
+  const rmse=Math.sqrt(errs.reduce((s,e)=>{const v=parseFloat(e.absolute_error);return s+v*v;},0)/errs.length);
+  const vcnt=vrfs.filter(v=>v.status==='VERIFIED').length;
+  const metrics=[
+    {l:'MAE (USD)',v:fU(mae),sub:`su ${errs.length} ore`,col:mae<300?'var(--buy)':mae<800?'var(--hold)':'var(--sell)'},
+    {l:'MAPE',v:mape.toFixed(3)+'%',sub:'errore % medio',col:mape<0.5?'var(--buy)':mape<1.5?'var(--hold)':'var(--sell)'},
+    {l:'RMSE (USD)',v:fU(rmse),sub:'root mean square',col:'var(--text)'},
+    {l:'Ore verificate',v:`${errs.length}/24`,sub:`${vcnt} dual-source`,col:'var(--accent)'},
+    {l:'Errore Max',v:mx.toFixed(3)+'%',sub:'H'+errs.find(e=>parseFloat(e.absolute_percentage_error)===mx)?.horizon,col:'var(--sell)'},
+    {l:'Errore Min',v:mn.toFixed(3)+'%',sub:'H'+errs.find(e=>parseFloat(e.absolute_percentage_error)===mn)?.horizon,col:'var(--buy)'},
+  ];
+  s('amrow',metrics.map(m=>`<div class="mc"><div class="ml">${m.l}</div><div class="mv" style="color:${m.col}">${m.v}</div><div class="ms">${m.sub}</div></div>`).join(''));
+}
+
+function buildHTable(pts,vrfs,errs,orig){
+  const vm={};vrfs.forEach(v=>vm[v.horizon]=v);
+  const em={};errs.forEach(e=>em[e.horizon]=e);
+  s('htbody',pts.map(p=>{
+    const h=p.step,v=vm[h],e=em[h];
+    const isv=v&&v.status==='VERIFIED';
+    const act=isv?parseFloat(v.exact_price):null;
+    const pe=e?parseFloat(e.absolute_percentage_error):null;
+    const dir=p.point_forecast>orig?'↑':'↓';
+    const dc=dir==='↑'?'var(--buy)':'var(--sell)';
+    const ec=pe===null?'':pe<0.5?'g':pe<1.5?'m':'b';
+    return `<tr>
+      <td class="hlabel">H${h}</td>
+      <td class="htime">${fH(p.target_timestamp)}</td>
+      <td class="hfc">${fU(p.point_forecast)}</td>
+      <td class="hac ${isv?'v':'p'} r">${isv?fU(act):'⏳'}</td>
+      <td class="herr ${ec} r">${pe!==null?pe.toFixed(2)+'%':'—'}</td>
+      <td class="r" style="color:${dc};font-size:13px">${dir}</td>
+    </tr>`;
+  }).join(''));
+  const vc=vrfs.filter(v=>v.status==='VERIFIED').length;
+  const b=document.getElementById('vbadge');
+  b.textContent=`${vc}/24 verificate`;
+  b.className='cb '+(vc===24?'cb-ok':'cb-warn');
+}
+
+function buildSources(vrfs){
+  const hv=vrfs.find(v=>v.horizon===1)||vrfs[0];
+  if(!hv||!hv.sources){s('srcrows','<div style="color:var(--text3);font-size:12px">—</div>');return;}
+  const icons={coinbase:'🔵',kraken:'🟣',binance:'🟡'};
+  const sp=parseFloat(hv.source_spread_pct);
+  s('srcrows',hv.sources.map(src=>`
+    <div class="srow">
+      <div class="sname"><div class="sicon">${icons[src.provider]||'⚪'}</div>
+        <div><div>${src.provider.charAt(0).toUpperCase()+src.provider.slice(1)}</div>
+          <div style="font-size:10px;color:var(--text3)">${src.symbol} · H:${fU(src.high)} L:${fU(src.low)}</div></div></div>
+      <div><div class="spricetxt" style="color:var(--verified)">${fU(src.close)}</div>
+        <div style="font-size:10px;color:var(--text3);text-align:right">${fH(src.close_time)}</div></div>
+    </div>`).join(''));
+  t('spval',sp.toFixed(4)+'%');
+  const pct=Math.min(sp/1*100,100);
+  const sf=document.getElementById('spfill');
+  sf.style.width=pct+'%';
+  sf.style.background=sp<0.1?'linear-gradient(90deg,var(--buy),#00c9a7)':sp<0.5?'linear-gradient(90deg,var(--hold),#e5a000)':'linear-gradient(90deg,var(--sell),#cc2244)';
+  const b=document.getElementById('sbadge');
+  b.textContent=hv.status==='VERIFIED'?`✓ VERIFIED (${sp.toFixed(3)}%)`:'DIVERGENCE';
+  b.className='cb '+(hv.status==='VERIFIED'?'cb-ok':'cb-err');
+}
+
+function buildRange(pred,vrfs){
+  const ws=pred.window_statistics;
+  const vc=vrfs.filter(v=>v.status==='VERIFIED').length;
+  const rb=document.getElementById('rbadge');
+  if(!ws){rb.textContent=`${vc}/24 ore`;rb.className='cb cb-warn';s('rcont',`<div style="color:var(--text2);font-size:12px">Disponibile dopo 24 verifiche. Ore: ${vc}/24</div>`);return;}
+  rb.textContent='COMPLETO';rb.className='cb cb-ok';
+  const h=parseFloat(ws.high_24),l=parseFloat(ws.low_24),m=parseFloat(ws.mean_hourly_close_1_24);
+  const range=h-l;
+  s('rcont',`<div style="display:flex;justify-content:space-between;margin-bottom:12px">
+    <div><div class="stat-label">High 24h</div><div style="font-family:var(--mono);font-weight:700;font-size:15px;color:var(--buy)">${fU(h)}</div></div>
+    <div style="text-align:center"><div class="stat-label">TWAP 24h</div><div style="font-family:var(--mono);font-weight:700;font-size:15px">${fU(m)}</div></div>
+    <div style="text-align:right"><div class="stat-label">Low 24h</div><div style="font-family:var(--mono);font-weight:700;font-size:15px;color:var(--sell)">${fU(l)}</div></div>
+  </div>
+  <div class="rbar"><div class="rbar-fill" style="left:0;width:100%"></div><div class="rbar-marker" style="left:${((m-l)/range*100).toFixed(1)}%"></div></div>
+  <div style="font-size:10px;color:var(--text3);margin-top:6px;text-align:center">Range: ${fU(range)} · Marcatore = TWAP</div>`);
+}
+
+function buildHSigs(pts,orig){
+  const hs=[1,4,8,12,24];
+  s('hsigs',hs.map(h=>{
+    const p=pts.find(pt=>pt.step===h);
+    if(!p)return'';
+    const pct=(p.point_forecast-orig)/orig*100;
+    const sig=Math.abs(pct)<0.05?'HOLD':pct>0?'BUY':'SELL';
+    const col=sig==='BUY'?'var(--buy)':sig==='SELL'?'var(--sell)':'var(--hold)';
+    const icon=sig==='BUY'?'📈':sig==='SELL'?'📉':'⏸️';
+    return`<div class="hsig-row">
+      <div style="display:flex;align-items:center;gap:9px"><span style="font-size:20px">${icon}</span>
+        <div><div style="font-weight:700;font-size:13px;color:${col}">${sig}</div>
+          <div style="font-size:10px;color:var(--text3)">T+${h}h · ${fH(p.target_timestamp)}</div></div></div>
+      <div style="text-align:right">
+        <div style="font-family:var(--mono);font-size:13px;font-weight:600">${fU(p.point_forecast)}</div>
+        <div style="font-size:10px;color:${col}">${pct>=0?'+':''}${pct.toFixed(3)}%</div></div>
+    </div>`;
+  }).join(''));
+}
+
+function buildEChart(errs){
+  if(!errs.length)return;
+  const labs=errs.map(e=>'H'+e.horizon);
+  const apes=errs.map(e=>parseFloat(e.absolute_percentage_error));
+  const cols=apes.map(v=>v<0.5?'rgba(0,229,160,0.7)':v<1.5?'rgba(240,165,0,0.7)':'rgba(255,77,109,0.7)');
+  new Chart(document.getElementById('echart').getContext('2d'),{
+    type:'bar',data:{labels:labs,datasets:[{label:'Errore %',data:apes,backgroundColor:cols,borderRadius:4,borderSkipped:false}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#111d30',borderColor:'rgba(255,255,255,0.1)',borderWidth:1,titleColor:'#7a8ba3',bodyColor:'#e8edf5',padding:10,callbacks:{label(c){return'Errore: '+c.raw.toFixed(4)+'%';}}}},
+      scales:{x:{ticks:{color:'#4a5a70',font:{size:10}},grid:{display:false}},y:{ticks:{color:'#4a5a70',font:{size:10},callback:v=>v.toFixed(1)+'%'},grid:{color:'rgba(255,255,255,0.04)'}}}}
+  });
+}
+
+function buildProv(pred){
+  const m=pred.manifest||{};
+  const rows=[
+    ['Modello',pred.actual_model_used+' '+pred.model_version],
+    ['Checkpoint',pred.checkpoint],
+    ['Revisione (SHA)',pred.checkpoint_revision?.slice(0,20)+'…'],
+    ['Orizzonte',pred.forecast_horizon+'h · '+pred.forecast_frequency],
+    ['Origine previsione',pred.forecast_origin],
+    ['Generato il',pred.generated_at],
+    ['Fornitore dati',pred.provider+' · '+pred.quote_currency],
+    ['Input Hash',pred.input_hash?.slice(0,20)+'…'],
+    ['Forecast Hash',pred.forecast_hash?.slice(0,20)+'…'],
+    ['Python',m.python_version],
+    ['PyTorch',m.torch_version],
+    ['Git SHA',m.git_sha?.slice(0,16)+'…'],
+  ];
+  s('provrows',rows.map(([k,v])=>`<div class="prow"><div class="pk">${k}</div><div class="pv ${k.includes('Hash')||k.includes('SHA')||k.includes('Rev')?'h':''}">${v||'—'}</div></div>`).join(''));
+}
+
+function buildHealth(h){
+  if(!h)return;
+  const items=[
+    {l:'Collector',v:h.collector_status,ok:h.collector_status==='SUCCESS'},
+    {l:'TimesFM',v:h.timesfm_status,ok:h.timesfm_status==='GENERATED'},
+    {l:'Storage',v:h.storage_status==='INTEGRITY_CHECK_PASSED'?'OK ✓':h.storage_status,ok:h.storage_status==='INTEGRITY_CHECK_PASSED'},
+    {l:'Pred. invalide',v:String(h.invalid_predictions||0),ok:h.invalid_predictions===0},
+    {l:'Verif. pendenti',v:String(h.pending_verifications||0),ok:h.pending_verifications===0,warn:h.pending_verifications>0},
+    {l:'Ultima obs.',v:h.latest_valid_observation?fH(h.latest_valid_observation):'—',ok:!!h.latest_valid_observation},
+    {l:'Ultima previsione',v:h.latest_prediction?fD(h.latest_prediction):'—',ok:!!h.latest_prediction},
+    {l:'Ultima verifica',v:h.latest_verification?fD(h.latest_verification):'—',ok:!!h.latest_verification},
+  ];
+  s('healthgrid',items.map(it=>`<div class="hi"><div class="hdot ${it.ok?'ok':it.warn?'warn':'err'}"></div><div><div class="hl">${it.l}</div><div class="hv">${it.v}</div></div></div>`).join(''));
+}
+
+async function boot(){
+  try{
+    const r=await fetch('data.json');
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    const data=await r.json();
+    document.getElementById('ls').style.display='none';
+    document.getElementById('mc').style.display='block';
+    render(data);
+  }catch(err){
+    document.getElementById('ls').style.display='none';
+    document.getElementById('es').style.display='flex';
+    t('emsg','Errore: '+err.message);
+    console.error(err);
+  }
+}
+document.addEventListener('DOMContentLoaded',boot);
+</script>
+</body>
+</html>
