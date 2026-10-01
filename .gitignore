@@ -4,6 +4,7 @@ dist/
 __pycache__/
 *.egg-info/
 .pytest_cache/
+.ruff_cache/
 
 # Model Checkpoints & Wandb
 checkpoints/
@@ -20,6 +21,8 @@ fev/
 gift-eval/
 TimesFM-3_multivariate/
 time_benchmark_leaderboard.csv
+
+# HTML files ignored by default (re-include specific tracked files below)
 *.html
 
 # Logs & Temporary files
@@ -28,15 +31,24 @@ development_setup.md
 debug.log
 *.log
 
-# Bitcoin evaluation — track experiment data
-!data/bitcoin_predictions.csv
-!reports/bitcoin_report.md
+# macOS
+.DS_Store
+**/.DS_Store
 
-!reports/index.html
+# SQLite binary ledger — ephemeral on CI runners; reconstructible from JSON export.
+# Only forward-export.json is tracked in git.
+*.sqlite
 *.sqlite-journal
 *.sqlite-wal
 *.sqlite-shm
 
+# Bitcoin evaluation — selectively track experiment outputs
+# The SQLite ledger (data/forward.sqlite) is NOT tracked; use the JSON export.
+!data/bitcoin_predictions.csv
+!data/forward-export.json
+!data/legacy-manifest.json
+!reports/bitcoin_report.md
+!reports/index.html
 
-#skills
+# Skills / IDE
 .claude

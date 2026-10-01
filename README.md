@@ -260,10 +260,15 @@ A 14-day automated experiment that:
 
 **Prediction methods:**
 
--   **TimesFM 3.0** — when run locally with `--use-timesfm` (requires
-    `torch` + GPU/MPS).
--   **ARIMA fallback** — lightweight statistical model used in GitHub Actions
-    CI (clearly labeled in the CSV).
+-   **TimesFM 3.0** — the only method used by the forward pipeline
+    (`evaluation/forward/`). Requires `torch` + the package installed from
+    source (see below). The pipeline **never falls back** to ARIMA; if the
+    model cannot be loaded, the run fails loudly and is recorded as a failed
+    event in the ledger.
+-   **ARIMA / Persistence / Drift baselines** — computed offline from the
+    same input context as TimesFM via `evaluation/forward/baselines.py` and
+    embedded in `reports/data.json` for fair comparison. These are never used
+    as live predictions.
 
 ### Configure the Experiment
 
@@ -318,21 +323,38 @@ Three options:
 
 ### Run Locally with TimesFM 3.0
 
+> **Important:** `pip install timesfm[torch]` installs **TimesFM 2.0.2** from
+> PyPI, which does **not** include `timesfm3` and will raise `ImportError`.
+> Install from source instead:
+
 ```bash
-# Install dependencies
-pip install timesfm[torch] requests pandas statsmodels
+# Clone and install in editable mode (includes timesfm3)
+git clone https://github.com/google-research/timesfm.git
+cd timesfm
+pip install -e ".[torch]"
 
 # Run prediction with the real model
-python -m evaluation.run_predict --use-timesfm
+python -m evaluation.forward.cli generate
 
-# Verify previous predictions (run 24h+ later)
-python -m evaluation.run_verify
+# Verify matured predictions (run after their 24h window closes)
+python -m evaluation.forward.cli verify
 ```
 
 ### Run Tests
 
+The exact command used by the CI quality gate (see `.github/workflows/bitcoin-evaluation.yml`):
+
 ```bash
-pip install pytest pandas statsmodels
-pytest tests/test_btc_metrics.py tests/test_btc_csv_manager.py tests/test_btc_simulation.py -v
+# Install dependencies first (editable install required for timesfm3)
+pip install -e ".[torch]"
+pip install pytest statsmodels pandas requests
+
+# BTC pipeline regressions + mocked E2E
+python -m pytest tests/forward tests/test_btc_metrics.py tests/test_btc_csv_manager.py \
+  tests/test_btc_simulation.py tests/test_binance.py tests/test_price_verifier.py \
+  tests/test_forecast_path.py tests/test_trading_engine.py -q
+
+# TimesFM 3.0 source-level unit tests
+python -m pytest src/timesfm3 -q
 ```
 

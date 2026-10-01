@@ -9,6 +9,7 @@ from pathlib import Path
 
 from ..trading.backtest_engine import run_backtest
 from ..trading.types import StrategyConfig
+from .baselines import report_baselines
 from .contracts import EXPERIMENT, digest, utc
 from .storage import IntegrityError, Ledger, atomic_write
 
@@ -48,12 +49,17 @@ def build_report(
   verifications = ledger.records("verifications")
   events = sorted(ledger.records("events"), key=lambda e: utc(e["timestamp"]))
   rows = []
+  # Augment each prediction with its input_values for baseline comparison.
+  # The _input_values key is internal and not persisted in the ledger.
+  predictions_with_inputs = []
   for p in predictions:
-    if (
-      p["input_hash"] not in snapshots
-      or digest(p["forecast_points"]) != p["forecast_hash"]
-    ):
+    snapshot = snapshots.get(p["input_hash"])
+    if snapshot is None or digest(snapshot) != p["input_hash"]:
       raise IntegrityError("Prediction provenance mismatch")
+    if digest(p["forecast_points"]) != p["forecast_hash"]:
+      raise IntegrityError("Prediction provenance mismatch")
+    predictions_with_inputs.append({**p, "_input_values": snapshot.get("input_values", [])})
+  for p in predictions_with_inputs:
     own = sorted(
       [v for v in verifications if v["prediction_id"] == p["prediction_id"]],
       key=lambda v: v["horizon"],
@@ -82,9 +88,11 @@ def build_report(
         "high_24": str(max(Decimal(c["high"]) for c in primary)),
         "low_24": str(min(Decimal(c["low"]) for c in primary)),
       }
+    # Strip internal key before serialisation.
+    p_clean = {k: v for k, v in p.items() if not k.startswith("_")}
     rows.append(
       {
-        **p,
+        **p_clean,
         "verifications": own,
         "errors": errors,
         "window_statistics": window,
@@ -94,6 +102,8 @@ def build_report(
       }
     )
   valid = [v for v in verifications if v["status"] == "VERIFIED"]
+  # Compute same-origin baselines (persistence, drift, ARIMA) across all predictions.
+  baselines = report_baselines(predictions_with_inputs, verifications)
   return {
     "schema_version": 1,
     "experiment_version": EXPERIMENT,
@@ -102,6 +112,7 @@ def build_report(
     else "STATISTICALLY INCONCLUSIVE",
     "legacy": legacy,
     "predictions": rows,
+    "baselines": baselines,
     "health": {
       "collector_status": events[-1]["status"] if events else "NOT_RUN",
       "provider_status": [e for e in events if e["operation"] == "provider_check"][-2:],
