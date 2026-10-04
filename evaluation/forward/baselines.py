@@ -55,40 +55,45 @@ def _persistence_path(values: list[float], horizon: int = 24) -> list[float]:
 
 
 def _drift_path(values: list[float], horizon: int = 24) -> list[float]:
-    """OLS linear trend on the context window, extrapolated h steps ahead.
+    """Random walk with drift: last + h × mean(consecutive differences).
 
-    The slope is computed in price space (not log space) to keep it simple
-    and consistent with how the context is fed into TimesFM.
+    Anchored to the last observed price so the forecast starts from the
+    most recent value, not from a regression intercept.  With fewer than
+    2 data points, falls back to persistence.
     """
     n = len(values)
     if n < 2:
         return _persistence_path(values, horizon)
-    xs = list(range(n))
-    mx = sum(xs) / n
-    my = sum(values) / n
-    num = sum((x - mx) * (y - my) for x, y in zip(xs, values))
-    den = sum((x - mx) ** 2 for x in xs)
-    slope = num / den if den else 0.0
-    intercept = my - slope * mx
-    return [max(intercept + slope * (n + h), 1e-6) for h in range(1, horizon + 1)]
+    last = values[-1]
+    mean_diff = sum(values[i] - values[i - 1] for i in range(1, n)) / (n - 1)
+    return [max(last + h * mean_diff, 1e-6) for h in range(1, horizon + 1)]
 
 
-def _arima_path(values: list[float], horizon: int = 24) -> list[float]:
-    """ARIMA(5,1,0) on the last ARIMA_CONTEXT points; returns path of length *horizon*.
+def _arima_path(
+    values: list[float], horizon: int = 24,
+) -> tuple[list[float], bool]:
+    """ARIMA(5,1,0) on the last ARIMA_CONTEXT points.
 
-    Falls back to drift if statsmodels is unavailable.
+    Returns
+    -------
+    (path, fallback)
+        *path* has length *horizon*.  *fallback* is True when ARIMA could
+        not be fitted and the drift baseline was used instead.
     """
     try:
         from statsmodels.tsa.arima.model import ARIMA  # type: ignore
     except ImportError:
-        return _drift_path(values, horizon)
+        return _drift_path(values, horizon), True
 
     data = values[-ARIMA_CONTEXT:] if len(values) >= ARIMA_CONTEXT else values[:]
     try:
         fitted = ARIMA(data, order=ARIMA_ORDER).fit()
-        return [max(v, 1e-6) for v in fitted.get_forecast(steps=horizon).predicted_mean.tolist()]
+        return (
+            [max(v, 1e-6) for v in fitted.get_forecast(steps=horizon).predicted_mean.tolist()],
+            False,
+        )
     except Exception:  # noqa: BLE001
-        return _drift_path(values, horizon)
+        return _drift_path(values, horizon), True
 
 
 # --------------------------------------------------------------------------- #
@@ -128,10 +133,11 @@ def baselines_for_prediction(
 
     origin_price = input_values[-1]
 
+    arima_path, arima_fallback = _arima_path(input_values, horizon)
     paths = {
         "persistence": _persistence_path(input_values, horizon),
         "drift":       _drift_path(input_values, horizon),
-        "arima":       _arima_path(input_values, horizon),
+        "arima":       arima_path,
         "timesfm":     forecast_path[:horizon],
     }
 
@@ -152,6 +158,7 @@ def baselines_for_prediction(
             "origin_price": origin_price,
             "metrics":      metrics,
         }
+    results["arima"]["fallback"] = arima_fallback
 
     return results
 
@@ -181,9 +188,10 @@ def _compute_metrics(
         ae = abs(lr_forecast - lr_actual)
         maes.append(ae)
         # Direction: sign of log-return vs origin (not vs prev hour).
-        dir_hits.append(
-            (lr_forecast >= 0) == (lr_actual >= 0)
-        )
+        # When lr_forecast == 0 the model has no directional opinion
+        # (persistence), so that horizon is excluded from direction_accuracy.
+        if lr_forecast != 0:
+            dir_hits.append((lr_forecast > 0) == (lr_actual > 0))
         per_horizon.append({
             "horizon":    h,
             "verified":   True,
@@ -232,16 +240,22 @@ def report_baselines(predictions: list[dict], verifications: list[dict]) -> dict
     -------
     dict suitable for embedding in reports/data.json under "baselines".
     """
-    n_origins = len(predictions)
+    # Count distinct UTC dates, not raw rows.
+    _dates: set[str] = set()
+    for p in predictions:
+        fo = p.get("forecast_origin", "")
+        if fo:
+            _dates.add(fo[:10])          # ISO-8601 date prefix
+    n_daily_origins = len(_dates) if _dates else len(predictions)
     status = (
         "STATISTICALLY_INCONCLUSIVE"
-        if n_origins < MIN_DAILY_ORIGINS
+        if n_daily_origins < MIN_DAILY_ORIGINS
         else "EVALUABLE"
     )
     note = (
-        f"Need >= {MIN_DAILY_ORIGINS} daily origins for statistical conclusions; "
-        f"current: {n_origins}. Hourly verification targets within a single "
-        "prediction are NOT independent samples."
+        f"Need >= {MIN_DAILY_ORIGINS} daily origins (distinct UTC dates) for "
+        f"statistical conclusions; current: {n_daily_origins}. Hourly verification "
+        "targets within a single prediction are NOT independent samples."
     )
 
     # Map verifications by prediction_id.
@@ -257,13 +271,13 @@ def report_baselines(predictions: list[dict], verifications: list[dict]) -> dict
         "timesfm":     {"mae_lr_sum": 0.0, "rmse_sq_sum": 0.0, "dir_sum": 0.0, "n": 0, "dir_n": 0},
     }
 
+    arima_fallback_count = 0
     per_prediction = []
     for p in predictions:
         pid   = p.get("prediction_id", "")
-        snap  = p.get("manifest", {})  # input_values lives in snapshot, not here
         # input_values are stored in the snapshot, not the prediction itself.
         # The calling code in analytics.build_report has access to snapshots.
-        # We accept them here pre-joined via a "input_values" key if present.
+        # We accept them here pre-joined via a "_input_values" key if present.
         input_vals = p.get("_input_values", [])
         fp = p.get("forecast_path", [])
         vfs = verif_map.get(pid, [])
@@ -274,6 +288,8 @@ def report_baselines(predictions: list[dict], verifications: list[dict]) -> dict
 
         row = baselines_for_prediction(input_vals, fp, vfs)
         per_prediction.append({"prediction_id": pid, "baselines": row})
+        if row.get("arima", {}).get("fallback"):
+            arima_fallback_count += 1
 
         for name in per_model:
             m = row.get(name, {}).get("metrics", {})
@@ -306,8 +322,9 @@ def report_baselines(predictions: list[dict], verifications: list[dict]) -> dict
     return {
         "schema_version":    1,
         "status":            status,
-        "n_daily_origins":   n_origins,
+        "n_daily_origins":   n_daily_origins,
         "min_required":      MIN_DAILY_ORIGINS,
+        "arima_fallback_count": arima_fallback_count,
         "note":              note,
         "metric_definition": (
             "mae_log_return_pct and rmse_log_return_pct are 100 * |log(forecast/origin) "

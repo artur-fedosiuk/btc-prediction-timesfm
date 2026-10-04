@@ -62,6 +62,23 @@ class TestPaths(unittest.TestCase):
         path = self._drift(self._rising(), horizon=24)
         self.assertEqual(len(path), 24)
 
+    def test_drift_exact_sequence(self):
+        """Series 0..99 must give [100, 101, 102] — anchored to last value."""
+        values = list(range(100))
+        path = self._drift([float(v) for v in values], horizon=3)
+        self.assertEqual(path, [100.0, 101.0, 102.0])
+
+    def test_drift_constant_flat(self):
+        """Constant series → mean_diff=0 → path repeats the last value."""
+        values = [42.0] * 50
+        path = self._drift(values, horizon=5)
+        self.assertEqual(path, [42.0] * 5)
+
+    def test_drift_single_point(self):
+        """Fewer than 2 points → falls back to persistence."""
+        path = self._drift([77.0], horizon=3)
+        self.assertEqual(path, [77.0, 77.0, 77.0])
+
     def test_drift_direction_up(self):
         path = self._drift(self._rising(), horizon=24)
         # Each step should be greater than the previous (positive slope).
@@ -88,8 +105,25 @@ class TestPaths(unittest.TestCase):
     # ---- ARIMA -------------------------------------------------------------
 
     def test_arima_length(self):
-        path = self._arima(self._rising(), horizon=24)
+        path, _fb = self._arima(self._rising(), horizon=24)
         self.assertEqual(len(path), 24)
+
+    def test_arima_fallback_flag(self):
+        """_arima_path returns (path, fallback=True) when statsmodels absent."""
+        import builtins
+        real_import = builtins.__import__
+
+        def mock_import(name, *args, **kwargs):
+            if name == "statsmodels.tsa.arima.model":
+                raise ImportError("no statsmodels")
+            return real_import(name, *args, **kwargs)
+
+        with patch("builtins.__import__", side_effect=mock_import):
+            from evaluation.forward import baselines as bl
+            path, fallback = bl._arima_path(self._rising(), horizon=24)
+        self.assertEqual(len(path), 24)
+        self.assertTrue(fallback)
+        self.assertTrue(all(p > 0 for p in path))
 
     def test_arima_fallback_without_statsmodels(self):
         """When statsmodels is unavailable, ARIMA silently falls back to drift."""
@@ -104,12 +138,12 @@ class TestPaths(unittest.TestCase):
         with patch("builtins.__import__", side_effect=mock_import):
             # Re-execute arima path to exercise the except branch.
             from evaluation.forward import baselines as bl
-            path = bl._arima_path(self._rising(), horizon=24)
+            path, _fb = bl._arima_path(self._rising(), horizon=24)
         self.assertEqual(len(path), 24)
         self.assertTrue(all(p > 0 for p in path))
 
     def test_arima_min_clamp(self):
-        path = self._arima(self._flat(10), horizon=24)  # short series → drift fallback
+        path, _fb = self._arima(self._flat(10), horizon=24)  # short series → drift fallback
         self.assertTrue(all(p > 0 for p in path))
 
 
@@ -141,6 +175,30 @@ class TestMetrics(unittest.TestCase):
         actuals = {h: 83_000.0 for h in range(1, 25)}
         m = self._run(origin, path, actuals)
         self.assertAlmostEqual(m["direction_accuracy"], 0.0, places=4)
+
+    def test_persistence_actual_up_direction_none(self):
+        """Persistence (lr_forecast=0) has no directional opinion → excluded."""
+        origin = 84_000.0
+        path = [origin] * 24       # zero log-return → no opinion
+        actuals = {h: 85_000.0 for h in range(1, 25)}  # actual goes up
+        m = self._run(origin, path, actuals)
+        self.assertIsNone(m["direction_accuracy"])
+
+    def test_persistence_actual_down_direction_none(self):
+        """Persistence (lr_forecast=0) vs actual down → still None."""
+        origin = 84_000.0
+        path = [origin] * 24
+        actuals = {h: 83_000.0 for h in range(1, 25)}  # actual goes down
+        m = self._run(origin, path, actuals)
+        self.assertIsNone(m["direction_accuracy"])
+
+    def test_both_zero_log_return_direction_none(self):
+        """Both forecast and actual equal origin → no directional opinion → None."""
+        origin = 84_000.0
+        path = [origin] * 24
+        actuals = {h: origin for h in range(1, 25)}
+        m = self._run(origin, path, actuals)
+        self.assertIsNone(m["direction_accuracy"])
 
     def test_mae_is_scale_free(self):
         """MAE on log returns must be the same for doubled prices."""
@@ -231,34 +289,56 @@ class TestBaselinesForPrediction(unittest.TestCase):
 class TestReportBaselines(unittest.TestCase):
     """report_baselines gate and structure."""
 
-    def _make_prediction(self, pid, input_values, forecast_path):
-        return {
+    def _make_prediction(self, pid, input_values, forecast_path, forecast_origin=""):
+        d = {
             "prediction_id": pid,
             "_input_values": input_values,
             "forecast_path": forecast_path,
         }
+        if forecast_origin:
+            d["forecast_origin"] = forecast_origin
+        return d
 
     def test_insufficient_sample_status(self):
+        from evaluation.forward.baselines import report_baselines
+        # 10 predictions on the same day → only 1 distinct UTC date.
+        preds = [
+            self._make_prediction(
+                f"p{i}",
+                [84_000.0 + j for j in range(512)],
+                [84_100.0] * 24,
+                forecast_origin=f"2026-01-01T{i:02d}:00:00+00:00",
+            )
+            for i in range(10)
+        ]
+        result = report_baselines(preds, [])
+        self.assertEqual(result["status"], "STATISTICALLY_INCONCLUSIVE")
+        self.assertEqual(result["n_daily_origins"], 1)  # 1 distinct date
+
+    def test_n_daily_origins_counts_distinct_dates(self):
+        """Multiple predictions on distinct dates → each date counts once."""
         from evaluation.forward.baselines import report_baselines
         preds = [
             self._make_prediction(
                 f"p{i}",
                 [84_000.0 + j for j in range(512)],
                 [84_100.0] * 24,
+                forecast_origin=f"2026-01-{i+1:02d}T12:00:00+00:00",
             )
-            for i in range(10)  # well below MIN_DAILY_ORIGINS=60
+            for i in range(5)
         ]
         result = report_baselines(preds, [])
-        self.assertEqual(result["status"], "STATISTICALLY_INCONCLUSIVE")
-        self.assertEqual(result["n_daily_origins"], 10)
+        self.assertEqual(result["n_daily_origins"], 5)
 
     def test_sufficient_sample_status(self):
         from evaluation.forward.baselines import report_baselines, MIN_DAILY_ORIGINS
+        # 60 predictions, each on a distinct date → 60 daily origins.
         preds = [
             self._make_prediction(
                 f"p{i}",
                 [84_000.0 + j for j in range(512)],
                 [84_100.0] * 24,
+                forecast_origin=f"2026-{(i // 28) + 1:02d}-{(i % 28) + 1:02d}T12:00:00+00:00",
             )
             for i in range(MIN_DAILY_ORIGINS)
         ]
@@ -277,6 +357,19 @@ class TestReportBaselines(unittest.TestCase):
         result = report_baselines(preds, [])
         for model in ("persistence", "drift", "arima", "timesfm"):
             self.assertIn(model, result["summary"])
+
+    def test_arima_fallback_count_in_report(self):
+        from evaluation.forward.baselines import report_baselines
+        preds = [
+            self._make_prediction(
+                "p0",
+                [84_000.0 + j for j in range(512)],
+                [84_100.0] * 24,
+            )
+        ]
+        result = report_baselines(preds, [])
+        self.assertIn("arima_fallback_count", result)
+        self.assertIsInstance(result["arima_fallback_count"], int)
 
     def test_no_input_values_flagged(self):
         from evaluation.forward.baselines import report_baselines
