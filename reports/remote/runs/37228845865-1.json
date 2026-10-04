@@ -1,0 +1,450 @@
+{
+  "command": "verify",
+  "timestamp": "2026-10-04T19:35:42.941124+00:00",
+  "environment": {
+    "python_version": "3.11.14",
+    "os": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "architecture": "x86_64",
+    "github": {
+      "GITHUB_RUN_ID": "37228845865",
+      "GITHUB_RUN_ATTEMPT": "1",
+      "GITHUB_SHA": "344fd8d6972e557fc7a3e0c263821cd37bba61b7",
+      "GITHUB_REF": "refs/heads/master"
+    },
+    "timesfm_version": "NOT_INSTALLED",
+    "torch_version": "NOT_INSTALLED",
+    "numpy_version": "NOT_INSTALLED",
+    "pandas_version": "NOT_INSTALLED",
+    "statsmodels_version": "NOT_INSTALLED",
+    "device": "NO_MODEL",
+    "git_sha": "344fd8d6972e557fc7a3e0c263821cd37bba61b7",
+    "working_tree_dirty": true
+  },
+  "git_head": "344fd8d6972e557fc7a3e0c263821cd37bba61b7",
+  "cache": {
+    "model": "",
+    "pip": "true"
+  },
+  "result": {
+    "before": {
+      "status": "RECOVERED",
+      "predictions": [
+        {
+          "prediction_id": "5864463c5b70aa3b0f01b7422d192c62a1844346b023cc4b0e8a1cca2cf48847",
+          "input_hash": "907c094a29d31ac857f3cd893ab4bf756a981d27f6c2ef6ac1614e183a64290b",
+          "forecast_hash": "ca3593171175b2619aee76621e6437ad98d97c65cebb48c64d877169c8911ff4",
+          "forecast_origin": "2026-09-30T18:00:00+00:00",
+          "generated_at": "2026-09-30T18:02:39.703384+00:00",
+          "targets": [
+            {
+              "horizon": 1,
+              "target_timestamp": "2026-09-30T19:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 4,
+              "target_timestamp": "2026-09-30T22:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 8,
+              "target_timestamp": "2026-10-01T02:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 12,
+              "target_timestamp": "2026-10-01T06:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 24,
+              "target_timestamp": "2026-10-01T18:00:00+00:00",
+              "status": "VERIFIED"
+            }
+          ]
+        },
+        {
+          "prediction_id": "7330369586d2160892a53c5610c556604f358d9f3a6e2a53d7d7ddaa0a6b2c9f",
+          "input_hash": "955f4677b469d253829f762fdcc2073e3724a0ac7891774273d338f073bb196a",
+          "forecast_hash": "849632b4165f86e7e1dd1ccd3d1c756e42a6ae2cf3c88c1cdfb5063791faeeaf",
+          "forecast_origin": "2026-09-27T17:00:00+00:00",
+          "generated_at": "2026-09-27T17:18:13.217495+00:00",
+          "targets": [
+            {
+              "horizon": 1,
+              "target_timestamp": "2026-09-27T18:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 4,
+              "target_timestamp": "2026-09-27T21:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 8,
+              "target_timestamp": "2026-09-28T01:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 12,
+              "target_timestamp": "2026-09-28T05:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 24,
+              "target_timestamp": "2026-09-28T17:00:00+00:00",
+              "status": "VERIFIED"
+            }
+          ]
+        },
+        {
+          "prediction_id": "a91af4065cee5b5e7df339a5d5f037416a3015fa9fe6c9a4c159b08d8ca3d910",
+          "input_hash": "b81360ed78b13e0416d33e3481e054d70b4c651d6c96f0a070e721762ac20f38",
+          "forecast_hash": "c9eaa8288bde4fe4bfab6bfd90a8fa3970c1386f0fec24f805e104cd2e3b3aa2",
+          "forecast_origin": "2026-10-01T18:00:00+00:00",
+          "generated_at": "2026-10-01T18:29:11.701290+00:00",
+          "targets": [
+            {
+              "horizon": 1,
+              "target_timestamp": "2026-10-01T19:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 4,
+              "target_timestamp": "2026-10-01T22:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 8,
+              "target_timestamp": "2026-10-02T02:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 12,
+              "target_timestamp": "2026-10-02T06:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 24,
+              "target_timestamp": "2026-10-02T18:00:00+00:00",
+              "status": "VERIFIED"
+            }
+          ]
+        },
+        {
+          "prediction_id": "beb3c59f0492f6ceec616a9cc1c9ac8ec0cfae4ea9131b59887d70c95f77367a",
+          "input_hash": "7ae5d019082ff6afc6baf276840cf96ee785e5813c7668088167ed1dcdf8ae38",
+          "forecast_hash": "2539985a4eecad64f03865f8a43d912f0907607249864cbcc4b04c2510917394",
+          "forecast_origin": "2026-10-02T17:00:00+00:00",
+          "generated_at": "2026-10-02T17:55:53.387149+00:00",
+          "targets": [
+            {
+              "horizon": 1,
+              "target_timestamp": "2026-10-02T18:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 4,
+              "target_timestamp": "2026-10-02T21:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 8,
+              "target_timestamp": "2026-10-03T01:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 12,
+              "target_timestamp": "2026-10-03T05:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 24,
+              "target_timestamp": "2026-10-03T17:00:00+00:00",
+              "status": "VERIFIED"
+            }
+          ]
+        },
+        {
+          "prediction_id": "cea42a44decb435cabb0a5881e17c4adb4a7862e915e63ce6e735d0e66e74c62",
+          "input_hash": "2544b93eddc002cc967fc795c94663925ec74a5701c962679b7b01685c486d17",
+          "forecast_hash": "34909c9f59aeeddd042ea1da71671a4d5ad2cfef1055af12a5d22862673ad907",
+          "forecast_origin": "2026-10-03T16:00:00+00:00",
+          "generated_at": "2026-10-03T16:30:51.287605+00:00",
+          "targets": [
+            {
+              "horizon": 1,
+              "target_timestamp": "2026-10-03T17:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 4,
+              "target_timestamp": "2026-10-03T20:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 8,
+              "target_timestamp": "2026-10-04T00:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 12,
+              "target_timestamp": "2026-10-04T04:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 24,
+              "target_timestamp": "2026-10-04T16:00:00+00:00",
+              "status": "PENDING"
+            }
+          ]
+        },
+        {
+          "prediction_id": "eda24727a89f90347b9174d367305e885982a12e6f31d55e98569764b95eb76c",
+          "input_hash": "a8164231d3b2b46f6666446409b2468664fbd5b122353c4dfcce664cb2429512",
+          "forecast_hash": "1368601143d03674c6341712d37b827818ddff5776cd98887681c4256b8f0d0a",
+          "forecast_origin": "2026-10-04T16:00:00+00:00",
+          "generated_at": "2026-10-04T16:54:54.218117+00:00",
+          "targets": [
+            {
+              "horizon": 1,
+              "target_timestamp": "2026-10-04T17:00:00+00:00",
+              "status": "PENDING"
+            },
+            {
+              "horizon": 4,
+              "target_timestamp": "2026-10-04T20:00:00+00:00",
+              "status": "PENDING"
+            },
+            {
+              "horizon": 8,
+              "target_timestamp": "2026-10-05T00:00:00+00:00",
+              "status": "PENDING"
+            },
+            {
+              "horizon": 12,
+              "target_timestamp": "2026-10-05T04:00:00+00:00",
+              "status": "PENDING"
+            },
+            {
+              "horizon": 24,
+              "target_timestamp": "2026-10-05T16:00:00+00:00",
+              "status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "verification_count": 119
+    },
+    "after": {
+      "status": "RECOVERED",
+      "predictions": [
+        {
+          "prediction_id": "5864463c5b70aa3b0f01b7422d192c62a1844346b023cc4b0e8a1cca2cf48847",
+          "input_hash": "907c094a29d31ac857f3cd893ab4bf756a981d27f6c2ef6ac1614e183a64290b",
+          "forecast_hash": "ca3593171175b2619aee76621e6437ad98d97c65cebb48c64d877169c8911ff4",
+          "forecast_origin": "2026-09-30T18:00:00+00:00",
+          "generated_at": "2026-09-30T18:02:39.703384+00:00",
+          "targets": [
+            {
+              "horizon": 1,
+              "target_timestamp": "2026-09-30T19:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 4,
+              "target_timestamp": "2026-09-30T22:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 8,
+              "target_timestamp": "2026-10-01T02:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 12,
+              "target_timestamp": "2026-10-01T06:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 24,
+              "target_timestamp": "2026-10-01T18:00:00+00:00",
+              "status": "VERIFIED"
+            }
+          ]
+        },
+        {
+          "prediction_id": "7330369586d2160892a53c5610c556604f358d9f3a6e2a53d7d7ddaa0a6b2c9f",
+          "input_hash": "955f4677b469d253829f762fdcc2073e3724a0ac7891774273d338f073bb196a",
+          "forecast_hash": "849632b4165f86e7e1dd1ccd3d1c756e42a6ae2cf3c88c1cdfb5063791faeeaf",
+          "forecast_origin": "2026-09-27T17:00:00+00:00",
+          "generated_at": "2026-09-27T17:18:13.217495+00:00",
+          "targets": [
+            {
+              "horizon": 1,
+              "target_timestamp": "2026-09-27T18:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 4,
+              "target_timestamp": "2026-09-27T21:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 8,
+              "target_timestamp": "2026-09-28T01:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 12,
+              "target_timestamp": "2026-09-28T05:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 24,
+              "target_timestamp": "2026-09-28T17:00:00+00:00",
+              "status": "VERIFIED"
+            }
+          ]
+        },
+        {
+          "prediction_id": "a91af4065cee5b5e7df339a5d5f037416a3015fa9fe6c9a4c159b08d8ca3d910",
+          "input_hash": "b81360ed78b13e0416d33e3481e054d70b4c651d6c96f0a070e721762ac20f38",
+          "forecast_hash": "c9eaa8288bde4fe4bfab6bfd90a8fa3970c1386f0fec24f805e104cd2e3b3aa2",
+          "forecast_origin": "2026-10-01T18:00:00+00:00",
+          "generated_at": "2026-10-01T18:29:11.701290+00:00",
+          "targets": [
+            {
+              "horizon": 1,
+              "target_timestamp": "2026-10-01T19:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 4,
+              "target_timestamp": "2026-10-01T22:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 8,
+              "target_timestamp": "2026-10-02T02:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 12,
+              "target_timestamp": "2026-10-02T06:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 24,
+              "target_timestamp": "2026-10-02T18:00:00+00:00",
+              "status": "VERIFIED"
+            }
+          ]
+        },
+        {
+          "prediction_id": "beb3c59f0492f6ceec616a9cc1c9ac8ec0cfae4ea9131b59887d70c95f77367a",
+          "input_hash": "7ae5d019082ff6afc6baf276840cf96ee785e5813c7668088167ed1dcdf8ae38",
+          "forecast_hash": "2539985a4eecad64f03865f8a43d912f0907607249864cbcc4b04c2510917394",
+          "forecast_origin": "2026-10-02T17:00:00+00:00",
+          "generated_at": "2026-10-02T17:55:53.387149+00:00",
+          "targets": [
+            {
+              "horizon": 1,
+              "target_timestamp": "2026-10-02T18:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 4,
+              "target_timestamp": "2026-10-02T21:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 8,
+              "target_timestamp": "2026-10-03T01:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 12,
+              "target_timestamp": "2026-10-03T05:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 24,
+              "target_timestamp": "2026-10-03T17:00:00+00:00",
+              "status": "VERIFIED"
+            }
+          ]
+        },
+        {
+          "prediction_id": "cea42a44decb435cabb0a5881e17c4adb4a7862e915e63ce6e735d0e66e74c62",
+          "input_hash": "2544b93eddc002cc967fc795c94663925ec74a5701c962679b7b01685c486d17",
+          "forecast_hash": "34909c9f59aeeddd042ea1da71671a4d5ad2cfef1055af12a5d22862673ad907",
+          "forecast_origin": "2026-10-03T16:00:00+00:00",
+          "generated_at": "2026-10-03T16:30:51.287605+00:00",
+          "targets": [
+            {
+              "horizon": 1,
+              "target_timestamp": "2026-10-03T17:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 4,
+              "target_timestamp": "2026-10-03T20:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 8,
+              "target_timestamp": "2026-10-04T00:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 12,
+              "target_timestamp": "2026-10-04T04:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 24,
+              "target_timestamp": "2026-10-04T16:00:00+00:00",
+              "status": "VERIFIED"
+            }
+          ]
+        },
+        {
+          "prediction_id": "eda24727a89f90347b9174d367305e885982a12e6f31d55e98569764b95eb76c",
+          "input_hash": "a8164231d3b2b46f6666446409b2468664fbd5b122353c4dfcce664cb2429512",
+          "forecast_hash": "1368601143d03674c6341712d37b827818ddff5776cd98887681c4256b8f0d0a",
+          "forecast_origin": "2026-10-04T16:00:00+00:00",
+          "generated_at": "2026-10-04T16:54:54.218117+00:00",
+          "targets": [
+            {
+              "horizon": 1,
+              "target_timestamp": "2026-10-04T17:00:00+00:00",
+              "status": "VERIFIED"
+            },
+            {
+              "horizon": 4,
+              "target_timestamp": "2026-10-04T20:00:00+00:00",
+              "status": "PENDING"
+            },
+            {
+              "horizon": 8,
+              "target_timestamp": "2026-10-05T00:00:00+00:00",
+              "status": "PENDING"
+            },
+            {
+              "horizon": 12,
+              "target_timestamp": "2026-10-05T04:00:00+00:00",
+              "status": "PENDING"
+            },
+            {
+              "horizon": 24,
+              "target_timestamp": "2026-10-05T16:00:00+00:00",
+              "status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "verification_count": 123
+    }
+  }
+}
