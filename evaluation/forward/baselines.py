@@ -206,7 +206,7 @@ def _compute_metrics(
 
     mae_lr  = sum(maes) / n
     rmse_lr = math.sqrt(sum(m ** 2 for m in maes) / n)
-    dir_acc = sum(dir_hits) / n if dir_hits else None
+    dir_acc = sum(dir_hits) / len(dir_hits) if dir_hits else None
 
     return {
         "n_verified":      n,

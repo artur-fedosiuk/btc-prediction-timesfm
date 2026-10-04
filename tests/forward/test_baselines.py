@@ -200,6 +200,18 @@ class TestMetrics(unittest.TestCase):
         m = self._run(origin, path, actuals)
         self.assertIsNone(m["direction_accuracy"])
 
+    def test_mixed_direction_denominator(self):
+        """dir_acc denominator = horizons with lr_forecast != 0, not all verified."""
+        origin = 84_000.0
+        # First 12 horizons: forecast == origin (no opinion → excluded).
+        # Last 12 horizons: forecast up, actual up → 12 correct out of 12.
+        path = [origin] * 12 + [85_000.0] * 12
+        actuals = {h: 85_000.0 for h in range(1, 25)}
+        m = self._run(origin, path, actuals)
+        # n_verified = 24 (all horizons have MAE), but direction uses 12.
+        self.assertEqual(m["n_verified"], 24)
+        self.assertAlmostEqual(m["direction_accuracy"], 1.0, places=4)
+
     def test_mae_is_scale_free(self):
         """MAE on log returns must be the same for doubled prices."""
         origin1, path1 = 100.0, [110.0] * 24

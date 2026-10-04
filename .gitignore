@@ -35,15 +35,13 @@ debug.log
 .DS_Store
 **/.DS_Store
 
-# SQLite binary ledger — ephemeral on CI runners; reconstructible from JSON export.
-# Only forward-export.json is tracked in git.
-*.sqlite
+# SQLite runtime files (journal, WAL, SHM are never committed).
+# The ledger data/forward.sqlite IS tracked.
 *.sqlite-journal
 *.sqlite-wal
 *.sqlite-shm
 
 # Bitcoin evaluation — selectively track experiment outputs
-# The SQLite ledger (data/forward.sqlite) is NOT tracked; use the JSON export.
 !data/bitcoin_predictions.csv
 !data/forward-export.json
 !data/legacy-manifest.json
