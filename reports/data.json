@@ -8585,30 +8585,382 @@
       ],
       "window_statistics": null,
       "verification_status": "PENDING VERIFICATION"
+    },
+    {
+      "actual_model_used": "TimesFM",
+      "checkpoint": "google/timesfm-3.0-pytorch",
+      "checkpoint_revision": "43046b85ec22d584a13f8098c2ed39c889e129c2",
+      "data_cutoff": "2026-10-04T16:54:50.657695+00:00",
+      "experiment_id": "timesfm_h24_v2",
+      "experiment_version": "timesfm_h24_v2",
+      "fallback_reason": null,
+      "fallback_used": false,
+      "forecast_frequency": "1h",
+      "forecast_hash": "1368601143d03674c6341712d37b827818ddff5776cd98887681c4256b8f0d0a",
+      "forecast_horizon": 24,
+      "forecast_origin": "2026-10-04T16:00:00+00:00",
+      "forecast_path": [
+        85234.6953125,
+        85250.2109375,
+        85256.3203125,
+        85274.671875,
+        85276.484375,
+        85273.6484375,
+        85284.6484375,
+        85296.84375,
+        85296.15625,
+        85288.265625,
+        85286.0,
+        85285.671875,
+        85295.203125,
+        85286.3515625,
+        85285.4921875,
+        85282.796875,
+        85285.7265625,
+        85279.640625,
+        85283.890625,
+        85289.9375,
+        85295.09375,
+        85285.96875,
+        85278.4375,
+        85283.5703125
+      ],
+      "forecast_points": [
+        {
+          "point_forecast": 85234.6953125,
+          "q10": 85110.09375,
+          "q90": 85369.3125,
+          "step": 1,
+          "target_timestamp": "2026-10-04T17:00:00+00:00"
+        },
+        {
+          "point_forecast": 85250.2109375,
+          "q10": 85049.7578125,
+          "q90": 85466.0,
+          "step": 2,
+          "target_timestamp": "2026-10-04T18:00:00+00:00"
+        },
+        {
+          "point_forecast": 85256.3203125,
+          "q10": 84974.390625,
+          "q90": 85547.1796875,
+          "step": 3,
+          "target_timestamp": "2026-10-04T19:00:00+00:00"
+        },
+        {
+          "point_forecast": 85274.671875,
+          "q10": 84918.25,
+          "q90": 85636.8359375,
+          "step": 4,
+          "target_timestamp": "2026-10-04T20:00:00+00:00"
+        },
+        {
+          "point_forecast": 85276.484375,
+          "q10": 84848.578125,
+          "q90": 85716.75,
+          "step": 5,
+          "target_timestamp": "2026-10-04T21:00:00+00:00"
+        },
+        {
+          "point_forecast": 85273.6484375,
+          "q10": 84792.796875,
+          "q90": 85777.46875,
+          "step": 6,
+          "target_timestamp": "2026-10-04T22:00:00+00:00"
+        },
+        {
+          "point_forecast": 85284.6484375,
+          "q10": 84743.15625,
+          "q90": 85843.1328125,
+          "step": 7,
+          "target_timestamp": "2026-10-04T23:00:00+00:00"
+        },
+        {
+          "point_forecast": 85296.84375,
+          "q10": 84697.515625,
+          "q90": 85911.28125,
+          "step": 8,
+          "target_timestamp": "2026-10-05T00:00:00+00:00"
+        },
+        {
+          "point_forecast": 85296.15625,
+          "q10": 84649.5,
+          "q90": 85969.3671875,
+          "step": 9,
+          "target_timestamp": "2026-10-05T01:00:00+00:00"
+        },
+        {
+          "point_forecast": 85288.265625,
+          "q10": 84589.328125,
+          "q90": 86010.6875,
+          "step": 10,
+          "target_timestamp": "2026-10-05T02:00:00+00:00"
+        },
+        {
+          "point_forecast": 85286.0,
+          "q10": 84546.578125,
+          "q90": 86057.515625,
+          "step": 11,
+          "target_timestamp": "2026-10-05T03:00:00+00:00"
+        },
+        {
+          "point_forecast": 85285.671875,
+          "q10": 84505.578125,
+          "q90": 86101.734375,
+          "step": 12,
+          "target_timestamp": "2026-10-05T04:00:00+00:00"
+        },
+        {
+          "point_forecast": 85295.203125,
+          "q10": 84473.1875,
+          "q90": 86159.109375,
+          "step": 13,
+          "target_timestamp": "2026-10-05T05:00:00+00:00"
+        },
+        {
+          "point_forecast": 85286.3515625,
+          "q10": 84426.2265625,
+          "q90": 86198.671875,
+          "step": 14,
+          "target_timestamp": "2026-10-05T06:00:00+00:00"
+        },
+        {
+          "point_forecast": 85285.4921875,
+          "q10": 84383.96875,
+          "q90": 86230.34375,
+          "step": 15,
+          "target_timestamp": "2026-10-05T07:00:00+00:00"
+        },
+        {
+          "point_forecast": 85282.796875,
+          "q10": 84337.28125,
+          "q90": 86273.8046875,
+          "step": 16,
+          "target_timestamp": "2026-10-05T08:00:00+00:00"
+        },
+        {
+          "point_forecast": 85285.7265625,
+          "q10": 84284.015625,
+          "q90": 86331.15625,
+          "step": 17,
+          "target_timestamp": "2026-10-05T09:00:00+00:00"
+        },
+        {
+          "point_forecast": 85279.640625,
+          "q10": 84248.546875,
+          "q90": 86372.0859375,
+          "step": 18,
+          "target_timestamp": "2026-10-05T10:00:00+00:00"
+        },
+        {
+          "point_forecast": 85283.890625,
+          "q10": 84213.0859375,
+          "q90": 86409.0625,
+          "step": 19,
+          "target_timestamp": "2026-10-05T11:00:00+00:00"
+        },
+        {
+          "point_forecast": 85289.9375,
+          "q10": 84172.65625,
+          "q90": 86461.640625,
+          "step": 20,
+          "target_timestamp": "2026-10-05T12:00:00+00:00"
+        },
+        {
+          "point_forecast": 85295.09375,
+          "q10": 84134.171875,
+          "q90": 86498.984375,
+          "step": 21,
+          "target_timestamp": "2026-10-05T13:00:00+00:00"
+        },
+        {
+          "point_forecast": 85285.96875,
+          "q10": 84089.515625,
+          "q90": 86535.4609375,
+          "step": 22,
+          "target_timestamp": "2026-10-05T14:00:00+00:00"
+        },
+        {
+          "point_forecast": 85278.4375,
+          "q10": 84051.3984375,
+          "q90": 86546.703125,
+          "step": 23,
+          "target_timestamp": "2026-10-05T15:00:00+00:00"
+        },
+        {
+          "point_forecast": 85283.5703125,
+          "q10": 83998.7890625,
+          "q90": 86595.40625,
+          "step": 24,
+          "target_timestamp": "2026-10-05T16:00:00+00:00"
+        }
+      ],
+      "generated_at": "2026-10-04T16:54:54.218117+00:00",
+      "input_hash": "a8164231d3b2b46f6666446409b2468664fbd5b122353c4dfcce664cb2429512",
+      "input_snapshot_ref": "a8164231d3b2b46f6666446409b2468664fbd5b122353c4dfcce664cb2429512",
+      "lower_path": [
+        85110.09375,
+        85049.7578125,
+        84974.390625,
+        84918.25,
+        84848.578125,
+        84792.796875,
+        84743.15625,
+        84697.515625,
+        84649.5,
+        84589.328125,
+        84546.578125,
+        84505.578125,
+        84473.1875,
+        84426.2265625,
+        84383.96875,
+        84337.28125,
+        84284.015625,
+        84248.546875,
+        84213.0859375,
+        84172.65625,
+        84134.171875,
+        84089.515625,
+        84051.3984375,
+        83998.7890625
+      ],
+      "manifest": {
+        "architecture": "x86_64",
+        "device": "cpu",
+        "forecast_config": {
+          "batch_size": 1,
+          "context_length": 512,
+          "horizon": 24,
+          "input_dtype": "float32",
+          "make_positive": true,
+          "padding_mode": "none",
+          "quantiles": "nominal 80% pointwise interval; uncalibrated on BTC",
+          "seed": 0,
+          "sort_quantiles": true,
+          "symmetric_averaging": true,
+          "threads": 2,
+          "univariate": false,
+          "use_znorm": false
+        },
+        "git_sha": "86a530cdf89792a60ef85bdb0c1dae94ed62e053",
+        "github": {
+          "GITHUB_REF": "refs/heads/master",
+          "GITHUB_RUN_ATTEMPT": "1",
+          "GITHUB_RUN_ID": "37218431610",
+          "GITHUB_SHA": "86a530cdf89792a60ef85bdb0c1dae94ed62e053"
+        },
+        "model_config": {
+          "cache_dir": null,
+          "checkpoint_path": "google/timesfm-3.0-pytorch",
+          "device": "cpu",
+          "force_download": false,
+          "input_patch_length": 32,
+          "input_transform": "identity",
+          "linear_detrending_threshold": 0.5,
+          "local_files_only": false,
+          "median_quantile_index": 4,
+          "output_patch_length": 64,
+          "per_core_batch_size": 1,
+          "quantiles": [
+            0.1,
+            0.2,
+            0.3,
+            0.4,
+            0.5,
+            0.6,
+            0.7,
+            0.8,
+            0.9
+          ],
+          "residual_block_config": null,
+          "revision": "43046b85ec22d584a13f8098c2ed39c889e129c2",
+          "token": null,
+          "transformer_config": null,
+          "use_frozen_running_stats": false,
+          "use_iterative_cpm_revin": true,
+          "use_linear_detrending": true,
+          "use_sdpa": true,
+          "use_stitching": true,
+          "use_variate_attention": true,
+          "value_clip": 1e+20
+        },
+        "numpy_version": "2.4.6",
+        "os": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "pandas_version": "3.0.5",
+        "provider_config": {
+          "frequency": "1h",
+          "primary": "coinbase",
+          "symbol": "BTC/USD"
+        },
+        "python_version": "3.11.14",
+        "statsmodels_version": "0.14.6",
+        "timesfm_version": "3.0.1",
+        "torch_version": "2.14.0+cpu",
+        "working_tree_dirty": true
+      },
+      "model_version": "3.0.1",
+      "prediction_id": "eda24727a89f90347b9174d367305e885982a12e6f31d55e98569764b95eb76c",
+      "provider": "coinbase",
+      "quote_currency": "USD",
+      "requested_model": "TimesFM",
+      "schema_version": 1,
+      "status": "VALID",
+      "symbol": "BTC/USD",
+      "upper_path": [
+        85369.3125,
+        85466.0,
+        85547.1796875,
+        85636.8359375,
+        85716.75,
+        85777.46875,
+        85843.1328125,
+        85911.28125,
+        85969.3671875,
+        86010.6875,
+        86057.515625,
+        86101.734375,
+        86159.109375,
+        86198.671875,
+        86230.34375,
+        86273.8046875,
+        86331.15625,
+        86372.0859375,
+        86409.0625,
+        86461.640625,
+        86498.984375,
+        86535.4609375,
+        86546.703125,
+        86595.40625
+      ],
+      "venue": "coinbase",
+      "verifications": [],
+      "errors": [],
+      "window_statistics": null,
+      "verification_status": "PENDING VERIFICATION"
     }
   ],
   "health": {
     "collector_status": "SUCCESS",
     "provider_status": [
       {
-        "id": "4c59987e-6248-4755-9a6d-6c9ea6e9f3e8",
-        "message": "{\"provider\": \"kraken\", \"venue\": \"kraken\", \"symbol\": \"BTC/USD\", \"quote_currency\": \"USD\", \"open_time\": \"2026-10-02T16:00:00+00:00\", \"close_time\": \"2026-10-02T17:00:00+00:00\", \"available_at\": \"2026-10-02T17:55:49.942096+00:00\", \"retrieved_at\": \"2026-10-02T17:55:49.942096+00:00\", \"open\": \"85319.0\", \"high\": \"85499.9\", \"low\": \"85013.0\", \"close\": \"85142.6\", \"volume\": \"492.69121022\", \"status\": \"CLOSED\"}",
-        "operation": "provider_check",
-        "status": "AVAILABLE",
-        "timestamp": "2026-10-02T17:55:49.944923+00:00"
-      },
-      {
         "id": "2f183037-25e6-44d9-8f61-e0689fed714c",
         "message": "{\"provider\": \"kraken\", \"venue\": \"kraken\", \"symbol\": \"BTC/USD\", \"quote_currency\": \"USD\", \"open_time\": \"2026-10-03T15:00:00+00:00\", \"close_time\": \"2026-10-03T16:00:00+00:00\", \"available_at\": \"2026-10-03T16:30:47.795603+00:00\", \"retrieved_at\": \"2026-10-03T16:30:47.795603+00:00\", \"open\": \"84842.0\", \"high\": \"84868.2\", \"low\": \"84760.8\", \"close\": \"84854.2\", \"volume\": \"27.82700901\", \"status\": \"CLOSED\"}",
         "operation": "provider_check",
         "status": "AVAILABLE",
         "timestamp": "2026-10-03T16:30:47.798242+00:00"
+      },
+      {
+        "id": "d024875f-4ce3-46d8-9de1-8eb26be7c8ee",
+        "message": "{\"provider\": \"kraken\", \"venue\": \"kraken\", \"symbol\": \"BTC/USD\", \"quote_currency\": \"USD\", \"open_time\": \"2026-10-04T15:00:00+00:00\", \"close_time\": \"2026-10-04T16:00:00+00:00\", \"available_at\": \"2026-10-04T16:54:50.657647+00:00\", \"retrieved_at\": \"2026-10-04T16:54:50.657647+00:00\", \"open\": \"85270.1\", \"high\": \"85459.5\", \"low\": \"85222.0\", \"close\": \"85249.9\", \"volume\": \"69.70329424\", \"status\": \"CLOSED\"}",
+        "operation": "provider_check",
+        "status": "AVAILABLE",
+        "timestamp": "2026-10-04T16:54:50.660397+00:00"
       }
     ],
     "latest_valid_observation": "2026-10-04T15:00:00+00:00",
-    "latest_prediction": "2026-10-03T16:30:51.287605+00:00",
+    "latest_prediction": "2026-10-04T16:54:54.218117+00:00",
     "latest_verification": "2026-10-04T15:21:22.596442+00:00",
-    "pending_verifications": 1,
+    "pending_verifications": 25,
     "invalid_predictions": 0,
     "timesfm_status": "GENERATED",
     "storage_status": "INTEGRITY_CHECK_PASSED",
