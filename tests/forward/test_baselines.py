@@ -395,6 +395,69 @@ class TestReportBaselines(unittest.TestCase):
         self.assertEqual(result["schema_version"], 1)
         self.assertIn("metric_definition", result)
 
+    def test_n_direction_in_metrics(self):
+        """Per-prediction metrics must include n_direction."""
+        from evaluation.forward.baselines import baselines_for_prediction
+        origin = 84_000.0
+        vals = [origin - 511 + j for j in range(512)]
+        fp = [origin + 100.0] * 24  # all up
+        vfs = [
+            {"status": "VERIFIED", "horizon": h, "exact_price": str(origin + 200.0)}
+            for h in range(1, 25)
+        ]
+        result = baselines_for_prediction(vals, fp, vfs)
+        m = result["timesfm"]["metrics"]
+        self.assertIn("n_direction", m)
+        self.assertEqual(m["n_direction"], 24)
+
+    def test_aggregate_direction_uses_n_direction(self):
+        """Aggregated direction must weight by n_direction, not n_verified.
+
+        Prediction A: forecast all UP, actual all DOWN → 0/24 correct.
+        Prediction B: 12 flat (excluded) + 12 UP, actual UP → 12/12 correct.
+        Correct aggregate for timesfm: 12 correct / 36 directional = 0.3333.
+        With the old bug (n_verified): (0*24 + 1*24)/(24+24) = 0.5.
+        """
+        from evaluation.forward.baselines import report_baselines
+        origin = 84_000.0
+        vals = [origin - 511 + j for j in range(512)]
+
+        # A: all up, actual all down.
+        fp_a = [origin + 500.0] * 24
+        vfs_a = [
+            {"status": "VERIFIED", "horizon": h, "exact_price": str(origin - 500.0),
+             "prediction_id": "A"}
+            for h in range(1, 25)
+        ]
+        # B: first 12 = origin (flat, excluded from direction), last 12 = up, actual up.
+        fp_b = [origin] * 12 + [origin + 500.0] * 12
+        vfs_b = [
+            {"status": "VERIFIED", "horizon": h, "exact_price": str(origin + 500.0),
+             "prediction_id": "B"}
+            for h in range(1, 25)
+        ]
+
+        preds = [
+            {"prediction_id": "A", "_input_values": vals, "forecast_path": fp_a},
+            {"prediction_id": "B", "_input_values": vals, "forecast_path": fp_b},
+        ]
+        result = report_baselines(preds, vfs_a + vfs_b)
+        tfm = result["summary"]["timesfm"]
+        # 12 correct out of 36 directional horizons = 0.3333.
+        self.assertAlmostEqual(tfm["direction_accuracy"], 12 / 36, places=4)
+
+    def test_lr_actual_zero_excluded_from_direction(self):
+        """When lr_actual == 0, that horizon has no directional move → excluded."""
+        from evaluation.forward.baselines import _compute_metrics
+        origin = 84_000.0
+        path = [origin + 100.0] * 24  # forecast up
+        # All actuals equal origin → lr_actual == 0 → excluded.
+        actuals = {h: origin for h in range(1, 25)}
+        m = _compute_metrics(origin, path, actuals)
+        self.assertIsNone(m["direction_accuracy"])
+        self.assertEqual(m["n_verified"], 24)
+        self.assertEqual(m["n_direction"], 0)
+
 
 if __name__ == "__main__":
     unittest.main()

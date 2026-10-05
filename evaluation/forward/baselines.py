@@ -189,8 +189,9 @@ def _compute_metrics(
         maes.append(ae)
         # Direction: sign of log-return vs origin (not vs prev hour).
         # When lr_forecast == 0 the model has no directional opinion
-        # (persistence), so that horizon is excluded from direction_accuracy.
-        if lr_forecast != 0:
+        # (persistence); when lr_actual == 0 there is no directional
+        # move to judge against.  Both cases are excluded.
+        if lr_forecast != 0 and lr_actual != 0:
             dir_hits.append((lr_forecast > 0) == (lr_actual > 0))
         per_horizon.append({
             "horizon":    h,
@@ -208,8 +209,10 @@ def _compute_metrics(
     rmse_lr = math.sqrt(sum(m ** 2 for m in maes) / n)
     dir_acc = sum(dir_hits) / len(dir_hits) if dir_hits else None
 
+    n_dir = len(dir_hits)
     return {
         "n_verified":      n,
+        "n_direction":     n_dir,
         "mae_log_return":  round(mae_lr  * 100, 6),   # % units
         "rmse_log_return": round(rmse_lr * 100, 6),
         "direction_accuracy": round(dir_acc, 4) if dir_acc is not None else None,
@@ -297,13 +300,14 @@ def report_baselines(predictions: list[dict], verifications: list[dict]) -> dict
             rmse_lr = m.get("rmse_log_return")
             dir_acc = m.get("direction_accuracy")
             n = m.get("n_verified", 0)
+            n_dir = m.get("n_direction", 0)
             if n and mae_lr is not None and rmse_lr is not None:
                 per_model[name]["mae_lr_sum"]   += mae_lr * n
                 per_model[name]["rmse_sq_sum"]  += (rmse_lr ** 2) * n
                 per_model[name]["n"]            += n
-                if dir_acc is not None:
-                    per_model[name]["dir_sum"] += dir_acc * n
-                    per_model[name]["dir_n"]   += n
+                if dir_acc is not None and n_dir:
+                    per_model[name]["dir_sum"] += dir_acc * n_dir
+                    per_model[name]["dir_n"]   += n_dir
 
     summary = {}
     for name, acc in per_model.items():
