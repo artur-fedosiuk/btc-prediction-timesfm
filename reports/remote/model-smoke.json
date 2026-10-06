@@ -8,10 +8,10 @@
     "os": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
     "architecture": "x86_64",
     "github": {
-      "GITHUB_RUN_ID": "36619483679",
+      "GITHUB_RUN_ID": "37302356346",
       "GITHUB_RUN_ATTEMPT": "1",
-      "GITHUB_SHA": "12617951058484f935d5bef9b36b70f31af336b9",
-      "GITHUB_REF": "refs/heads/master"
+      "GITHUB_SHA": "22aaceab7942e1d13edafe0aeeb90005047da548",
+      "GITHUB_REF": "refs/heads/codex/automate-btc-verification"
     },
     "timesfm_version": "3.0.1",
     "torch_version": "2.14.0+cpu",
@@ -19,12 +19,12 @@
     "pandas_version": "3.0.5",
     "statsmodels_version": "0.14.6",
     "device": "cpu",
-    "git_sha": "12617951058484f935d5bef9b36b70f31af336b9",
+    "git_sha": "22aaceab7942e1d13edafe0aeeb90005047da548",
     "working_tree_dirty": true
   },
   "resource_preflight": {
-    "available_memory_bytes": 7177175040,
-    "free_disk_bytes": 11824263168,
+    "available_memory_bytes": 15627964416,
+    "free_disk_bytes": 88574042112,
     "minimum_memory_bytes": 4294967296
   },
   "input_values": [
@@ -544,168 +544,168 @@
   "forecast_points": [
     {
       "step": 1,
-      "target_timestamp": "2026-09-29T20:00:00+00:00",
+      "target_timestamp": "2026-10-05T12:00:00+00:00",
       "point_forecast": 105.12000274658203,
       "q10": 105.1199951171875,
       "q90": 105.12000274658203
     },
     {
       "step": 2,
-      "target_timestamp": "2026-09-29T21:00:00+00:00",
+      "target_timestamp": "2026-10-05T13:00:00+00:00",
       "point_forecast": 105.12999725341797,
       "q10": 105.12998962402344,
       "q90": 105.12999725341797
     },
     {
       "step": 3,
-      "target_timestamp": "2026-09-29T22:00:00+00:00",
+      "target_timestamp": "2026-10-05T14:00:00+00:00",
       "point_forecast": 105.13999938964844,
       "q10": 105.13999938964844,
       "q90": 105.13999938964844
     },
     {
       "step": 4,
-      "target_timestamp": "2026-09-29T23:00:00+00:00",
+      "target_timestamp": "2026-10-05T15:00:00+00:00",
       "point_forecast": 105.1500015258789,
       "q10": 105.1500015258789,
       "q90": 105.1500015258789
     },
     {
       "step": 5,
-      "target_timestamp": "2026-09-30T00:00:00+00:00",
+      "target_timestamp": "2026-10-05T16:00:00+00:00",
       "point_forecast": 105.16000366210938,
       "q10": 105.16000366210938,
       "q90": 105.16000366210938
     },
     {
       "step": 6,
-      "target_timestamp": "2026-09-30T01:00:00+00:00",
+      "target_timestamp": "2026-10-05T17:00:00+00:00",
       "point_forecast": 105.16999816894531,
       "q10": 105.16999816894531,
       "q90": 105.16999816894531
     },
     {
       "step": 7,
-      "target_timestamp": "2026-09-30T02:00:00+00:00",
+      "target_timestamp": "2026-10-05T18:00:00+00:00",
       "point_forecast": 105.18000030517578,
       "q10": 105.18000030517578,
       "q90": 105.18000030517578
     },
     {
       "step": 8,
-      "target_timestamp": "2026-09-30T03:00:00+00:00",
+      "target_timestamp": "2026-10-05T19:00:00+00:00",
       "point_forecast": 105.19000244140625,
       "q10": 105.19000244140625,
       "q90": 105.19000244140625
     },
     {
       "step": 9,
-      "target_timestamp": "2026-09-30T04:00:00+00:00",
+      "target_timestamp": "2026-10-05T20:00:00+00:00",
       "point_forecast": 105.20000457763672,
       "q10": 105.19999694824219,
       "q90": 105.20000457763672
     },
     {
       "step": 10,
-      "target_timestamp": "2026-09-30T05:00:00+00:00",
+      "target_timestamp": "2026-10-05T21:00:00+00:00",
       "point_forecast": 105.20999908447266,
       "q10": 105.20999145507812,
       "q90": 105.20999908447266
     },
     {
       "step": 11,
-      "target_timestamp": "2026-09-30T06:00:00+00:00",
+      "target_timestamp": "2026-10-05T22:00:00+00:00",
       "point_forecast": 105.22000122070312,
       "q10": 105.22000122070312,
       "q90": 105.22000122070312
     },
     {
       "step": 12,
-      "target_timestamp": "2026-09-30T07:00:00+00:00",
+      "target_timestamp": "2026-10-05T23:00:00+00:00",
       "point_forecast": 105.2300033569336,
       "q10": 105.22999572753906,
       "q90": 105.2300033569336
     },
     {
       "step": 13,
-      "target_timestamp": "2026-09-30T08:00:00+00:00",
+      "target_timestamp": "2026-10-06T00:00:00+00:00",
       "point_forecast": 105.23999786376953,
       "q10": 105.239990234375,
       "q90": 105.23999786376953
     },
     {
       "step": 14,
-      "target_timestamp": "2026-09-30T09:00:00+00:00",
+      "target_timestamp": "2026-10-06T01:00:00+00:00",
       "point_forecast": 105.25,
       "q10": 105.25,
       "q90": 105.25
     },
     {
       "step": 15,
-      "target_timestamp": "2026-09-30T10:00:00+00:00",
+      "target_timestamp": "2026-10-06T02:00:00+00:00",
       "point_forecast": 105.26000213623047,
       "q10": 105.25999450683594,
       "q90": 105.26000213623047
     },
     {
       "step": 16,
-      "target_timestamp": "2026-09-30T11:00:00+00:00",
+      "target_timestamp": "2026-10-06T03:00:00+00:00",
       "point_forecast": 105.27000427246094,
       "q10": 105.2699966430664,
       "q90": 105.27000427246094
     },
     {
       "step": 17,
-      "target_timestamp": "2026-09-30T12:00:00+00:00",
+      "target_timestamp": "2026-10-06T04:00:00+00:00",
       "point_forecast": 105.27999877929688,
       "q10": 105.27999114990234,
       "q90": 105.27999877929688
     },
     {
       "step": 18,
-      "target_timestamp": "2026-09-30T13:00:00+00:00",
+      "target_timestamp": "2026-10-06T05:00:00+00:00",
       "point_forecast": 105.29000091552734,
       "q10": 105.28999328613281,
       "q90": 105.29000091552734
     },
     {
       "step": 19,
-      "target_timestamp": "2026-09-30T14:00:00+00:00",
+      "target_timestamp": "2026-10-06T06:00:00+00:00",
       "point_forecast": 105.30000305175781,
       "q10": 105.29999542236328,
       "q90": 105.30000305175781
     },
     {
       "step": 20,
-      "target_timestamp": "2026-09-30T15:00:00+00:00",
+      "target_timestamp": "2026-10-06T07:00:00+00:00",
       "point_forecast": 105.30999755859375,
       "q10": 105.30998992919922,
       "q90": 105.30999755859375
     },
     {
       "step": 21,
-      "target_timestamp": "2026-09-30T16:00:00+00:00",
+      "target_timestamp": "2026-10-06T08:00:00+00:00",
       "point_forecast": 105.31999969482422,
       "q10": 105.31999206542969,
       "q90": 105.31999969482422
     },
     {
       "step": 22,
-      "target_timestamp": "2026-09-30T17:00:00+00:00",
+      "target_timestamp": "2026-10-06T09:00:00+00:00",
       "point_forecast": 105.33000183105469,
       "q10": 105.32999420166016,
       "q90": 105.33000183105469
     },
     {
       "step": 23,
-      "target_timestamp": "2026-09-30T18:00:00+00:00",
+      "target_timestamp": "2026-10-06T10:00:00+00:00",
       "point_forecast": 105.34000396728516,
       "q10": 105.33999633789062,
       "q90": 105.34000396728516
     },
     {
       "step": 24,
-      "target_timestamp": "2026-09-30T19:00:00+00:00",
+      "target_timestamp": "2026-10-06T11:00:00+00:00",
       "point_forecast": 105.3499984741211,
       "q10": 105.34999084472656,
       "q90": 105.3499984741211

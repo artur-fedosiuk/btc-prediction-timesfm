@@ -1,8 +1,8 @@
 {
   "status": "PASS",
-  "code_hash": "bc0985b066b65c9344d0b0814a40f0b97169d84ea3cbd732267e95dc93ca5214",
-  "github_run_id": "36619483679",
-  "github_sha": "12617951058484f935d5bef9b36b70f31af336b9",
+  "code_hash": "4087d81e2199b75dea71339eb2fb0e144c524f41297f4b6ea6f08ee50ee2b10b",
+  "github_run_id": "37302356346",
+  "github_sha": "22aaceab7942e1d13edafe0aeeb90005047da548",
   "tests": [
     {
       "file": "btc-tests.xml",
@@ -10,10 +10,10 @@
       "errors": "0",
       "failures": "0",
       "skipped": "0",
-      "tests": "180",
-      "time": "1.489",
-      "timestamp": "2026-09-29T19:29:27.279360+00:00",
-      "hostname": "runnervmtr4k5"
+      "tests": "221",
+      "time": "25.598",
+      "timestamp": "2026-10-05T11:22:00.624533+00:00",
+      "hostname": "runnervm8df0l"
     },
     {
       "file": "model-tests.xml",
@@ -22,9 +22,9 @@
       "failures": "0",
       "skipped": "0",
       "tests": "42",
-      "time": "1.870",
-      "timestamp": "2026-09-29T19:29:29.146929+00:00",
-      "hostname": "runnervmtr4k5"
+      "time": "1.815",
+      "timestamp": "2026-10-05T11:22:26.657887+00:00",
+      "hostname": "runnervm8df0l"
     }
   ],
   "environment": {
@@ -32,10 +32,10 @@
     "os": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
     "architecture": "x86_64",
     "github": {
-      "GITHUB_RUN_ID": "36619483679",
+      "GITHUB_RUN_ID": "37302356346",
       "GITHUB_RUN_ATTEMPT": "1",
-      "GITHUB_SHA": "12617951058484f935d5bef9b36b70f31af336b9",
-      "GITHUB_REF": "refs/heads/master"
+      "GITHUB_SHA": "22aaceab7942e1d13edafe0aeeb90005047da548",
+      "GITHUB_REF": "refs/heads/codex/automate-btc-verification"
     },
     "timesfm_version": "3.0.1",
     "torch_version": "2.14.0+cpu",
@@ -43,7 +43,7 @@
     "pandas_version": "3.0.5",
     "statsmodels_version": "0.14.6",
     "device": "cpu",
-    "git_sha": "12617951058484f935d5bef9b36b70f31af336b9",
+    "git_sha": "22aaceab7942e1d13edafe0aeeb90005047da548",
     "working_tree_dirty": true
   }
 }
