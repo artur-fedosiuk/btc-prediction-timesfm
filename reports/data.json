@@ -2087,8 +2087,124 @@
         84140.375
       ],
       "venue": "coinbase",
-      "verifications": [],
-      "errors": [],
+      "verifications": [
+        {
+          "cross_source_mean": "82372.105",
+          "cross_source_median": "82372.105",
+          "exact_price": "82369.11",
+          "horizon": 1,
+          "prediction_id": "517001166a92c0e5221300d732cb39a820b54aa80ec503232279c94c75b788fd",
+          "provider": "coinbase",
+          "schema_version": 1,
+          "source_spread_pct": "0.007271879236302143790060967848",
+          "source_timestamp": "2026-10-09T19:00:00+00:00",
+          "sources": [
+            {
+              "available_at": "2026-10-09T20:52:36.009522+00:00",
+              "close": "82369.11",
+              "close_time": "2026-10-09T19:00:00+00:00",
+              "high": "82664.81",
+              "low": "82233.09",
+              "open": "82643.61",
+              "open_time": "2026-10-09T18:00:00+00:00",
+              "provider": "coinbase",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-10-09T20:52:36.009522+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "coinbase",
+              "volume": "157.78929936"
+            },
+            {
+              "available_at": "2026-10-09T20:52:36.170162+00:00",
+              "close": "82375.1",
+              "close_time": "2026-10-09T19:00:00+00:00",
+              "high": "82663.3",
+              "low": "82263.5",
+              "open": "82648.9",
+              "open_time": "2026-10-09T18:00:00+00:00",
+              "provider": "kraken",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-10-09T20:52:36.170162+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "kraken",
+              "volume": "87.00388936"
+            }
+          ],
+          "status": "VERIFIED",
+          "target_timestamp": "2026-10-09T19:00:00+00:00",
+          "verification_id": "8ffcbb4b64bb22d866f8d62d68c9ca1b34aaf6947ec5625daae1286232f6a80d",
+          "verified_at": "2026-10-09T20:52:36.170239+00:00"
+        },
+        {
+          "cross_source_mean": "82252.495",
+          "cross_source_median": "82252.495",
+          "exact_price": "82252.59",
+          "horizon": 2,
+          "prediction_id": "517001166a92c0e5221300d732cb39a820b54aa80ec503232279c94c75b788fd",
+          "provider": "coinbase",
+          "schema_version": 1,
+          "source_spread_pct": "0.0002309960323999898118592025689",
+          "source_timestamp": "2026-10-09T20:00:00+00:00",
+          "sources": [
+            {
+              "available_at": "2026-10-09T20:52:36.009522+00:00",
+              "close": "82252.59",
+              "close_time": "2026-10-09T20:00:00+00:00",
+              "high": "82495.22",
+              "low": "82198",
+              "open": "82369.12",
+              "open_time": "2026-10-09T19:00:00+00:00",
+              "provider": "coinbase",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-10-09T20:52:36.009522+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "coinbase",
+              "volume": "215.41582472"
+            },
+            {
+              "available_at": "2026-10-09T20:52:36.170162+00:00",
+              "close": "82252.4",
+              "close_time": "2026-10-09T20:00:00+00:00",
+              "high": "82493.8",
+              "low": "82206.3",
+              "open": "82375.2",
+              "open_time": "2026-10-09T19:00:00+00:00",
+              "provider": "kraken",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-10-09T20:52:36.170162+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "kraken",
+              "volume": "81.99168720"
+            }
+          ],
+          "status": "VERIFIED",
+          "target_timestamp": "2026-10-09T20:00:00+00:00",
+          "verification_id": "3fd4f8a372b877cc7216a5b806cfde5622640ade1196ce4528bd159b2232b4a5",
+          "verified_at": "2026-10-09T20:52:36.175287+00:00"
+        }
+      ],
+      "errors": [
+        {
+          "horizon": 1,
+          "target_timestamp": "2026-10-09T19:00:00+00:00",
+          "forecast": "82650.75",
+          "actual": "82369.11",
+          "absolute_error": "281.64",
+          "absolute_percentage_error": "0.3419242966204199608324042836"
+        },
+        {
+          "horizon": 2,
+          "target_timestamp": "2026-10-09T20:00:00+00:00",
+          "forecast": "82648.015625",
+          "actual": "82252.59",
+          "absolute_error": "395.425625",
+          "absolute_percentage_error": "0.4807454999289384078969428197"
+        }
+      ],
       "window_statistics": null,
       "verification_status": "PENDING VERIFICATION"
     },
@@ -8698,6 +8814,104 @@
           "target_timestamp": "2026-10-09T16:00:00+00:00",
           "verification_id": "0c96a123e289452903f3b45dd4d5e4d5adf96efdda05750a2fe3a656ca9aca4f",
           "verified_at": "2026-10-09T16:10:28.809988+00:00"
+        },
+        {
+          "cross_source_mean": "82672.445",
+          "cross_source_median": "82672.445",
+          "exact_price": "82668.39",
+          "horizon": 23,
+          "prediction_id": "90bbbfdbf230aac3c211478698f330dbbf19c8ad6e5e02767fbc3c0b061b143b",
+          "provider": "coinbase",
+          "schema_version": 1,
+          "source_spread_pct": "0.009809798173986507838252515696",
+          "source_timestamp": "2026-10-09T17:00:00+00:00",
+          "sources": [
+            {
+              "available_at": "2026-10-09T20:52:36.265001+00:00",
+              "close": "82668.39",
+              "close_time": "2026-10-09T17:00:00+00:00",
+              "high": "82949.45",
+              "low": "82631.36",
+              "open": "82807.48",
+              "open_time": "2026-10-09T16:00:00+00:00",
+              "provider": "coinbase",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-10-09T20:52:36.265001+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "coinbase",
+              "volume": "226.9307652"
+            },
+            {
+              "available_at": "2026-10-09T20:52:36.455827+00:00",
+              "close": "82676.5",
+              "close_time": "2026-10-09T17:00:00+00:00",
+              "high": "82945.2",
+              "low": "82637.9",
+              "open": "82808.6",
+              "open_time": "2026-10-09T16:00:00+00:00",
+              "provider": "kraken",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-10-09T20:52:36.455827+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "kraken",
+              "volume": "32.87296969"
+            }
+          ],
+          "status": "VERIFIED",
+          "target_timestamp": "2026-10-09T17:00:00+00:00",
+          "verification_id": "f8ea4bbb520b4b22b800aabc55e06e7587b3d34ffd48511e8f872315cd2bb9c4",
+          "verified_at": "2026-10-09T20:52:36.455904+00:00"
+        },
+        {
+          "cross_source_mean": "82646.205",
+          "cross_source_median": "82646.205",
+          "exact_price": "82643.61",
+          "horizon": 24,
+          "prediction_id": "90bbbfdbf230aac3c211478698f330dbbf19c8ad6e5e02767fbc3c0b061b143b",
+          "provider": "coinbase",
+          "schema_version": 1,
+          "source_spread_pct": "0.006279780178654301186606208960",
+          "source_timestamp": "2026-10-09T18:00:00+00:00",
+          "sources": [
+            {
+              "available_at": "2026-10-09T20:52:36.265001+00:00",
+              "close": "82643.61",
+              "close_time": "2026-10-09T18:00:00+00:00",
+              "high": "82715.9",
+              "low": "82428.28",
+              "open": "82668.39",
+              "open_time": "2026-10-09T17:00:00+00:00",
+              "provider": "coinbase",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-10-09T20:52:36.265001+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "coinbase",
+              "volume": "172.15344453"
+            },
+            {
+              "available_at": "2026-10-09T20:52:36.455827+00:00",
+              "close": "82648.8",
+              "close_time": "2026-10-09T18:00:00+00:00",
+              "high": "82718.5",
+              "low": "82449.8",
+              "open": "82676.6",
+              "open_time": "2026-10-09T17:00:00+00:00",
+              "provider": "kraken",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-10-09T20:52:36.455827+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "kraken",
+              "volume": "42.35442741"
+            }
+          ],
+          "status": "VERIFIED",
+          "target_timestamp": "2026-10-09T18:00:00+00:00",
+          "verification_id": "65dd751628b8c1fc9be9c0dad27ba8a2f08d65d0490cddc3082d5a0a305090da",
+          "verified_at": "2026-10-09T20:52:36.459837+00:00"
         }
       ],
       "errors": [
@@ -8876,10 +9090,31 @@
           "actual": "82807.48",
           "absolute_error": "2205.0659375",
           "absolute_percentage_error": "2.662882553001250611659719629"
+        },
+        {
+          "horizon": 23,
+          "target_timestamp": "2026-10-09T17:00:00+00:00",
+          "forecast": "80594.6484375",
+          "actual": "82668.39",
+          "absolute_error": "2073.7415625",
+          "absolute_percentage_error": "2.508506047474736111348001334"
+        },
+        {
+          "horizon": 24,
+          "target_timestamp": "2026-10-09T18:00:00+00:00",
+          "forecast": "80578.1875",
+          "actual": "82643.61",
+          "absolute_error": "2065.4225",
+          "absolute_percentage_error": "2.499192012546402559133125961"
         }
       ],
-      "window_statistics": null,
-      "verification_status": "PENDING VERIFICATION"
+      "window_statistics": {
+        "mean_hourly_close_1_24": "82296.28291666666666666666667",
+        "twap_definition": "Equal-weight mean of 24 hourly closes; not continuous-time TWAP.",
+        "high_24": "83452.99",
+        "low_24": "80460.51"
+      },
+      "verification_status": "VERIFIED"
     },
     {
       "actual_model_used": "TimesFM",
@@ -15795,33 +16030,33 @@
     "status": "STATISTICALLY_INCONCLUSIVE",
     "n_daily_origins": 10,
     "min_required": 60,
-    "arima_fallback_count": 0,
+    "arima_fallback_count": 10,
     "note": "Need >= 60 daily origins (distinct UTC dates) for statistical conclusions; current: 10. Hourly verification targets within a single prediction are NOT independent samples.",
     "metric_definition": "mae_log_return_pct and rmse_log_return_pct are 100 * |log(forecast/origin) - log(actual/origin)| averaged over verified horizons. Scale-free. direction_accuracy = fraction of horizons where sign(log-return forecast) == sign(log-return actual), relative to forecast origin.",
     "summary": {
       "persistence": {
-        "mae_log_return_pct": 0.944741,
-        "rmse_log_return_pct": 1.25942,
+        "mae_log_return_pct": 0.95331,
+        "rmse_log_return_pct": 1.269765,
         "direction_accuracy": null,
-        "n_verified_targets": 214
+        "n_verified_targets": 218
       },
       "drift": {
-        "mae_log_return_pct": 0.985623,
-        "rmse_log_return_pct": 1.3174,
-        "direction_accuracy": 0.4206,
-        "n_verified_targets": 214
+        "mae_log_return_pct": 0.991314,
+        "rmse_log_return_pct": 1.32237,
+        "direction_accuracy": 0.422,
+        "n_verified_targets": 218
       },
       "arima": {
-        "mae_log_return_pct": 0.95592,
-        "rmse_log_return_pct": 1.274818,
-        "direction_accuracy": 0.3411,
-        "n_verified_targets": 214
+        "mae_log_return_pct": 0.991314,
+        "rmse_log_return_pct": 1.32237,
+        "direction_accuracy": 0.422,
+        "n_verified_targets": 218
       },
       "timesfm": {
-        "mae_log_return_pct": 0.993673,
-        "rmse_log_return_pct": 1.318256,
-        "direction_accuracy": 0.4299,
-        "n_verified_targets": 214
+        "mae_log_return_pct": 1.00247,
+        "rmse_log_return_pct": 1.329094,
+        "direction_accuracy": 0.422,
+        "n_verified_targets": 218
       }
     },
     "per_prediction": [
@@ -16244,211 +16479,211 @@
           },
           "arima": {
             "path": [
-              85723.7336831676,
-              85720.87153130418,
-              85707.22867925317,
-              85705.93490937397,
-              85708.49332400055,
-              85708.55467836157,
-              85708.39072927272,
-              85708.18656600085,
-              85708.18151881981,
-              85708.22570124817,
-              85708.2257181382,
-              85708.22131147576,
-              85708.21834736157,
-              85708.21855992616,
-              85708.21929883126,
-              85708.21927061235,
-              85708.21917413616,
-              85708.21913317175,
-              85708.21914173654,
-              85708.21915368523,
-              85708.21915258218,
-              85708.21915067965,
-              85708.2191501582,
-              85708.2191503815
+              85736.40199975538,
+              85753.43681201077,
+              85770.47162426614,
+              85787.50643652152,
+              85804.5412487769,
+              85821.57606103229,
+              85838.61087328767,
+              85855.64568554306,
+              85872.68049779843,
+              85889.71531005381,
+              85906.7501223092,
+              85923.78493456458,
+              85940.81974681997,
+              85957.85455907535,
+              85974.88937133072,
+              85991.9241835861,
+              86008.95899584149,
+              86025.99380809687,
+              86043.02862035226,
+              86060.06343260763,
+              86077.09824486301,
+              86094.1330571184,
+              86111.16786937378,
+              86128.20268162916
             ],
             "origin_price": 85719.3671875,
             "metrics": {
               "n_verified": 24,
               "n_direction": 24,
-              "mae_log_return": 1.697885,
-              "rmse_log_return": 2.004564,
-              "direction_accuracy": 0.9167,
+              "mae_log_return": 1.957653,
+              "rmse_log_return": 2.29429,
+              "direction_accuracy": 0.0,
               "per_horizon": [
                 {
                   "horizon": 1,
                   "verified": true,
-                  "lr_forecast": 0.005094,
+                  "lr_forecast": 0.019871,
                   "lr_actual": -0.265259,
-                  "log_ae": 0.270353
+                  "log_ae": 0.28513
                 },
                 {
                   "horizon": 2,
                   "verified": true,
-                  "lr_forecast": 0.001755,
+                  "lr_forecast": 0.039738,
                   "lr_actual": -0.127657,
-                  "log_ae": 0.129412
+                  "log_ae": 0.167395
                 },
                 {
                   "horizon": 3,
                   "verified": true,
-                  "lr_forecast": -0.014162,
+                  "lr_forecast": 0.059601,
                   "lr_actual": -0.130507,
-                  "log_ae": 0.116346
+                  "log_ae": 0.190108
                 },
                 {
                   "horizon": 4,
                   "verified": true,
-                  "lr_forecast": -0.015671,
+                  "lr_forecast": 0.07946,
                   "lr_actual": -0.122226,
-                  "log_ae": 0.106555
+                  "log_ae": 0.201685
                 },
                 {
                   "horizon": 5,
                   "verified": true,
-                  "lr_forecast": -0.012686,
+                  "lr_forecast": 0.099315,
                   "lr_actual": -0.224398,
-                  "log_ae": 0.211712
+                  "log_ae": 0.323713
                 },
                 {
                   "horizon": 6,
                   "verified": true,
-                  "lr_forecast": -0.012615,
+                  "lr_forecast": 0.119166,
                   "lr_actual": -0.209737,
-                  "log_ae": 0.197123
+                  "log_ae": 0.328903
                 },
                 {
                   "horizon": 7,
                   "verified": true,
-                  "lr_forecast": -0.012806,
+                  "lr_forecast": 0.139013,
                   "lr_actual": -0.217664,
-                  "log_ae": 0.204858
+                  "log_ae": 0.356677
                 },
                 {
                   "horizon": 8,
                   "verified": true,
-                  "lr_forecast": -0.013044,
+                  "lr_forecast": 0.158856,
                   "lr_actual": -1.598282,
-                  "log_ae": 1.585238
+                  "log_ae": 1.757138
                 },
                 {
                   "horizon": 9,
                   "verified": true,
-                  "lr_forecast": -0.01305,
+                  "lr_forecast": 0.178695,
                   "lr_actual": -2.20784,
-                  "log_ae": 2.19479
+                  "log_ae": 2.386535
                 },
                 {
                   "horizon": 10,
                   "verified": true,
-                  "lr_forecast": -0.012998,
+                  "lr_forecast": 0.19853,
                   "lr_actual": -1.880436,
-                  "log_ae": 1.867438
+                  "log_ae": 2.078967
                 },
                 {
                   "horizon": 11,
                   "verified": true,
-                  "lr_forecast": -0.012998,
+                  "lr_forecast": 0.218362,
                   "lr_actual": -1.93599,
-                  "log_ae": 1.922991
+                  "log_ae": 2.154352
                 },
                 {
                   "horizon": 12,
                   "verified": true,
-                  "lr_forecast": -0.013004,
+                  "lr_forecast": 0.238189,
                   "lr_actual": -1.665208,
-                  "log_ae": 1.652205
+                  "log_ae": 1.903398
                 },
                 {
                   "horizon": 13,
                   "verified": true,
-                  "lr_forecast": -0.013007,
+                  "lr_forecast": 0.258013,
                   "lr_actual": -1.788375,
-                  "log_ae": 1.775368
+                  "log_ae": 2.046388
                 },
                 {
                   "horizon": 14,
                   "verified": true,
-                  "lr_forecast": -0.013007,
+                  "lr_forecast": 0.277832,
                   "lr_actual": -1.907127,
-                  "log_ae": 1.89412
+                  "log_ae": 2.184959
                 },
                 {
                   "horizon": 15,
                   "verified": true,
-                  "lr_forecast": -0.013006,
+                  "lr_forecast": 0.297648,
                   "lr_actual": -2.116692,
-                  "log_ae": 2.103686
+                  "log_ae": 2.41434
                 },
                 {
                   "horizon": 16,
                   "verified": true,
-                  "lr_forecast": -0.013006,
+                  "lr_forecast": 0.31746,
                   "lr_actual": -2.283339,
-                  "log_ae": 2.270333
+                  "log_ae": 2.600799
                 },
                 {
                   "horizon": 17,
                   "verified": true,
-                  "lr_forecast": -0.013006,
+                  "lr_forecast": 0.337268,
                   "lr_actual": -2.360424,
-                  "log_ae": 2.347417
+                  "log_ae": 2.697691
                 },
                 {
                   "horizon": 18,
                   "verified": true,
-                  "lr_forecast": -0.013006,
+                  "lr_forecast": 0.357072,
                   "lr_actual": -2.372584,
-                  "log_ae": 2.359578
+                  "log_ae": 2.729655
                 },
                 {
                   "horizon": 19,
                   "verified": true,
-                  "lr_forecast": -0.013006,
+                  "lr_forecast": 0.376872,
                   "lr_actual": -2.666219,
-                  "log_ae": 2.653213
+                  "log_ae": 3.04309
                 },
                 {
                   "horizon": 20,
                   "verified": true,
-                  "lr_forecast": -0.013006,
+                  "lr_forecast": 0.396668,
                   "lr_actual": -3.055634,
-                  "log_ae": 3.042628
+                  "log_ae": 3.452302
                 },
                 {
                   "horizon": 21,
                   "verified": true,
-                  "lr_forecast": -0.013006,
+                  "lr_forecast": 0.41646,
                   "lr_actual": -3.258909,
-                  "log_ae": 3.245902
+                  "log_ae": 3.675368
                 },
                 {
                   "horizon": 22,
                   "verified": true,
-                  "lr_forecast": -0.013006,
+                  "lr_forecast": 0.436248,
                   "lr_actual": -2.722187,
-                  "log_ae": 2.709181
+                  "log_ae": 3.158435
                 },
                 {
                   "horizon": 23,
                   "verified": true,
-                  "lr_forecast": -0.013006,
+                  "lr_forecast": 0.456032,
                   "lr_actual": -2.809005,
-                  "log_ae": 2.795999
+                  "log_ae": 3.265037
                 },
                 {
                   "horizon": 24,
                   "verified": true,
-                  "lr_forecast": -0.013006,
+                  "lr_forecast": 0.475813,
                   "lr_actual": -3.105803,
-                  "log_ae": 3.092797
+                  "log_ae": 3.581616
                 }
               ],
               "note": "Metrics on log returns relative to origin. Horizons are NOT independent \u2014 aggregate only across distinct daily origins."
             },
-            "fallback": false
+            "fallback": true
           },
           "timesfm": {
             "path": [
@@ -16691,7 +16926,116 @@
             ],
             "origin_price": 82643.609375,
             "metrics": {
-              "note": "no verified horizons yet"
+              "n_verified": 2,
+              "n_direction": 0,
+              "mae_log_return": 0.403482,
+              "rmse_log_return": 0.409643,
+              "direction_accuracy": null,
+              "per_horizon": [
+                {
+                  "horizon": 1,
+                  "verified": true,
+                  "lr_forecast": 0.0,
+                  "lr_actual": -0.332701,
+                  "log_ae": 0.332701
+                },
+                {
+                  "horizon": 2,
+                  "verified": true,
+                  "lr_forecast": 0.0,
+                  "lr_actual": -0.474262,
+                  "log_ae": 0.474262
+                },
+                {
+                  "horizon": 3,
+                  "verified": false
+                },
+                {
+                  "horizon": 4,
+                  "verified": false
+                },
+                {
+                  "horizon": 5,
+                  "verified": false
+                },
+                {
+                  "horizon": 6,
+                  "verified": false
+                },
+                {
+                  "horizon": 7,
+                  "verified": false
+                },
+                {
+                  "horizon": 8,
+                  "verified": false
+                },
+                {
+                  "horizon": 9,
+                  "verified": false
+                },
+                {
+                  "horizon": 10,
+                  "verified": false
+                },
+                {
+                  "horizon": 11,
+                  "verified": false
+                },
+                {
+                  "horizon": 12,
+                  "verified": false
+                },
+                {
+                  "horizon": 13,
+                  "verified": false
+                },
+                {
+                  "horizon": 14,
+                  "verified": false
+                },
+                {
+                  "horizon": 15,
+                  "verified": false
+                },
+                {
+                  "horizon": 16,
+                  "verified": false
+                },
+                {
+                  "horizon": 17,
+                  "verified": false
+                },
+                {
+                  "horizon": 18,
+                  "verified": false
+                },
+                {
+                  "horizon": 19,
+                  "verified": false
+                },
+                {
+                  "horizon": 20,
+                  "verified": false
+                },
+                {
+                  "horizon": 21,
+                  "verified": false
+                },
+                {
+                  "horizon": 22,
+                  "verified": false
+                },
+                {
+                  "horizon": 23,
+                  "verified": false
+                },
+                {
+                  "horizon": 24,
+                  "verified": false
+                }
+              ],
+              "note": "Metrics on log returns relative to origin. Horizons are NOT independent \u2014 aggregate only across distinct daily origins."
             }
           },
           "drift": {
@@ -16723,41 +17067,259 @@
             ],
             "origin_price": 82643.609375,
             "metrics": {
-              "note": "no verified horizons yet"
+              "n_verified": 2,
+              "n_direction": 2,
+              "mae_log_return": 0.419187,
+              "rmse_log_return": 0.426024,
+              "direction_accuracy": 0.0,
+              "per_horizon": [
+                {
+                  "horizon": 1,
+                  "verified": true,
+                  "lr_forecast": 0.010471,
+                  "lr_actual": -0.332701,
+                  "log_ae": 0.343172
+                },
+                {
+                  "horizon": 2,
+                  "verified": true,
+                  "lr_forecast": 0.020941,
+                  "lr_actual": -0.474262,
+                  "log_ae": 0.495203
+                },
+                {
+                  "horizon": 3,
+                  "verified": false
+                },
+                {
+                  "horizon": 4,
+                  "verified": false
+                },
+                {
+                  "horizon": 5,
+                  "verified": false
+                },
+                {
+                  "horizon": 6,
+                  "verified": false
+                },
+                {
+                  "horizon": 7,
+                  "verified": false
+                },
+                {
+                  "horizon": 8,
+                  "verified": false
+                },
+                {
+                  "horizon": 9,
+                  "verified": false
+                },
+                {
+                  "horizon": 10,
+                  "verified": false
+                },
+                {
+                  "horizon": 11,
+                  "verified": false
+                },
+                {
+                  "horizon": 12,
+                  "verified": false
+                },
+                {
+                  "horizon": 13,
+                  "verified": false
+                },
+                {
+                  "horizon": 14,
+                  "verified": false
+                },
+                {
+                  "horizon": 15,
+                  "verified": false
+                },
+                {
+                  "horizon": 16,
+                  "verified": false
+                },
+                {
+                  "horizon": 17,
+                  "verified": false
+                },
+                {
+                  "horizon": 18,
+                  "verified": false
+                },
+                {
+                  "horizon": 19,
+                  "verified": false
+                },
+                {
+                  "horizon": 20,
+                  "verified": false
+                },
+                {
+                  "horizon": 21,
+                  "verified": false
+                },
+                {
+                  "horizon": 22,
+                  "verified": false
+                },
+                {
+                  "horizon": 23,
+                  "verified": false
+                },
+                {
+                  "horizon": 24,
+                  "verified": false
+                }
+              ],
+              "note": "Metrics on log returns relative to origin. Horizons are NOT independent \u2014 aggregate only across distinct daily origins."
             }
           },
           "arima": {
             "path": [
-              82638.48176576075,
-              82642.90316043702,
-              82642.22671008986,
-              82641.15782020666,
-              82640.95366864056,
-              82640.88963751045,
-              82640.93374793358,
-              82640.93221977151,
-              82640.92415854007,
-              82640.92255477255,
-              82640.92179652659,
-              82640.9222101316,
-              82640.9222280493,
-              82640.92216853908,
-              82640.92215688055,
-              82640.92214834578,
-              82640.92215206882,
-              82640.9221524362,
-              82640.92215200674,
-              82640.92215193312,
-              82640.92215184103,
-              82640.92215187363,
-              82640.92215187814,
-              82640.92215187511
+              82652.2632858366,
+              82660.9171966732,
+              82669.57110750978,
+              82678.22501834638,
+              82686.87892918297,
+              82695.53284001957,
+              82704.18675085617,
+              82712.84066169275,
+              82721.49457252935,
+              82730.14848336595,
+              82738.80239420255,
+              82747.45630503914,
+              82756.11021587573,
+              82764.76412671233,
+              82773.41803754892,
+              82782.07194838552,
+              82790.72585922212,
+              82799.3797700587,
+              82808.0336808953,
+              82816.6875917319,
+              82825.3415025685,
+              82833.9954134051,
+              82842.64932424168,
+              82851.30323507827
             ],
             "origin_price": 82643.609375,
             "metrics": {
-              "note": "no verified horizons yet"
+              "n_verified": 2,
+              "n_direction": 2,
+              "mae_log_return": 0.419187,
+              "rmse_log_return": 0.426024,
+              "direction_accuracy": 0.0,
+              "per_horizon": [
+                {
+                  "horizon": 1,
+                  "verified": true,
+                  "lr_forecast": 0.010471,
+                  "lr_actual": -0.332701,
+                  "log_ae": 0.343172
+                },
+                {
+                  "horizon": 2,
+                  "verified": true,
+                  "lr_forecast": 0.020941,
+                  "lr_actual": -0.474262,
+                  "log_ae": 0.495203
+                },
+                {
+                  "horizon": 3,
+                  "verified": false
+                },
+                {
+                  "horizon": 4,
+                  "verified": false
+                },
+                {
+                  "horizon": 5,
+                  "verified": false
+                },
+                {
+                  "horizon": 6,
+                  "verified": false
+                },
+                {
+                  "horizon": 7,
+                  "verified": false
+                },
+                {
+                  "horizon": 8,
+                  "verified": false
+                },
+                {
+                  "horizon": 9,
+                  "verified": false
+                },
+                {
+                  "horizon": 10,
+                  "verified": false
+                },
+                {
+                  "horizon": 11,
+                  "verified": false
+                },
+                {
+                  "horizon": 12,
+                  "verified": false
+                },
+                {
+                  "horizon": 13,
+                  "verified": false
+                },
+                {
+                  "horizon": 14,
+                  "verified": false
+                },
+                {
+                  "horizon": 15,
+                  "verified": false
+                },
+                {
+                  "horizon": 16,
+                  "verified": false
+                },
+                {
+                  "horizon": 17,
+                  "verified": false
+                },
+                {
+                  "horizon": 18,
+                  "verified": false
+                },
+                {
+                  "horizon": 19,
+                  "verified": false
+                },
+                {
+                  "horizon": 20,
+                  "verified": false
+                },
+                {
+                  "horizon": 21,
+                  "verified": false
+                },
+                {
+                  "horizon": 22,
+                  "verified": false
+                },
+                {
+                  "horizon": 23,
+                  "verified": false
+                },
+                {
+                  "horizon": 24,
+                  "verified": false
+                }
+              ],
+              "note": "Metrics on log returns relative to origin. Horizons are NOT independent \u2014 aggregate only across distinct daily origins."
             },
-            "fallback": false
+            "fallback": true
           },
           "timesfm": {
             "path": [
@@ -16788,7 +17350,116 @@
             ],
             "origin_price": 82643.609375,
             "metrics": {
-              "note": "no verified horizons yet"
+              "n_verified": 2,
+              "n_direction": 2,
+              "mae_log_return": 0.410467,
+              "rmse_log_return": 0.416247,
+              "direction_accuracy": 0.0,
+              "per_horizon": [
+                {
+                  "horizon": 1,
+                  "verified": true,
+                  "lr_forecast": 0.00864,
+                  "lr_actual": -0.332701,
+                  "log_ae": 0.341341
+                },
+                {
+                  "horizon": 2,
+                  "verified": true,
+                  "lr_forecast": 0.005331,
+                  "lr_actual": -0.474262,
+                  "log_ae": 0.479594
+                },
+                {
+                  "horizon": 3,
+                  "verified": false
+                },
+                {
+                  "horizon": 4,
+                  "verified": false
+                },
+                {
+                  "horizon": 5,
+                  "verified": false
+                },
+                {
+                  "horizon": 6,
+                  "verified": false
+                },
+                {
+                  "horizon": 7,
+                  "verified": false
+                },
+                {
+                  "horizon": 8,
+                  "verified": false
+                },
+                {
+                  "horizon": 9,
+                  "verified": false
+                },
+                {
+                  "horizon": 10,
+                  "verified": false
+                },
+                {
+                  "horizon": 11,
+                  "verified": false
+                },
+                {
+                  "horizon": 12,
+                  "verified": false
+                },
+                {
+                  "horizon": 13,
+                  "verified": false
+                },
+                {
+                  "horizon": 14,
+                  "verified": false
+                },
+                {
+                  "horizon": 15,
+                  "verified": false
+                },
+                {
+                  "horizon": 16,
+                  "verified": false
+                },
+                {
+                  "horizon": 17,
+                  "verified": false
+                },
+                {
+                  "horizon": 18,
+                  "verified": false
+                },
+                {
+                  "horizon": 19,
+                  "verified": false
+                },
+                {
+                  "horizon": 20,
+                  "verified": false
+                },
+                {
+                  "horizon": 21,
+                  "verified": false
+                },
+                {
+                  "horizon": 22,
+                  "verified": false
+                },
+                {
+                  "horizon": 23,
+                  "verified": false
+                },
+                {
+                  "horizon": 24,
+                  "verified": false
+                }
+              ],
+              "note": "Metrics on log returns relative to origin. Horizons are NOT independent \u2014 aggregate only across distinct daily origins."
             }
           }
         }
@@ -17212,211 +17883,211 @@
           },
           "arima": {
             "path": [
-              84004.25076659422,
-              84022.75971337516,
-              84004.83597708428,
-              84012.1622168809,
-              84014.10640167518,
-              84012.6281896486,
-              84013.1273998855,
-              84013.14110116647,
-              84012.99769792854,
-              84013.04231114245,
-              84013.04286042355,
-              84013.03420783875,
-              84013.03903622544,
-              84013.03887694568,
-              84013.03819883353,
-              84013.03856503587,
-              84013.03850486744,
-              84013.03845307455,
-              84013.0384846523,
-              84013.03847874957,
-              84013.03847580396,
-              84013.03847855075,
-              84013.03847791642,
-              84013.03847772417
+              83987.57387475538,
+              83997.50712451077,
+              84007.44037426614,
+              84017.37362402152,
+              84027.3068737769,
+              84037.24012353229,
+              84047.17337328767,
+              84057.10662304306,
+              84067.03987279843,
+              84076.97312255381,
+              84086.9063723092,
+              84096.83962206458,
+              84106.77287181997,
+              84116.70612157535,
+              84126.63937133072,
+              84136.5726210861,
+              84146.50587084149,
+              84156.43912059687,
+              84166.37237035226,
+              84176.30562010763,
+              84186.23886986301,
+              84196.1721196184,
+              84206.10536937378,
+              84216.03861912916
             ],
             "origin_price": 83977.640625,
             "metrics": {
               "n_verified": 24,
               "n_direction": 24,
-              "mae_log_return": 0.378288,
-              "rmse_log_return": 0.460173,
+              "mae_log_return": 0.416968,
+              "rmse_log_return": 0.490634,
               "direction_accuracy": 0.2917,
               "per_horizon": [
                 {
                   "horizon": 1,
                   "verified": true,
-                  "lr_forecast": 0.031682,
+                  "lr_forecast": 0.011828,
                   "lr_actual": -0.078302,
-                  "log_ae": 0.109984
+                  "log_ae": 0.09013
                 },
                 {
                   "horizon": 2,
                   "verified": true,
-                  "lr_forecast": 0.053713,
+                  "lr_forecast": 0.023654,
                   "lr_actual": -0.502358,
-                  "log_ae": 0.556071
+                  "log_ae": 0.526012
                 },
                 {
                   "horizon": 3,
                   "verified": true,
-                  "lr_forecast": 0.032379,
+                  "lr_forecast": 0.035479,
                   "lr_actual": -0.424884,
-                  "log_ae": 0.457263
+                  "log_ae": 0.460363
                 },
                 {
                   "horizon": 4,
                   "verified": true,
-                  "lr_forecast": 0.0411,
+                  "lr_forecast": 0.047303,
                   "lr_actual": -0.32576,
-                  "log_ae": 0.36686
+                  "log_ae": 0.373063
                 },
                 {
                   "horizon": 5,
                   "verified": true,
-                  "lr_forecast": 0.043414,
+                  "lr_forecast": 0.059125,
                   "lr_actual": -0.418403,
-                  "log_ae": 0.461816
+                  "log_ae": 0.477527
                 },
                 {
                   "horizon": 6,
                   "verified": true,
-                  "lr_forecast": 0.041654,
+                  "lr_forecast": 0.070946,
                   "lr_actual": -0.503184,
-                  "log_ae": 0.544838
+                  "log_ae": 0.574129
                 },
                 {
                   "horizon": 7,
                   "verified": true,
-                  "lr_forecast": 0.042248,
+                  "lr_forecast": 0.082765,
                   "lr_actual": -0.624433,
-                  "log_ae": 0.666682
+                  "log_ae": 0.707198
                 },
                 {
                   "horizon": 8,
                   "verified": true,
-                  "lr_forecast": 0.042265,
+                  "lr_forecast": 0.094583,
                   "lr_actual": -0.618766,
-                  "log_ae": 0.661031
+                  "log_ae": 0.713349
                 },
                 {
                   "horizon": 9,
                   "verified": true,
-                  "lr_forecast": 0.042094,
+                  "lr_forecast": 0.106399,
                   "lr_actual": -0.652728,
-                  "log_ae": 0.694822
+                  "log_ae": 0.759128
                 },
                 {
                   "horizon": 10,
                   "verified": true,
-                  "lr_forecast": 0.042147,
+                  "lr_forecast": 0.118215,
                   "lr_actual": -0.334446,
-                  "log_ae": 0.376593
+                  "log_ae": 0.45266
                 },
                 {
                   "horizon": 11,
                   "verified": true,
-                  "lr_forecast": 0.042148,
+                  "lr_forecast": 0.130028,
                   "lr_actual": 0.098108,
-                  "log_ae": 0.05596
+                  "log_ae": 0.03192
                 },
                 {
                   "horizon": 12,
                   "verified": true,
-                  "lr_forecast": 0.042138,
+                  "lr_forecast": 0.141841,
                   "lr_actual": 0.326185,
-                  "log_ae": 0.284047
+                  "log_ae": 0.184344
                 },
                 {
                   "horizon": 13,
                   "verified": true,
-                  "lr_forecast": 0.042143,
+                  "lr_forecast": 0.153652,
                   "lr_actual": 0.116724,
-                  "log_ae": 0.074581
+                  "log_ae": 0.036928
                 },
                 {
                   "horizon": 14,
                   "verified": true,
-                  "lr_forecast": 0.042143,
+                  "lr_forecast": 0.165461,
                   "lr_actual": -0.723998,
-                  "log_ae": 0.766141
+                  "log_ae": 0.889459
                 },
                 {
                   "horizon": 15,
                   "verified": true,
-                  "lr_forecast": 0.042142,
+                  "lr_forecast": 0.177269,
                   "lr_actual": -0.552337,
-                  "log_ae": 0.594479
+                  "log_ae": 0.729606
                 },
                 {
                   "horizon": 16,
                   "verified": true,
-                  "lr_forecast": 0.042143,
+                  "lr_forecast": 0.189076,
                   "lr_actual": -0.278032,
-                  "log_ae": 0.320175
+                  "log_ae": 0.467109
                 },
                 {
                   "horizon": 17,
                   "verified": true,
-                  "lr_forecast": 0.042143,
+                  "lr_forecast": 0.200882,
                   "lr_actual": -0.053446,
-                  "log_ae": 0.095589
+                  "log_ae": 0.254328
                 },
                 {
                   "horizon": 18,
                   "verified": true,
-                  "lr_forecast": 0.042143,
+                  "lr_forecast": 0.212686,
                   "lr_actual": -0.113929,
-                  "log_ae": 0.156072
+                  "log_ae": 0.326615
                 },
                 {
                   "horizon": 19,
                   "verified": true,
-                  "lr_forecast": 0.042143,
+                  "lr_forecast": 0.224488,
                   "lr_actual": -0.321531,
-                  "log_ae": 0.363674
+                  "log_ae": 0.546019
                 },
                 {
                   "horizon": 20,
                   "verified": true,
-                  "lr_forecast": 0.042143,
+                  "lr_forecast": 0.23629,
                   "lr_actual": -0.07636,
-                  "log_ae": 0.118502
+                  "log_ae": 0.312649
                 },
                 {
                   "horizon": 21,
                   "verified": true,
-                  "lr_forecast": 0.042143,
+                  "lr_forecast": 0.248089,
                   "lr_actual": 0.058057,
-                  "log_ae": 0.015915
+                  "log_ae": 0.190032
                 },
                 {
                   "horizon": 22,
                   "verified": true,
-                  "lr_forecast": 0.042143,
+                  "lr_forecast": 0.259888,
                   "lr_actual": 0.181335,
-                  "log_ae": 0.139193
+                  "log_ae": 0.078552
                 },
                 {
                   "horizon": 23,
                   "verified": true,
-                  "lr_forecast": 0.042143,
+                  "lr_forecast": 0.271685,
                   "lr_actual": 0.222501,
-                  "log_ae": 0.180359
+                  "log_ae": 0.049184
                 },
                 {
                   "horizon": 24,
                   "verified": true,
-                  "lr_forecast": 0.042143,
+                  "lr_forecast": 0.283481,
                   "lr_actual": 1.060403,
-                  "log_ae": 1.01826
+                  "log_ae": 0.776922
                 }
               ],
               "note": "Metrics on log returns relative to origin. Horizons are NOT independent \u2014 aggregate only across distinct daily origins."
             },
-            "fallback": false
+            "fallback": true
           },
           "timesfm": {
             "path": [
@@ -18046,211 +18717,211 @@
           },
           "arima": {
             "path": [
-              83380.24310728394,
-              83377.94921778493,
-              83380.09266727792,
-              83376.2737843403,
-              83375.84937598756,
-              83375.91700444037,
-              83375.9146091836,
-              83375.97032894976,
-              83375.98040667576,
-              83375.97909510936,
-              83375.97861047748,
-              83375.97774952558,
-              83375.97755390719,
-              83375.97757719608,
-              83375.97759326789,
-              83375.97760731069,
-              83375.97761078847,
-              83375.97761036931,
-              83375.97760997996,
-              83375.97760974108,
-              83375.97760968209,
-              83375.97760969003,
-              83375.9776096984,
-              83375.97760970258
+              83386.86078155578,
+              83400.93250061154,
+              83415.00421966732,
+              83429.0759387231,
+              83443.14765777887,
+              83457.21937683463,
+              83471.29109589041,
+              83485.36281494619,
+              83499.43453400195,
+              83513.50625305773,
+              83527.5779721135,
+              83541.64969116928,
+              83555.72141022504,
+              83569.79312928082,
+              83583.8648483366,
+              83597.93656739237,
+              83612.00828644814,
+              83626.08000550391,
+              83640.15172455969,
+              83654.22344361545,
+              83668.29516267123,
+              83682.36688172701,
+              83696.43860078279,
+              83710.51031983855
             ],
             "origin_price": 83372.7890625,
             "metrics": {
               "n_verified": 24,
               "n_direction": 24,
-              "mae_log_return": 0.989524,
-              "rmse_log_return": 1.373774,
+              "mae_log_return": 1.194718,
+              "rmse_log_return": 1.593491,
               "direction_accuracy": 0.0833,
               "per_horizon": [
                 {
                   "horizon": 1,
                   "verified": true,
-                  "lr_forecast": 0.00894,
+                  "lr_forecast": 0.016877,
                   "lr_actual": 0.023088,
-                  "log_ae": 0.014147
+                  "log_ae": 0.006211
                 },
                 {
                   "horizon": 2,
                   "verified": true,
-                  "lr_forecast": 0.006189,
+                  "lr_forecast": 0.03375,
                   "lr_actual": 0.012019,
-                  "log_ae": 0.00583
+                  "log_ae": 0.021732
                 },
                 {
                   "horizon": 3,
                   "verified": true,
-                  "lr_forecast": 0.00876,
+                  "lr_forecast": 0.050621,
                   "lr_actual": -0.316117,
-                  "log_ae": 0.324876
+                  "log_ae": 0.366738
                 },
                 {
                   "horizon": 4,
                   "verified": true,
-                  "lr_forecast": 0.00418,
+                  "lr_forecast": 0.06749,
                   "lr_actual": -0.216887,
-                  "log_ae": 0.221067
+                  "log_ae": 0.284377
                 },
                 {
                   "horizon": 5,
                   "verified": true,
-                  "lr_forecast": 0.003671,
+                  "lr_forecast": 0.084355,
                   "lr_actual": -0.117288,
-                  "log_ae": 0.120959
+                  "log_ae": 0.201643
                 },
                 {
                   "horizon": 6,
                   "verified": true,
-                  "lr_forecast": 0.003752,
+                  "lr_forecast": 0.101217,
                   "lr_actual": -0.054756,
-                  "log_ae": 0.058508
+                  "log_ae": 0.155973
                 },
                 {
                   "horizon": 7,
                   "verified": true,
-                  "lr_forecast": 0.003749,
+                  "lr_forecast": 0.118077,
                   "lr_actual": -0.379523,
-                  "log_ae": 0.383272
+                  "log_ae": 0.4976
                 },
                 {
                   "horizon": 8,
                   "verified": true,
-                  "lr_forecast": 0.003816,
+                  "lr_forecast": 0.134933,
                   "lr_actual": -0.30838,
-                  "log_ae": 0.312196
+                  "log_ae": 0.443314
                 },
                 {
                   "horizon": 9,
                   "verified": true,
-                  "lr_forecast": 0.003828,
+                  "lr_forecast": 0.151787,
                   "lr_actual": -0.815607,
-                  "log_ae": 0.819435
+                  "log_ae": 0.967395
                 },
                 {
                   "horizon": 10,
                   "verified": true,
-                  "lr_forecast": 0.003826,
+                  "lr_forecast": 0.168638,
                   "lr_actual": -0.93956,
-                  "log_ae": 0.943386
+                  "log_ae": 1.108199
                 },
                 {
                   "horizon": 11,
                   "verified": true,
-                  "lr_forecast": 0.003826,
+                  "lr_forecast": 0.185487,
                   "lr_actual": -0.90109,
-                  "log_ae": 0.904915
+                  "log_ae": 1.086576
                 },
                 {
                   "horizon": 12,
                   "verified": true,
-                  "lr_forecast": 0.003825,
+                  "lr_forecast": 0.202332,
                   "lr_actual": -0.672957,
-                  "log_ae": 0.676781
+                  "log_ae": 0.875289
                 },
                 {
                   "horizon": 13,
                   "verified": true,
-                  "lr_forecast": 0.003824,
+                  "lr_forecast": 0.219175,
                   "lr_actual": -0.522057,
-                  "log_ae": 0.525881
+                  "log_ae": 0.741231
                 },
                 {
                   "horizon": 14,
                   "verified": true,
-                  "lr_forecast": 0.003824,
+                  "lr_forecast": 0.236014,
                   "lr_actual": -0.674937,
-                  "log_ae": 0.678761
+                  "log_ae": 0.910951
                 },
                 {
                   "horizon": 15,
                   "verified": true,
-                  "lr_forecast": 0.003824,
+                  "lr_forecast": 0.252851,
                   "lr_actual": -0.376031,
-                  "log_ae": 0.379856
+                  "log_ae": 0.628882
                 },
                 {
                   "horizon": 16,
                   "verified": true,
-                  "lr_forecast": 0.003824,
+                  "lr_forecast": 0.269685,
                   "lr_actual": -0.856174,
-                  "log_ae": 0.859998
+                  "log_ae": 1.125859
                 },
                 {
                   "horizon": 17,
                   "verified": true,
-                  "lr_forecast": 0.003824,
+                  "lr_forecast": 0.286516,
                   "lr_actual": -1.138321,
-                  "log_ae": 1.142146
+                  "log_ae": 1.424838
                 },
                 {
                   "horizon": 18,
                   "verified": true,
-                  "lr_forecast": 0.003824,
+                  "lr_forecast": 0.303345,
                   "lr_actual": -1.347556,
-                  "log_ae": 1.35138
+                  "log_ae": 1.650901
                 },
                 {
                   "horizon": 19,
                   "verified": true,
-                  "lr_forecast": 0.003824,
+                  "lr_forecast": 0.32017,
                   "lr_actual": -1.52366,
-                  "log_ae": 1.527484
+                  "log_ae": 1.84383
                 },
                 {
                   "horizon": 20,
                   "verified": true,
-                  "lr_forecast": 0.003824,
+                  "lr_forecast": 0.336993,
                   "lr_actual": -0.884159,
-                  "log_ae": 0.887984
+                  "log_ae": 1.221152
                 },
                 {
                   "horizon": 21,
                   "verified": true,
-                  "lr_forecast": 0.003824,
+                  "lr_forecast": 0.353813,
                   "lr_actual": -2.934924,
-                  "log_ae": 2.938748
+                  "log_ae": 3.288737
                 },
                 {
                   "horizon": 22,
                   "verified": true,
-                  "lr_forecast": 0.003824,
+                  "lr_forecast": 0.37063,
                   "lr_actual": -3.027641,
-                  "log_ae": 3.031465
+                  "log_ae": 3.398271
                 },
                 {
                   "horizon": 23,
                   "verified": true,
-                  "lr_forecast": 0.003824,
+                  "lr_forecast": 0.387444,
                   "lr_actual": -3.28345,
-                  "log_ae": 3.287274
+                  "log_ae": 3.670894
                 },
                 {
                   "horizon": 24,
                   "verified": true,
-                  "lr_forecast": 0.003824,
+                  "lr_forecast": 0.404256,
                   "lr_actual": -2.348392,
-                  "log_ae": 2.352216
+                  "log_ae": 2.752648
                 }
               ],
               "note": "Metrics on log returns relative to origin. Horizons are NOT independent \u2014 aggregate only across distinct daily origins."
             },
-            "fallback": false
+            "fallback": true
           },
           "timesfm": {
             "path": [
@@ -18880,211 +19551,211 @@
           },
           "arima": {
             "path": [
-              84390.08875925011,
-              84401.41949866663,
-              84384.12173548453,
-              84381.80049922153,
-              84380.88834826458,
-              84379.57036437414,
-              84380.08032230787,
-              84379.48539565818,
-              84379.38787176397,
-              84379.38148557972,
-              84379.31373918982,
-              84379.3351466672,
-              84379.3153662423,
-              84379.31053448904,
-              84379.31153187873,
-              84379.30840466001,
-              84379.30923617352,
-              84379.30862207769,
-              84379.30837051402,
-              84379.30845847286,
-              84379.3083238846,
-              84379.3083531346,
-              84379.30833647073,
-              84379.30832356302
+              84419.28282473092,
+              84428.12814946185,
+              84436.97347419275,
+              84445.81879892368,
+              84454.6641236546,
+              84463.50944838552,
+              84472.35477311644,
+              84481.20009784735,
+              84490.04542257827,
+              84498.8907473092,
+              84507.73607204012,
+              84516.58139677104,
+              84525.42672150195,
+              84534.27204623287,
+              84543.1173709638,
+              84551.96269569472,
+              84560.80802042564,
+              84569.65334515656,
+              84578.49866988747,
+              84587.3439946184,
+              84596.18931934932,
+              84605.03464408024,
+              84613.87996881116,
+              84622.72529354207
             ],
             "origin_price": 84410.4375,
             "metrics": {
               "n_verified": 24,
               "n_direction": 24,
-              "mae_log_return": 0.99956,
-              "rmse_log_return": 1.164946,
-              "direction_accuracy": 0.75,
+              "mae_log_return": 1.132748,
+              "rmse_log_return": 1.329395,
+              "direction_accuracy": 0.25,
               "per_horizon": [
                 {
                   "horizon": 1,
                   "verified": true,
-                  "lr_forecast": -0.02411,
+                  "lr_forecast": 0.010478,
                   "lr_actual": 0.176732,
-                  "log_ae": 0.200842
+                  "log_ae": 0.166254
                 },
                 {
                   "horizon": 2,
                   "verified": true,
-                  "lr_forecast": -0.010684,
+                  "lr_forecast": 0.020956,
                   "lr_actual": 0.458951,
-                  "log_ae": 0.469635
+                  "log_ae": 0.437995
                 },
                 {
                   "horizon": 3,
                   "verified": true,
-                  "lr_forecast": -0.031181,
+                  "lr_forecast": 0.031432,
                   "lr_actual": 0.363479,
-                  "log_ae": 0.39466
+                  "log_ae": 0.332047
                 },
                 {
                   "horizon": 4,
                   "verified": true,
-                  "lr_forecast": -0.033932,
+                  "lr_forecast": 0.041907,
                   "lr_actual": 0.144147,
-                  "log_ae": 0.178078
+                  "log_ae": 0.10224
                 },
                 {
                   "horizon": 5,
                   "verified": true,
-                  "lr_forecast": -0.035013,
+                  "lr_forecast": 0.052381,
                   "lr_actual": 0.313879,
-                  "log_ae": 0.348891
+                  "log_ae": 0.261498
                 },
                 {
                   "horizon": 6,
                   "verified": true,
-                  "lr_forecast": -0.036575,
+                  "lr_forecast": 0.062854,
                   "lr_actual": -0.264009,
-                  "log_ae": 0.227435
+                  "log_ae": 0.326863
                 },
                 {
                   "horizon": 7,
                   "verified": true,
-                  "lr_forecast": -0.03597,
+                  "lr_forecast": 0.073326,
                   "lr_actual": 0.061233,
-                  "log_ae": 0.097203
+                  "log_ae": 0.012093
                 },
                 {
                   "horizon": 8,
                   "verified": true,
-                  "lr_forecast": -0.036675,
+                  "lr_forecast": 0.083796,
                   "lr_actual": -0.342472,
-                  "log_ae": 0.305797
+                  "log_ae": 0.426268
                 },
                 {
                   "horizon": 9,
                   "verified": true,
-                  "lr_forecast": -0.036791,
+                  "lr_forecast": 0.094266,
                   "lr_actual": -0.87348,
-                  "log_ae": 0.836689
+                  "log_ae": 0.967746
                 },
                 {
                   "horizon": 10,
                   "verified": true,
-                  "lr_forecast": -0.036798,
+                  "lr_forecast": 0.104735,
                   "lr_actual": -1.193556,
-                  "log_ae": 1.156758
+                  "log_ae": 1.298291
                 },
                 {
                   "horizon": 11,
                   "verified": true,
-                  "lr_forecast": -0.036879,
+                  "lr_forecast": 0.115202,
                   "lr_actual": -1.294052,
-                  "log_ae": 1.257173
+                  "log_ae": 1.409254
                 },
                 {
                   "horizon": 12,
                   "verified": true,
-                  "lr_forecast": -0.036853,
+                  "lr_forecast": 0.125668,
                   "lr_actual": -1.124882,
-                  "log_ae": 1.088029
+                  "log_ae": 1.250551
                 },
                 {
                   "horizon": 13,
                   "verified": true,
-                  "lr_forecast": -0.036877,
+                  "lr_forecast": 0.136134,
                   "lr_actual": -1.492087,
-                  "log_ae": 1.45521
+                  "log_ae": 1.628221
                 },
                 {
                   "horizon": 14,
                   "verified": true,
-                  "lr_forecast": -0.036883,
+                  "lr_forecast": 0.146598,
                   "lr_actual": -1.52373,
-                  "log_ae": 1.486847
+                  "log_ae": 1.670327
                 },
                 {
                   "horizon": 15,
                   "verified": true,
-                  "lr_forecast": -0.036881,
+                  "lr_forecast": 0.157061,
                   "lr_actual": -1.787109,
-                  "log_ae": 1.750228
+                  "log_ae": 1.94417
                 },
                 {
                   "horizon": 16,
                   "verified": true,
-                  "lr_forecast": -0.036885,
+                  "lr_forecast": 0.167523,
                   "lr_actual": -1.78922,
-                  "log_ae": 1.752335
+                  "log_ae": 1.956743
                 },
                 {
                   "horizon": 17,
                   "verified": true,
-                  "lr_forecast": -0.036884,
+                  "lr_forecast": 0.177984,
                   "lr_actual": -2.124298,
-                  "log_ae": 2.087414
+                  "log_ae": 2.302281
                 },
                 {
                   "horizon": 18,
                   "verified": true,
-                  "lr_forecast": -0.036885,
+                  "lr_forecast": 0.188443,
                   "lr_actual": -1.794539,
-                  "log_ae": 1.757654
+                  "log_ae": 1.982982
                 },
                 {
                   "horizon": 19,
                   "verified": true,
-                  "lr_forecast": -0.036885,
+                  "lr_forecast": 0.198902,
                   "lr_actual": -1.614083,
-                  "log_ae": 1.577197
+                  "log_ae": 1.812985
                 },
                 {
                   "horizon": 20,
                   "verified": true,
-                  "lr_forecast": -0.036885,
+                  "lr_forecast": 0.20936,
                   "lr_actual": -1.012194,
-                  "log_ae": 0.975309
+                  "log_ae": 1.221553
                 },
                 {
                   "horizon": 21,
                   "verified": true,
-                  "lr_forecast": -0.036885,
+                  "lr_forecast": 0.219816,
                   "lr_actual": -0.928995,
-                  "log_ae": 0.89211
+                  "log_ae": 1.148811
                 },
                 {
                   "horizon": 22,
                   "verified": true,
-                  "lr_forecast": -0.036885,
+                  "lr_forecast": 0.230271,
                   "lr_actual": -1.68531,
-                  "log_ae": 1.648425
+                  "log_ae": 1.915582
                 },
                 {
                   "horizon": 23,
                   "verified": true,
-                  "lr_forecast": -0.036885,
+                  "lr_forecast": 0.240726,
                   "lr_actual": -1.27196,
-                  "log_ae": 1.235075
+                  "log_ae": 1.512686
                 },
                 {
                   "horizon": 24,
                   "verified": true,
-                  "lr_forecast": -0.036885,
+                  "lr_forecast": 0.251179,
                   "lr_actual": -0.847335,
-                  "log_ae": 0.81045
+                  "log_ae": 1.098514
                 }
               ],
               "note": "Metrics on log returns relative to origin. Horizons are NOT independent \u2014 aggregate only across distinct daily origins."
             },
-            "fallback": false
+            "fallback": true
           },
           "timesfm": {
             "path": [
@@ -19327,10 +19998,10 @@
             ],
             "origin_price": 80679.7421875,
             "metrics": {
-              "n_verified": 22,
+              "n_verified": 24,
               "n_direction": 0,
-              "mae_log_return": 1.942346,
-              "rmse_log_return": 2.030561,
+              "mae_log_return": 1.982149,
+              "rmse_log_return": 2.065824,
               "direction_accuracy": null,
               "per_horizon": [
                 {
@@ -19489,11 +20160,17 @@
                 },
                 {
                   "horizon": 23,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": 0.0,
+                  "lr_actual": 2.434979,
+                  "log_ae": 2.434979
                 },
                 {
                   "horizon": 24,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": 0.0,
+                  "lr_actual": 2.404999,
+                  "log_ae": 2.404999
                 }
               ],
               "note": "Metrics on log returns relative to origin. Horizons are NOT independent \u2014 aggregate only across distinct daily origins."
@@ -19528,10 +20205,10 @@
             ],
             "origin_price": 80679.7421875,
             "metrics": {
-              "n_verified": 22,
-              "n_direction": 22,
-              "mae_log_return": 1.821132,
-              "rmse_log_return": 1.896593,
+              "n_verified": 24,
+              "n_direction": 24,
+              "mae_log_return": 1.850404,
+              "rmse_log_return": 1.921099,
               "direction_accuracy": 1.0,
               "per_horizon": [
                 {
@@ -19690,11 +20367,17 @@
                 },
                 {
                   "horizon": 23,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": 0.242326,
+                  "lr_actual": 2.434979,
+                  "log_ae": 2.192653
                 },
                 {
                   "horizon": 24,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": 0.252849,
+                  "lr_actual": 2.404999,
+                  "log_ae": 2.15215
                 }
               ],
               "note": "Metrics on log returns relative to origin. Horizons are NOT independent \u2014 aggregate only across distinct daily origins."
@@ -19702,205 +20385,211 @@
           },
           "arima": {
             "path": [
-              80694.38121361988,
-              80671.02931416736,
-              80617.05401437591,
-              80610.46262501969,
-              80604.82681080379,
-              80604.92807091454,
-              80602.91577943179,
-              80601.09372972198,
-              80600.78570877851,
-              80600.63121051784,
-              80600.59229189307,
-              80600.48637292338,
-              80600.42349126138,
-              80600.41163838851,
-              80600.40660128133,
-              80600.40303299336,
-              80600.39826124252,
-              80600.39609048059,
-              80600.39566183914,
-              80600.39544479131,
-              80600.39522498257,
-              80600.39502682134,
-              80600.39495258391,
-              80600.39493650431
+              80688.25284368884,
+              80696.76349987769,
+              80705.27415606653,
+              80713.78481225538,
+              80722.29546844422,
+              80730.80612463308,
+              80739.31678082192,
+              80747.82743701077,
+              80756.3380931996,
+              80764.84874938846,
+              80773.3594055773,
+              80781.87006176614,
+              80790.38071795499,
+              80798.89137414383,
+              80807.40203033268,
+              80815.91268652152,
+              80824.42334271038,
+              80832.93399889921,
+              80841.44465508807,
+              80849.9553112769,
+              80858.46596746576,
+              80866.9766236546,
+              80875.48727984344,
+              80883.99793603229
             ],
             "origin_price": 80679.7421875,
             "metrics": {
-              "n_verified": 22,
-              "n_direction": 22,
-              "mae_log_return": 2.029214,
-              "rmse_log_return": 2.118484,
-              "direction_accuracy": 0.0455,
+              "n_verified": 24,
+              "n_direction": 24,
+              "mae_log_return": 1.850404,
+              "rmse_log_return": 1.921099,
+              "direction_accuracy": 1.0,
               "per_horizon": [
                 {
                   "horizon": 1,
                   "verified": true,
-                  "lr_forecast": 0.018143,
+                  "lr_forecast": 0.010548,
                   "lr_actual": 0.935055,
-                  "log_ae": 0.916912
+                  "log_ae": 0.924507
                 },
                 {
                   "horizon": 2,
                   "verified": true,
-                  "lr_forecast": -0.0108,
+                  "lr_forecast": 0.021095,
                   "lr_actual": 1.26972,
-                  "log_ae": 1.28052
+                  "log_ae": 1.248625
                 },
                 {
                   "horizon": 3,
                   "verified": true,
-                  "lr_forecast": -0.07773,
+                  "lr_forecast": 0.031641,
                   "lr_actual": 1.300972,
-                  "log_ae": 1.378702
+                  "log_ae": 1.26933
                 },
                 {
                   "horizon": 4,
                   "verified": true,
-                  "lr_forecast": -0.085907,
+                  "lr_forecast": 0.042186,
                   "lr_actual": 1.184174,
-                  "log_ae": 1.270081
+                  "log_ae": 1.141988
                 },
                 {
                   "horizon": 5,
                   "verified": true,
-                  "lr_forecast": -0.092898,
+                  "lr_forecast": 0.05273,
                   "lr_actual": 1.42703,
-                  "log_ae": 1.519928
+                  "log_ae": 1.3743
                 },
                 {
                   "horizon": 6,
                   "verified": true,
-                  "lr_forecast": -0.092773,
+                  "lr_forecast": 0.063272,
                   "lr_actual": 1.247823,
-                  "log_ae": 1.340596
+                  "log_ae": 1.184551
                 },
                 {
                   "horizon": 7,
                   "verified": true,
-                  "lr_forecast": -0.095269,
+                  "lr_forecast": 0.073814,
                   "lr_actual": 1.28843,
-                  "log_ae": 1.3837
+                  "log_ae": 1.214617
                 },
                 {
                   "horizon": 8,
                   "verified": true,
-                  "lr_forecast": -0.09753,
+                  "lr_forecast": 0.084354,
                   "lr_actual": 1.525674,
-                  "log_ae": 1.623204
+                  "log_ae": 1.44132
                 },
                 {
                   "horizon": 9,
                   "verified": true,
-                  "lr_forecast": -0.097912,
+                  "lr_forecast": 0.094893,
                   "lr_actual": 1.691625,
-                  "log_ae": 1.789537
+                  "log_ae": 1.596732
                 },
                 {
                   "horizon": 10,
                   "verified": true,
-                  "lr_forecast": -0.098104,
+                  "lr_forecast": 0.105431,
                   "lr_actual": 2.059512,
-                  "log_ae": 2.157616
+                  "log_ae": 1.954081
                 },
                 {
                   "horizon": 11,
                   "verified": true,
-                  "lr_forecast": -0.098152,
+                  "lr_forecast": 0.115968,
                   "lr_actual": 1.835995,
-                  "log_ae": 1.934147
+                  "log_ae": 1.720027
                 },
                 {
                   "horizon": 12,
                   "verified": true,
-                  "lr_forecast": -0.098283,
+                  "lr_forecast": 0.126504,
                   "lr_actual": 1.972453,
-                  "log_ae": 2.070736
+                  "log_ae": 1.845948
                 },
                 {
                   "horizon": 13,
                   "verified": true,
-                  "lr_forecast": -0.098361,
+                  "lr_forecast": 0.137039,
                   "lr_actual": 2.246531,
-                  "log_ae": 2.344892
+                  "log_ae": 2.109492
                 },
                 {
                   "horizon": 14,
                   "verified": true,
-                  "lr_forecast": -0.098376,
+                  "lr_forecast": 0.147573,
                   "lr_actual": 2.332517,
-                  "log_ae": 2.430893
+                  "log_ae": 2.184944
                 },
                 {
                   "horizon": 15,
                   "verified": true,
-                  "lr_forecast": -0.098382,
+                  "lr_forecast": 0.158105,
                   "lr_actual": 2.371706,
-                  "log_ae": 2.470088
+                  "log_ae": 2.213601
                 },
                 {
                   "horizon": 16,
                   "verified": true,
-                  "lr_forecast": -0.098387,
+                  "lr_forecast": 0.168637,
                   "lr_actual": 2.330834,
-                  "log_ae": 2.429221
+                  "log_ae": 2.162197
                 },
                 {
                   "horizon": 17,
                   "verified": true,
-                  "lr_forecast": -0.098393,
+                  "lr_forecast": 0.179167,
                   "lr_actual": 2.215379,
-                  "log_ae": 2.313772
+                  "log_ae": 2.036212
                 },
                 {
                   "horizon": 18,
                   "verified": true,
-                  "lr_forecast": -0.098395,
+                  "lr_forecast": 0.189696,
                   "lr_actual": 3.039185,
-                  "log_ae": 3.137581
+                  "log_ae": 2.849489
                 },
                 {
                   "horizon": 19,
                   "verified": true,
-                  "lr_forecast": -0.098396,
+                  "lr_forecast": 0.200225,
                   "lr_actual": 2.779932,
-                  "log_ae": 2.878328
+                  "log_ae": 2.579708
                 },
                 {
                   "horizon": 20,
                   "verified": true,
-                  "lr_forecast": -0.098396,
+                  "lr_forecast": 0.210752,
                   "lr_actual": 2.295881,
-                  "log_ae": 2.394277
+                  "log_ae": 2.085129
                 },
                 {
                   "horizon": 21,
                   "verified": true,
-                  "lr_forecast": -0.098396,
+                  "lr_forecast": 0.221277,
                   "lr_actual": 2.778088,
-                  "log_ae": 2.876484
+                  "log_ae": 2.55681
                 },
                 {
                   "horizon": 22,
                   "verified": true,
-                  "lr_forecast": -0.098397,
+                  "lr_forecast": 0.231802,
                   "lr_actual": 2.603088,
-                  "log_ae": 2.701484
+                  "log_ae": 2.371285
                 },
                 {
                   "horizon": 23,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": 0.242326,
+                  "lr_actual": 2.434979,
+                  "log_ae": 2.192653
                 },
                 {
                   "horizon": 24,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": 0.252849,
+                  "lr_actual": 2.404999,
+                  "log_ae": 2.15215
                 }
               ],
               "note": "Metrics on log returns relative to origin. Horizons are NOT independent \u2014 aggregate only across distinct daily origins."
             },
-            "fallback": false
+            "fallback": true
           },
           "timesfm": {
             "path": [
@@ -19931,10 +20620,10 @@
             ],
             "origin_price": 80679.7421875,
             "metrics": {
-              "n_verified": 22,
-              "n_direction": 22,
-              "mae_log_return": 1.991406,
-              "rmse_log_return": 2.076975,
+              "n_verified": 24,
+              "n_direction": 24,
+              "mae_log_return": 2.036766,
+              "rmse_log_return": 2.119001,
               "direction_accuracy": 0.0,
               "per_horizon": [
                 {
@@ -20093,11 +20782,17 @@
                 },
                 {
                   "horizon": 23,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": -0.105527,
+                  "lr_actual": 2.434979,
+                  "log_ae": 2.540505
                 },
                 {
                   "horizon": 24,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": -0.125953,
+                  "lr_actual": 2.404999,
+                  "log_ae": 2.530952
                 }
               ],
               "note": "Metrics on log returns relative to origin. Horizons are NOT independent \u2014 aggregate only across distinct daily origins."
@@ -20524,211 +21219,211 @@
           },
           "arima": {
             "path": [
-              84856.66515617716,
-              84836.9935596163,
-              84826.3696571664,
-              84807.02364854542,
-              84831.68455396229,
-              84831.93451506927,
-              84831.29880638183,
-              84831.06842580314,
-              84829.70570533471,
-              84830.55076606486,
-              84830.60139878468,
-              84830.58949813027,
-              84830.60587384098,
-              84830.53475196884,
-              84830.56212042805,
-              84830.56517038314,
-              84830.56483596608,
-              84830.56692359367,
-              84830.56367719988,
-              84830.56449777678,
-              84830.56463840845,
-              84830.5646010819,
-              84830.56474881936,
-              84830.56461307696
+              84886.66450587084,
+              84900.44619924168,
+              84914.22789261253,
+              84928.00958598337,
+              84941.7912793542,
+              84955.57297272504,
+              84969.3546660959,
+              84983.13635946673,
+              84996.91805283757,
+              85010.69974620841,
+              85024.48143957925,
+              85038.2631329501,
+              85052.04482632094,
+              85065.82651969178,
+              85079.60821306262,
+              85093.38990643347,
+              85107.17159980431,
+              85120.95329317515,
+              85134.73498654598,
+              85148.51667991684,
+              85162.29837328767,
+              85176.08006665851,
+              85189.86176002935,
+              85203.64345340019
             ],
             "origin_price": 84872.8828125,
             "metrics": {
               "n_verified": 24,
               "n_direction": 24,
-              "mae_log_return": 0.914108,
-              "rmse_log_return": 1.193099,
-              "direction_accuracy": 0.3333,
+              "mae_log_return": 0.777938,
+              "rmse_log_return": 0.990609,
+              "direction_accuracy": 0.6667,
               "per_horizon": [
                 {
                   "horizon": 1,
                   "verified": true,
-                  "lr_forecast": -0.01911,
+                  "lr_forecast": 0.016237,
                   "lr_actual": -0.121376,
-                  "log_ae": 0.102266
+                  "log_ae": 0.137613
                 },
                 {
                   "horizon": 2,
                   "verified": true,
-                  "lr_forecast": -0.042295,
+                  "lr_forecast": 0.032471,
                   "lr_actual": -0.268955,
-                  "log_ae": 0.22666
+                  "log_ae": 0.301425
                 },
                 {
                   "horizon": 3,
                   "verified": true,
-                  "lr_forecast": -0.054818,
+                  "lr_forecast": 0.048702,
                   "lr_actual": -0.317499,
-                  "log_ae": 0.26268
+                  "log_ae": 0.366201
                 },
                 {
                   "horizon": 4,
                   "verified": true,
-                  "lr_forecast": -0.077628,
+                  "lr_forecast": 0.064931,
                   "lr_actual": -0.422348,
-                  "log_ae": 0.34472
+                  "log_ae": 0.487279
                 },
                 {
                   "horizon": 5,
                   "verified": true,
-                  "lr_forecast": -0.048553,
+                  "lr_forecast": 0.081157,
                   "lr_actual": -0.181215,
-                  "log_ae": 0.132662
+                  "log_ae": 0.262372
                 },
                 {
                   "horizon": 6,
                   "verified": true,
-                  "lr_forecast": -0.048258,
+                  "lr_forecast": 0.097381,
                   "lr_actual": -0.028462,
-                  "log_ae": 0.019797
+                  "log_ae": 0.125842
                 },
                 {
                   "horizon": 7,
                   "verified": true,
-                  "lr_forecast": -0.049008,
+                  "lr_forecast": 0.113602,
                   "lr_actual": -0.129846,
-                  "log_ae": 0.080839
+                  "log_ae": 0.243448
                 },
                 {
                   "horizon": 8,
                   "verified": true,
-                  "lr_forecast": -0.049279,
+                  "lr_forecast": 0.12982,
                   "lr_actual": 0.005051,
-                  "log_ae": 0.05433
+                  "log_ae": 0.124769
                 },
                 {
                   "horizon": 9,
                   "verified": true,
-                  "lr_forecast": -0.050886,
+                  "lr_forecast": 0.146036,
                   "lr_actual": 0.343779,
-                  "log_ae": 0.394665
+                  "log_ae": 0.197743
                 },
                 {
                   "horizon": 10,
                   "verified": true,
-                  "lr_forecast": -0.049889,
+                  "lr_forecast": 0.162249,
                   "lr_actual": 0.716909,
-                  "log_ae": 0.766798
+                  "log_ae": 0.55466
                 },
                 {
                   "horizon": 11,
                   "verified": true,
-                  "lr_forecast": -0.04983,
+                  "lr_forecast": 0.178459,
                   "lr_actual": 2.051693,
-                  "log_ae": 2.101523
+                  "log_ae": 1.873234
                 },
                 {
                   "horizon": 12,
                   "verified": true,
-                  "lr_forecast": -0.049844,
+                  "lr_forecast": 0.194667,
                   "lr_actual": 1.295949,
-                  "log_ae": 1.345793
+                  "log_ae": 1.101282
                 },
                 {
                   "horizon": 13,
                   "verified": true,
-                  "lr_forecast": -0.049824,
+                  "lr_forecast": 0.210872,
                   "lr_actual": 1.277827,
-                  "log_ae": 1.327651
+                  "log_ae": 1.066955
                 },
                 {
                   "horizon": 14,
                   "verified": true,
-                  "lr_forecast": -0.049908,
+                  "lr_forecast": 0.227075,
                   "lr_actual": 1.422131,
-                  "log_ae": 1.47204
+                  "log_ae": 1.195057
                 },
                 {
                   "horizon": 15,
                   "verified": true,
-                  "lr_forecast": -0.049876,
+                  "lr_forecast": 0.243274,
                   "lr_actual": 1.592902,
-                  "log_ae": 1.642779
+                  "log_ae": 1.349628
                 },
                 {
                   "horizon": 16,
                   "verified": true,
-                  "lr_forecast": -0.049872,
+                  "lr_forecast": 0.259472,
                   "lr_actual": 1.728045,
-                  "log_ae": 1.777918
+                  "log_ae": 1.468573
                 },
                 {
                   "horizon": 17,
                   "verified": true,
-                  "lr_forecast": -0.049873,
+                  "lr_forecast": 0.275666,
                   "lr_actual": 1.645477,
-                  "log_ae": 1.69535
+                  "log_ae": 1.369811
                 },
                 {
                   "horizon": 18,
                   "verified": true,
-                  "lr_forecast": -0.04987,
+                  "lr_forecast": 0.291858,
                   "lr_actual": 1.797434,
-                  "log_ae": 1.847305
+                  "log_ae": 1.505576
                 },
                 {
                   "horizon": 19,
                   "verified": true,
-                  "lr_forecast": -0.049874,
+                  "lr_forecast": 0.308048,
                   "lr_actual": 2.249173,
-                  "log_ae": 2.299047
+                  "log_ae": 1.941125
                 },
                 {
                   "horizon": 20,
                   "verified": true,
-                  "lr_forecast": -0.049873,
+                  "lr_forecast": 0.324235,
                   "lr_actual": 1.973343,
-                  "log_ae": 2.023216
+                  "log_ae": 1.649108
                 },
                 {
                   "horizon": 21,
                   "verified": true,
-                  "lr_forecast": -0.049873,
+                  "lr_forecast": 0.340419,
                   "lr_actual": 0.942288,
-                  "log_ae": 0.992162
+                  "log_ae": 0.60187
                 },
                 {
                   "horizon": 22,
                   "verified": true,
-                  "lr_forecast": -0.049873,
+                  "lr_forecast": 0.3566,
                   "lr_actual": 0.527488,
-                  "log_ae": 0.577361
+                  "log_ae": 0.170888
                 },
                 {
                   "horizon": 23,
                   "verified": true,
-                  "lr_forecast": -0.049873,
+                  "lr_forecast": 0.372779,
                   "lr_actual": 0.318366,
-                  "log_ae": 0.368239
+                  "log_ae": 0.054413
                 },
                 {
                   "horizon": 24,
                   "verified": true,
-                  "lr_forecast": -0.049873,
+                  "lr_forecast": 0.388956,
                   "lr_actual": -0.132678,
-                  "log_ae": 0.082805
+                  "log_ae": 0.521633
                 }
               ],
               "note": "Metrics on log returns relative to origin. Horizons are NOT independent \u2014 aggregate only across distinct daily origins."
             },
-            "fallback": false
+            "fallback": true
           },
           "timesfm": {
             "path": [
@@ -21358,211 +22053,211 @@
           },
           "arima": {
             "path": [
-              85194.94249417627,
-              85215.54649423982,
-              85176.14191209934,
-              85157.96376689967,
-              85145.7879757475,
-              85149.21786972474,
-              85152.10493935179,
-              85150.53131998944,
-              85149.6472373052,
-              85148.77571904322,
-              85148.93524382843,
-              85149.18144410421,
-              85149.1330717371,
-              85149.09684723707,
-              85149.03547939076,
-              85149.03897773469,
-              85149.05648304422,
-              85149.05617311959,
-              85149.05537953808,
-              85149.05124917423,
-              85149.0509442338,
-              85149.0520540329,
-              85149.0521691438,
-              85149.05222805007
+              85159.44821734344,
+              85175.37299718689,
+              85191.29777703033,
+              85207.22255687378,
+              85223.14733671721,
+              85239.07211656067,
+              85254.9968964041,
+              85270.92167624756,
+              85286.84645609099,
+              85302.77123593444,
+              85318.69601577788,
+              85334.62079562133,
+              85350.54557546477,
+              85366.47035530822,
+              85382.39513515166,
+              85398.31991499511,
+              85414.24469483855,
+              85430.169474682,
+              85446.09425452544,
+              85462.01903436889,
+              85477.94381421233,
+              85493.86859405578,
+              85509.79337389921,
+              85525.71815374267
             ],
             "origin_price": 85143.5234375,
             "metrics": {
               "n_verified": 24,
               "n_direction": 24,
-              "mae_log_return": 0.629437,
-              "rmse_log_return": 0.661246,
+              "mae_log_return": 0.84903,
+              "rmse_log_return": 0.859388,
               "direction_accuracy": 0.0,
               "per_horizon": [
                 {
                   "horizon": 1,
                   "verified": true,
-                  "lr_forecast": 0.060373,
+                  "lr_forecast": 0.018702,
                   "lr_actual": -0.451048,
-                  "log_ae": 0.511421
+                  "log_ae": 0.46975
                 },
                 {
                   "horizon": 2,
                   "verified": true,
-                  "lr_forecast": 0.084554,
+                  "lr_forecast": 0.0374,
                   "lr_actual": -1.069424,
-                  "log_ae": 1.153978
+                  "log_ae": 1.106823
                 },
                 {
                   "horizon": 3,
                   "verified": true,
-                  "lr_forecast": 0.038303,
+                  "lr_forecast": 0.056095,
                   "lr_actual": -1.004759,
-                  "log_ae": 1.043061
+                  "log_ae": 1.060853
                 },
                 {
                   "horizon": 4,
                   "verified": true,
-                  "lr_forecast": 0.016959,
+                  "lr_forecast": 0.074786,
                   "lr_actual": -0.840904,
-                  "log_ae": 0.857863
+                  "log_ae": 0.91569
                 },
                 {
                   "horizon": 5,
                   "verified": true,
-                  "lr_forecast": 0.00266,
+                  "lr_forecast": 0.093474,
                   "lr_actual": -0.742091,
-                  "log_ae": 0.74475
+                  "log_ae": 0.835564
                 },
                 {
                   "horizon": 6,
                   "verified": true,
-                  "lr_forecast": 0.006688,
+                  "lr_forecast": 0.112158,
                   "lr_actual": -0.700024,
-                  "log_ae": 0.706711
+                  "log_ae": 0.812181
                 },
                 {
                   "horizon": 7,
                   "verified": true,
-                  "lr_forecast": 0.010078,
+                  "lr_forecast": 0.130839,
                   "lr_actual": -0.752906,
-                  "log_ae": 0.762984
+                  "log_ae": 0.883744
                 },
                 {
                   "horizon": 8,
                   "verified": true,
-                  "lr_forecast": 0.00823,
+                  "lr_forecast": 0.149516,
                   "lr_actual": -0.558042,
-                  "log_ae": 0.566272
+                  "log_ae": 0.707558
                 },
                 {
                   "horizon": 9,
                   "verified": true,
-                  "lr_forecast": 0.007192,
+                  "lr_forecast": 0.16819,
                   "lr_actual": -0.607139,
-                  "log_ae": 0.614331
+                  "log_ae": 0.775329
                 },
                 {
                   "horizon": 10,
                   "verified": true,
-                  "lr_forecast": 0.006169,
+                  "lr_forecast": 0.18686,
                   "lr_actual": -0.658104,
-                  "log_ae": 0.664273
+                  "log_ae": 0.844964
                 },
                 {
                   "horizon": 11,
                   "verified": true,
-                  "lr_forecast": 0.006356,
+                  "lr_forecast": 0.205527,
                   "lr_actual": -0.544721,
-                  "log_ae": 0.551077
+                  "log_ae": 0.750247
                 },
                 {
                   "horizon": 12,
                   "verified": true,
-                  "lr_forecast": 0.006645,
+                  "lr_forecast": 0.22419,
                   "lr_actual": -0.671334,
-                  "log_ae": 0.67798
+                  "log_ae": 0.895524
                 },
                 {
                   "horizon": 13,
                   "verified": true,
-                  "lr_forecast": 0.006588,
+                  "lr_forecast": 0.24285,
                   "lr_actual": -0.605875,
-                  "log_ae": 0.612463
+                  "log_ae": 0.848724
                 },
                 {
                   "horizon": 14,
                   "verified": true,
-                  "lr_forecast": 0.006546,
+                  "lr_forecast": 0.261506,
                   "lr_actual": -0.673191,
-                  "log_ae": 0.679737
+                  "log_ae": 0.934697
                 },
                 {
                   "horizon": 15,
                   "verified": true,
-                  "lr_forecast": 0.006474,
+                  "lr_forecast": 0.280159,
                   "lr_actual": -0.712408,
-                  "log_ae": 0.718881
+                  "log_ae": 0.992567
                 },
                 {
                   "horizon": 16,
                   "verified": true,
-                  "lr_forecast": 0.006478,
+                  "lr_forecast": 0.298808,
                   "lr_actual": -0.648564,
-                  "log_ae": 0.655042
+                  "log_ae": 0.947372
                 },
                 {
                   "horizon": 17,
                   "verified": true,
-                  "lr_forecast": 0.006498,
+                  "lr_forecast": 0.317454,
                   "lr_actual": -0.660126,
-                  "log_ae": 0.666624
+                  "log_ae": 0.97758
                 },
                 {
                   "horizon": 18,
                   "verified": true,
-                  "lr_forecast": 0.006498,
+                  "lr_forecast": 0.336097,
                   "lr_actual": -0.615529,
-                  "log_ae": 0.622027
+                  "log_ae": 0.951626
                 },
                 {
                   "horizon": 19,
                   "verified": true,
-                  "lr_forecast": 0.006497,
+                  "lr_forecast": 0.354736,
                   "lr_actual": -0.567326,
-                  "log_ae": 0.573823
+                  "log_ae": 0.922061
                 },
                 {
                   "horizon": 20,
                   "verified": true,
-                  "lr_forecast": 0.006492,
+                  "lr_forecast": 0.373371,
                   "lr_actual": -0.327918,
-                  "log_ae": 0.33441
+                  "log_ae": 0.701289
                 },
                 {
                   "horizon": 21,
                   "verified": true,
-                  "lr_forecast": 0.006492,
+                  "lr_forecast": 0.392003,
                   "lr_actual": -0.336567,
-                  "log_ae": 0.343059
+                  "log_ae": 0.72857
                 },
                 {
                   "horizon": 22,
                   "verified": true,
-                  "lr_forecast": 0.006493,
+                  "lr_forecast": 0.410632,
                   "lr_actual": -0.353597,
-                  "log_ae": 0.36009
+                  "log_ae": 0.764229
                 },
                 {
                   "horizon": 23,
                   "verified": true,
-                  "lr_forecast": 0.006493,
+                  "lr_forecast": 0.429257,
                   "lr_actual": -0.331005,
-                  "log_ae": 0.337498
+                  "log_ae": 0.760262
                 },
                 {
                   "horizon": 24,
                   "verified": true,
-                  "lr_forecast": 0.006493,
+                  "lr_forecast": 0.447878,
                   "lr_actual": -0.341646,
-                  "log_ae": 0.34814
+                  "log_ae": 0.789525
                 }
               ],
               "note": "Metrics on log returns relative to origin. Horizons are NOT independent \u2014 aggregate only across distinct daily origins."
             },
-            "fallback": false
+            "fallback": true
           },
           "timesfm": {
             "path": [
@@ -22192,211 +22887,211 @@
           },
           "arima": {
             "path": [
-              84862.43592101136,
-              84870.10032872514,
-              84869.90901572023,
-              84868.94691330602,
-              84869.71132543997,
-              84869.68303343434,
-              84869.9709485327,
-              84869.97186385175,
-              84869.91856280353,
-              84869.94917014551,
-              84869.94703058968,
-              84869.95773602162,
-              84869.95827338284,
-              84869.95557123258,
-              84869.95679205871,
-              84869.95668884602,
-              84869.9570807613,
-              84869.95712778356,
-              84869.95699792894,
-              84869.9570460853,
-              84869.95704216023,
-              84869.95705619677,
-              84869.95705928479,
-              84869.95705327061
+              84876.87529048434,
+              84891.59433096868,
+              84906.31337145303,
+              84921.03241193738,
+              84935.75145242173,
+              84950.47049290607,
+              84965.18953339041,
+              84979.90857387475,
+              84994.6276143591,
+              85009.34665484344,
+              85024.0656953278,
+              85038.78473581214,
+              85053.50377629648,
+              85068.22281678082,
+              85082.94185726516,
+              85097.6608977495,
+              85112.37993823386,
+              85127.0989787182,
+              85141.81801920255,
+              85156.53705968689,
+              85171.25610017123,
+              85185.97514065557,
+              85200.69418113992,
+              85215.41322162427
             ],
             "origin_price": 84862.15625,
             "metrics": {
               "n_verified": 24,
               "n_direction": 24,
-              "mae_log_return": 0.210074,
-              "rmse_log_return": 0.262535,
+              "mae_log_return": 0.15068,
+              "rmse_log_return": 0.179825,
               "direction_accuracy": 0.5417,
               "per_horizon": [
                 {
                   "horizon": 1,
                   "verified": true,
-                  "lr_forecast": 0.00033,
+                  "lr_forecast": 0.017343,
                   "lr_actual": -0.010637,
-                  "log_ae": 0.010966
+                  "log_ae": 0.02798
                 },
                 {
                   "horizon": 2,
                   "verified": true,
-                  "lr_forecast": 0.009361,
+                  "lr_forecast": 0.034683,
                   "lr_actual": 0.151677,
-                  "log_ae": 0.142316
+                  "log_ae": 0.116993
                 },
                 {
                   "horizon": 3,
                   "verified": true,
-                  "lr_forecast": 0.009135,
+                  "lr_forecast": 0.05202,
                   "lr_actual": 0.084211,
-                  "log_ae": 0.075076
+                  "log_ae": 0.032191
                 },
                 {
                   "horizon": 4,
                   "verified": true,
-                  "lr_forecast": 0.008002,
+                  "lr_forecast": 0.069355,
                   "lr_actual": -0.02966,
-                  "log_ae": 0.037662
+                  "log_ae": 0.099014
                 },
                 {
                   "horizon": 5,
                   "verified": true,
-                  "lr_forecast": 0.008902,
+                  "lr_forecast": 0.086686,
                   "lr_actual": -0.146894,
-                  "log_ae": 0.155797
+                  "log_ae": 0.23358
                 },
                 {
                   "horizon": 6,
                   "verified": true,
-                  "lr_forecast": 0.008869,
+                  "lr_forecast": 0.104014,
                   "lr_actual": -0.181147,
-                  "log_ae": 0.190016
+                  "log_ae": 0.285161
                 },
                 {
                   "horizon": 7,
                   "verified": true,
-                  "lr_forecast": 0.009208,
+                  "lr_forecast": 0.121339,
                   "lr_actual": -0.125242,
-                  "log_ae": 0.13445
+                  "log_ae": 0.246581
                 },
                 {
                   "horizon": 8,
                   "verified": true,
-                  "lr_forecast": 0.009209,
+                  "lr_forecast": 0.138661,
                   "lr_actual": -0.141431,
-                  "log_ae": 0.15064
+                  "log_ae": 0.280092
                 },
                 {
                   "horizon": 9,
                   "verified": true,
-                  "lr_forecast": 0.009147,
+                  "lr_forecast": 0.15598,
                   "lr_actual": -0.088732,
-                  "log_ae": 0.097878
+                  "log_ae": 0.244712
                 },
                 {
                   "horizon": 10,
                   "verified": true,
-                  "lr_forecast": 0.009183,
+                  "lr_forecast": 0.173296,
                   "lr_actual": -0.079521,
-                  "log_ae": 0.088703
+                  "log_ae": 0.252817
                 },
                 {
                   "horizon": 11,
                   "verified": true,
-                  "lr_forecast": 0.00918,
+                  "lr_forecast": 0.190609,
                   "lr_actual": -0.085005,
-                  "log_ae": 0.094185
+                  "log_ae": 0.275614
                 },
                 {
                   "horizon": 12,
                   "verified": true,
-                  "lr_forecast": 0.009193,
+                  "lr_forecast": 0.207919,
                   "lr_actual": -0.044548,
-                  "log_ae": 0.053741
+                  "log_ae": 0.252468
                 },
                 {
                   "horizon": 13,
                   "verified": true,
-                  "lr_forecast": 0.009193,
+                  "lr_forecast": 0.225227,
                   "lr_actual": -0.067363,
-                  "log_ae": 0.076556
+                  "log_ae": 0.292589
                 },
                 {
                   "horizon": 14,
                   "verified": true,
-                  "lr_forecast": 0.00919,
+                  "lr_forecast": 0.242531,
                   "lr_actual": 0.040521,
-                  "log_ae": 0.031331
+                  "log_ae": 0.20201
                 },
                 {
                   "horizon": 15,
                   "verified": true,
-                  "lr_forecast": 0.009192,
+                  "lr_forecast": 0.259832,
                   "lr_actual": 0.177841,
-                  "log_ae": 0.168649
+                  "log_ae": 0.081991
                 },
                 {
                   "horizon": 16,
                   "verified": true,
-                  "lr_forecast": 0.009191,
+                  "lr_forecast": 0.27713,
                   "lr_actual": 0.278222,
-                  "log_ae": 0.26903
+                  "log_ae": 0.001092
                 },
                 {
                   "horizon": 17,
                   "verified": true,
-                  "lr_forecast": 0.009192,
+                  "lr_forecast": 0.294425,
                   "lr_actual": 0.272581,
-                  "log_ae": 0.263389
+                  "log_ae": 0.021844
                 },
                 {
                   "horizon": 18,
                   "verified": true,
-                  "lr_forecast": 0.009192,
+                  "lr_forecast": 0.311717,
                   "lr_actual": 0.420086,
-                  "log_ae": 0.410894
+                  "log_ae": 0.108369
                 },
                 {
                   "horizon": 19,
                   "verified": true,
-                  "lr_forecast": 0.009192,
+                  "lr_forecast": 0.329006,
                   "lr_actual": 0.468009,
-                  "log_ae": 0.458818
+                  "log_ae": 0.139003
                 },
                 {
                   "horizon": 20,
                   "verified": true,
-                  "lr_forecast": 0.009192,
+                  "lr_forecast": 0.346293,
                   "lr_actual": 0.519509,
-                  "log_ae": 0.510317
+                  "log_ae": 0.173216
                 },
                 {
                   "horizon": 21,
                   "verified": true,
-                  "lr_forecast": 0.009192,
+                  "lr_forecast": 0.363576,
                   "lr_actual": 0.28915,
-                  "log_ae": 0.279958
+                  "log_ae": 0.074426
                 },
                 {
                   "horizon": 22,
                   "verified": true,
-                  "lr_forecast": 0.009192,
+                  "lr_forecast": 0.380856,
                   "lr_actual": 0.437064,
-                  "log_ae": 0.427872
+                  "log_ae": 0.056208
                 },
                 {
                   "horizon": 23,
                   "verified": true,
-                  "lr_forecast": 0.009192,
+                  "lr_forecast": 0.398133,
                   "lr_actual": 0.486903,
-                  "log_ae": 0.477711
+                  "log_ae": 0.08877
                 },
                 {
                   "horizon": 24,
                   "verified": true,
-                  "lr_forecast": 0.009192,
+                  "lr_forecast": 0.415407,
                   "lr_actual": 0.445018,
-                  "log_ae": 0.435826
+                  "log_ae": 0.029611
                 }
               ],
               "note": "Metrics on log returns relative to origin. Horizons are NOT independent \u2014 aggregate only across distinct daily origins."
             },
-            "fallback": false
+            "fallback": true
           },
           "timesfm": {
             "path": [
@@ -23026,211 +23721,211 @@
           },
           "arima": {
             "path": [
-              85247.71964752386,
-              85233.66575333559,
-              85238.46456560535,
-              85241.49916219024,
-              85239.80607899303,
-              85240.55339093266,
-              85239.69636422524,
-              85239.83642048958,
-              85240.0214710037,
-              85239.92949633572,
-              85239.99173164615,
-              85239.9447806323,
-              85239.94622459172,
-              85239.95692824022,
-              85239.95118488243,
-              85239.95566017542,
-              85239.9532935984,
-              85239.95307958842,
-              85239.95370286159,
-              85239.95331598406,
-              85239.95360718067,
-              85239.95349640232,
-              85239.95347103088,
-              85239.95350879605
+              85257.21000489237,
+              85273.77157228474,
+              85290.33313967711,
+              85306.89470706947,
+              85323.45627446185,
+              85340.0178418542,
+              85356.57940924658,
+              85373.14097663894,
+              85389.70254403132,
+              85406.26411142368,
+              85422.82567881605,
+              85439.38724620841,
+              85455.94881360079,
+              85472.51038099315,
+              85489.07194838552,
+              85505.63351577788,
+              85522.19508317026,
+              85538.75665056262,
+              85555.31821795499,
+              85571.87978534735,
+              85588.44135273973,
+              85605.00292013209,
+              85621.56448752446,
+              85638.12605491684
             ],
             "origin_price": 85240.6484375,
             "metrics": {
               "n_verified": 24,
               "n_direction": 24,
-              "mae_log_return": 0.844632,
-              "rmse_log_return": 0.986409,
-              "direction_accuracy": 0.0833,
+              "mae_log_return": 0.639365,
+              "rmse_log_return": 0.784061,
+              "direction_accuracy": 1.0,
               "per_horizon": [
                 {
                   "horizon": 1,
                   "verified": true,
-                  "lr_forecast": 0.008295,
+                  "lr_forecast": 0.019427,
                   "lr_actual": 0.137939,
-                  "log_ae": 0.129644
+                  "log_ae": 0.118512
                 },
                 {
                   "horizon": 2,
                   "verified": true,
-                  "lr_forecast": -0.008192,
+                  "lr_forecast": 0.038851,
                   "lr_actual": 0.072992,
-                  "log_ae": 0.081184
+                  "log_ae": 0.034141
                 },
                 {
                   "horizon": 3,
                   "verified": true,
-                  "lr_forecast": -0.002562,
+                  "lr_forecast": 0.058271,
                   "lr_actual": 0.09899,
-                  "log_ae": 0.101552
+                  "log_ae": 0.040719
                 },
                 {
                   "horizon": 4,
                   "verified": true,
-                  "lr_forecast": 0.000998,
+                  "lr_forecast": 0.077687,
                   "lr_actual": 0.207223,
-                  "log_ae": 0.206225
+                  "log_ae": 0.129537
                 },
                 {
                   "horizon": 5,
                   "verified": true,
-                  "lr_forecast": -0.000988,
+                  "lr_forecast": 0.097099,
                   "lr_actual": 0.680664,
-                  "log_ae": 0.681652
+                  "log_ae": 0.583565
                 },
                 {
                   "horizon": 6,
                   "verified": true,
-                  "lr_forecast": -0.000112,
+                  "lr_forecast": 0.116507,
                   "lr_actual": 0.715858,
-                  "log_ae": 0.71597
+                  "log_ae": 0.599351
                 },
                 {
                   "horizon": 7,
                   "verified": true,
-                  "lr_forecast": -0.001117,
+                  "lr_forecast": 0.135912,
                   "lr_actual": 1.377543,
-                  "log_ae": 1.37866
+                  "log_ae": 1.241631
                 },
                 {
                   "horizon": 8,
                   "verified": true,
-                  "lr_forecast": -0.000953,
+                  "lr_forecast": 0.155313,
                   "lr_actual": 1.474819,
-                  "log_ae": 1.475772
+                  "log_ae": 1.319506
                 },
                 {
                   "horizon": 9,
                   "verified": true,
-                  "lr_forecast": -0.000736,
+                  "lr_forecast": 0.17471,
                   "lr_actual": 1.635175,
-                  "log_ae": 1.63591
+                  "log_ae": 1.460465
                 },
                 {
                   "horizon": 10,
                   "verified": true,
-                  "lr_forecast": -0.000843,
+                  "lr_forecast": 0.194103,
                   "lr_actual": 1.588029,
-                  "log_ae": 1.588873
+                  "log_ae": 1.393926
                 },
                 {
                   "horizon": 11,
                   "verified": true,
-                  "lr_forecast": -0.00077,
+                  "lr_forecast": 0.213493,
                   "lr_actual": 1.477767,
-                  "log_ae": 1.478537
+                  "log_ae": 1.264274
                 },
                 {
                   "horizon": 12,
                   "verified": true,
-                  "lr_forecast": -0.000825,
+                  "lr_forecast": 0.232879,
                   "lr_actual": 0.955423,
-                  "log_ae": 0.956248
+                  "log_ae": 0.722544
                 },
                 {
                   "horizon": 13,
                   "verified": true,
-                  "lr_forecast": -0.000824,
+                  "lr_forecast": 0.252261,
                   "lr_actual": 0.310159,
-                  "log_ae": 0.310982
+                  "log_ae": 0.057898
                 },
                 {
                   "horizon": 14,
                   "verified": true,
-                  "lr_forecast": -0.000811,
+                  "lr_forecast": 0.271639,
                   "lr_actual": 0.583557,
-                  "log_ae": 0.584368
+                  "log_ae": 0.311917
                 },
                 {
                   "horizon": 15,
                   "verified": true,
-                  "lr_forecast": -0.000818,
+                  "lr_forecast": 0.291014,
                   "lr_actual": 1.146493,
-                  "log_ae": 1.147311
+                  "log_ae": 0.855479
                 },
                 {
                   "horizon": 16,
                   "verified": true,
-                  "lr_forecast": -0.000813,
+                  "lr_forecast": 0.310385,
                   "lr_actual": 1.160096,
-                  "log_ae": 1.160909
+                  "log_ae": 0.849711
                 },
                 {
                   "horizon": 17,
                   "verified": true,
-                  "lr_forecast": -0.000816,
+                  "lr_forecast": 0.329752,
                   "lr_actual": 1.10834,
-                  "log_ae": 1.109156
+                  "log_ae": 0.778589
                 },
                 {
                   "horizon": 18,
                   "verified": true,
-                  "lr_forecast": -0.000816,
+                  "lr_forecast": 0.349115,
                   "lr_actual": 0.841866,
-                  "log_ae": 0.842682
+                  "log_ae": 0.492751
                 },
                 {
                   "horizon": 19,
                   "verified": true,
-                  "lr_forecast": -0.000815,
+                  "lr_forecast": 0.368475,
                   "lr_actual": 1.006143,
-                  "log_ae": 1.006958
+                  "log_ae": 0.637668
                 },
                 {
                   "horizon": 20,
                   "verified": true,
-                  "lr_forecast": -0.000815,
+                  "lr_forecast": 0.387831,
                   "lr_actual": 1.109373,
-                  "log_ae": 1.110189
+                  "log_ae": 0.721542
                 },
                 {
                   "horizon": 21,
                   "verified": true,
-                  "lr_forecast": -0.000815,
+                  "lr_forecast": 0.407183,
                   "lr_actual": 0.735925,
-                  "log_ae": 0.736741
+                  "log_ae": 0.328743
                 },
                 {
                   "horizon": 22,
                   "verified": true,
-                  "lr_forecast": -0.000815,
+                  "lr_forecast": 0.426531,
                   "lr_actual": 1.373458,
-                  "log_ae": 1.374274
+                  "log_ae": 0.946927
                 },
                 {
                   "horizon": 23,
                   "verified": true,
-                  "lr_forecast": -0.000815,
+                  "lr_forecast": 0.445876,
                   "lr_actual": 0.444341,
-                  "log_ae": 0.445156
+                  "log_ae": 0.001535
                 },
                 {
                   "horizon": 24,
                   "verified": true,
-                  "lr_forecast": -0.000815,
+                  "lr_forecast": 0.465217,
                   "lr_actual": 0.011392,
-                  "log_ae": 0.012208
+                  "log_ae": 0.453824
                 }
               ],
               "note": "Metrics on log returns relative to origin. Horizons are NOT independent \u2014 aggregate only across distinct daily origins."
             },
-            "fallback": false
+            "fallback": true
           },
           "timesfm": {
             "path": [
@@ -23461,10 +24156,10 @@
         "timestamp": "2026-10-09T18:25:55.089520+00:00"
       }
     ],
-    "latest_valid_observation": "2026-10-09T16:00:00+00:00",
+    "latest_valid_observation": "2026-10-09T20:00:00+00:00",
     "latest_prediction": "2026-10-09T18:25:58.523645+00:00",
-    "latest_verification": "2026-10-09T16:10:28.809988+00:00",
-    "pending_verifications": 26,
+    "latest_verification": "2026-10-09T20:52:36.459837+00:00",
+    "pending_verifications": 22,
     "invalid_predictions": 0,
     "timesfm_status": "GENERATED",
     "storage_status": "INTEGRITY_CHECK_PASSED",
