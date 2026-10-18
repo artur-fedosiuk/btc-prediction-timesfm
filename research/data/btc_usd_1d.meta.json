@@ -1,0 +1,10 @@
+{
+  "source": "Coinbase Exchange REST API",
+  "product": "BTC-USD",
+  "granularity": 86400,
+  "fetched_at_utc": "2026-10-12T10:01:09.804715+00:00",
+  "rows": 1825,
+  "first_date": "2021-10-13",
+  "last_date": "2026-10-11",
+  "sha256": "d05050f1ecd9d531414499faeb1a48890743760eaeecb509407c0cbb0f15a17e"
+}
