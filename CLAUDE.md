@@ -36,11 +36,7 @@ python -m evaluation.forward.cli generate   # requires CI evidence first
 python -m evaluation.forward.cli verify
 python -m evaluation.forward.cli report
 
-# Run tests (match CI quality gate step)
-python -m pytest tests/forward tests/test_btc_metrics.py tests/test_btc_csv_manager.py \
-  tests/test_btc_simulation.py tests/test_binance.py tests/test_price_verifier.py \
-  tests/test_forecast_path.py tests/test_trading_engine.py -q
-python -m pytest src/timesfm3 -q
+# Run tests — use the quality gate command from .github/workflows/bitcoin-evaluation.yml
 
 # Download data
 python -m scripts.download_daily_ohlc --years 5 --out research/data/btc_usd_1d.csv
