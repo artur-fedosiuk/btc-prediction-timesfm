@@ -28,7 +28,7 @@ def require_ci_evidence(path):
 
 def main(argv=None):
   parser = argparse.ArgumentParser()
-  parser.add_argument("command", choices=["generate", "verify", "report"])
+  parser.add_argument("command", choices=["generate", "verify", "report", "health"])
   parser.add_argument("--ledger", type=Path, default=Path("data/forward.sqlite"))
   parser.add_argument("--ci-evidence", default="reports/provider-checks-ci.json")
   parser.add_argument("--output-dir", type=Path, default=Path("."))
@@ -36,7 +36,23 @@ def main(argv=None):
   ledger = Ledger(args.ledger)
   failures = []
   try:
-    if args.command == "generate":
+    if args.command == "health":
+      # Lightweight health check: no network, no model load
+      predictions = len(ledger.records("predictions"))
+      verifications = len(ledger.records("verifications"))
+      events = ledger.records("events")
+      last_gen = max((p["generated_at"] for p in ledger.records("predictions")), default="never")
+      last_ver = max((v["verified_at"] for v in ledger.records("verifications")), default="never")
+      print(json.dumps({
+        "predictions": predictions,
+        "verifications": verifications,
+        "events": len(events),
+        "last_generation": last_gen,
+        "last_verification": last_ver,
+        "sqlite_path": str(ledger.path),
+        "sqlite_size_bytes": ledger.path.stat().st_size,
+      }, indent=2))
+    elif args.command == "generate":
       require_ci_evidence(args.ci_evidence)
       end = now().replace(minute=0, second=0, microsecond=0)
       if any(utc(p["forecast_origin"]) == end for p in ledger.records("predictions")):

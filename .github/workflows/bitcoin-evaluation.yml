@@ -116,3 +116,9 @@ jobs:
             reports/provider-checks-ci.json
           if-no-files-found: ignore
           retention-days: 1
+      - name: Alert on failure (slack/webhook placeholder)
+        if: failure()
+        run: |
+          echo "::warning::BTC forward pipeline failed — run ${{ github.run_id }} mode ${{ steps.operation.outputs.mode }}"
+          # Add Slack/Discord/email webhook here if desired
+          # curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"BTC pipeline failed: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\"}" $ALERT_WEBHOOK

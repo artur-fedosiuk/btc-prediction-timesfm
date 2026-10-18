@@ -14,6 +14,9 @@ from .contracts import EXPERIMENT, digest, utc
 from .storage import IntegrityError, Ledger, atomic_write
 
 MIN_SAMPLE = 30
+# NOTE: This threshold determines scientific_status in build_report().
+# Current experiment (19 predictions as of 2026-10-18) remains INSUFFICIENT VALID DATA.
+# When predictions >= 30, status upgrades to STATISTICALLY INCONCLUSIVE.
 
 
 def trade_report(records, *, config=None, costs=None) -> dict:
