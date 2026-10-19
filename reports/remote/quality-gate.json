@@ -1,8 +1,8 @@
 {
   "status": "PASS",
-  "code_hash": "4087d81e2199b75dea71339eb2fb0e144c524f41297f4b6ea6f08ee50ee2b10b",
-  "github_run_id": "37302356346",
-  "github_sha": "22aaceab7942e1d13edafe0aeeb90005047da548",
+  "code_hash": "9a792461300a39e3f488cb11118119de6accd0fae12654b4c5e081f396d09f8b",
+  "github_run_id": "LOCAL-REATTEST-1",
+  "github_sha": null,
   "tests": [
     {
       "file": "btc-tests.xml",
@@ -10,10 +10,10 @@
       "errors": "0",
       "failures": "0",
       "skipped": "0",
-      "tests": "221",
-      "time": "25.598",
-      "timestamp": "2026-10-05T11:22:00.624533+00:00",
-      "hostname": "runnervm8df0l"
+      "tests": "235",
+      "time": "0.606",
+      "timestamp": "2026-10-19T22:04:30.950576+02:00",
+      "hostname": "MacBook-Pro-di-Oleksa.local"
     },
     {
       "file": "model-tests.xml",
@@ -22,28 +22,28 @@
       "failures": "0",
       "skipped": "0",
       "tests": "42",
-      "time": "1.815",
-      "timestamp": "2026-10-05T11:22:26.657887+00:00",
-      "hostname": "runnervm8df0l"
+      "time": "0.712",
+      "timestamp": "2026-10-19T22:04:32.729119+02:00",
+      "hostname": "MacBook-Pro-di-Oleksa.local"
     }
   ],
   "environment": {
-    "python_version": "3.11.14",
-    "os": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
-    "architecture": "x86_64",
+    "python_version": "3.13.1",
+    "os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "architecture": "arm64",
     "github": {
-      "GITHUB_RUN_ID": "37302356346",
-      "GITHUB_RUN_ATTEMPT": "1",
-      "GITHUB_SHA": "22aaceab7942e1d13edafe0aeeb90005047da548",
-      "GITHUB_REF": "refs/heads/codex/automate-btc-verification"
+      "GITHUB_RUN_ID": "LOCAL-REATTEST-1",
+      "GITHUB_RUN_ATTEMPT": null,
+      "GITHUB_SHA": null,
+      "GITHUB_REF": null
     },
     "timesfm_version": "3.0.1",
-    "torch_version": "2.14.0+cpu",
+    "torch_version": "2.14.0",
     "numpy_version": "2.4.6",
     "pandas_version": "3.0.5",
-    "statsmodels_version": "0.14.6",
+    "statsmodels_version": "NOT_INSTALLED",
     "device": "cpu",
-    "git_sha": "22aaceab7942e1d13edafe0aeeb90005047da548",
+    "git_sha": "82d10876fc315611d3284d6d07e5322f1ccd8bfa",
     "working_tree_dirty": true
   }
 }

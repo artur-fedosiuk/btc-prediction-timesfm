@@ -6,12 +6,16 @@ Verifies:
 3. Cross-check against a naive pure-Python reference implementation.
 4. Edge cases: fees larger than gain, horizon > len(data), series with missing gap.
 5. Sanity: zero costs and zero tax produces exact sum of positive returns.
+6. Integration test of run_analysis on synthetic CSV.
 """
 from __future__ import annotations
 
+import csv
+import json
 import math
 import random
 from datetime import date, timedelta
+from pathlib import Path
 from typing import Sequence
 
 import pytest
@@ -25,6 +29,7 @@ from scripts.oracle_breakeven import (
   evaluate_buy_and_hold,
   evaluate_oracle,
   quantile,
+  run_analysis,
 )
 
 
@@ -43,7 +48,7 @@ def test_reviewer_reference_values() -> None:
   - m = 0.02 with the same c -> p_star_pre = 0.7865009 ; p_star_tax = 0.9276133
     (tolerance 1e-6)
   """
-  model = CostModel(f=0.005, e=0.0015)
+  model = CostModel(f=0.005, e=0.0015, tax_rate=0.33)
 
   # 1. Cost multiplier and round-trip cost
   assert math.isclose(model.M, 0.9885399625, rel_tol=0.0, abs_tol=1e-12)
@@ -132,7 +137,7 @@ def test_hand_computed_ten_day_series() -> None:
     Mean net after tax = 0.0903655387 / 3 = 0.0301218462
   """
   prices = [100.0, 105.0, 102.0, 108.0, 106.0, 112.0, 110.0, 115.0, 112.0, 120.0]
-  model = CostModel(f=0.005, e=0.0015)
+  model = CostModel(f=0.005, e=0.0015, tax_rate=0.33)
 
   # Check overlapping returns
   over_r = compute_returns(prices, horizon=3, step=1)
@@ -191,7 +196,7 @@ def test_cross_check_against_naive_loop() -> None:
     p *= 1.0 + rng.uniform(-0.04, 0.04)
     prices.append(p)
 
-  model = CostModel(f=0.0040, e=0.0015)
+  model = CostModel(f=0.0040, e=0.0015, tax_rate=0.33)
   years = 200 / 365.0
 
   for h in (1, 3, 7):
@@ -273,33 +278,112 @@ def test_edge_case_series_with_gap_rejected_by_validate_series() -> None:
 
 
 # ---------------------------------------------------------------------------
-# Test 5: Sanity check (f=0, e=0, no tax)
+# Test 5: Real sanity check (f=0, e=0, tax_rate=0)
 # ---------------------------------------------------------------------------
 
 
 def test_sanity_zero_costs_zero_tax_equals_sum_of_positive_r() -> None:
-  """With f=0, e=0, and no tax, the oracle sum must exactly equal the sum of
+  """With f=0, e=0, tax_rate=0, the oracle sum must exactly equal the sum of
   all positive returns.
   """
-  zero_model = CostModel(f=0.0, e=0.0)
+  zero_model = CostModel(f=0.0, e=0.0, tax_rate=0.0)
   assert zero_model.M == 1.0
   assert zero_model.c == 0.0
   assert zero_model.r_be_pre == 0.0
+  assert zero_model.r_be_tax == 0.0
 
   # Arbitrary returns with positive and negative numbers
   returns = [-0.05, 0.03, -0.01, 0.08, 0.0, -0.02, 0.04]
   threshold = 0.0
 
-  # Here we test oracle where tax rate is zeroed out:
+  # With f=0, e=0, tax_rate=0:
   # net_cash = 1.0 * (1 + r) - 1 = r
+  # net_after_tax = r - 0 = r
   expected_sum = sum(r for r in returns if r > 0.0)
 
   # evaluate_oracle with custom threshold 0.0 and zero model
-  # Note: net_after_tax applies 0.33 * r. To test the mathematical sanity of
-  # f=0, e=0, no tax, net_cash(r) == r:
-  for r in returns:
-    assert math.isclose(zero_model.net_cash(r), r, abs_tol=1e-15)
+  oracle_res = evaluate_oracle(returns, zero_model, threshold, "after_tax", years=1.0)
+  assert math.isclose(oracle_res.sum_net_after_tax, expected_sum, abs_tol=1e-15)
+  assert oracle_res.trades_count == 3  # three positive returns (0.03, 0.08, 0.04)
+  assert oracle_res.total_periods == 7
 
-  tradable = [r for r in returns if r > 0.0]
-  sum_cash = sum(zero_model.net_cash(r) for r in tradable)
-  assert math.isclose(sum_cash, expected_sum, abs_tol=1e-15)
+
+# ---------------------------------------------------------------------------
+# Test 6: Integration test of run_analysis on synthetic CSV
+# ---------------------------------------------------------------------------
+
+
+def test_integration_run_analysis_synthetic(tmp_path: Path) -> None:
+  """Integration test: run_analysis on a small synthetic CSV (60 days, valid OHLC)."""
+  import json
+
+  # Generate 60 days of valid OHLC data with known pattern
+  from datetime import date, timedelta
+
+  from scripts.ohlc_io import Candle, save_csv
+  from scripts.oracle_breakeven import run_analysis
+
+  # Create prices that go up and down
+  base = 50000.0
+  prices = []
+  for i in range(60):
+    if i < 20:
+      base *= 1.01  # uptrend
+    elif i < 40:
+      base *= 0.99  # downtrend
+    else:
+      base *= 1.005  # slight uptrend
+    prices.append(base)
+
+  # Build candles
+  start_date = date(2023, 1, 1)
+  candles = []
+  for i, close in enumerate(prices):
+    d = start_date + timedelta(days=i)
+    # Create valid OHLC: high >= close, low <= close, etc.
+    high = close * 1.02
+    low = close * 0.98
+    open_ = close * 0.99
+    candles.append(Candle(d, open_, high, low, close, 100.0))
+
+  # Write CSV using save_csv (correct format)
+  csv_path = tmp_path / "btc_usd_1d.csv"
+  save_csv(candles, csv_path)
+
+  # Write meta
+  meta_path = tmp_path / "btc_usd_1d.meta.json"
+  meta_path.write_text(json.dumps({
+    "source": "synthetic_test",
+    "product": "BTC-USD",
+    "granularity": 86400,
+    "fetched_at_utc": "2024-01-01T00:00:00Z",
+    "rows": 60,
+    "first_date": "2023-01-01",
+    "last_date": "2023-03-01",
+    "sha256": "test"
+  }))
+
+  # Run analysis
+  evaluations, stats_by_horizon, meta, years = run_analysis(csv_path)
+
+  # Verify structure
+  assert len(evaluations) > 0
+  # Should have 5 horizons x 7 scenarios = 35 evaluations
+  assert len(evaluations) == 35
+  assert set(stats_by_horizon.keys()) == {1, 3, 7, 14, 30}
+  assert years > 0
+
+  # Check each evaluation has the right structure
+  for ev in evaluations:
+    assert ev.horizon in {1, 3, 7, 14, 30}
+    assert ev.scenario.name in [
+      "coinbase_eu_maker", "coinbase_eu_taker",
+      "kraken_t1_maker", "kraken_t1_taker",
+      "kraken_t2_maker", "kraken_t2_taker",
+      "repo_assumption"
+    ]
+    assert ev.cost_model.f > 0
+    assert ev.cost_model.e >= 0
+    assert ev.cost_model.tax_rate == 0.33
+    assert 0 <= ev.oracle_tax.share_tradable <= 1
+    assert ev.stats.n_independent > 0

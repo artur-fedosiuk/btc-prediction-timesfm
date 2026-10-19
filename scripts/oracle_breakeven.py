@@ -25,8 +25,8 @@ _LOG = logging.getLogger(__name__)
 # Default parameters & constants
 # ---------------------------------------------------------------------------
 
-TAX_RATE: float = 0.33  # 33% Italian substitute tax on crypto gross capital gains
-DEFAULT_HORIZONS: tuple[int, ...] = (1, 3, 7)
+DEFAULT_TAX_RATE: float = 0.33  # 33% Italian substitute tax on crypto gross capital gains
+DEFAULT_HORIZONS: tuple[int, ...] = (1, 3, 7, 14, 30)
 DEFAULT_EXTRA_COST: float = 0.0015  # 0.15% = 15 bps round-trip spread + slippage
 
 
@@ -41,12 +41,14 @@ class CostModel:
 
   f: fee per side (entry and exit each pay (1 - f))
   e: round-trip spread and slippage cost
+  tax_rate: capital gains tax rate on gross gains (default 0.33)
   M: net multiplier = (1 - f)^2 * (1 - e)
   c: round-trip cost = 1 - M
   """
 
   f: float
   e: float
+  tax_rate: float = 0.33
 
   @property
   def M(self) -> float:
@@ -63,8 +65,8 @@ class CostModel:
 
   @property
   def r_be_tax(self) -> float:
-    """After-tax break-even return: r such that net cash - 0.33*max(0, r) == 0."""
-    denom = self.M - TAX_RATE
+    """After-tax break-even return: r such that net cash - tax_rate*max(0, r) == 0."""
+    denom = self.M - self.tax_rate
     if denom <= 0:
       return float("inf")
     return (1.0 - self.M) / denom
@@ -74,8 +76,8 @@ class CostModel:
     return self.M * (1.0 + r) - 1.0
 
   def net_after_tax(self, r: float) -> float:
-    """Net return after 33% tax on gross gain: M*(1+r) - 1 - 0.33*max(0, r)."""
-    return self.net_cash(r) - TAX_RATE * max(0.0, r)
+    """Net return after tax on gross gain: M*(1+r) - 1 - tax_rate*max(0, r)."""
+    return self.net_cash(r) - self.tax_rate * max(0.0, r)
 
   def p_star_pre(self, m: float) -> float:
     """Pre-tax break-even hit rate: 0.5 + c / (2 * m)."""
@@ -84,10 +86,14 @@ class CostModel:
     return 0.5 + (self.c / (2.0 * m))
 
   def p_star_tax(self, m: float) -> float:
-    """After-tax break-even hit rate: 0.5 + c / (1.34 * m)."""
+    """After-tax break-even hit rate: 0.5 + c / (2 * (1 - tax_rate) * m).
+
+    Note: 2 * (1 - tax_rate) = 1.34 when tax_rate = 0.33.
+    """
     if m <= 0.0:
       return float("inf")
-    return 0.5 + (self.c / (1.34 * m))
+    denom = 2.0 * (1.0 - self.tax_rate) * m
+    return 0.5 + (self.c / denom)
 
 
 @dataclass(frozen=True)
@@ -375,7 +381,7 @@ def build_markdown_report(
     "",
     "## Empirical Return Distributions by Horizon (Overlapping Set)",
     "",
-    "| Horizon (days) | Samples (Overlapping) | Samples (Independent) | Mean(|r|) | Q10 | Q25 | Q50 (Median) | Q75 | Q90 | Q95 |",
+    "| Horizon (days) | Samples (Overlapping) | Samples (Independent) | Mean abs r | Q10 | Q25 | Q50 (Median) | Q75 | Q90 | Q95 |",
     "|---|---|---|---|---|---|---|---|---|---|",
   ]
 
@@ -648,10 +654,6 @@ def main() -> None:
   out_csv_path = Path(args.out_csv)
   write_csv_report(evaluations, out_csv_path)
 
-  readme_path = Path("research/README.md")
-  readme_path.parent.mkdir(parents=True, exist_ok=True)
-  readme_path.write_text(build_research_readme(), encoding="utf-8")
-
   # Console summary
   print("=" * 78)
   print("BTC ORACLE BREAK-EVEN SUMMARY")
@@ -660,15 +662,17 @@ def main() -> None:
   print(f"Observation Span: {years:.2f} years")
   print(f"Markdown Report : {out_md_path}")
   print(f"CSV Report      : {out_csv_path}")
-  print(f"README          : {readme_path}")
+  print(f"Configurations tried: {len(evaluations)}")
   print("-" * 78)
-  print(f"{'Horizon':<8} {'Scenario':<20} {'RoundTrip c':<12} {'r_be_tax':<10} {'p*_tax':<10} {'Tradable%':<10} {'Oracle/Yr':<12} {'B&H/Yr':<10}")
+  print(f"{'Horizon':<8} {'Scenario':<20} {'n_indep':<8} {'RoundTrip c':<12} {'r_be_tax':<10} {'p*_tax':<10} {'Tradable%':<10} {'Oracle/Yr':<12} {'B&H/Yr':<10}")
   print("-" * 78)
   for ev in evaluations:
     ot = ev.oracle_tax
+    st = ev.stats
     print(
       f"{ev.horizon}d{'':<6} "
       f"{ev.scenario.name:<20} "
+      f"{st.n_independent:<8} "
       f"{ev.cost_model.c:.4f}{'':<6} "
       f"{ev.cost_model.r_be_tax:.4f}{'':<4} "
       f"{format_p_star(ev.p_star_tax):<10} "
