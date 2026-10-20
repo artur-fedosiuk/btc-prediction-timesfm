@@ -49,3 +49,14 @@ python -m scripts.download_daily_ohlc --years 5 --out research/data/btc_usd_1d.c
 3. **Never run `generate` without CI evidence** — requires `reports/provider-checks-ci.json` with both providers passing
 4. **Never install `timesfm` from PyPI** — install only with `pip install -e ".[torch]"`; `model.py` enforces `timesfm==3.0.1`
 5. **Never remove or bypass `preflight()` in `model.py`** — validates RAM (≥4 GB) and disk (≥3 GB) before loading
+6. **Never run `verify` or `report` locally on the real ledger** — they write to `data/` and `reports/`; use CI or a copy
+
+## Workflow
+
+1. **Plan** with `/plan-feature` (planner subagent, model: opus) — step-by-step plan, no edits
+2. **Tests first** with `/verify` and `test-writer` subagent — write failing tests before implementation
+3. **Implement** in small steps — one commit per step
+4. **Review** with `/review-changes` (reviewer subagent) — lists bugs/security/missing tests by severity
+5. **Clear** with `/clear` between tasks; `/compact` around 70% context
+6. **Max 2 subagents in parallel** (free-tier rate limits)
+7. **Never claim success** without running `/verify` and citing its exit code
