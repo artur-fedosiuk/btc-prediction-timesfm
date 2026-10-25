@@ -30405,6 +30405,251 @@
           "target_timestamp": "2026-10-25T06:00:00+00:00",
           "verification_id": "6bd2687b62369662786ee2b06853db461041af578f9c28ff842ece6d730d31cc",
           "verified_at": "2026-10-25T06:05:42.795427+00:00"
+        },
+        {
+          "cross_source_mean": "80385.42",
+          "cross_source_median": "80385.42",
+          "exact_price": "80390.84",
+          "horizon": 15,
+          "prediction_id": "d539be94085a4066f28ed6a91759f103fd6d2301ab3df1e3493126d1161439b3",
+          "provider": "coinbase",
+          "schema_version": 1,
+          "source_spread_pct": "0.01348503248474661200998887609",
+          "source_timestamp": "2026-10-25T07:00:00+00:00",
+          "sources": [
+            {
+              "available_at": "2026-10-25T11:22:53.097645+00:00",
+              "close": "80390.84",
+              "close_time": "2026-10-25T07:00:00+00:00",
+              "high": "80577.31",
+              "low": "80310.01",
+              "open": "80500.47",
+              "open_time": "2026-10-25T06:00:00+00:00",
+              "provider": "coinbase",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-10-25T11:22:53.097645+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "coinbase",
+              "volume": "51.88660126"
+            },
+            {
+              "available_at": "2026-10-25T11:22:53.308159+00:00",
+              "close": "80380.0",
+              "close_time": "2026-10-25T07:00:00+00:00",
+              "high": "80562.1",
+              "low": "80320.0",
+              "open": "80499.3",
+              "open_time": "2026-10-25T06:00:00+00:00",
+              "provider": "kraken",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-10-25T11:22:53.308159+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "kraken",
+              "volume": "8.51057355"
+            }
+          ],
+          "status": "VERIFIED",
+          "target_timestamp": "2026-10-25T07:00:00+00:00",
+          "verification_id": "beae756f9cbac3f48a6fcbb4d2667c0e9928be01582cc909413eb0e7ce3e3eed",
+          "verified_at": "2026-10-25T11:22:53.308245+00:00"
+        },
+        {
+          "cross_source_mean": "80563.37",
+          "cross_source_median": "80563.37",
+          "exact_price": "80568.44",
+          "horizon": 16,
+          "prediction_id": "d539be94085a4066f28ed6a91759f103fd6d2301ab3df1e3493126d1161439b3",
+          "provider": "coinbase",
+          "schema_version": 1,
+          "source_spread_pct": "0.01258636524266549425626063061",
+          "source_timestamp": "2026-10-25T08:00:00+00:00",
+          "sources": [
+            {
+              "available_at": "2026-10-25T11:22:53.097645+00:00",
+              "close": "80568.44",
+              "close_time": "2026-10-25T08:00:00+00:00",
+              "high": "80614.4",
+              "low": "80387.15",
+              "open": "80387.44",
+              "open_time": "2026-10-25T07:00:00+00:00",
+              "provider": "coinbase",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-10-25T11:22:53.097645+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "coinbase",
+              "volume": "32.17846752"
+            },
+            {
+              "available_at": "2026-10-25T11:22:53.308159+00:00",
+              "close": "80558.3",
+              "close_time": "2026-10-25T08:00:00+00:00",
+              "high": "80609.0",
+              "low": "80380.0",
+              "open": "80380.0",
+              "open_time": "2026-10-25T07:00:00+00:00",
+              "provider": "kraken",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-10-25T11:22:53.308159+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "kraken",
+              "volume": "15.93560793"
+            }
+          ],
+          "status": "VERIFIED",
+          "target_timestamp": "2026-10-25T08:00:00+00:00",
+          "verification_id": "69a1bcf9eaaa2b2a2d6108ea299aceb6da8c9d45b172d44e93e457b5e68e4c99",
+          "verified_at": "2026-10-25T11:22:53.355638+00:00"
+        },
+        {
+          "cross_source_mean": "80301.4",
+          "cross_source_median": "80301.4",
+          "exact_price": "80300",
+          "horizon": 17,
+          "prediction_id": "d539be94085a4066f28ed6a91759f103fd6d2301ab3df1e3493126d1161439b3",
+          "provider": "coinbase",
+          "schema_version": 1,
+          "source_spread_pct": "0.003486863242733003409654128072",
+          "source_timestamp": "2026-10-25T09:00:00+00:00",
+          "sources": [
+            {
+              "available_at": "2026-10-25T11:22:53.097645+00:00",
+              "close": "80300",
+              "close_time": "2026-10-25T09:00:00+00:00",
+              "high": "80588.19",
+              "low": "80258",
+              "open": "80568.44",
+              "open_time": "2026-10-25T08:00:00+00:00",
+              "provider": "coinbase",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-10-25T11:22:53.097645+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "coinbase",
+              "volume": "36.0030613"
+            },
+            {
+              "available_at": "2026-10-25T11:22:53.308159+00:00",
+              "close": "80302.8",
+              "close_time": "2026-10-25T09:00:00+00:00",
+              "high": "80592.1",
+              "low": "80236.3",
+              "open": "80558.3",
+              "open_time": "2026-10-25T08:00:00+00:00",
+              "provider": "kraken",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-10-25T11:22:53.308159+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "kraken",
+              "volume": "31.38406509"
+            }
+          ],
+          "status": "VERIFIED",
+          "target_timestamp": "2026-10-25T09:00:00+00:00",
+          "verification_id": "a69bf40d973fe95851ea05441c664e2ef297deb439bd4bad554b8529059c323f",
+          "verified_at": "2026-10-25T11:22:53.360309+00:00"
+        },
+        {
+          "cross_source_mean": "80229.315",
+          "cross_source_median": "80229.315",
+          "exact_price": "80224.13",
+          "horizon": 18,
+          "prediction_id": "d539be94085a4066f28ed6a91759f103fd6d2301ab3df1e3493126d1161439b3",
+          "provider": "coinbase",
+          "schema_version": 1,
+          "source_spread_pct": "0.01292545000540014581951746690",
+          "source_timestamp": "2026-10-25T10:00:00+00:00",
+          "sources": [
+            {
+              "available_at": "2026-10-25T11:22:53.097645+00:00",
+              "close": "80224.13",
+              "close_time": "2026-10-25T10:00:00+00:00",
+              "high": "80344.13",
+              "low": "79973.01",
+              "open": "80299.99",
+              "open_time": "2026-10-25T09:00:00+00:00",
+              "provider": "coinbase",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-10-25T11:22:53.097645+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "coinbase",
+              "volume": "100.63874764"
+            },
+            {
+              "available_at": "2026-10-25T11:22:53.308159+00:00",
+              "close": "80234.5",
+              "close_time": "2026-10-25T10:00:00+00:00",
+              "high": "80348.2",
+              "low": "80000.0",
+              "open": "80302.9",
+              "open_time": "2026-10-25T09:00:00+00:00",
+              "provider": "kraken",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-10-25T11:22:53.308159+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "kraken",
+              "volume": "42.69562057"
+            }
+          ],
+          "status": "VERIFIED",
+          "target_timestamp": "2026-10-25T10:00:00+00:00",
+          "verification_id": "c1a7a7ad3d963668a00658be750afac9ea2349295824b263dc52c1c731f1be34",
+          "verified_at": "2026-10-25T11:22:53.364817+00:00"
+        },
+        {
+          "cross_source_mean": "80175.2",
+          "cross_source_median": "80175.2",
+          "exact_price": "80175.9",
+          "horizon": 19,
+          "prediction_id": "d539be94085a4066f28ed6a91759f103fd6d2301ab3df1e3493126d1161439b3",
+          "provider": "coinbase",
+          "schema_version": 1,
+          "source_spread_pct": "0.001746175874834113291890759237",
+          "source_timestamp": "2026-10-25T11:00:00+00:00",
+          "sources": [
+            {
+              "available_at": "2026-10-25T11:22:53.097645+00:00",
+              "close": "80175.9",
+              "close_time": "2026-10-25T11:00:00+00:00",
+              "high": "80324.39",
+              "low": "80105.12",
+              "open": "80224.13",
+              "open_time": "2026-10-25T10:00:00+00:00",
+              "provider": "coinbase",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-10-25T11:22:53.097645+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "coinbase",
+              "volume": "37.65410698"
+            },
+            {
+              "available_at": "2026-10-25T11:22:53.308159+00:00",
+              "close": "80174.5",
+              "close_time": "2026-10-25T11:00:00+00:00",
+              "high": "80319.4",
+              "low": "80109.3",
+              "open": "80234.5",
+              "open_time": "2026-10-25T10:00:00+00:00",
+              "provider": "kraken",
+              "quote_currency": "USD",
+              "retrieved_at": "2026-10-25T11:22:53.308159+00:00",
+              "status": "CLOSED",
+              "symbol": "BTC/USD",
+              "venue": "kraken",
+              "volume": "10.96820643"
+            }
+          ],
+          "status": "VERIFIED",
+          "target_timestamp": "2026-10-25T11:00:00+00:00",
+          "verification_id": "3002ba90b1703eae14744b4fa03446defbaa1cbed027380014433e73b196a8d7",
+          "verified_at": "2026-10-25T11:22:53.368910+00:00"
         }
       ],
       "errors": [
@@ -30519,6 +30764,46 @@
           "actual": "80500.48",
           "absolute_error": "365.4175",
           "absolute_percentage_error": "0.4539320759329633810879140100"
+        },
+        {
+          "horizon": 15,
+          "target_timestamp": "2026-10-25T07:00:00+00:00",
+          "forecast": "80157.453125",
+          "actual": "80390.84",
+          "absolute_error": "233.386875",
+          "absolute_percentage_error": "0.2903152585543328070710543639"
+        },
+        {
+          "horizon": 16,
+          "target_timestamp": "2026-10-25T08:00:00+00:00",
+          "forecast": "80170.6328125",
+          "actual": "80568.44",
+          "absolute_error": "397.8071875",
+          "absolute_percentage_error": "0.4937506392081067971528305624"
+        },
+        {
+          "horizon": 17,
+          "target_timestamp": "2026-10-25T09:00:00+00:00",
+          "forecast": "80182.6875",
+          "actual": "80300",
+          "absolute_error": "117.3125",
+          "absolute_percentage_error": "0.1460927770859277708592777086"
+        },
+        {
+          "horizon": 18,
+          "target_timestamp": "2026-10-25T10:00:00+00:00",
+          "forecast": "80197.1875",
+          "actual": "80224.13",
+          "absolute_error": "26.9425",
+          "absolute_percentage_error": "0.03358403512758567777550220862"
+        },
+        {
+          "horizon": 19,
+          "target_timestamp": "2026-10-25T11:00:00+00:00",
+          "forecast": "80200.78125",
+          "actual": "80175.9",
+          "absolute_error": "24.88125",
+          "absolute_percentage_error": "0.03103332797012568614758300187"
         }
       ],
       "window_statistics": null,
@@ -40897,28 +41182,28 @@
     "metric_definition": "mae_log_return_pct and rmse_log_return_pct are 100 * |log(forecast/origin) - log(actual/origin)| averaged over verified horizons. Scale-free. direction_accuracy = fraction of horizons where sign(log-return forecast) == sign(log-return actual), relative to forecast origin.",
     "summary": {
       "persistence": {
-        "mae_log_return_pct": 0.777002,
-        "rmse_log_return_pct": 1.109772,
+        "mae_log_return_pct": 0.777208,
+        "rmse_log_return_pct": 1.107557,
         "direction_accuracy": null,
-        "n_verified_targets": 566
+        "n_verified_targets": 571
       },
       "drift": {
-        "mae_log_return_pct": 0.802859,
-        "rmse_log_return_pct": 1.141799,
-        "direction_accuracy": 0.3905,
-        "n_verified_targets": 566
+        "mae_log_return_pct": 0.804632,
+        "rmse_log_return_pct": 1.140773,
+        "direction_accuracy": 0.387,
+        "n_verified_targets": 571
       },
       "arima": {
-        "mae_log_return_pct": 0.802859,
-        "rmse_log_return_pct": 1.141799,
-        "direction_accuracy": 0.3905,
-        "n_verified_targets": 566
+        "mae_log_return_pct": 0.804632,
+        "rmse_log_return_pct": 1.140773,
+        "direction_accuracy": 0.387,
+        "n_verified_targets": 571
       },
       "timesfm": {
-        "mae_log_return_pct": 0.802957,
-        "rmse_log_return_pct": 1.148293,
-        "direction_accuracy": 0.5318,
-        "n_verified_targets": 566
+        "mae_log_return_pct": 0.797671,
+        "rmse_log_return_pct": 1.143525,
+        "direction_accuracy": 0.5359,
+        "n_verified_targets": 571
       }
     },
     "per_prediction": [
@@ -55132,10 +55417,10 @@
             ],
             "origin_price": 79691.25,
             "metrics": {
-              "n_verified": 14,
+              "n_verified": 19,
               "n_direction": 0,
-              "mae_log_return": 1.051584,
-              "rmse_log_return": 1.091958,
+              "mae_log_return": 0.985511,
+              "rmse_log_return": 1.027169,
               "direction_accuracy": null,
               "per_horizon": [
                 {
@@ -55238,23 +55523,38 @@
                 },
                 {
                   "horizon": 15,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": 0.0,
+                  "lr_actual": 0.874045,
+                  "log_ae": 0.874045
                 },
                 {
                   "horizon": 16,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": 0.0,
+                  "lr_actual": 1.094722,
+                  "log_ae": 1.094722
                 },
                 {
                   "horizon": 17,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": 0.0,
+                  "lr_actual": 0.760983,
+                  "log_ae": 0.760983
                 },
                 {
                   "horizon": 18,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": 0.0,
+                  "lr_actual": 0.666455,
+                  "log_ae": 0.666455
                 },
                 {
                   "horizon": 19,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": 0.0,
+                  "lr_actual": 0.606318,
+                  "log_ae": 0.606318
                 },
                 {
                   "horizon": 20,
@@ -55309,10 +55609,10 @@
             ],
             "origin_price": 79691.25,
             "metrics": {
-              "n_verified": 14,
-              "n_direction": 14,
-              "mae_log_return": 1.141916,
-              "rmse_log_return": 1.189902,
+              "n_verified": 19,
+              "n_direction": 19,
+              "mae_log_return": 1.105978,
+              "rmse_log_return": 1.147152,
               "direction_accuracy": 0.0,
               "per_horizon": [
                 {
@@ -55415,23 +55715,38 @@
                 },
                 {
                   "horizon": 15,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": -0.180723,
+                  "lr_actual": 0.874045,
+                  "log_ae": 1.054767
                 },
                 {
                   "horizon": 16,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": -0.192782,
+                  "lr_actual": 1.094722,
+                  "log_ae": 1.287504
                 },
                 {
                   "horizon": 17,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": -0.204844,
+                  "lr_actual": 0.760983,
+                  "log_ae": 0.965826
                 },
                 {
                   "horizon": 18,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": -0.216906,
+                  "lr_actual": 0.666455,
+                  "log_ae": 0.883361
                 },
                 {
                   "horizon": 19,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": -0.22897,
+                  "lr_actual": 0.606318,
+                  "log_ae": 0.835288
                 },
                 {
                   "horizon": 20,
@@ -55486,10 +55801,10 @@
             ],
             "origin_price": 79691.25,
             "metrics": {
-              "n_verified": 14,
-              "n_direction": 14,
-              "mae_log_return": 1.141916,
-              "rmse_log_return": 1.189902,
+              "n_verified": 19,
+              "n_direction": 19,
+              "mae_log_return": 1.105978,
+              "rmse_log_return": 1.147152,
               "direction_accuracy": 0.0,
               "per_horizon": [
                 {
@@ -55592,23 +55907,38 @@
                 },
                 {
                   "horizon": 15,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": -0.180723,
+                  "lr_actual": 0.874045,
+                  "log_ae": 1.054767
                 },
                 {
                   "horizon": 16,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": -0.192782,
+                  "lr_actual": 1.094722,
+                  "log_ae": 1.287504
                 },
                 {
                   "horizon": 17,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": -0.204844,
+                  "lr_actual": 0.760983,
+                  "log_ae": 0.965826
                 },
                 {
                   "horizon": 18,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": -0.216906,
+                  "lr_actual": 0.666455,
+                  "log_ae": 0.883361
                 },
                 {
                   "horizon": 19,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": -0.22897,
+                  "lr_actual": 0.606318,
+                  "log_ae": 0.835288
                 },
                 {
                   "horizon": 20,
@@ -55664,10 +55994,10 @@
             ],
             "origin_price": 79691.25,
             "metrics": {
-              "n_verified": 14,
-              "n_direction": 14,
-              "mae_log_return": 0.675361,
-              "rmse_log_return": 0.70343,
+              "n_verified": 19,
+              "n_direction": 19,
+              "mae_log_return": 0.550083,
+              "rmse_log_return": 0.619014,
               "direction_accuracy": 1.0,
               "per_horizon": [
                 {
@@ -55770,23 +56100,38 @@
                 },
                 {
                   "horizon": 15,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": 0.583307,
+                  "lr_actual": 0.874045,
+                  "log_ae": 0.290737
                 },
                 {
                   "horizon": 16,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": 0.599748,
+                  "lr_actual": 1.094722,
+                  "log_ae": 0.494974
                 },
                 {
                   "horizon": 17,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": 0.614783,
+                  "lr_actual": 0.760983,
+                  "log_ae": 0.1462
                 },
                 {
                   "horizon": 18,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": 0.632865,
+                  "lr_actual": 0.666455,
+                  "log_ae": 0.03359
                 },
                 {
                   "horizon": 19,
-                  "verified": false
+                  "verified": true,
+                  "lr_forecast": 0.637346,
+                  "lr_actual": 0.606318,
+                  "log_ae": 0.031029
                 },
                 {
                   "horizon": 20,
@@ -60838,10 +61183,10 @@
         "timestamp": "2026-10-24T16:04:50.563452+00:00"
       }
     ],
-    "latest_valid_observation": "2026-10-25T06:00:00+00:00",
+    "latest_valid_observation": "2026-10-25T11:00:00+00:00",
     "latest_prediction": "2026-10-24T16:04:52.893619+00:00",
-    "latest_verification": "2026-10-25T06:05:42.795427+00:00",
-    "pending_verifications": 10,
+    "latest_verification": "2026-10-25T11:22:53.368910+00:00",
+    "pending_verifications": 5,
     "invalid_predictions": 0,
     "timesfm_status": "GENERATED",
     "storage_status": "INTEGRITY_CHECK_PASSED",
