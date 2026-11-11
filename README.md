@@ -358,3 +358,17 @@ python -m pytest tests/forward tests/test_btc_metrics.py tests/test_btc_csv_mana
 python -m pytest src/timesfm3 -q
 ```
 
+### CI Failure Runbook (Forward + Healthcheck)
+
+When a scheduled CI run fails:
+
+1. Retry the failed workflow run once from Actions.
+2. Verify workflow runtime compatibility (Python minor version and runner image).
+3. Review uploaded artifacts and job logs to isolate dependency/setup failures.
+4. If the failure persists, open a focused fix PR (manual or automated remediation workflow).
+
+Preventive automation in this repository:
+
+- `.github/workflows/bitcoin-evaluation.yml` uses Python `3.11` (minor pin).
+- `.github/workflows/ci-healthcheck.yml` runs a weekly minimal CI healthcheck and opens/updates an issue on failure.
+- `.github/dependabot.yml` enables weekly GitHub Actions dependency updates.
