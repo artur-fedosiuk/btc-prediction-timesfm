@@ -16,12 +16,13 @@ on:
 # No push trigger: publishing a branch must not start billable work implicitly.
 permissions:
   contents: write
+  issues: write
 concurrency:
   group: btc-forward-ledger-${{ github.ref }}
   cancel-in-progress: false
 jobs:
   forward:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     env:
       PYTHONPATH: src:.
@@ -122,3 +123,54 @@ jobs:
           echo "::warning::BTC forward pipeline failed — run ${{ github.run_id }} mode ${{ steps.operation.outputs.mode }}"
           # Add Slack/Discord/email webhook here if desired
           # curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"BTC pipeline failed: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\"}" $ALERT_WEBHOOK
+
+      - name: Open or update BTC pipeline failure issue
+        if: failure()
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const title = "[BTC Forward] Pipeline failed";
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const artifactsUrl = `${runUrl}/artifacts`;
+            const mode = "${{ steps.operation.outputs.mode }}";
+            const body = [
+              "Automated BTC forward pipeline failed.",
+              "",
+              `- Run: ${runUrl}`,
+              `- Artifacts: ${artifactsUrl}`,
+              `- Workflow: ${context.workflow}`,
+              `- Trigger: ${context.eventName}`,
+              `- Mode: ${mode}`,
+              "",
+              "Runbook:",
+              "1. Retry the failed run once.",
+              "2. Check provider-checks-ci.json artifact for Coinbase/Kraken accessibility.",
+              "3. Verify Python and runner compatibility in workflows.",
+              "4. If still failing, open a fix PR or trigger automated remediation."
+            ].join("\\n");
+
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: "open",
+              per_page: 100,
+            });
+            const existing = issues.find((issue) => issue.title === title && !issue.pull_request);
+
+            if (existing) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.number,
+                body,
+              });
+              core.info(`Commented on existing issue #${existing.number}`);
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+              });
+              core.info("Created new BTC pipeline failure issue");
+            }
