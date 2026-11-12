@@ -1,8 +1,8 @@
 {
   "status": "PASS",
-  "code_hash": "4849c9eef57f082db1a4c1fe6655dc0448b69d1f81cca920d8823fa66f1dfabc",
-  "github_run_id": "39446298066",
-  "github_sha": "26ba67dd74f06d89db06d50359aab026c5807c14",
+  "code_hash": "e5bc240c7b785302ca1c1ba5c98de7e4a9b95ff83925c4a34a6b5269921b13e0",
+  "github_run_id": "43227772612",
+  "github_sha": "ed6b78d483c502661dced2d1683e3420e2743c31",
   "tests": [
     {
       "file": "btc-tests.xml",
@@ -11,9 +11,9 @@
       "failures": "0",
       "skipped": "0",
       "tests": "221",
-      "time": "26.151",
-      "timestamp": "2026-10-20T15:13:52.677423+00:00",
-      "hostname": "runnervm8k3b6"
+      "time": "20.729",
+      "timestamp": "2026-11-12T13:30:25.362946+00:00",
+      "hostname": "runnervm8axu0"
     },
     {
       "file": "model-tests.xml",
@@ -22,19 +22,19 @@
       "failures": "0",
       "skipped": "0",
       "tests": "42",
-      "time": "1.875",
-      "timestamp": "2026-10-20T15:14:19.338825+00:00",
-      "hostname": "runnervm8k3b6"
+      "time": "1.963",
+      "timestamp": "2026-11-12T13:30:46.569201+00:00",
+      "hostname": "runnervm8axu0"
     }
   ],
   "environment": {
-    "python_version": "3.11.14",
-    "os": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python_version": "3.11.18",
+    "os": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
     "architecture": "x86_64",
     "github": {
-      "GITHUB_RUN_ID": "39446298066",
+      "GITHUB_RUN_ID": "43227772612",
       "GITHUB_RUN_ATTEMPT": "1",
-      "GITHUB_SHA": "26ba67dd74f06d89db06d50359aab026c5807c14",
+      "GITHUB_SHA": "ed6b78d483c502661dced2d1683e3420e2743c31",
       "GITHUB_REF": "refs/heads/master"
     },
     "timesfm_version": "3.0.1",
@@ -43,7 +43,7 @@
     "pandas_version": "3.0.5",
     "statsmodels_version": "0.14.6",
     "device": "cpu",
-    "git_sha": "26ba67dd74f06d89db06d50359aab026c5807c14",
+    "git_sha": "ed6b78d483c502661dced2d1683e3420e2743c31",
     "working_tree_dirty": true
   }
 }
