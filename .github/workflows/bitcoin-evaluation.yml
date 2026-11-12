@@ -66,7 +66,7 @@ jobs:
       - name: Cache pinned Hugging Face checkpoint
         if: steps.operation.outputs.mode == 'validate' || steps.operation.outputs.mode == 'generate'
         id: model-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.cache/huggingface/hub/models--google--timesfm-3.0-pytorch
           key: btc-timesfm3-${{ runner.os }}-${{ runner.arch }}-43046b85ec22d584a13f8098c2ed39c889e129c2
