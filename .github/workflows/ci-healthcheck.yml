@@ -59,7 +59,7 @@ jobs:
 
       - name: Open or update CI failure issue
         if: failure()
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const title = "[CI Healthcheck] Forward pipeline weekly healthcheck failed";
